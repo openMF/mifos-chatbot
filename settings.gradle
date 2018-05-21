@@ -1,2 +1,7 @@
-include 'chatbot'
+rootProject.name = "mifos-chatbot"
+include ":client"
+include ":core"
+include ":nlp"
+include ":protocol"
+include ":server"
 
