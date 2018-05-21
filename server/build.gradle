@@ -1,5 +1,9 @@
 description = "Mifos Chatbot Server"
 
+bootRun {
+    main = 'org.mifos.chatbot.server.MifosChatbotApplication'
+}
+
 dependencies {
     compile('org.springframework.boot:spring-boot-starter')
     testCompile('org.springframework.boot:spring-boot-starter-test')
