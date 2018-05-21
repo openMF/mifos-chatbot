@@ -1,5 +1,7 @@
 description = "Mifos Chatbot Server"
 
+apply plugin: 'org.springframework.boot'
+
 bootRun {
     main = 'org.mifos.chatbot.server.MifosChatbotApplication'
 }
