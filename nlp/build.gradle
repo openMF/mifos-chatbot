@@ -1,8 +1,10 @@
 description = "Mifos Chatbot Client"
 // https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools
 dependencies {
-    compile group: 'org.apache.opennlp', name: 'opennlp-tools', version: '1.5.2-incubating'
-    compile ':core'
+    compile 'org.apache.opennlp:opennlp:1.8.4'
+    // compile 'org.apache.opennlp:opennlp-uima:1.8.4'
+    compile 'org.apache.opennlp:opennlp-tools:1.8.4'
+    compile project(':core')
 }
 
 
