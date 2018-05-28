@@ -13,4 +13,6 @@ public class OpenNLPService implements NLPService {
 
     // OpenNLP may has to be trained by myself to be financial focused
     // May start with 10 keywords first, let framework understand different sentence structure.
+
+
 }

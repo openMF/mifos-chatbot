@@ -1,8 +1,39 @@
 description = "Mifos Chatbot Client"
 // https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools
+
+buildscript {
+    ext {
+        springBootVersion = '2.0.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: "io.spring.dependency-management"
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:1.1.1.RELEASE'
+    }
+}
+
 dependencies {
-//    compile 'org.apache.opennlp:opennlp:1.8.4'
-    // compile 'org.apache.opennlp:opennlp-uima:1.8.4'
+
+    compile('org.springframework.boot:spring-boot-starter')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    testCompile group: 'junit', name: 'junit', version: '4.4'
     compile 'org.apache.opennlp:opennlp-tools:1.8.4'
     compile 'org.springframework:spring-core'
     compile project(':core')
