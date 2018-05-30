@@ -17,7 +17,5 @@ public class OpenNLPService implements NLPService {
 
 
 
-
-    // create training set and training model
-    // get the result
+    // create training set and training model by myself instead of using pre-trained model
 }
