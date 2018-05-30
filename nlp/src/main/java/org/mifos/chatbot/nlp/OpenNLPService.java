@@ -4,6 +4,7 @@ import org.mifos.chatbot.core.NLPService;
 import org.mifos.chatbot.core.model.Intent;
 
 public class OpenNLPService implements NLPService {
+
     @Override
     public Intent recognize(String text) {
         return null;
@@ -15,4 +16,8 @@ public class OpenNLPService implements NLPService {
     // May start with 10 keywords first, let framework understand different sentence structure.
 
 
+
+
+    // create training set and training model
+    // get the result
 }
