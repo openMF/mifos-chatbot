@@ -30,34 +30,35 @@ import java.io.*;
 public class OpenNLPTest {
     @Test
     public void detectSentenceTest() throws Exception {
-        String input = "Hi. How are you? This is mike. ";
-        System.out.println(new File("."). getAbsolutePath());
         InputStream is = new FileInputStream("src/test/resources/models/en-sent.bin");
         SentenceModel model = new SentenceModel(is);
         SentenceDetectorME sdetector = new SentenceDetectorME(model);
 
+        String input = "Hi. How are you? This is mike. ";
         String sentences[] = sdetector.sentDetect(input);
         for(String sentence : sentences) {
             System.out.println(sentence);
         }
         is.close();
+
         Assert.assertEquals(sentences[0], "Hi. How are you?");
+        Assert.assertEquals(sentences[1], "This is mike.");
     }
 
     @Test
     public void tokenizeTest() throws Exception {
         InputStream is = new FileInputStream("src/test/resources/models/en-token.bin");
-
         TokenizerModel model = new TokenizerModel(is);
-
         Tokenizer tokenizer = new TokenizerME(model);
 
-        String tokens[] = tokenizer.tokenize("Hi. How are you? This is Mike.");
-
+        String input = "Hi. How are you? This is mike. ";
+        String tokens[] = tokenizer.tokenize(input);
         for (String a : tokens)
             System.out.println(a);
 
         is.close();
+
+        Assert.assertTrue("Hi".equals(tokens[0]));
     }
 
     /*
@@ -139,13 +140,17 @@ public class OpenNLPTest {
         NameFinderME nameFinder = new NameFinderME(model);
 
         String []sentence = new String[]{
-                "This" ,  "is" , "my" , "John"
+                "This" ,  "is" , "my" , "John", "and", "Jackson"
+//                "This", "shoe", "costs", "me", "100", "dollars"
         };
 
         Span nameSpans[] = nameFinder.find(sentence);
 
         for(Span s: nameSpans)
             System.out.println(s.toString());
+
+//        System.out.println(sentence[nameSpans[0].getStart()]);
+//        System.out.println(nameSpans[0].getEnd()-1);
     }
 
     @Test
