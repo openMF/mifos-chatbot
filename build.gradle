@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.2.RELEASE")
+    }
+}
+
+allprojects  {
+    apply plugin: "maven"
+    apply plugin: "java"
+    apply plugin: "idea"
+    apply plugin: "io.spring.dependency-management"
+
+    group 'org.mifos.chatbot'
+    version '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    test.enabled = true
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    task packageSources(type: Jar) {
+        classifier = "sources"
+        from sourceSets.main.allSource
+    }
+
+    artifacts.archives packageSources
+
+    dependencies {
+        testCompile "junit:junit"
+        testCompile "org.springframework:spring-test"
+    }
+}
