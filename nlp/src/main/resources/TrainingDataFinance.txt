@@ -1,1 +1,2 @@
 Check my status of <START:finance>loan<END>
+Hello. What is my <START:finance>loan status<END>
