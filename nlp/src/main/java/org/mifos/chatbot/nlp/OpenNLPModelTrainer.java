@@ -23,7 +23,7 @@ public class OpenNLPModelTrainer {
         // Step 1: read the training data
         InputStreamFactory in = null;
         try {
-            in = new MarkableFileInputStreamFactory(new File("src/main/resources/TrainingDataFinance.txt"));
+            in = new MarkableFileInputStreamFactory(new File("src/main/resources/TrainingDataFinance-1.txt"));
         } catch (FileNotFoundException e) {
             logger.error("FileNotFoundException Step 1 : ", e);
             return false;
