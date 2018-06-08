@@ -132,7 +132,7 @@ public class OpenNLPTest {
 
     @Test
     public void findNameTest() throws Exception {
-        InputStream is = new FileInputStream("src/test/resources/models/en-ner-person.bin");
+        InputStream is = new FileInputStream("src/test/resources/models/en-ner-first-try.bin");
 
         TokenNameFinderModel model = new TokenNameFinderModel(is);
         is.close();
@@ -140,8 +140,8 @@ public class OpenNLPTest {
         NameFinderME nameFinder = new NameFinderME(model);
 
         String []sentence = new String[]{
-                "This" ,  "is" , "my" , "John", "and", "Jackson"
-//                "This", "shoe", "costs", "me", "100", "dollars"
+//                "This" ,  "is" , "my" , "John", "and", "Jackson"
+                "Check", "my", "penalty", "fee"
         };
 
         Span nameSpans[] = nameFinder.find(sentence);
