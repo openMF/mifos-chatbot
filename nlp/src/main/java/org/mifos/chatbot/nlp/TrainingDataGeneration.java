@@ -16,7 +16,7 @@ public class TrainingDataGeneration{
             FileOutputStream fos = new FileOutputStream(fout);
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 
-            for(int i = 0 ; i < 100 ; i++) {
+            for(int i = 0 ; i < 20000 ; i++) {
                 Random random = new Random();
                 String content = generateData(random.nextInt(2), random.nextInt(2), random.nextInt(5));
                 bw.write(content);
@@ -37,9 +37,9 @@ public class TrainingDataGeneration{
         sb.append(verbChoices[firstIdx]);
         sb.append(" ");
         sb.append(conjChoices[secondIdx]);
-        sb.append(" <START:finance>");
+        sb.append(" <START:finance> ");
         sb.append(nounChoices[thirdIdx]);
-        sb.append("<END>");
+        sb.append(" <END>");
 
         return sb.toString();
     }

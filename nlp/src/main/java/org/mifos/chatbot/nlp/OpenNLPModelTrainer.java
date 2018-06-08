@@ -59,7 +59,7 @@ public class OpenNLPModelTrainer {
         }
 
         // Step 4: save the model to a file
-        File output = new File("src/main/resources/en-ner-first-try.bin");
+        File output = new File("src/main/resources/models/en-ner-first-try.bin");
         try {
              FileOutputStream outputStream = new FileOutputStream(output);
             nameFinderModel.serialize(outputStream);
