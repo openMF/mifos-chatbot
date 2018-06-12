@@ -18,8 +18,8 @@ public class OpenNLPServiceTest {
 
     @Test
     public void recognizeTest() {
-        Intent[] results = nlpService.recognize("Check my loan fee. check my Interest rate");
+        Intent[] results = nlpService.recognize("Check my Interest rate");
 //        System.out.println(results[0].getKeyword());
-        Assert.assertTrue(results[0].getKeyword().equals("loan fee"));
+        Assert.assertTrue(results[0].getKeyword().equals("Interest rate"));
     }
 }
