@@ -36,7 +36,7 @@ public class OpenNLPService implements NLPService {
     public Intent[] recognize(String text) {
         try {
             String[] sentences = detectSentence(text);
-            System.out.println(sentences.length);
+//            System.out.println(sentences.length);
 
             List<String> tokens = new ArrayList<>();
             for(String sentence : sentences) {
@@ -58,7 +58,7 @@ public class OpenNLPService implements NLPService {
                 resultIntents[i] = new Intent(sb.toString());
             }
 
-            System.out.println(resultIntents[0].getKeyword());
+//            System.out.println(resultIntents[0].getKeyword());
             return resultIntents;
         } catch (IOException e) {
             logger.error("Cannot read model information : ", e);
@@ -91,19 +91,21 @@ public class OpenNLPService implements NLPService {
         Tokenizer tokenizer = new TokenizerME(model);
 
         String tokens[] = tokenizer.tokenize(sentence);
-        for (String a : tokens)
-            System.out.println(a);
+//        for (String a : tokens)
+//            System.out.println(a);
         is.close();
 
         return tokens;
     }
 
     private Span[] findName(String[] tokens) throws IOException {
-        InputStream is = new FileInputStream("src/test/resources/models/en-ner-first-try.bin");
+        InputStream is = new FileInputStream("src/test/resources/models/en-ner-second-try.bin");
         TokenNameFinderModel model = new TokenNameFinderModel(is);
         NameFinderME nameFinder = new NameFinderME(model);
 
         Span nameSpans[] = nameFinder.find(tokens);
+
+        System.out.println(nameSpans.length + " spans found. ");
 
         is.close();
         return nameSpans;

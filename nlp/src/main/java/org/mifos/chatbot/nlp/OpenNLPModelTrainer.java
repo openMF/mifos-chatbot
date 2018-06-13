@@ -23,7 +23,7 @@ public class OpenNLPModelTrainer {
         // Step 1: read the training data
         InputStreamFactory in = null;
         try {
-            in = new MarkableFileInputStreamFactory(new File("src/main/resources/TrainingDataFinance-1.txt"));
+            in = new MarkableFileInputStreamFactory(new File("src/main/resources/TrainingDataFinance-2.txt"));
         } catch (FileNotFoundException e) {
             logger.error("FileNotFoundException Step 1 : ", e);
             return false;
@@ -59,7 +59,7 @@ public class OpenNLPModelTrainer {
         }
 
         // Step 4: save the model to a file
-        File output = new File("src/main/resources/models/en-ner-first-try.bin");
+        File output = new File("src/main/resources/models/en-ner-second-try.bin");
         try {
              FileOutputStream outputStream = new FileOutputStream(output);
             nameFinderModel.serialize(outputStream);
