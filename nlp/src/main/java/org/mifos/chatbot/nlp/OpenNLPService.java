@@ -27,6 +27,9 @@ public class OpenNLPService implements NLPService {
     /**
      * This method is to recognise user's input to find out what is their intention
      *
+     * Instead of finding a specific API to handle the result, the recognize function is used to narrow down the scope to several functions,
+     * then apply further processing
+     *
      * @param text This is the message of user input, it may contain several sentences about their commands
      * @return user's intention, basically what they really want to do
      *

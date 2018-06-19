@@ -16,10 +16,12 @@ public class OpenNLPServiceTest {
         nlpService = new OpenNLPService();
     }
 
+    // Intent should be specific enough to point to the RESTful API of Mifos
     @Test
     public void recognizeTest() {
         Intent[] results = nlpService.recognize("Check my next due day");
-        System.out.println(results[3].getKeyword());
+        for(int i = 0; i < results.length ;i++)
+            System.out.println(results[i].getKeyword());
 //        Assert.assertTrue(results[0].getKeyword().equals("Interest rate"));
     }
 }

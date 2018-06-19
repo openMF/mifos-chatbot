@@ -39,7 +39,7 @@ public class TrainingDataGeneration{
      * @author Dingfan
      */
 	private static String generateData(int firstIdx, int secondIdx, int thirdIdx) {
-        String[] verbChoices = {"look", "load", "What is", "write to", "how", "update"};
+        String[] verbChoices = {"look", "load", "What is", "write to", "how", "update", "delete"};
         String[] conjChoices = {"my", "the", "the other user's"};
         String[] nounChoices = {"status of loan", "interest", "outstanding principal", "next due day", "due principal"};
         StringBuffer sb = new StringBuffer();
