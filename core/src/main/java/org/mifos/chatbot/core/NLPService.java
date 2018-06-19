@@ -7,5 +7,5 @@ import org.mifos.chatbot.core.model.Intent;
  * If there are other NLP engines, simply add more interfaces for additional NLP engines
  */
 public interface NLPService {
-    Intent recognize(String text);
+    Intent[] recognize(String text);
 }
