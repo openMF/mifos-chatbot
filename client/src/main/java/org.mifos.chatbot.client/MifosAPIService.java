@@ -10,6 +10,8 @@ import org.mifos.chatbot.core.model.MifosResponse;
 public class MifosAPIService implements MifosService {
     @Override
     public MifosResponse process(MifosRequest request) {
+        // Here is the code provided by Swagger that made the API call to Mifos
+
         return null;
     }
 }
