@@ -27,11 +27,20 @@ dependencyManagement {
 }
 
 dependencies {
+    compile project(':core')
     compile('org.springframework.boot:spring-boot-starter')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile group: 'junit', name: 'junit', version: '4.4'
     compile 'org.apache.opennlp:opennlp-tools:1.8.4'
     compile 'org.springframework:spring-core'
-    compile project(':core')
+    compile 'io.swagger:swagger-annotations:1.5.15'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.squareup.okhttp:logging-interceptor:2.7.5'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile 'io.gsonfire:gson-fire:1.8.0'
+    compile 'org.threeten:threetenbp:1.3.5'
+
+    compile "io.takari.slack:simple-slack-api"
+
     testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile group: 'junit', name: 'junit', version: '4.4'
 }
