@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class LoanStatusHandler extends BaseIntentHandler {
-    private static final String INTENT_KEYWORD = "loanStatus";
+public class OutstandingInterestHandler extends BaseIntentHandler {
+    private static final String INTENT_KEYWORD = "outstandingInterest";
 
     @Override
     public Boolean canHandle(Intent intent) {

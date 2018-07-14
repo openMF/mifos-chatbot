@@ -3,6 +3,6 @@ description = "Mifos Chatbot Client"
 
 dependencies {
     compile project(":core")
-    compile("org.springframework.boot:spring-boot-starter")
+    compile "org.springframework.boot:spring-boot-starter" // TODO: why do we need this here?
     compile "org.apache.opennlp:opennlp-tools"
 }
