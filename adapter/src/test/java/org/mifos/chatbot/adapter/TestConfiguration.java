@@ -2,6 +2,7 @@ package org.mifos.chatbot.adapter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.api.HolidaysApi;
 import org.mifos.chatbot.core.model.MifosSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,5 +27,10 @@ public class TestConfiguration {
         // TODO: improve this
         return new ApiClient()
             .setBasePath(settings.getApiUrl());
+    }
+
+    @Bean
+    public HolidaysApi holidaysApi() {
+        return new HolidaysApi(apiClient());
     }
 }

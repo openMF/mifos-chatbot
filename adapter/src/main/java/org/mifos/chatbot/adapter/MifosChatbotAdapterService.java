@@ -23,4 +23,12 @@ public class MifosChatbotAdapterService {
             .map(handler -> handler.handle(intent))
             .collect(Collectors.toList());
     }
+
+    /*
+
+
+      [Slack/Viber/XMPP/IRC/Skype] -> NLP -> Intent1, Intent2, Intent3 -> AdapterService(Intent) -> responses -> [Slack/Viber/XMPP/IRC/Skype]
+
+
+     */
 }

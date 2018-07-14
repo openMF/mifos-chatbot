@@ -18,9 +18,12 @@ public class LoanStatusHandler extends BaseIntentHandler {
 
     @Override
     public MifosResponse handle(Intent intent) {
-        // TODO: implement this
         MifosResponse response = new MifosResponse();
         response.setContent(INTENT_KEYWORD + ": NOT YET IMPLEMENTED!!!");
+
+        // SomeLoanStatusObject result = apiClient.execute(); // TODO: do your thing here and call the loan status api!
+        // response.setContent(result.toString());
+
 
         return response;
     }

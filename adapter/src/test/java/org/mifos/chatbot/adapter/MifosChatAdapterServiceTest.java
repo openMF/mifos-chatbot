@@ -34,6 +34,17 @@ public class MifosChatAdapterServiceTest {
         }
     }
 
+    @Test
+    public void getAllHolidays() {
+        Intent getAllHolidaysIntent = new Intent("getAllHolidays");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(getAllHolidaysIntent);
+
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: {}", response.getContent());
+        }
+    }
+
     // TODO: add more tests
 
     @Test
