@@ -13,14 +13,9 @@
 
 package org.mifos.chatbot.client.api;
 
-import org.mifos.chatbot.client.ApiException;
-import org.junit.Test;
 import org.junit.Ignore;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.junit.Test;
+import org.mifos.chatbot.client.ApiException;
 
 /**
  * API tests for PovertyLineApi

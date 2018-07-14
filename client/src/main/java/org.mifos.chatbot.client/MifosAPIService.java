@@ -1,23 +1,5 @@
 package org.mifos.chatbot.client;
 
-import org.mifos.chatbot.client.ApiClient;
-import org.mifos.chatbot.core.MifosService;
-import org.mifos.chatbot.core.model.Intent;
-import org.mifos.chatbot.core.model.MifosRequest;
-import org.mifos.chatbot.core.model.MifosResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-
 /**
  * This class will handle the API interactions with Mifos
  *
@@ -32,6 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
  *      4. Wrap and generate it in the MifosResponse
  *          a. The MifosResponse still need further enhancement about its structure
  */
+
+/*
 @Deprecated // TODO: find a different solution with an adapter module
 public class MifosAPIService implements MifosService {
     private final String basePath = "localhost:8443/fineract-provider/api/v1";
@@ -51,7 +35,6 @@ public class MifosAPIService implements MifosService {
             logger.error("Something wrong during setup process : " + e);
         }
     }
-
     @Override
     public MifosResponse process(MifosRequest request) {
         // Here is the code provided by Swagger that made the API call to Mifos
@@ -127,3 +110,4 @@ public class MifosAPIService implements MifosService {
         parser.parse(inputSource, handler);
     }
 }
+*/

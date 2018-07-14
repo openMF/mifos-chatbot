@@ -1,3 +1,11 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        jcenter()
+        gradlePluginPortal()
+    }
+}
+
 rootProject.name = "mifos-chatbot"
 include ":client"
 include ":core"
@@ -5,3 +13,10 @@ include ":nlp"
 include ":protocol"
 include ":adapter"
 include ":server"
+
+project(":client").projectDir = "$rootDir/client" as File
+project(":core").projectDir = "$rootDir/core" as File
+project(":nlp").projectDir = "$rootDir/nlp" as File
+project(":protocol").projectDir = "$rootDir/protocol" as File
+project(":adapter").projectDir = "$rootDir/adapter" as File
+project(":server").projectDir = "$rootDir/server" as File
