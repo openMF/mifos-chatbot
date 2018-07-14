@@ -1,5 +1,6 @@
 package org.mifos.chatbot.nlp;
 
+import lombok.extern.slf4j.Slf4j;
 import opennlp.tools.cmdline.PerformanceMonitor;
 import opennlp.tools.cmdline.parser.ParserTool;
 import opennlp.tools.cmdline.postag.POSModelLoader;
@@ -27,6 +28,7 @@ import org.junit.Assert;
 
 import java.io.*;
 
+@Slf4j
 public class OpenNLPFunctionTest {
     @Test
     public void detectSentenceTest() throws Exception {
@@ -37,7 +39,7 @@ public class OpenNLPFunctionTest {
         String input = "Hi. How are you? This is mike. ";
         String sentences[] = sdetector.sentDetect(input);
         for(String sentence : sentences) {
-            System.out.println(sentence);
+            log.info(sentence);
         }
         is.close();
 
@@ -54,7 +56,7 @@ public class OpenNLPFunctionTest {
         String input = "Hi. How are you? This is mike. ";
         String tokens[] = tokenizer.tokenize(input);
         for (String a : tokens)
-            System.out.println(a);
+            log.info(a);
 
         is.close();
 
@@ -123,7 +125,7 @@ public class OpenNLPFunctionTest {
             String[] tags = tagger.tag(whitespaceTokenizerLine);
 
             POSSample sample = new POSSample(whitespaceTokenizerLine, tags);
-            System.out.println(sample.toString());
+            log.info(sample.toString());
 
             perfMon.incrementCounter();
         }
@@ -145,13 +147,13 @@ public class OpenNLPFunctionTest {
         };
 
         Span nameSpans[] = nameFinder.find(sentence);
-        System.out.println(nameSpans.length);
+        log.info("SPAN LENGTH: {}", nameSpans.length);
 
         for(Span s: nameSpans)
-            System.out.println(s.toString());
+            log.info(s.toString());
 
-        System.out.println(sentence[nameSpans[0].getStart()]);
-        System.out.println(nameSpans[0].getEnd()-1);
+        log.info(sentence[nameSpans[0].getStart()]);
+        log.info("END: {}", nameSpans[0].getEnd()-1);
     }
 
     @Test
