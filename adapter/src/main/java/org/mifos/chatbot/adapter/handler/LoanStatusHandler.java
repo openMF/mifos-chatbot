@@ -13,7 +13,14 @@ public class LoanStatusHandler extends BaseIntentHandler {
     @Override
     public Boolean canHandle(Intent intent) {
         // TODO: improve if necessary
-        return INTENT_KEYWORD.equals(intent.getKeyword());
+        String[] keywords = intent.getKeyword().split(" ");
+        for (String keyword : keywords) {
+            if(!INTENT_KEYWORD.contains(keyword)) {
+                return false;
+            }
+        }
+//        return INTENT_KEYWORD.equals(intent.getKeyword());
+        return true;
     }
 
     @Override

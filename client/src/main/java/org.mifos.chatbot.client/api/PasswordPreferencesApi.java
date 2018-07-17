@@ -30,6 +30,7 @@ import java.io.IOException;
 import org.mifos.chatbot.client.model.GetPasswordPreferencesTemplateResponse;
 import org.mifos.chatbot.client.model.PutPasswordPreferencesTemplateRequest;
 
+import javax.management.MXBean;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
