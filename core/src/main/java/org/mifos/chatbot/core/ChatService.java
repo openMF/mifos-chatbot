@@ -1,11 +1,11 @@
 package org.mifos.chatbot.core;
 
 import org.mifos.chatbot.core.model.Message;
+import org.springframework.context.annotation.Bean;
 
 /**
  * User input
  */
-
 public interface ChatService {
     void connect(ChatCallBack chatCallBack);
     void disconnect();
