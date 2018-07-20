@@ -22,6 +22,9 @@ public class GetAllHolidaysHandler extends BaseIntentHandler {
     @Override
     public Boolean canHandle(Intent intent) {
         // TODO: improve if necessary
+//        apiClient.setBasePath("https://localhost:8443/fineract-provider/api/v1");
+//        apiClient.setBasePath("https://demo.openmf.org/fineract-provider/api/v1");
+        log.info("The current base path is : " + apiClient.getBasePath());
         return INTENT_KEYWORD.equals(intent.getKeyword());
     }
 
@@ -48,7 +51,6 @@ public class GetAllHolidaysHandler extends BaseIntentHandler {
 
         } catch (ApiException e) {
             log.error(e.toString(), e);
-
             response.setContent(e.getMessage());
         }
 
