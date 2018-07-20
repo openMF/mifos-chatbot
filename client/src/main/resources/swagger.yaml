@@ -1,37 +1,15 @@
 swagger: '2.0'
 info:
-  description: >-
-    Apache Fineract is a secure, multi-tenanted microfinance platform. <br
-    />              The goal of the Apache Fineract API is to empower developers
-    to build apps on top of the Apache Fineract Platform. The reference app [ 
-    https://demo.openmf.org  ] (username: mifos, password: password) works on
-    the same demo tenant as the interactive links in this
-    documentation.              <br/>The API                 is organized around
-    REST [ https://en.wikipedia.org/wiki/Representational_state_transfer
-    ]               <br/> Find out more about Apache Fineract on [
-    https://demo.openmf.org/api-docs/apiLive.htm#top ]              <br/> You
-    can Try The API From Your Browser itself at [
-    https://demo.openmf.org/api-docs/apiLive.htm#interact ]              <br/>
-    The Generic Options are available at [
-    https://demo.openmf.org/api-docs/apiLive.htm#genopts ]              <br/>
-    Find out more about Updating Dates and Numbers at [
-    https://demo.openmf.org/api-docs/apiLive.htm#dates_and_numbers
-    ]              <br/> For the Authentication and the Basic of HTTP and HTTPS
-    refer [ https://demo.openmf.org/api-docs/apiLive.htm#authentication_overview
-    ]              <br/> Check about ERROR codes at [
-    https://demo.openmf.org/api-docs/apiLive.htm#errors ]               <br/>
-    <br/> Please refer to the old documentation for any documentation queries [
-    https://demo.openmf.org/api-docs/apiLive.htm ]             
-    <br/>            
-    ______________________________________________________________________________________________________________________________          
+  description: 'Apache Fineract is a secure, multi-tenanted microfinance platform. <br />              The goal of the Apache Fineract API is to empower developers to build apps on top of the Apache Fineract Platform. The reference app [  https://demo.openmf.org  ] (username: mifos, password: password) works on the same demo tenant as the interactive links in this documentation.              <br/>The API                 is organized around REST [ https://en.wikipedia.org/wiki/Representational_state_transfer ]               <br/> Find out more about Apache Fineract on [ https://demo.openmf.org/api-docs/apiLive.htm#top ]              <br/> You can Try The API From Your Browser itself at [ https://demo.openmf.org/api-docs/apiLive.htm#interact ]              <br/> The Generic Options are available at [ https://demo.openmf.org/api-docs/apiLive.htm#genopts ]              <br/> Find out more about Updating Dates and Numbers at [ https://demo.openmf.org/api-docs/apiLive.htm#dates_and_numbers ]              <br/> For the Authentication and the Basic of HTTP and HTTPS refer [ https://demo.openmf.org/api-docs/apiLive.htm#authentication_overview ]              <br/> Check about ERROR codes at [ https://demo.openmf.org/api-docs/apiLive.htm#errors ]               <br/> <br/> Please refer to the old documentation for any documentation queries [ https://demo.openmf.org/api-docs/apiLive.htm ]              <br/>             ______________________________________________________________________________________________________________________________          '
   version: 1.0.0
   title: Apache Fineract API Documentation
   termsOfService: 'https://demo.openmf.org/api-docs/apiLive.htm'
   contact:
     name: 'https://gitter.im/openMF/mifos'
-host: 'https://demo.openmf.org'
-basePath: /fineract-provider/api/v1
+# host: 'https://demo.openmf.org'
+# basePath: /fineract-provider/api/v1
 tags:
+  - name: Loan Info
   - name: Periodic Accrual Accounting
   - name: Accounting Closure
   - name: Mapping Financial Activities to Accounts
@@ -98,6 +76,32 @@ tags:
 schemes:
   - https
 paths:
+  /loans/{loanId}:
+    get:
+      tags:
+        - Loan Info
+      summary: Retrieve information of loan with ID 1
+      description: |-
+        Example Requests:
+
+        fineract-provider/api/v1/loan/1
+      operationId: retrieveAllLoans
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: loanId
+          in: query
+          description: loanId
+          required: false
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GetLoanResponse'
   /runaccruals:
     post:
       tags:
@@ -118,8 +122,8 @@ paths:
           description: |-
             Request Body
 
-            Field Descriptions: 
-            tillDate: 
+            Field Descriptions:
+            tillDate:
             which specifies periodic accruals should happen till the given Date
           required: true
           schema:
@@ -212,9 +216,7 @@ paths:
       tags:
         - Accounting Closure
       summary: Update an Accounting closure
-      description: >-
-        Once an accounting closure is created, only the comments associated with
-        it may be edited
+      description: 'Once an accounting closure is created, only the comments associated with it may be edited'
       operationId: updateGLClosure
       consumes:
         - application/json
@@ -242,9 +244,7 @@ paths:
       tags:
         - Accounting Closure
       summary: Delete an accounting closure
-      description: >-
-        Note: Only the latest accounting closure associated with a branch may be
-        deleted.
+      description: 'Note: Only the latest accounting closure associated with a branch may be deleted.'
       operationId: deleteGLClosure
       consumes:
         - application/json
@@ -340,7 +340,7 @@ paths:
         - Mapping Financial Activities to Accounts
       summary: Update a Financial Activity to Account Mapping
       description: |
-        the API updates the Ledger account linked to a Financial Activity 
+        the API updates the Ledger account linked to a Financial Activity
       operationId: updateGLAccount
       consumes:
         - application/json
@@ -407,35 +407,22 @@ paths:
       tags:
         - General Ledger Account
       summary: Retrieve GL Accounts Template
-      description: >-
-        This is a convenience resource. It can be useful when building
-        maintenance user interface screens for client applications. The template
-        data returned consists of any or all of:
-
+      description: |-
+        This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:
 
         Field Defaults
-
         Allowed Value Lists
-
         Example Request:
 
-
         glaccounts/template
-
         glaccounts/template?type=1
-
 
         type is optional and integer value from 1 to 5.
 
-
-        1.Assets 
-
-        2.Liabilities 
-
-        3.Equity 
-
-        4.Income 
-
+        1.Assets
+        2.Liabilities
+        3.Equity
+        4.Income
         5.Expenses
       operationId: retrieveNewAccountDetails
       consumes:
@@ -459,22 +446,15 @@ paths:
       tags:
         - General Ledger Account
       summary: List General Ledger Accounts
-      description: >-
+      description: |-
         ARGUMENTS
-
-        type Integer optional manualEntriesAllowed boolean optional usage
-        Integer optional disabled boolean optional parentId Long optional tagId
-        Long optional
-
+        type Integer optional manualEntriesAllowed boolean optional usage Integer optional disabled boolean optional parentId Long optional tagId Long optional
         Example Requests:
-
 
         glaccounts
 
 
-
         glaccounts?type=1&manualEntriesAllowed=true&usage=1&disabled=false
-
 
         glaccounts?fetchRunningBalance=true
       operationId: retrieveAllAccounts
@@ -526,12 +506,9 @@ paths:
       tags:
         - General Ledger Account
       summary: Create a General Ledger Account
-      description: >-
-        Note: You may optionally create Hierarchical Chart of Accounts by using
-        the "parentId" property of an Account
-
-        Mandatory Fields: 
-
+      description: |-
+        Note: You may optionally create Hierarchical Chart of Accounts by using the "parentId" property of an Account
+        Mandatory Fields:
         name, glCode, type, usage and manualEntriesAllowed
       operationId: createGLAccount
       consumes:
@@ -594,9 +571,8 @@ paths:
       tags:
         - General Ledger Account
       summary: Update an Accounting closure
-      description: >+
-        Once an accounting closure is created, only the comments associated with
-        it may be edited
+      description: |+
+        Once an accounting closure is created, only the comments associated with it may be edited
 
       operationId: updateGLAccount
       consumes:
@@ -625,9 +601,7 @@ paths:
       tags:
         - General Ledger Account
       summary: Delete an accounting closure
-      description: >-
-        Note: Only the latest accounting closure associated with a branch may be
-        deleted.
+      description: 'Note: Only the latest accounting closure associated with a branch may be deleted.'
       operationId: deleteGLAccount
       consumes:
         - application/json
@@ -694,41 +668,28 @@ paths:
       tags:
         - Journal Entries
       summary: List Journal Entries
-      description: >-
-        The list capability of journal entries can support pagination and
-        sorting.
-
+      description: |-
+        The list capability of journal entries can support pagination and sorting.
 
         Example Requests:
 
-
         journalentries
-
 
         journalentries?transactionId=PB37X8Y21EQUY4S
 
-
-        journalentries?officeId=1&manualEntriesOnly=true&fromDate=1 July
-        2013&toDate=15 July 2013&dateFormat=dd MMMM yyyy&locale=en
-
+        journalentries?officeId=1&manualEntriesOnly=true&fromDate=1 July 2013&toDate=15 July 2013&dateFormat=dd MMMM yyyy&locale=en
 
         journalentries?fields=officeName,glAccountName,transactionDate
 
-
         journalentries?offset=10&limit=50
-
 
         journalentries?orderBy=transactionId&sortOrder=DESC
 
-
         journalentries?runningBalance=true
-
 
         journalentries?transactionDetails=true
 
-
         journalentries?loanId=12
-
 
         journalentries?savingsId=24
       operationId: retrieveAll
@@ -840,32 +801,23 @@ paths:
       tags:
         - Journal Entries
       summary: Create "Balanced" Journal Entries
-      description: >-
-        Note: A Balanced (simple) Journal entry would have atleast one "Debit"
-        and one "Credit" entry whose amounts are equal 
-
-        Compound Journal entries may have "n" debits and "m" credits where both
-        "m" and "n" are greater than 0 and the net sum or all debits and credits
-        are equal 
-
+      description: |-
+        Note: A Balanced (simple) Journal entry would have atleast one "Debit" and one "Credit" entry whose amounts are equal
+        Compound Journal entries may have "n" debits and "m" credits where both "m" and "n" are greater than 0 and the net sum or all debits and credits are equal
 
 
         Mandatory Fields
-
         officeId, transactionDate
-
 
 
         credits- glAccountId, amount, comments
 
-         
+
         debits-  glAccountId, amount, comments
 
-         
-        Optional Fields
 
-        paymentTypeId, accountNumber, checkNumber, routingCode, receiptNumber,
-        bankNumber
+        Optional Fields
+        paymentTypeId, accountNumber, checkNumber, routingCode, receiptNumber, bankNumber
       operationId: createGLJournalEntry
       consumes:
         - application/json
@@ -893,12 +845,9 @@ paths:
       tags:
         - Journal Entries
       summary: Update Running balances for Journal Entries
-      description: >-
-        This API calculates the running balances for office. If office ID not
-        provided this API calculates running balances for all offices. 
-
+      description: |-
+        This API calculates the running balances for office. If office ID not provided this API calculates running balances for all offices.
         Mandatory Fields
-
         officeId
       operationId: createReversalJournalEntry
       consumes:
@@ -1285,18 +1234,12 @@ paths:
       tags:
         - Accounting Rules
       summary: Retrieve Accounting Rule Details Template
-      description: >-
-        This is a convenience resource. It can be useful when building
-        maintenance user interface screens for client applications. The template
-        data returned consists of any or all of:
-
+      description: |-
+        This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:
 
         Field Defaults
-
         Allowed Value Lists
-
         Example Request:
-
 
         accountingrules/template
       operationId: retrieveTemplate
@@ -1315,17 +1258,10 @@ paths:
       tags:
         - Batch API
       summary: Batch requests in a single transaction
-      description: >-
-        The Apache Fineract Batch API is also capable of executing all the
-        requests in a single transaction, by setting a Query Parameter,
-        "enclosingTransaction=true". So, if one or more of the requests in a
-        batch returns an erroneous response all of the Data base transactions
-        made by other successful requests will be rolled back.
+      description: |-
+        The Apache Fineract Batch API is also capable of executing all the requests in a single transaction, by setting a Query Parameter, "enclosingTransaction=true". So, if one or more of the requests in a batch returns an erroneous response all of the Data base transactions made by other successful requests will be rolled back.
 
-
-        If there has been a rollback in a transaction then a single response
-        will be provided, with a '400' status code and a body consisting of the
-        error details of the first failed request.
+        If there has been a rollback in a transaction then a single response will be provided, with a '400' status code and a body consisting of the error details of the first failed request.
       operationId: handleBatchRequests
       consumes:
         - application/json
@@ -1381,17 +1317,12 @@ paths:
       tags:
         - Audits
       summary: Audit Search Template
-      description: >-
-        This is a convenience resource. It can be useful when building an Audit
-        Search UI. "appUsers" are data scoped to the office/branch the requestor
-        is associated with.
-
+      description: |-
+        This is a convenience resource. It can be useful when building an Audit Search UI. "appUsers" are data scoped to the office/branch the requestor is associated with.
 
         Example Requests:
 
-
         audits/searchtemplate
-
         audits/searchtemplate?fields=actionNames
       operationId: retrieveAuditSearchTemplate
       consumes:
@@ -1409,27 +1340,18 @@ paths:
       tags:
         - Audits
       summary: List Audits
-      description: >-
-        Get a 200 list of audits that match the criteria supplied and sorted by
-        audit id in descending order, and are within the requestors' data scope.
-        Also it supports pagination and sorting
-
+      description: |-
+        Get a 200 list of audits that match the criteria supplied and sorted by audit id in descending order, and are within the requestors' data scope. Also it supports pagination and sorting
 
         Example Requests:
 
-
         audits
-
 
         audits?fields=madeOnDate,maker,processingResult
 
-
-        audits?makerDateTimeFrom=2013-03-25 08:00:00&makerDateTimeTo=2013-04-04
-        18:00:00
-
+        audits?makerDateTimeFrom=2013-03-25 08:00:00&makerDateTimeTo=2013-04-04 18:00:00
 
         audits?officeId=1
-
 
         audits?officeId=1&includeJson=true
       operationId: retrieveAuditEntries
@@ -1561,18 +1483,12 @@ paths:
       tags:
         - Maker Checker (or 4-eye) functionality
       summary: Maker Checker Search Template
-      description: >-
-        This is a convenience resource. It can be useful when building a Checker
-        Inbox UI. "appUsers" are data scoped to the office/branch the requestor
-        is associated with. "actionNames" and "entityNames" returned are those
-        that the requestor has Checker approval permissions for.
-
+      description: |-
+        This is a convenience resource. It can be useful when building a Checker Inbox UI. "appUsers" are data scoped to the office/branch the requestor is associated with. "actionNames" and "entityNames" returned are those that the requestor has Checker approval permissions for.
 
         Example Requests:
 
-
         makercheckers/searchtemplate
-
         makercheckers/searchtemplate?fields=entityNames
       operationId: retrieveAuditSearchTemplate
       consumes:
@@ -1590,26 +1506,18 @@ paths:
       tags:
         - Maker Checker (or 4-eye) functionality
       summary: List Maker Checker Entries
-      description: >-
-        Get a list of entries that can be checked by the requestor that match
-        the criteria supplied.
-
+      description: |-
+        Get a list of entries that can be checked by the requestor that match the criteria supplied.
 
         Example Requests:
 
-
         makercheckers
-
 
         makercheckers?fields=madeOnDate,maker,processingResult
 
-
-        makercheckers?makerDateTimeFrom=2013-03-25
-        08:00:00&makerDateTimeTo=2013-04-04 18:00:00
-
+        makercheckers?makerDateTimeFrom=2013-03-25 08:00:00&makerDateTimeTo=2013-04-04 18:00:00
 
         makercheckers?officeId=1
-
 
         makercheckers?officeId=1&includeJson=true
       operationId: retrieveCommands
@@ -1766,12 +1674,9 @@ paths:
       tags:
         - Account number format
       summary: Create an Account number format
-      description: >-
-        Note: You may associate a single Account number format for a given
-        account type
-
+      description: |-
+        Note: You may associate a single Account number format for a given account type
         Mandatory Fields for Account number formats
-
         accountType
       operationId: create
       consumes:
@@ -1854,9 +1759,7 @@ paths:
       tags:
         - Account number format
       summary: Delete an Account number format
-      description: >-
-        Note: Account numbers created while this format was active would remain
-        unchanged.
+      description: 'Note: Account numbers created while this format was active would remain unchanged.'
       operationId: delete
       consumes:
         - application/json
@@ -1879,19 +1782,13 @@ paths:
       tags:
         - Account number format
       summary: Retrieve Account number format Template
-      description: >-
-        This is a convenience resource. It can be useful when building
-        maintenance user interface screens for client applications. The template
-        data returned consists of any or all of:
-
+      description: |-
+        This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:
 
         Field Defaults
-
         Allowed Value Lists
 
-
         Example Request:
-
 
         accountnumberformats/template
       operationId: retrieveTemplate
@@ -1995,15 +1892,11 @@ paths:
       tags:
         - SMS Campaigns
       summary: Create a SMS Campaign
-      description: >-
+      description: |-
         Mandatory Fields
-
-        campaignName, campaignType, triggerType, providerId, runReportId,
-        message
-
+        campaignName, campaignType, triggerType, providerId, runReportId, message
 
         Mandatory Fields for Cash based on selected report id
-
         paramValue in json format
       operationId: createCampaign
       consumes:
@@ -2334,9 +2227,7 @@ paths:
       tags:
         - Codes
       summary: Create a Code
-      description: >-
-        Creates a code. Codes created through api are always 'user defined' and
-        so system defined is marked as false.
+      description: Creates a code. Codes created through api are always 'user defined' and so system defined is marked as false.
       operationId: createCode
       consumes:
         - application/json
@@ -2468,7 +2359,7 @@ paths:
       description: |-
         Updates the external Service Configuration for a Service Name.
 
-        Example: 
+        Example:
 
         externalservice/S3
       operationId: updateExternalServiceProperties
@@ -2495,9 +2386,7 @@ paths:
     get:
       tags:
         - Global Configuration
-      summary: >-
-        Retrieve Global Configuration | Retrieve Global Configuration for
-        surveys
+      summary: Retrieve Global Configuration | Retrieve Global Configuration for surveys
       description: |-
         Returns the list global enable/disable configurations.
 
@@ -2526,9 +2415,9 @@ paths:
       responses:
         '200':
           description: |-
-            List of example 
-             response 
-            surveys response   
+            List of example
+             response
+            surveys response
             given below
           schema:
             type: array
@@ -2772,10 +2661,7 @@ paths:
       tags:
         - Data Tables
       summary: Update Data Table
-      description: >-
-        Modifies fields of a data table. If the apptableName parameter is
-        passed, data table is deregistered and registered with the new
-        application table.
+      description: 'Modifies fields of a data table. If the apptableName parameter is passed, data table is deregistered and registered with the new application table.'
       operationId: updateDatatable
       consumes:
         - application/json
@@ -2802,9 +2688,7 @@ paths:
       tags:
         - Data Tables
       summary: Delete Data Table
-      description: >-
-        Deletes a data table and deregisters it from the Apache Fineract Core
-        application table.
+      description: Deletes a data table and deregisters it from the Apache Fineract Core application table.
       operationId: deleteDatatable
       consumes:
         - application/json
@@ -2826,24 +2710,17 @@ paths:
       tags:
         - Data Tables
       summary: List Data Tables
-      description: >-
-        Lists registered data tables and the Apache Fineract Core application
-        table they are registered to.
-
+      description: |-
+        Lists registered data tables and the Apache Fineract Core application table they are registered to.
 
         ARGUMENTS
 
-
         apptable  - optional
-
         The Apache Fineract core application table.
-
 
         Example Requests:
 
-
         datatables?apptable=m_client
-
 
 
         datatables
@@ -2869,121 +2746,78 @@ paths:
       tags:
         - Data Tables
       summary: Create Data Table
-      description: >-
-        Create a new data table and registers it with the Apache Fineract Core
-        application table.
-
+      description: |-
+        Create a new data table and registers it with the Apache Fineract Core application table.
 
         Field Descriptions
 
-
-        Mandatory - datatableName : 
-
+        Mandatory - datatableName :
 
         The name of the Data Table.
 
-
         Mandatory - apptableName
-
 
         Application table name. Must be one of the following:
 
-
         m_client
-
 
         m_group
 
-
         m_loan
-
 
         m_office
 
-
         m_saving_account
-
 
         m_product_loan
 
-
         m_savings_product
 
-
-        Mandatory - columns  
-
+        Mandatory - columns
         An array of columns in the new Data Table.
-
 
         Optional - multiRow
 
-
-        Allows to create multiple entries in the Data Table. Optional, defaults
-        to false. If this property is not provided Data Table will allow only
-        one entry.
-
+        Allows to create multiple entries in the Data Table. Optional, defaults to false. If this property is not provided Data Table will allow only one entry.
 
         Field Descriptions - columns
 
-
         Mandatory - name
 
-
-        Name of the created column. Can contain only alphanumeric characters,
-        underscores and spaces, but cannot start with a number. Cannot start or
-        end with an underscore or space.
-
+        Name of the created column. Can contain only alphanumeric characters, underscores and spaces, but cannot start with a number. Cannot start or end with an underscore or space.
 
         Mandatory - type
 
-
         Column type. Must be one of the following:
-
 
         Boolean
 
-
         Date
-
 
         DateTime
 
-
         Decimal
-
 
         Dropdown
 
 
-
         Number
-
 
         String
 
-
         Text
-
 
         Mandatory [type = Dropdown] - code
 
-
-        Used in Code Value fields. Column name becomes: code_cd_name. Mandatory
-        if using type Dropdown, otherwise an error is returned.
-
+        Used in Code Value fields. Column name becomes: code_cd_name. Mandatory if using type Dropdown, otherwise an error is returned.
 
         Optional - mandatory
 
-
-        Determines whether this column must have a value in every entry.
-        Optional, defaults to false.
-
+        Determines whether this column must have a value in every entry. Optional, defaults to false.
 
         Mandatory [type = String] - length
 
-
-        Length of the text field. Mandatory if type String is used, otherwise an
-        error is returned.
+        Length of the text field. Mandatory if type String is used, otherwise an error is returned.
       operationId: createDatatable
       consumes:
         - application/json
@@ -3006,11 +2840,7 @@ paths:
       tags:
         - Data Tables
       summary: Register Data Table
-      description: >-
-        Registers a data table with the Apache Fineract Core application table.
-        This allows the data table to be maintained through the API. In case the
-        datatable is a PPI (survey table), a parameter category should be pass
-        along with the request. The API currently support one category (200)
+      description: 'Registers a data table with the Apache Fineract Core application table. This allows the data table to be maintained through the API. In case the datatable is a PPI (survey table), a parameter category should be pass along with the request. The API currently support one category (200)'
       operationId: registerDatatable
       consumes:
         - application/json
@@ -3043,9 +2873,7 @@ paths:
       tags:
         - Data Tables
       summary: Deregister Data Table
-      description: >-
-        Deregisters a data table. It will no longer be available through the
-        API.
+      description: Deregisters a data table. It will no longer be available through the API.
       operationId: deregisterDatatable
       consumes:
         - application/json
@@ -3067,9 +2895,7 @@ paths:
       tags:
         - Data Tables
       summary: Retrieve Data Table Details
-      description: >-
-        Lists a registered data table details and the Apache Fineract Core
-        application table they are registered to.
+      description: Lists a registered data table details and the Apache Fineract Core application table they are registered to.
       operationId: getDatatable
       consumes:
         - application/json
@@ -3091,33 +2917,20 @@ paths:
       tags:
         - Data Tables
       summary: Retrieve Entry(s) from Data Table
-      description: >-
-        Gets the entry (if it exists) for data tables that are one to one with
-        the application table. 
-
-        Gets the entries (if they exist) for data tables that are one to many
-        with the application table.
-
+      description: |-
+        Gets the entry (if it exists) for data tables that are one to one with the application table.
+        Gets the entries (if they exist) for data tables that are one to many with the application table.
 
         Note: The 'fields' parameter is not available for datatables.
 
-
         ARGUMENTS
-
-        orderoptional Specifies the order in which data is
-        returned.genericResultSetoptional, defaults to false If 'true' an
-        optimised JSON format is returned suitable for tabular display of data.
-        This format is used by the default data tables UI functionality.
-
+        orderoptional Specifies the order in which data is returned.genericResultSetoptional, defaults to false If 'true' an optimised JSON format is returned suitable for tabular display of data. This format is used by the default data tables UI functionality.
         Example Requests:
-
 
         datatables/extra_client_details/1
 
 
-
         datatables/extra_family_details/1?order=`Date of Birth` desc
-
 
 
         datatables/extra_client_details/1?genericResultSet=true
@@ -3152,15 +2965,10 @@ paths:
       tags:
         - Data Tables
       summary: Create Entry in Data Table
-      description: >-
+      description: |-
         Adds a row to the data table.
 
-
-        Note that the default datatable UI functionality converts any field name
-        containing spaces to underscores when using the API. This means the
-        field name "Business Description" is considered the same as
-        "Business_Description". So you shouldn't have both "versions" in any
-        data table.
+        Note that the default datatable UI functionality converts any field name containing spaces to underscores when using the API. This means the field name "Business Description" is considered the same as "Business_Description". So you shouldn't have both "versions" in any data table.
       operationId: createDatatableEntry
       consumes:
         - application/json
@@ -3226,12 +3034,9 @@ paths:
       tags:
         - Data Tables
       summary: Delete Entry(s) in Data Table
-      description: >-
-        Deletes the entry (if it exists) for data tables that are one-to-one
-        with the application table. 
-
-        Deletes the entries (if they exist) for data tables that are one-to-many
-        with the application table.
+      description: |-
+        Deletes the entry (if it exists) for data tables that are one-to-one with the application table.
+        Deletes the entries (if they exist) for data tables that are one-to-many with the application table.
       operationId: deleteDatatableEntries
       consumes:
         - application/json
@@ -3331,9 +3136,8 @@ paths:
       tags:
         - Data Tables
       summary: Delete Entry in Datatable (One to Many)
-      description: >+
-        Deletes the entry (if it exists) for data tables that are one to many
-        with the application table.
+      description: |+
+        Deletes the entry (if it exists) for data tables that are one to many with the application table.
 
       operationId: deleteDatatableEntries
       consumes:
@@ -3363,8 +3167,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: >-
-              #/definitions/DeleteDataTablesDatatableAppTableIdDatatableIdResponse
+            $ref: '#/definitions/DeleteDataTablesDatatableAppTableIdDatatableIdResponse'
   '/entityDatatableChecks/{entityDatatableCheckId}':
     delete:
       tags:
@@ -3398,20 +3201,12 @@ paths:
       tags:
         - Entity-Datatable Checks
       summary: List Entity-Datatable Checks
-      description: >-
+      description: |-
         The list capability of Entity-Datatable Checks can support pagination.
 
-
         OPTIONAL ARGUMENTS
-
-        offset Integer optional, defaults to 0 Indicates the result from which
-        pagination startslimit Integer optional, defaults to 200 Restricts the
-        size of results returned. To override the default and return all entries
-        you must explicitly pass a non-positive integer value for limit e.g.
-        limit=0, or limit=-1
-
+        offset Integer optional, defaults to 0 Indicates the result from which pagination startslimit Integer optional, defaults to 200 Restricts the size of results returned. To override the default and return all entries you must explicitly pass a non-positive integer value for limit e.g. limit=0, or limit=-1
         Example Request:
-
 
         entityDatatableChecks?offset=0&limit=15
       operationId: retrieveAll
@@ -3461,10 +3256,10 @@ paths:
         - Entity-Datatable Checks
       summary: Create Entity-Datatable Checks
       description: |-
-        Mandatory Fields : 
+        Mandatory Fields :
         entity, status, datatableName
 
-        Non-Mandatory Fields : 
+        Non-Mandatory Fields :
         productId
       operationId: createEntityDatatableCheck
       consumes:
@@ -3488,16 +3283,11 @@ paths:
       tags:
         - Entity-Datatable Checks
       summary: Retrieve Entity-Datatable Checks Template
-      description: >-
-        This is a convenience resource useful for building maintenance user
-        interface screens for Entity-Datatable Checks applications. The template
-        data returned consists of:
-
+      description: |-
+        This is a convenience resource useful for building maintenance user interface screens for Entity-Datatable Checks applications. The template data returned consists of:
 
         Allowed Value Lists
-
         Example Request:
-
 
         entityDatatableChecks/template
       operationId: getTemplate
@@ -3638,19 +3428,13 @@ paths:
       tags:
         - Reports
       summary: Retrieve Report Template
-      description: >-
-        This is a convenience resource. It can be useful when building
-        maintenance user interface screens for client applications. The template
-        data returned consists of any or all of:
-
+      description: |-
+        This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:
 
         Field Defaults
-
         Allowed Value Lists
 
-
-        Example Request : 
-
+        Example Request :
 
         reports/template
       operationId: retrieveOfficeTemplate
@@ -3669,61 +3453,40 @@ paths:
       tags:
         - Run Reports
       summary: Running a Report
-      description: >-
-        This resource allows you to run and receive output from pre-defined
-        Apache Fineract reports.
+      description: |-
+        This resource allows you to run and receive output from pre-defined Apache Fineract reports.
 
+        Reports can also be used to provide data for searching and workflow functionality.
 
-        Reports can also be used to provide data for searching and workflow
-        functionality.
+        The default output is a JSON formatted "Generic Resultset". The Generic Resultset contains Column Heading as well as Data information. However, you can export to CSV format by simply adding "&exportCSV=true" to the end of your URL.
 
+        If Pentaho reports have been pre-defined, they can also be run through this resource. Pentaho reports can return HTML, PDF or CSV formats.
 
-        The default output is a JSON formatted "Generic Resultset". The Generic
-        Resultset contains Column Heading as well as Data information. However,
-        you can export to CSV format by simply adding "&exportCSV=true" to the
-        end of your URL.
-
-
-        If Pentaho reports have been pre-defined, they can also be run through
-        this resource. Pentaho reports can return HTML, PDF or CSV formats.
-
-
-        The Apache Fineract reference application uses a JQuery plugin called
-        stretchy reporting which, itself, uses this reports resource to provide
-        a pretty flexible reporting User Interface (UI).
-
+        The Apache Fineract reference application uses a JQuery plugin called stretchy reporting which, itself, uses this reports resource to provide a pretty flexible reporting User Interface (UI).
 
 
 
         Example Requests:
 
-
         runreports/Client%20Listing?R_officeId=1
-
 
 
         runreports/Client%20Listing?R_officeId=1&exportCSV=true
 
 
-
         runreports/OfficeIdSelectOne?R_officeId=1&parameterType=true
-
 
 
         runreports/OfficeIdSelectOne?R_officeId=1&parameterType=true&exportCSV=true
 
 
-
         runreports/Expected%20Payments%20By%20Date%20-%20Formatted?R_endDate=2013-04-30&R_loanOfficerId=-1&R_officeId=1&R_startDate=2013-04-16&output-type=HTML&R_officeId=1
-
 
 
         runreports/Expected%20Payments%20By%20Date%20-%20Formatted?R_endDate=2013-04-30&R_loanOfficerId=-1&R_officeId=1&R_startDate=2013-04-16&output-type=XLS&R_officeId=1
 
 
-
         runreports/Expected%20Payments%20By%20Date%20-%20Formatted?R_endDate=2013-04-30&R_loanOfficerId=-1&R_officeId=1&R_startDate=2013-04-16&output-type=CSV&R_officeId=1
-
 
 
         runreports/Expected%20Payments%20By%20Date%20-%20Formatted?R_endDate=2013-04-30&R_loanOfficerId=-1&R_officeId=1&R_startDate=2013-04-16&output-type=PDF&R_officeId=1
@@ -3789,20 +3552,20 @@ paths:
         - Documents
       summary: Create a Document
       description: |-
-        Note: A document is created using a Multi-part form upload 
+        Note: A document is created using a Multi-part form upload
 
         Body Parts
 
-        name : 
+        name :
         Name or summary of the document
 
-        description : 
+        description :
         Description of the document
 
-        file : 
+        file :
         The file to be uploaded
 
-        Mandatory Fields : 
+        Mandatory Fields :
         file and description
       operationId: createDocument
       consumes:
@@ -3895,7 +3658,7 @@ paths:
         - Documents
       summary: Update a Document
       description: |-
-        Note: A document is updated using a Multi-part form upload 
+        Note: A document is updated using a Multi-part form upload
         Body Parts
         name
         Name or summary of the document
@@ -4316,26 +4079,18 @@ paths:
       tags:
         - Hooks
       summary: Create a Hook
-      description: >-
+      description: |-
         The following parameters can be passed for the creation of a hook :-
 
-
-        name - string - Required. The name of the template that is being called.
-        (See /hooks/template for the list of valid hook names.)
-
+        name - string - Required. The name of the template that is being called. (See /hooks/template for the list of valid hook names.)
 
         isActive - boolean - Determines whether the hook is actually triggered.
 
-
         events - array - Determines what events the hook is triggered for.
 
+        config - hash - Required. Key/value pairs to provide settings for this hook. These settings vary between the templates.
 
-        config - hash - Required. Key/value pairs to provide settings for this
-        hook. These settings vary between the templates.
-
-
-        templateId - Optional. The UGD template ID associated with the same
-        entity (client or loan).
+        templateId - Optional. The UGD template ID associated with the same entity (client or loan).
       operationId: createHook
       consumes:
         - application/json
@@ -4434,18 +4189,12 @@ paths:
       tags:
         - Hooks
       summary: Retrieve Hooks Template
-      description: >-
-        This is a convenience resource. It can be useful when building
-        maintenance user interface screens for client applications. The template
-        data returned consists of any or all of:
-
+      description: |-
+        This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:
 
         Field Defaults
-
         Allowed Value Lists
-
         Example Request:
-
 
         hooks/template
       operationId: template
@@ -4485,9 +4234,7 @@ paths:
       tags:
         - Scheduler
       summary: Activate Scheduler Jobs | Suspend Scheduler Jobs
-      description: >-
-        Activates the scheduler job service. | Suspends the scheduler job
-        service.
+      description: Activates the scheduler job service. | Suspends the scheduler job service.
       operationId: changeSchedulerStatus
       consumes:
         - application/json
@@ -4705,11 +4452,8 @@ paths:
       tags:
         - Report Mailing Jobs
       summary: Create a Report Mailing Job
-      description: >-
-        Mandatory Fields: name, startDateTime, stretchyReportId,
-        emailRecipients, emailSubject, emailMessage,
-        emailAttachmentFileFormatId, recurrence, isActive
-
+      description: |-
+        Mandatory Fields: name, startDateTime, stretchyReportId, emailRecipients, emailSubject, emailMessage, emailAttachmentFileFormatId, recurrence, isActive
 
         Optional Fields: description, stretchyReportParamMap
       operationId: createReportMailingJob
@@ -4820,18 +4564,12 @@ paths:
       tags:
         - Report Mailing Jobs
       summary: Retrieve Report Mailing Job Details Template
-      description: >-
-        This is a convenience resource. It can be useful when building
-        maintenance user interface screens for report mailing job applications.
-        The template data returned consists of any or all of:
-
+      description: |-
+        This is a convenience resource. It can be useful when building maintenance user interface screens for report mailing job applications. The template data returned consists of any or all of:
 
         Field Defaults
-
         Allowed Value Lists
-
         Example Request:
-
 
         reportmailingjobs/template
       operationId: retrieveReportMailingJobTemplate
@@ -4850,13 +4588,10 @@ paths:
       tags:
         - List Report Mailing Job History
       summary: List Report Mailing Job History
-      description: >-
-        The list capability of report mailing job history can support pagination
-        and sorting.
-
+      description: |-
+        The list capability of report mailing job history can support pagination and sorting.
 
         Example Requests:
-
 
         reportmailingjobrunhistory/1
       operationId: retrieveAllByReportMailingJobId
@@ -4903,9 +4638,7 @@ paths:
       tags:
         - Authentication HTTP Basic
       summary: Verify authentication
-      description: >-
-        Authenticates the credentials provided and returns the set roles and
-        permissions allowed.
+      description: Authenticates the credentials provided and returns the set roles and permissions allowed.
       operationId: authenticate
       produces:
         - application/json
@@ -4933,9 +4666,7 @@ paths:
         - Fetch authenticated user details
       summary: |
         Fetch authenticated user details
-      description: >-
-        checks the Authentication and returns the set roles and permissions
-        allowed.
+      description: checks the Authentication and returns the set roles and permissions allowed.
       operationId: fetchAuthenticatedUserData
       produces:
         - application/json
@@ -5232,12 +4963,10 @@ paths:
       tags:
         - Survey
       summary: Create an entry in the survey table
-      description: >-
+      description: |-
         Insert and entry in a survey table (full fill the survey).
 
-
-        Refer Link for sample Body:  [
-        https://demo.openmf.org/api-docs/apiLive.htm#survey_create ] 
+        Refer Link for sample Body:  [ https://demo.openmf.org/api-docs/apiLive.htm#survey_create ]
       operationId: createDatatableEntry
       consumes:
         - application/json
@@ -5306,9 +5035,7 @@ paths:
       tags:
         - Survey
       summary: Retrieve surveys
-      description: >-
-        Retrieve surveys. This allows to retrieve the list of survey tables
-        registered .
+      description: Retrieve surveys. This allows to retrieve the list of survey tables registered .
       operationId: retrieveSurveys
       consumes:
         - application/json
@@ -5327,9 +5054,7 @@ paths:
       tags:
         - Survey
       summary: Retrieve survey
-      description: >-
-        Lists a registered survey table details and the Apache Fineract Core
-        application table they are registered to.
+      description: Lists a registered survey table details and the Apache Fineract Core application table they are registered to.
       operationId: retrieveSurvey
       consumes:
         - application/json
@@ -5540,13 +5265,10 @@ paths:
       tags:
         - Holidays
       summary: Activate a Holiday
-      description: >-
-        Always Holidays are created in pending state. This API allows to
-        activate a holiday.
+      description: |-
+        Always Holidays are created in pending state. This API allows to activate a holiday.
 
-
-        Only the active holidays are considered for rescheduling the loan
-        repayment.
+        Only the active holidays are considered for rescheduling the loan repayment.
       operationId: handleCommands
       consumes:
         - application/json
@@ -5579,10 +5301,7 @@ paths:
       tags:
         - Holidays
       summary: Update a Holiday
-      description: >-
-        If a holiday is in pending state (created and not activated) then all
-        fields are allowed to modify. Once holidays become active only name and
-        descriptions are allowed to modify.
+      description: If a holiday is in pending state (created and not activated) then all fields are allowed to modify. Once holidays become active only name and descriptions are allowed to modify.
       operationId: update
       consumes:
         - application/json
@@ -5610,9 +5329,7 @@ paths:
       tags:
         - Holidays
       summary: Delete a Holiday
-      description: >-
-        This API allows to delete a holiday. This is a soft delete the deleted
-        holiday status is marked as deleted.
+      description: This API allows to delete a holiday. This is a soft delete the deleted holiday status is marked as deleted.
       operationId: delete
       consumes:
         - application/json
@@ -5682,9 +5399,7 @@ paths:
       tags:
         - Holidays
       summary: Create a Holiday
-      description: >-
-        Mandatory Fields: name, description, fromDate, toDate,
-        repaymentsRescheduledTo, offices
+      description: 'Mandatory Fields: name, description, fromDate, toDate, repaymentsRescheduledTo, offices'
       operationId: createNewHoliday
       consumes:
         - application/json
@@ -5707,16 +5422,12 @@ paths:
       tags:
         - Currency
       summary: Retrieve Currency Configuration
-      description: >-
-        Returns the list of currencies permitted for use AND the list of
-        currencies not selected (but available for selection).
-
+      description: |-
+        Returns the list of currencies permitted for use AND the list of currencies not selected (but available for selection).
 
         Example Requests:
 
-
         currencies
-
 
 
         currencies?fields=selectedCurrencyOptions
@@ -5831,18 +5542,12 @@ paths:
       tags:
         - Offices
       summary: Retrieve Office Details Template
-      description: >-
-        This is a convenience resource. It can be useful when building
-        maintenance user interface screens for client applications. The template
-        data returned consists of any or all of:
-
+      description: |-
+        This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:
 
         Field Defaults
-
         Allowed Value Lists
-
         Example Request:
-
 
         offices/template
       operationId: retrieveOfficeTemplate
@@ -6166,11 +5871,11 @@ paths:
       description: |-
         Creates a new Provisioning Criteria
 
-        Mandatory Fields: 
+        Mandatory Fields:
         criteriaName
         provisioningcriteria
 
-        Optional Fields: 
+        Optional Fields:
         loanProducts
       operationId: createProvisioningCriteria
       consumes:
@@ -6280,10 +5985,10 @@ paths:
       description: |-
         Creates a staff member.
 
-        Mandatory Fields: 
+        Mandatory Fields:
         officeId, firstname, lastname
 
-        Optional Fields: 
+        Optional Fields:
         isLoanOfficer, isActive
       operationId: createStaff
       consumes:
@@ -6559,12 +6264,12 @@ paths:
         - Teller Cash Management
       summary: Create Cashiers
       description: |-
-        Mandatory Fields: 
+        Mandatory Fields:
         Cashier/staff, Fromm Date, To Date, Full Day or From time and To time
 
 
 
-        Optional Fields: 
+        Optional Fields:
         Description/Notes
       operationId: createCashier
       consumes:
@@ -6712,7 +6417,7 @@ paths:
         - Teller Cash Management
       summary: Allocate Cash To Cashier
       description: |-
-        Mandatory Fields: 
+        Mandatory Fields:
         Date, Amount, Currency, Notes/Comments
       operationId: allocateCashToCashier
       consumes:
@@ -6839,8 +6544,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: >-
-                #/definitions/GetTellersTellerIdCashiersCashiersIdTransactionsResponse
+              $ref: '#/definitions/GetTellersTellerIdCashiersCashiersIdTransactionsResponse'
   '/tellers/{tellerId}/cashiers/{cashierId}/summaryandtransactions':
     get:
       tags:
@@ -6896,8 +6600,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: >-
-              #/definitions/GetTellersTellerIdCashiersCashiersIdSummaryAndTransactionsResponse
+            $ref: '#/definitions/GetTellersTellerIdCashiersCashiersIdSummaryAndTransactionsResponse'
   '/tellers/{tellerId}/cashiers/{cashierId}/transactions/template':
     get:
       tags:
@@ -6927,8 +6630,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: >-
-              #/definitions/GetTellersTellerIdCashiersCashiersIdTransactionsTemplateResponse
+            $ref: '#/definitions/GetTellersTellerIdCashiersCashiersIdTransactionsTemplateResponse'
   '/tellers/{tellerId}/transactions':
     get:
       tags:
@@ -7061,13 +6763,10 @@ paths:
       tags:
         - Working days
       summary: Working Days Template
-      description: >-
-        This is a convenience resource. It can be useful when building
-        maintenance user interface screens for working days.
-
+      description: |-
+        This is a convenience resource. It can be useful when building maintenance user interface screens for working days.
 
         Example Request:
-
 
         workingdays/template
       operationId: template
@@ -7169,7 +6868,7 @@ paths:
         - Clients Address
       summary: Create an address for a Client
       description: |-
-        Mandatory Fields : 
+        Mandatory Fields :
         type and clientId
       operationId: AddClientAddress
       consumes:
@@ -7274,19 +6973,14 @@ paths:
       tags:
         - Client Charges
       summary: Pay a Client Charge
-      description: >
+      description: |
         Mandatory Fields
-
-        transactionDate and amount "Pay either a part of or the entire due
-        amount for a charge.(command=paycharge)
-
+        transactionDate and amount "Pay either a part of or the entire due amount for a charge.(command=paycharge)
 
         Waive a Client Charge
 
 
-
-        This API provides the facility of waiving off the remaining amount on a
-        client charge (command=waive)
+        This API provides the facility of waiving off the remaining amount on a client charge (command=waive)
       operationId: payOrWaiveClientCharge
       consumes:
         - application/json
@@ -7321,9 +7015,7 @@ paths:
       tags:
         - Client Charges
       summary: Delete a Client Charge
-      description: >-
-        Deletes a Client Charge on which no transactions have taken place
-        (either payments or waivers). 
+      description: 'Deletes a Client Charge on which no transactions have taken place (either payments or waivers). '
       operationId: deleteClientCharge
       consumes:
         - application/json
@@ -7350,12 +7042,9 @@ paths:
       tags:
         - Client Charges
       summary: List Client Charges
-      description: >-
-        The list capability of client charges supports pagination.Example
-        Requests:
-
+      description: |-
+        The list capability of client charges supports pagination.Example Requests:
         clients/1/charges
-
 
         clients/1/charges?offset=0&limit=5
       operationId: retrieveAllClientCharges
@@ -7399,9 +7088,9 @@ paths:
       summary: Add Client Charge
       description: |2-
          This API associates a Client charge with an implicit Client account
-        Mandatory Fields : 
-        chargeId and dueDate  
-        Optional Fields : 
+        Mandatory Fields :
+        chargeId and dueDate
+        Optional Fields :
         amount
       operationId: applyClientCharge
       consumes:
@@ -7468,7 +7157,7 @@ paths:
       summary: Create an Identifier for a Client
       description: |-
         Mandatory Fields
-        documentKey, documentTypeId 
+        documentKey, documentTypeId
       operationId: createClientIdentifier
       consumes:
         - application/json
@@ -7490,17 +7179,14 @@ paths:
       tags:
         - Client Identifier Api
       summary: Retrieve Client Identifier Details Template
-      description: >-
-        This is a convenience resource useful for building maintenance user
-        interface screens for client applications. The template data returned
-        consists of any or all of:
+      description: |-
+        This is a convenience resource useful for building maintenance user interface screens for client applications. The template data returned consists of any or all of:
 
          Field Defaults
          Allowed Value Lists
 
 
         Example Request:
-
         clients/1/identifiers/template
       operationId: newClientIdentifierDetails
       consumes:
@@ -7608,10 +7294,10 @@ paths:
         The list capability of client transaction can support pagination.
 
         Mandatory Arguments : offset
-            Integer Mandatory, defaults to 0 
+            Integer Mandatory, defaults to 0
             Indicates the result from which pagination starts
         limit
-            Integer Mandatory, defaults to 200 
+            Integer Mandatory, defaults to 200
             Restricts the size of results returned. To override the default and return all entries you must explicitly pass a non-positive integer value for limit e.g. limit=0, or limit=-1
 
 
@@ -7712,18 +7398,13 @@ paths:
       tags:
         - Client Api
       summary: Retrieve client accounts overview
-      description: >-
-        An example of how a loan portfolio summary can be provided. This is
-        requested in a specific use case of the community application.
-
-        It is quite reasonable to add resources like this to simplify User
-        Interface development.
-
+      description: |-
+        An example of how a loan portfolio summary can be provided. This is requested in a specific use case of the community application.
+        It is quite reasonable to add resources like this to simplify User Interface development.
 
         Example Requests:
-         
-        clients/1/accounts
 
+        clients/1/accounts
 
         clients/1/accounts?fields=loanAccounts,savingsAccounts
       operationId: retrieveAssociatedAccounts
@@ -7825,16 +7506,11 @@ paths:
       tags:
         - Client Api
       summary: Create a Client
-      description: >-
+      description: |-
         Note:
+        1. You can enter either:firstname/middlename/lastname - for a person (middlename is optional) OR fullname - for a business or organisation (or person known by one name).
 
-        1. You can enter either:firstname/middlename/lastname - for a person
-        (middlename is optional) OR fullname - for a business or organisation
-        (or person known by one name).
-
-
-        2.If address is enable(enable-address=true), then additional field
-        called address has to be passed.
+        2.If address is enable(enable-address=true), then additional field called address has to be passed.
       operationId: create
       consumes:
         - application/json
@@ -7890,27 +7566,16 @@ paths:
     post:
       tags:
         - Client Api
-      summary: >-
-        Activate a Client | Close a Client | Reject a Client | Withdraw a Client
-        | Reactivate a Client | UndoReject a Client | UndoWithdraw a Client |
-        Assign a Staff | Unassign a Staff | Update Default Savings Account |
-        Propose a Client Transfer | Withdraw a Client Transfer | Reject a Client
-        Transfer | Accept a Client Transfer | Propose and Accept a Client
-        Transfer | 
-      description: >
+      summary: 'Activate a Client | Close a Client | Reject a Client | Withdraw a Client | Reactivate a Client | UndoReject a Client | UndoWithdraw a Client | Assign a Staff | Unassign a Staff | Update Default Savings Account | Propose a Client Transfer | Withdraw a Client Transfer | Reject a Client Transfer | Accept a Client Transfer | Propose and Accept a Client Transfer | '
+      description: |
 
         [Reject a Client] Mandatory Fields : rejectionDate, rejectionReasonId
 
-
-        [Withdraw a Client] Mandatory Fields : withdrawalDate,
-        withdrawalReasonId
-
+        [Withdraw a Client] Mandatory Fields : withdrawalDate, withdrawalReasonId
 
         [Reactivate a Client] Mandatory Fields : reactivationDate
 
-
         [UndoReject a Client] Mandatory Fields : reopenedDate
-
 
         [UndoWithdraw a Client]Mandatory Fields :  reopenedDate
       operationId: activate
@@ -7947,18 +7612,12 @@ paths:
       tags:
         - Client Api
       summary: Update a Client
-      description: >-
-        You can update any of the basic attributes of a client (but not its
-        associations) using this API.
+      description: |-
+        You can update any of the basic attributes of a client (but not its associations) using this API.
 
+        Changing the relationship between a client and its office is not supported through this API. An API specific to handling transfers of clients between offices is available for the same.
 
-        Changing the relationship between a client and its office is not
-        supported through this API. An API specific to handling transfers of
-        clients between offices is available for the same.
-
-
-        The relationship between a client and a group must be removed through
-        the Groups API.
+        The relationship between a client and a group must be removed through the Groups API.
       operationId: update
       consumes:
         - application/json
@@ -7985,12 +7644,7 @@ paths:
       tags:
         - Client Api
       summary: Delete a Client
-      description: >-
-        If a client is in Pending state, you are allowed to Delete it. The
-        delete is a 'hard delete' and cannot be recovered from. Once clients
-        become active or have loans or savings associated with them, you cannot
-        delete the client but you may Close the client if they have left the
-        program.
+      description: 'If a client is in Pending state, you are allowed to Delete it. The delete is a ''hard delete'' and cannot be recovered from. Once clients become active or have loans or savings associated with them, you cannot delete the client but you may Close the client if they have left the program.'
       operationId: delete
       consumes:
         - application/json
@@ -8012,16 +7666,11 @@ paths:
       tags:
         - Client Api
       summary: Retrieve Client Details Template
-      description: >-
-        This is a convenience resource. It can be useful when building
-        maintenance user interface screens for client applications. The template
-        data returned consists of any or all of:
-
+      description: |-
+        This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:
 
         Field Defaults
-
         Allowed Value ListsExample Request:
-
 
         clients/template
       operationId: retrieveTemplate
@@ -8038,18 +7687,13 @@ paths:
           format: int64
         - name: commandParam
           in: query
-          description: >-
-            optional If commandParam=close retrieves all closureReasons which
-            are associated with "ClientClosureReason" value.
+          description: optional If commandParam=close retrieves all closureReasons which are associated with "ClientClosureReason" value.
           required: false
           type: string
           default: 'false'
         - name: staffInSelectedOfficeOnly
           in: query
-          description: >-
-            optional Defaults to false if not provided. If
-            staffInSelectedOfficeOnly=true only staff who are associated with
-            the selected branch are returned.
+          description: optional Defaults to false if not provided. If staffInSelectedOfficeOnly=true only staff who are associated with the selected branch are returned.
           required: false
           type: boolean
           default: false
@@ -8438,19 +8082,12 @@ paths:
       tags:
         - User Generated Documents
       summary: Retrieve UGD Details Template
-      description: >-
-        This is a convenience resource. It can be useful when building
-        maintenance user interface screens for UGDs. The UGD data returned
-        consists of any or all of:
-
+      description: |-
+        This is a convenience resource. It can be useful when building maintenance user interface screens for UGDs. The UGD data returned consists of any or all of:
 
         ARGUMENTS
-
-        name String entity String type String text String optional mappers
-        Mapper optional
-
+        name String entity String type String text String optional mappers Mapper optional
         Example Request:
-
 
         templates/template
       operationId: template
@@ -8610,32 +8247,21 @@ paths:
       tags:
         - Permissions
       summary: List Application Permissions
-      description: >-
+      description: |-
         ARGUMENTS
-
         makerCheckerableoptional, Values are true, false. Default is false.
+        If makerCheckerable=false or not supplied then a list of application permissions is returned. The "selected" attribute is always true in this case.
 
-        If makerCheckerable=false or not supplied then a list of application
-        permissions is returned. The "selected" attribute is always true in this
-        case.
-
-
-        If makerCheckerable=true then the "selected" attribute shows whether the
-        permission is enabled for Maker Check functionality.
-
+        If makerCheckerable=true then the "selected" attribute shows whether the permission is enabled for Maker Check functionality.
 
         Note: Each Apache Fineract transaction is associated with a permission.
 
-
         Example Requests:
-
 
         permissions
 
 
-
         permissions?makerCheckerable=true
-
 
 
         permissions?fields=grouping,code
@@ -8756,18 +8382,14 @@ paths:
       tags:
         - Roles
       summary: Enable Role | Disable Role
-      description: >-
-        Description : Enable role in case role is disabled. | Disable the role
-        in case role is not associated with any users.
+      description: |-
+        Description : Enable role in case role is disabled. | Disable the role in case role is not associated with any users.
 
 
 
 
 
-
-        Example Request:  
-        https://DomainName/api/v1/roles/{roleId}?command=enable
-
+        Example Request:   https://DomainName/api/v1/roles/{roleId}?command=enable
 
 
 
@@ -8828,9 +8450,7 @@ paths:
       tags:
         - Roles
       summary: Delete a Role
-      description: >-
-        Description : Delete the role in case role is not associated with any
-        users.
+      description: 'Description : Delete the role in case role is not associated with any users.'
       operationId: deleteRole
       consumes:
         - application/json
@@ -8907,18 +8527,12 @@ paths:
       tags:
         - Users
       summary: Retrieve User Details Template
-      description: >-
-        This is a convenience resource. It can be useful when building
-        maintenance user interface screens for client applications. The template
-        data returned consists of any or all of:
-
+      description: |-
+        This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:
 
         Field Defaults
-
         Allowed Value Lists
-
         Example Request:
-
 
         users/template
       operationId: template
@@ -8961,23 +8575,15 @@ paths:
       tags:
         - Users
       summary: Create a User
-      description: >-
+      description: |-
         Adds new application user.
 
+        Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).
 
-        Note: Password information is not required (or processed). Password
-        details at present are auto-generated and then sent to the email account
-        given (which is why it can take a few seconds to complete).
+        Mandatory Fields:
+        username, firstname, lastname, email, officeId, roles, sendPasswordToEmail
 
-
-        Mandatory Fields: 
-
-        username, firstname, lastname, email, officeId, roles,
-        sendPasswordToEmail
-
-
-        Optional Fields: 
-
+        Optional Fields:
         staffId,passwordNeverExpires,isSelfServiceUser,clients
       operationId: create
       consumes:
@@ -9032,9 +8638,7 @@ paths:
       tags:
         - Users
       summary: Update a User
-      description: >-
-        When updating a password you must provide the repeatPassword parameter
-        also.
+      description: When updating a password you must provide the repeatPassword parameter also.
       operationId: update
       consumes:
         - application/json
@@ -11955,14 +11559,7 @@ definitions:
         example: Client
       description:
         type: string
-        example: >-
-          Individual Client Report Lists the small number of defined fields on
-          the client table.  Would expect to copy this report and add any one to
-          one additional data for specific tenant needs. Can be run for any size
-          MFI but you expect it only to be run within a branch for larger ones. 
-          Depending on how many columns are displayed, there is probably is a
-          limit of about 20/50k clients returned for html display (export to
-          excel doesnt have that client browser/memory impact).
+        example: 'Individual Client Report Lists the small number of defined fields on the client table.  Would expect to copy this report and add any one to one additional data for specific tenant needs. Can be run for any size MFI but you expect it only to be run within a branch for larger ones.  Depending on how many columns are displayed, there is probably is a limit of about 20/50k clients returned for html display (export to excel doesnt have that client browser/memory impact).'
       reportSql:
         type: string
       coreReport:
@@ -12387,8 +11984,7 @@ definitions:
         example: true
       stretchyReportParamMap:
         type: string
-        example: >-
-          {"startDate":"2016-07-01","endDate":"2016-08-02","selectOffice":"1","environementUrl":"environementUrl"}
+        example: '{"startDate":"2016-07-01","endDate":"2016-08-02","selectOffice":"1","environementUrl":"environementUrl"}'
   PutReportMailingJobsResponse:
     type: object
     properties:
@@ -12463,8 +12059,7 @@ definitions:
         $ref: '#/definitions/ReportData'
       stretchyReportParamMap:
         type: string
-        example: >-
-          {"startDate":"2016-07-01","endDate":"2016-08-02","selectOffice":"1","environementUrl":"environementUrl"}
+        example: '{"startDate":"2016-07-01","endDate":"2016-08-02","selectOffice":"1","environementUrl":"environementUrl"}'
       nextRunDateTime:
         type: string
         format: date-time
@@ -12757,24 +12352,641 @@ definitions:
       name:
         type: string
         example: Good Friday
+      description:
+        type: string
+        example: This is the detailed info about Holiday
       fromDate:
-        type: string
-        format: date
-        example: '[2013, 10, 26]'
+        type: array
+        # format: date
+        items:
+          type: integer
+          format: int64
+        example: [2013, 10, 26]
       toDate:
-        type: string
-        format: date
-        example: '[2013, 10, 26]'
+        type: array
+        # format: date
+        items:
+          type: integer
+          format: int64
+        example: [2013, 10, 26]
       repaymentsRescheduledTo:
-        type: string
-        format: date
-        example: '[2013, 10, 27]'
-      officeId:
+        type: array
+        # format: date
+        items:
+          type: integer
+          format: int64
+        example: [2013, 10, 27]
+      status:
+        $ref: '#/definitions/EnumOptionData'
+      reschedulingType:
         type: integer
         format: int64
         example: 1
+
+  GetLoanResponse:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      accountNumber:
+        type: integer # This might be string
+        format: int64
+        example: 000000001
       status:
-        $ref: '#/definitions/EnumOptionData'
+        $ref: '#/definitions/Status'
+      clientId:
+        type: integer
+        format: int64
+        example: 8
+      clientAccountNo:
+        type: integer
+        format: int64
+        example: 000000008
+      clientName:
+        type: string
+        example: Robinson R
+      clientOfficeId:
+        type: integer
+        format: int64
+        example: 2
+      loanProductId:
+        type: integer
+        format: int64
+        example: 1
+      loanProductName:
+        type: string
+        example: Income Generating Loan
+      isLoanProductLinkedToFloatingRate:
+        type: boolean
+        example: false
+      fundId:
+        type: integer
+        format: int64
+        example: 1
+      fundName:
+        type: string
+        example: Loan from Central Bank
+      loanType:
+        $ref: '#/definitions/LoanType'
+      currency:
+        $ref: '#/definitions/Currency'
+      principal:
+        type: number
+        format: double
+        example: 10000.000000
+      approvedPrincipal:
+        type: number
+        format: double
+        example: 10000.000000
+      proposedPrincipal:
+        type: number
+        format: double
+        example: 10000.000000
+      termFrequency:
+        type: integer
+        format: int64
+        example: 25
+      termPeriodFrequencyType:
+        $ref: '#/definitions/TermPeriodFrequencyType'
+      numberOfRepayments:
+        type: integer
+        format: int64
+        example: 25
+      repaymentEvery:
+        type: integer
+        format: int64
+        example: 1
+      repaymentFrequencyType:
+        $ref: '#/definitions/RepaymentFrequencyType'
+      interestRatePerPeriod:
+        type: number
+        format: double
+        example: 26.000000
+      interestRateFrequencyType:
+        $ref: '#/definitions/InterestRateFrequencyType'
+      annualInterestRate:
+        type: number
+        format: double
+        example: 26.000000
+      isFloatingInterestRate:
+        type: boolean
+        example: false
+      interestRateDifferential:
+        type: number
+        format: double
+        example: 0.000000
+      amortizationType:
+        $ref: '#/definitions/AmortizationType'
+      interestType:
+        $ref: '#/definitions/InterestType'
+      interestCalculationPeriodType:
+        $ref: '#/definitions/InterestCalculationPeriodType'
+      allowPartialPeriodInterestCalcualtion:
+        type: boolean
+        example: false
+      transactionProcessingStrategyId:
+        type: integer
+        format: int64
+        example: 1
+      transactionProcessingStrategyName:
+        type: string
+        example: Penalties, Fees, Interest, Principal order
+      syncDisbursementWithMeeting:
+        type: boolean
+        example: false
+      timeline:
+        $ref: '#/definitions/Timeline'
+      summary:
+        $ref: '#/definitions/Summary'
+      feeChargesDueAtDisbursementCharged:
+        type: number
+        format: double
+      loanProductCounter:
+        type: integer
+        format: int64
+      multiDisburseLoan:
+        type: boolean
+      canDefineInstallmentAmount:
+        type: boolean
+      canDisburse:
+        type: boolean
+      canUseForTopup:
+        type: boolean
+      isTopup:
+        type: boolean
+      closureLoanId:
+        type: integer
+        format: int64
+      inArrears:
+        type: boolean
+      isNPA:
+        type: boolean
+      overdueCharges:
+        type: array
+        items:
+          $ref: '#/definitions/OverdueCharge'
+      daysInMonthType:
+        $ref: '#/definitions/DaysInMonthType'
+      daysInYearType:
+        $ref: '#/definitions/DaysInYearType'
+      isInterestRecalculationEnabled:
+        type: boolean
+      createStandingInstructionAtDisbursement:
+        type: boolean
+      paidInAdvance:
+        type: object
+        properties:
+          paidInAdvance:
+            type: integer
+            format: int64
+      isVariableInstallmentsAllowed:
+        type: boolean
+      minimumGap:
+        type: integer
+        format: int64
+      maxmumGap:
+        type: integer
+        format: int64
+      isEqualAmortization:
+        type: boolean
+
+
+  Status:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 600
+      code:
+        type: string
+        example: loanStatusType.closed.obligations.met
+      value:
+        type: string
+        example: Closed (obligations met)
+      pendingApproval:
+        type: boolean
+        example: false
+      waitingForDisbursal:
+        type: boolean
+        example: false
+      active:
+        type: boolean
+        example: false
+      closedObligationsMet:
+        type: boolean
+        example: true
+      closedWrittenOff:
+        type: boolean
+        example: false
+      closedRescheduled:
+        type: boolean
+        example: false
+      closed:
+        type: boolean
+        example: true
+      overpaid:
+        type: boolean
+        example: false
+  LoanType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      code:
+        type: string
+        example: accountType.individual
+      value:
+        type: string
+        example: Individual
+  Currency:
+    type: object
+    properties:
+      code:
+        type: string
+        example: USD
+      name:
+        type: string
+        example: US Dollar
+      decimalPlaces:
+        type: integer
+        format: int64
+        example: 2
+      inMultiplesOf:
+        type: integer
+        format: int64
+        example: 0
+      displaySymbol:
+        type: string
+        example: $
+      nameCode:
+        type: string
+        example: currency.USD
+      displayLabel:
+        type: string
+        example: US Dollar ($)
+  TermPeriodFrequencyType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      code:
+        type: string
+        example: termFrequency.periodFrequencyType.weeks
+      value:
+        type: string
+        example: Weeks
+  RepaymentFrequencyType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      code:
+        type: string
+        example: repaymentFrequency.periodFrequencyType.weeks
+      value:
+        type: string
+        example: Weeks
+  InterestRateFrequencyType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 3
+      code:
+        type: string
+        example: interestRateFrequency.periodFrequencyType.years
+      value:
+        type: string
+        example: Per Year
+  AmortizationType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      code:
+        type: string
+        example: amortizationType.equal.installments
+      value:
+        type: string
+        example: Equal installments
+  InterestType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      code:
+        type: string
+        example: interestType.flat
+      value:
+        type: string
+        example: Flat
+  InterestCalculationPeriodType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      code:
+        type: string
+        example: interestCalculationPeriodType.same.as.repayment.period
+      value:
+        type: string
+        example: Same as repayment period
+  Timeline:
+    type: object
+    properties:
+      submittedOnDate:
+        type: array
+        items:
+          type: integer
+          format: int64
+      submittedByUsername:
+        type: string
+        example: mifos
+      submittedByFirstname:
+        type: string
+        example: App
+      submittedByLastname:
+        type: string
+        example: Administrator
+      approvedOnDate:
+        type: array
+        items:
+          type: integer
+          format: int64
+      approvedByUsername:
+        type: string
+        example: mifos
+      approvedByFirstName:
+        type: string
+        example: App
+      approvedByLastName:
+        type: string
+        example: Administrator
+      expectedDisbursementDate:
+        type: array
+        items:
+          type: integer
+          format: int64
+      actualDisbursementDate:
+        type: array
+        items:
+          type: integer
+          format: int64
+      disbursedByUsername:
+        type: string
+        example: mifos
+      disbursedByFirstName:
+        type: string
+        example: App
+      disbursedByLastName:
+        type: string
+        example: Administrator
+      closedOnDate:
+        type: array
+        items:
+          type: integer
+          format: int64
+      expectedMaturityDate:
+        type: array
+        items:
+          type: integer
+          format: int64
+  Summary:
+    type: object
+    properties:
+      currency:
+        $ref: '#/definitions/Currency'
+      principalDisbursed:
+        type: number
+        format: double
+        example: 10000.000000
+      principalPaid:
+        type: number
+        format: double
+        example: 10000.000000
+      principalWrittenOff:
+        type: number
+        format: double
+        example: 0.000000
+      principalOutstanding:
+        type: number
+        format: double
+        example: 0.000000
+      principalOverdue:
+        type: number
+        format: double
+        example: 0.000000
+      interestCharged:
+        type: number
+        format: double
+        example: 1250.000000
+      interestPaid:
+        type: number
+        format: double
+        example: 1250.000000
+      interestWaived:
+        type: number
+        format: double
+        example: 0.000000
+      interestWrittenOff:
+        type: number
+        format: double
+        example: 0.000000
+      interesteOutstanding:
+        type: number
+        format: double
+        example: 0.000000
+      interestOverdue:
+        type: number
+        format: double
+        example: 0.000000
+      feeChargesCharged:
+        type: number
+        format: double
+        example: 500.000000
+      feeChargesDueAtDisbursementCharged:
+        type: number
+        format: double
+        example: 0.000000
+      feeChargesPaid:
+        type: number
+        format: double
+        example: 0.000000
+      feeChargesWaived:
+        type: number
+        format: double
+        example: 0.000000
+      feeChargesWrittenOff:
+        type: number
+        format: double
+        example: 0.000000
+      feeChargesOutstanding:
+        type: number
+        format: double
+        example: 0.000000
+      feeChargesOverdue:
+        type: number
+        format: double
+        example: 0.000000
+      penaltyChargesCharged:
+        type: number
+        format: double
+        example: 0.000000
+      penaltyChargesPaid:
+        type: number
+        format: double
+        example: 0.000000
+      penaltyChargesWaived:
+        type: number
+        format: double
+        example: 0.000000
+      penaltyChargesWrittenOff:
+        type: number
+        format: double
+        example: 0.000000
+      penaltyChargesOutstanding:
+        type: number
+        format: double
+        example: 0.000000
+      penaltyChargesOverdue:
+        type: number
+        format: double
+        example: 0.000000
+      totalExpectedRepayment:
+        type: number
+        format: double
+        example: 11750.000000
+      totalRepayment:
+        type: number
+        format: double
+        example: 11750.000000
+      totalExpectedCostOfLoan:
+        type: number
+        format: double
+        example: 1750.000000
+      totalCostOfLoan:
+        type: number
+        format: double
+        example: 1750.000000
+      totalWaived:
+        type: number
+        format: double
+        example: 0.000000
+      totalWrittenOff:
+        type: number
+        format: double
+        example: 0.000000
+      totalOutstanding:
+        type: number
+        format: double
+        example: 0.000000
+      totalOverdue:
+        type: number
+        format: double
+        example: 0.000000
+  OverdueCharge:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      active:
+        type: boolean
+      penalty:
+        type: boolean
+      currency:
+        $ref: '#/definitions/Currency'
+      amount:
+        type: number
+        format: double
+      chargeTimeType:
+        $ref: '#/definitions/ChargeTimeType'
+      chargeAppliesTo:
+        $ref: '#/definitions/ChargeAppliesTo'
+      chargeCalculationType:
+        $ref: '#/definitions/ChargeCalculationType'
+      chargePaymentMode:
+        $ref: '#/definitions/ChargePaymentMode'
+
+  ChargeTimeType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      code:
+        type: string
+      value:
+        type: string
+  ChargeAppliesTo:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      code:
+        type: string
+      value:
+        type: string
+  ChargeCalculationType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      code:
+        type: string
+      value:
+        type: string
+  ChargePaymentMode:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      code:
+        type: string
+      value:
+        type: string
+  DaysInMonthType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      code:
+        type: string
+      value:
+        type: string
+  DaysInYearType:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      code:
+        type: string
+      value:
+        type: string
+
   PutHolidaysHolidayIdResponse:
     type: object
     properties:
@@ -14408,9 +14620,7 @@ definitions:
         example: 1
       description:
         type: string
-        example: >-
-          Password must be at least 1 character and not more that 50 characters
-          long
+        example: Password must be at least 1 character and not more that 50 characters long
       active:
         type: boolean
         example: true
@@ -14478,9 +14688,7 @@ definitions:
         example: Another Role Name
       description:
         type: string
-        example: >-
-          A description outlining the purpose of this role in relation to the
-          application.
+        example: A description outlining the purpose of this role in relation to the application.
   GetRolesRoleIdResponse:
     type: object
     properties:
@@ -14761,3 +14969,6 @@ definitions:
       isSelfServiceUser:
         type: boolean
         example: true
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /mifosChatbot/mifosChatbot/1.0.0
