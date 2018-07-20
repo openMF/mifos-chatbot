@@ -30,7 +30,7 @@ public class MifosChatAdapterServiceTest {
         List<MifosResponse> responses = chatbotAdapterService.handle(loanStatusIntent);
 
         for(MifosResponse response : responses) {
-            log.info("Handler response: {}", response.getContent());
+            log.info("Handler response: \n{}", response.getContent());
         }
     }
 
@@ -41,7 +41,7 @@ public class MifosChatAdapterServiceTest {
         List<MifosResponse> responses = chatbotAdapterService.handle(getAllHolidaysIntent);
 
         for(MifosResponse response : responses) {
-            log.info(">>>> Handler response: {}", response.getContent());
+            log.info(">>>> Handler response: \n{}", response.getContent());
         }
     }
 

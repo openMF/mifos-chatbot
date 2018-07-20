@@ -13,6 +13,8 @@
 
 package org.mifos.chatbot.client.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -36,30 +38,33 @@ public class GetHolidaysResponse {
   @SerializedName("name")
   private String name = null;
 
+  @SerializedName("description")
+  private String description = null;
+
   @SerializedName("fromDate")
-  private LocalDate fromDate = null;
+  private List<Long> fromDate = null;
 
   @SerializedName("toDate")
-  private LocalDate toDate = null;
+  private List<Long> toDate = null;
 
   @SerializedName("repaymentsRescheduledTo")
-  private LocalDate repaymentsRescheduledTo = null;
-
-  @SerializedName("officeId")
-  private Long officeId = null;
+  private List<Long> repaymentsRescheduledTo = null;
 
   @SerializedName("status")
   private EnumOptionData status = null;
+
+  @SerializedName("reschedulingType")
+  private Long reschedulingType = null;
 
   public GetHolidaysResponse id(Long id) {
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "1", value = "")
   public Long getId() {
     return id;
@@ -74,10 +79,10 @@ public class GetHolidaysResponse {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Good Friday", value = "")
   public String getName() {
     return name;
@@ -87,76 +92,100 @@ public class GetHolidaysResponse {
     this.name = name;
   }
 
-  public GetHolidaysResponse fromDate(LocalDate fromDate) {
+  public GetHolidaysResponse description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Get description
+   * @return description
+   **/
+  @ApiModelProperty(example = "This is the detailed info about Holiday", value = "")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public GetHolidaysResponse fromDate(List<Long> fromDate) {
     this.fromDate = fromDate;
     return this;
   }
 
-   /**
+  public GetHolidaysResponse addFromDateItem(Long fromDateItem) {
+    if (this.fromDate == null) {
+      this.fromDate = new ArrayList<Long>();
+    }
+    this.fromDate.add(fromDateItem);
+    return this;
+  }
+
+  /**
    * Get fromDate
    * @return fromDate
-  **/
-  @ApiModelProperty(example = "[2013, 10, 26]", value = "")
-  public LocalDate getFromDate() {
+   **/
+  @ApiModelProperty(example = "[2013,10,26]", value = "")
+  public List<Long> getFromDate() {
     return fromDate;
   }
 
-  public void setFromDate(LocalDate fromDate) {
+  public void setFromDate(List<Long> fromDate) {
     this.fromDate = fromDate;
   }
 
-  public GetHolidaysResponse toDate(LocalDate toDate) {
+  public GetHolidaysResponse toDate(List<Long> toDate) {
     this.toDate = toDate;
     return this;
   }
 
-   /**
+  public GetHolidaysResponse addToDateItem(Long toDateItem) {
+    if (this.toDate == null) {
+      this.toDate = new ArrayList<Long>();
+    }
+    this.toDate.add(toDateItem);
+    return this;
+  }
+
+  /**
    * Get toDate
    * @return toDate
-  **/
-  @ApiModelProperty(example = "[2013, 10, 26]", value = "")
-  public LocalDate getToDate() {
+   **/
+  @ApiModelProperty(example = "[2013,10,26]", value = "")
+  public List<Long> getToDate() {
     return toDate;
   }
 
-  public void setToDate(LocalDate toDate) {
+  public void setToDate(List<Long> toDate) {
     this.toDate = toDate;
   }
 
-  public GetHolidaysResponse repaymentsRescheduledTo(LocalDate repaymentsRescheduledTo) {
+  public GetHolidaysResponse repaymentsRescheduledTo(List<Long> repaymentsRescheduledTo) {
     this.repaymentsRescheduledTo = repaymentsRescheduledTo;
     return this;
   }
 
-   /**
+  public GetHolidaysResponse addRepaymentsRescheduledToItem(Long repaymentsRescheduledToItem) {
+    if (this.repaymentsRescheduledTo == null) {
+      this.repaymentsRescheduledTo = new ArrayList<Long>();
+    }
+    this.repaymentsRescheduledTo.add(repaymentsRescheduledToItem);
+    return this;
+  }
+
+  /**
    * Get repaymentsRescheduledTo
    * @return repaymentsRescheduledTo
-  **/
-  @ApiModelProperty(example = "[2013, 10, 27]", value = "")
-  public LocalDate getRepaymentsRescheduledTo() {
+   **/
+  @ApiModelProperty(example = "[2013,10,27]", value = "")
+  public List<Long> getRepaymentsRescheduledTo() {
     return repaymentsRescheduledTo;
   }
 
-  public void setRepaymentsRescheduledTo(LocalDate repaymentsRescheduledTo) {
+  public void setRepaymentsRescheduledTo(List<Long> repaymentsRescheduledTo) {
     this.repaymentsRescheduledTo = repaymentsRescheduledTo;
-  }
-
-  public GetHolidaysResponse officeId(Long officeId) {
-    this.officeId = officeId;
-    return this;
-  }
-
-   /**
-   * Get officeId
-   * @return officeId
-  **/
-  @ApiModelProperty(example = "1", value = "")
-  public Long getOfficeId() {
-    return officeId;
-  }
-
-  public void setOfficeId(Long officeId) {
-    this.officeId = officeId;
   }
 
   public GetHolidaysResponse status(EnumOptionData status) {
@@ -164,10 +193,10 @@ public class GetHolidaysResponse {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   **/
   @ApiModelProperty(value = "")
   public EnumOptionData getStatus() {
     return status;
@@ -177,9 +206,27 @@ public class GetHolidaysResponse {
     this.status = status;
   }
 
+  public GetHolidaysResponse reschedulingType(Long reschedulingType) {
+    this.reschedulingType = reschedulingType;
+    return this;
+  }
+
+  /**
+   * Get reschedulingType
+   * @return reschedulingType
+   **/
+  @ApiModelProperty(example = "1", value = "")
+  public Long getReschedulingType() {
+    return reschedulingType;
+  }
+
+  public void setReschedulingType(Long reschedulingType) {
+    this.reschedulingType = reschedulingType;
+  }
+
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -188,17 +235,18 @@ public class GetHolidaysResponse {
     }
     GetHolidaysResponse getHolidaysResponse = (GetHolidaysResponse) o;
     return Objects.equals(this.id, getHolidaysResponse.id) &&
-        Objects.equals(this.name, getHolidaysResponse.name) &&
-        Objects.equals(this.fromDate, getHolidaysResponse.fromDate) &&
-        Objects.equals(this.toDate, getHolidaysResponse.toDate) &&
-        Objects.equals(this.repaymentsRescheduledTo, getHolidaysResponse.repaymentsRescheduledTo) &&
-        Objects.equals(this.officeId, getHolidaysResponse.officeId) &&
-        Objects.equals(this.status, getHolidaysResponse.status);
+            Objects.equals(this.name, getHolidaysResponse.name) &&
+            Objects.equals(this.description, getHolidaysResponse.description) &&
+            Objects.equals(this.fromDate, getHolidaysResponse.fromDate) &&
+            Objects.equals(this.toDate, getHolidaysResponse.toDate) &&
+            Objects.equals(this.repaymentsRescheduledTo, getHolidaysResponse.repaymentsRescheduledTo) &&
+            Objects.equals(this.status, getHolidaysResponse.status) &&
+            Objects.equals(this.reschedulingType, getHolidaysResponse.reschedulingType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, fromDate, toDate, repaymentsRescheduledTo, officeId, status);
+    return Objects.hash(id, name, description, fromDate, toDate, repaymentsRescheduledTo, status, reschedulingType);
   }
 
 
@@ -206,14 +254,15 @@ public class GetHolidaysResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetHolidaysResponse {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    fromDate: ").append(toIndentedString(fromDate)).append("\n");
     sb.append("    toDate: ").append(toIndentedString(toDate)).append("\n");
     sb.append("    repaymentsRescheduledTo: ").append(toIndentedString(repaymentsRescheduledTo)).append("\n");
-    sb.append("    officeId: ").append(toIndentedString(officeId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    reschedulingType: ").append(toIndentedString(reschedulingType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -222,7 +271,7 @@ public class GetHolidaysResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
