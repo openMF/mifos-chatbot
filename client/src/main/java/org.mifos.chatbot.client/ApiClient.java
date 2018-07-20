@@ -19,6 +19,7 @@ import com.squareup.okhttp.logging.HttpLoggingInterceptor;
 import com.squareup.okhttp.logging.HttpLoggingInterceptor.Level;
 import okio.BufferedSink;
 import okio.Okio;
+import org.mifos.chatbot.client.util.SSLPasser;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
@@ -52,7 +53,7 @@ import org.mifos.chatbot.client.auth.OAuth;
 
 public class ApiClient {
 
-    private String basePath = "https://https://demo.openmf.org/fineract-provider/api/v1";
+    private String basePath = "https://demo.openmf.org/fineract-provider/api/v1";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -77,15 +78,17 @@ public class ApiClient {
      * Constructor for ApiClient
      */
     public ApiClient() {
-        httpClient = new OkHttpClient();
+//        httpClient = new OkHttpClient();
+        httpClient = SSLPasser.getUnsafeOkHttpClient();
 
-
-        verifyingSsl = true;
+        verifyingSsl = false;
 
         json = new JSON();
 
         // Set default User-Agent.
         setUserAgent("Swagger-Codegen/1.0.0/java");
+        addDefaultHeader("Authorization", "Basic bWlmb3M6cGFzc3dvcmQ=");
+        addDefaultHeader("Fineract-Platform-TenantId", "default");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
@@ -96,7 +99,7 @@ public class ApiClient {
     /**
      * Get base path
      *
-     * @return Baes path
+     * @return Base path
      */
     public String getBasePath() {
         return basePath;
