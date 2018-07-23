@@ -37,9 +37,9 @@ public class OpenNLPService implements NLPService {
      */
     @Override
     public Intent[] recognize(String text) {
+        // TODO: provide confidence level for recognition result
         try {
             String[] sentences = detectSentence(text);
-//            System.out.println(sentences.length);
 
             List<String> tokens = new ArrayList<>();
             for(String sentence : sentences) {
@@ -61,7 +61,6 @@ public class OpenNLPService implements NLPService {
                 resultIntents[i] = new Intent(sb.toString());
             }
 
-//            System.out.println(resultIntents[0].getKeyword());
             return resultIntents;
         } catch (IOException e) {
             logger.error("Cannot read model information : ", e);
@@ -69,10 +68,6 @@ public class OpenNLPService implements NLPService {
 
         return null;
     }
-
-    // Refer to OpenNLP framework as much as I want
-
-    // May start with 10 keywords first, let framework understand different sentence structure.
 
     private String[] detectSentence(String paragraph) throws IOException {
         InputStream is = new FileInputStream("src/main/resources/models/en-sent.bin");
@@ -94,14 +89,13 @@ public class OpenNLPService implements NLPService {
         Tokenizer tokenizer = new TokenizerME(model);
 
         String tokens[] = tokenizer.tokenize(sentence);
-//        for (String a : tokens)
-//            System.out.println(a);
         is.close();
 
         return tokens;
     }
 
     private Span[] findName(String[] tokens) throws IOException {
+        // TODO: change to ClassLoader to load the model from resource folder
         InputStream is = new FileInputStream("src/test/resources/models/en-ner-second-try.bin");
         TokenNameFinderModel model = new TokenNameFinderModel(is);
         NameFinderME nameFinder = new NameFinderME(model);

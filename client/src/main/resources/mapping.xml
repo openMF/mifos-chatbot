@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<requestType>
+    <loan>
+        <!--null means I have not found corresponding API for that requirement-->
+        <!--<request>-->
+            <!--<name>status</name>-->
+            <!--<url>null</url>-->
+            <!--<field>null</field>-->
+        <!--</request>-->
+
+        <request>
+            <name>outstandingPrincipal</name>
+            <url>https://DomainName/fineract-provider/api/v1/loans</url>
+            <field>principalOutstanding</field>
+            <!--<multipleField>false</multipleField>-->
+        </request>
+        <request>
+            <name>outstandingInterest</name>
+            <url>https://DomainName/fineract-provider/api/v1/loans</url>>
+            <field>InterestOutstanding</field>
+        </request>
+        <request>
+            <name>nextDueDate</name>
+            <url>https://DomainName/api/v1/loans/{loanId}</url>
+            <field>overDueSinceDate</field>
+            <field>repaymentEvery</field>
+        </request>
+        <request>
+            <name>duePrincipal</name>
+            <url>https://DomainName/api/v1/loans/{loanId}</url>
+            <field>principalOverdue</field>
+        </request>
+        <request>
+            <name>dueInterest</name>
+            <url>https://DomainName/api/v1/loans/{loanId}</url>
+            <field>interestOverdue</field>
+        </request>
+    </loan>
+    <saving>
+
+    </saving>
+</requestType>

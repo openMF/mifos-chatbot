@@ -1,2 +1,5 @@
 description = "Mifos Chatbot Core"
 
+dependencies {
+    compileOnly "org.springframework.boot:spring-boot"
+}
