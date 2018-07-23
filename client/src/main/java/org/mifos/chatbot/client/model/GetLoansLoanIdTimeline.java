@@ -13,6 +13,8 @@
 
 package org.mifos.chatbot.client.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -30,7 +32,7 @@ import org.threeten.bp.LocalDate;
 
 public class GetLoansLoanIdTimeline {
   @SerializedName("submittedOnDate")
-  private LocalDate submittedOnDate = null;
+  private List<Long> submittedOnDate = null;
 
   @SerializedName("submittedByUsername")
   private String submittedByUsername = null;
@@ -42,7 +44,7 @@ public class GetLoansLoanIdTimeline {
   private String submittedByLastname = null;
 
   @SerializedName("approvedOnDate")
-  private LocalDate approvedOnDate = null;
+  private List<Long> approvedOnDate = null;
 
   @SerializedName("approvedByUsername")
   private String approvedByUsername = null;
@@ -54,10 +56,10 @@ public class GetLoansLoanIdTimeline {
   private String approvedByLastname = null;
 
   @SerializedName("expectedDisbursementDate")
-  private LocalDate expectedDisbursementDate = null;
+  private List<Long> expectedDisbursementDate = null;
 
   @SerializedName("actualDisbursementDate")
-  private LocalDate actualDisbursementDate = null;
+  private List<Long> actualDisbursementDate = null;
 
   @SerializedName("disbursedByUsername")
   private String disbursedByUsername = null;
@@ -69,23 +71,31 @@ public class GetLoansLoanIdTimeline {
   private String disbursedByLastname = null;
 
   @SerializedName("expectedMaturityDate")
-  private LocalDate expectedMaturityDate = null;
+  private List<Long> expectedMaturityDate = null;
 
-  public GetLoansLoanIdTimeline submittedOnDate(LocalDate submittedOnDate) {
+  public GetLoansLoanIdTimeline submittedOnDate(List<Long> submittedOnDate) {
     this.submittedOnDate = submittedOnDate;
     return this;
   }
 
-   /**
+  public GetLoansLoanIdTimeline addSubmittedOnDateItem(Long submittedOnDateItem) {
+    if (this.submittedOnDate == null) {
+      this.submittedOnDate = new ArrayList<Long>();
+    }
+    this.submittedOnDate.add(submittedOnDateItem);
+    return this;
+  }
+
+  /**
    * Get submittedOnDate
    * @return submittedOnDate
-  **/
-  @ApiModelProperty(example = "[2012, 4, 3]", value = "")
-  public LocalDate getSubmittedOnDate() {
+   **/
+  @ApiModelProperty(example = "[2012,4,3]", value = "")
+  public List<Long> getSubmittedOnDate() {
     return submittedOnDate;
   }
 
-  public void setSubmittedOnDate(LocalDate submittedOnDate) {
+  public void setSubmittedOnDate(List<Long> submittedOnDate) {
     this.submittedOnDate = submittedOnDate;
   }
 
@@ -94,10 +104,10 @@ public class GetLoansLoanIdTimeline {
     return this;
   }
 
-   /**
+  /**
    * Get submittedByUsername
    * @return submittedByUsername
-  **/
+   **/
   @ApiModelProperty(example = "admin", value = "")
   public String getSubmittedByUsername() {
     return submittedByUsername;
@@ -112,10 +122,10 @@ public class GetLoansLoanIdTimeline {
     return this;
   }
 
-   /**
+  /**
    * Get submittedByFirstname
    * @return submittedByFirstname
-  **/
+   **/
   @ApiModelProperty(example = "App", value = "")
   public String getSubmittedByFirstname() {
     return submittedByFirstname;
@@ -130,10 +140,10 @@ public class GetLoansLoanIdTimeline {
     return this;
   }
 
-   /**
+  /**
    * Get submittedByLastname
    * @return submittedByLastname
-  **/
+   **/
   @ApiModelProperty(example = "Administrator", value = "")
   public String getSubmittedByLastname() {
     return submittedByLastname;
@@ -143,21 +153,29 @@ public class GetLoansLoanIdTimeline {
     this.submittedByLastname = submittedByLastname;
   }
 
-  public GetLoansLoanIdTimeline approvedOnDate(LocalDate approvedOnDate) {
+  public GetLoansLoanIdTimeline approvedOnDate(List<Long> approvedOnDate) {
     this.approvedOnDate = approvedOnDate;
     return this;
   }
 
-   /**
+  public GetLoansLoanIdTimeline addApprovedOnDateItem(Long approvedOnDateItem) {
+    if (this.approvedOnDate == null) {
+      this.approvedOnDate = new ArrayList<Long>();
+    }
+    this.approvedOnDate.add(approvedOnDateItem);
+    return this;
+  }
+
+  /**
    * Get approvedOnDate
    * @return approvedOnDate
-  **/
-  @ApiModelProperty(example = "[2012, 4, 3]", value = "")
-  public LocalDate getApprovedOnDate() {
+   **/
+  @ApiModelProperty(example = "[2012,4,3]", value = "")
+  public List<Long> getApprovedOnDate() {
     return approvedOnDate;
   }
 
-  public void setApprovedOnDate(LocalDate approvedOnDate) {
+  public void setApprovedOnDate(List<Long> approvedOnDate) {
     this.approvedOnDate = approvedOnDate;
   }
 
@@ -166,10 +184,10 @@ public class GetLoansLoanIdTimeline {
     return this;
   }
 
-   /**
+  /**
    * Get approvedByUsername
    * @return approvedByUsername
-  **/
+   **/
   @ApiModelProperty(example = "admin", value = "")
   public String getApprovedByUsername() {
     return approvedByUsername;
@@ -184,10 +202,10 @@ public class GetLoansLoanIdTimeline {
     return this;
   }
 
-   /**
+  /**
    * Get approvedByFirstname
    * @return approvedByFirstname
-  **/
+   **/
   @ApiModelProperty(example = "App", value = "")
   public String getApprovedByFirstname() {
     return approvedByFirstname;
@@ -202,10 +220,10 @@ public class GetLoansLoanIdTimeline {
     return this;
   }
 
-   /**
+  /**
    * Get approvedByLastname
    * @return approvedByLastname
-  **/
+   **/
   @ApiModelProperty(example = "Administrator", value = "")
   public String getApprovedByLastname() {
     return approvedByLastname;
@@ -215,39 +233,55 @@ public class GetLoansLoanIdTimeline {
     this.approvedByLastname = approvedByLastname;
   }
 
-  public GetLoansLoanIdTimeline expectedDisbursementDate(LocalDate expectedDisbursementDate) {
+  public GetLoansLoanIdTimeline expectedDisbursementDate(List<Long> expectedDisbursementDate) {
     this.expectedDisbursementDate = expectedDisbursementDate;
     return this;
   }
 
-   /**
+  public GetLoansLoanIdTimeline addExpectedDisbursementDateItem(Long expectedDisbursementDateItem) {
+    if (this.expectedDisbursementDate == null) {
+      this.expectedDisbursementDate = new ArrayList<Long>();
+    }
+    this.expectedDisbursementDate.add(expectedDisbursementDateItem);
+    return this;
+  }
+
+  /**
    * Get expectedDisbursementDate
    * @return expectedDisbursementDate
-  **/
-  @ApiModelProperty(example = "[2012, 4, 10]", value = "")
-  public LocalDate getExpectedDisbursementDate() {
+   **/
+  @ApiModelProperty(example = "[2012,4,10]", value = "")
+  public List<Long> getExpectedDisbursementDate() {
     return expectedDisbursementDate;
   }
 
-  public void setExpectedDisbursementDate(LocalDate expectedDisbursementDate) {
+  public void setExpectedDisbursementDate(List<Long> expectedDisbursementDate) {
     this.expectedDisbursementDate = expectedDisbursementDate;
   }
 
-  public GetLoansLoanIdTimeline actualDisbursementDate(LocalDate actualDisbursementDate) {
+  public GetLoansLoanIdTimeline actualDisbursementDate(List<Long> actualDisbursementDate) {
     this.actualDisbursementDate = actualDisbursementDate;
     return this;
   }
 
-   /**
+  public GetLoansLoanIdTimeline addActualDisbursementDateItem(Long actualDisbursementDateItem) {
+    if (this.actualDisbursementDate == null) {
+      this.actualDisbursementDate = new ArrayList<Long>();
+    }
+    this.actualDisbursementDate.add(actualDisbursementDateItem);
+    return this;
+  }
+
+  /**
    * Get actualDisbursementDate
    * @return actualDisbursementDate
-  **/
-  @ApiModelProperty(example = "[2012, 4, 10]", value = "")
-  public LocalDate getActualDisbursementDate() {
+   **/
+  @ApiModelProperty(example = "[2012,4,10]", value = "")
+  public List<Long> getActualDisbursementDate() {
     return actualDisbursementDate;
   }
 
-  public void setActualDisbursementDate(LocalDate actualDisbursementDate) {
+  public void setActualDisbursementDate(List<Long> actualDisbursementDate) {
     this.actualDisbursementDate = actualDisbursementDate;
   }
 
@@ -256,10 +290,10 @@ public class GetLoansLoanIdTimeline {
     return this;
   }
 
-   /**
+  /**
    * Get disbursedByUsername
    * @return disbursedByUsername
-  **/
+   **/
   @ApiModelProperty(example = "admin", value = "")
   public String getDisbursedByUsername() {
     return disbursedByUsername;
@@ -274,10 +308,10 @@ public class GetLoansLoanIdTimeline {
     return this;
   }
 
-   /**
+  /**
    * Get disbursedByFirstname
    * @return disbursedByFirstname
-  **/
+   **/
   @ApiModelProperty(example = "App", value = "")
   public String getDisbursedByFirstname() {
     return disbursedByFirstname;
@@ -292,10 +326,10 @@ public class GetLoansLoanIdTimeline {
     return this;
   }
 
-   /**
+  /**
    * Get disbursedByLastname
    * @return disbursedByLastname
-  **/
+   **/
   @ApiModelProperty(example = "Administrator", value = "")
   public String getDisbursedByLastname() {
     return disbursedByLastname;
@@ -305,27 +339,35 @@ public class GetLoansLoanIdTimeline {
     this.disbursedByLastname = disbursedByLastname;
   }
 
-  public GetLoansLoanIdTimeline expectedMaturityDate(LocalDate expectedMaturityDate) {
+  public GetLoansLoanIdTimeline expectedMaturityDate(List<Long> expectedMaturityDate) {
     this.expectedMaturityDate = expectedMaturityDate;
     return this;
   }
 
-   /**
+  public GetLoansLoanIdTimeline addExpectedMaturityDateItem(Long expectedMaturityDateItem) {
+    if (this.expectedMaturityDate == null) {
+      this.expectedMaturityDate = new ArrayList<Long>();
+    }
+    this.expectedMaturityDate.add(expectedMaturityDateItem);
+    return this;
+  }
+
+  /**
    * Get expectedMaturityDate
    * @return expectedMaturityDate
-  **/
-  @ApiModelProperty(example = "[2012, 4, 10]", value = "")
-  public LocalDate getExpectedMaturityDate() {
+   **/
+  @ApiModelProperty(example = "[2012,4,10]", value = "")
+  public List<Long> getExpectedMaturityDate() {
     return expectedMaturityDate;
   }
 
-  public void setExpectedMaturityDate(LocalDate expectedMaturityDate) {
+  public void setExpectedMaturityDate(List<Long> expectedMaturityDate) {
     this.expectedMaturityDate = expectedMaturityDate;
   }
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -334,19 +376,19 @@ public class GetLoansLoanIdTimeline {
     }
     GetLoansLoanIdTimeline getLoansLoanIdTimeline = (GetLoansLoanIdTimeline) o;
     return Objects.equals(this.submittedOnDate, getLoansLoanIdTimeline.submittedOnDate) &&
-        Objects.equals(this.submittedByUsername, getLoansLoanIdTimeline.submittedByUsername) &&
-        Objects.equals(this.submittedByFirstname, getLoansLoanIdTimeline.submittedByFirstname) &&
-        Objects.equals(this.submittedByLastname, getLoansLoanIdTimeline.submittedByLastname) &&
-        Objects.equals(this.approvedOnDate, getLoansLoanIdTimeline.approvedOnDate) &&
-        Objects.equals(this.approvedByUsername, getLoansLoanIdTimeline.approvedByUsername) &&
-        Objects.equals(this.approvedByFirstname, getLoansLoanIdTimeline.approvedByFirstname) &&
-        Objects.equals(this.approvedByLastname, getLoansLoanIdTimeline.approvedByLastname) &&
-        Objects.equals(this.expectedDisbursementDate, getLoansLoanIdTimeline.expectedDisbursementDate) &&
-        Objects.equals(this.actualDisbursementDate, getLoansLoanIdTimeline.actualDisbursementDate) &&
-        Objects.equals(this.disbursedByUsername, getLoansLoanIdTimeline.disbursedByUsername) &&
-        Objects.equals(this.disbursedByFirstname, getLoansLoanIdTimeline.disbursedByFirstname) &&
-        Objects.equals(this.disbursedByLastname, getLoansLoanIdTimeline.disbursedByLastname) &&
-        Objects.equals(this.expectedMaturityDate, getLoansLoanIdTimeline.expectedMaturityDate);
+            Objects.equals(this.submittedByUsername, getLoansLoanIdTimeline.submittedByUsername) &&
+            Objects.equals(this.submittedByFirstname, getLoansLoanIdTimeline.submittedByFirstname) &&
+            Objects.equals(this.submittedByLastname, getLoansLoanIdTimeline.submittedByLastname) &&
+            Objects.equals(this.approvedOnDate, getLoansLoanIdTimeline.approvedOnDate) &&
+            Objects.equals(this.approvedByUsername, getLoansLoanIdTimeline.approvedByUsername) &&
+            Objects.equals(this.approvedByFirstname, getLoansLoanIdTimeline.approvedByFirstname) &&
+            Objects.equals(this.approvedByLastname, getLoansLoanIdTimeline.approvedByLastname) &&
+            Objects.equals(this.expectedDisbursementDate, getLoansLoanIdTimeline.expectedDisbursementDate) &&
+            Objects.equals(this.actualDisbursementDate, getLoansLoanIdTimeline.actualDisbursementDate) &&
+            Objects.equals(this.disbursedByUsername, getLoansLoanIdTimeline.disbursedByUsername) &&
+            Objects.equals(this.disbursedByFirstname, getLoansLoanIdTimeline.disbursedByFirstname) &&
+            Objects.equals(this.disbursedByLastname, getLoansLoanIdTimeline.disbursedByLastname) &&
+            Objects.equals(this.expectedMaturityDate, getLoansLoanIdTimeline.expectedMaturityDate);
   }
 
   @Override
@@ -359,7 +401,7 @@ public class GetLoansLoanIdTimeline {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetLoansLoanIdTimeline {\n");
-    
+
     sb.append("    submittedOnDate: ").append(toIndentedString(submittedOnDate)).append("\n");
     sb.append("    submittedByUsername: ").append(toIndentedString(submittedByUsername)).append("\n");
     sb.append("    submittedByFirstname: ").append(toIndentedString(submittedByFirstname)).append("\n");
@@ -382,7 +424,7 @@ public class GetLoansLoanIdTimeline {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
@@ -390,4 +432,5 @@ public class GetLoansLoanIdTimeline {
   }
 
 }
+
 

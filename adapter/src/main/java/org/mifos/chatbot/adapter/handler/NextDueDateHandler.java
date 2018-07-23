@@ -17,7 +17,7 @@ import java.util.List;
 @Slf4j
 @Component
 public class NextDueDateHandler extends BaseIntentHandler {
-    private static final String INTENT_KEYWORD = "nextDueDate";
+    private static final String INTENT_KEYWORD = "DueDate";
 
     @Autowired
     LoansApi loansApi;

@@ -136,7 +136,7 @@ public class GetLoansLoanIdSummary {
   private Double totalOverdue = null;
 
   @SerializedName("overdueSinceDate")
-  private LocalDate overdueSinceDate = null;
+  private List<Long> overdueSinceDate = null;
 
   @SerializedName("linkedAccount")
   private GetLoansLoanIdLinkedAccount linkedAccount = null;
@@ -170,10 +170,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get currency
    * @return currency
-  **/
+   **/
   @ApiModelProperty(value = "")
   public GetLoansLoanIdCurrency getCurrency() {
     return currency;
@@ -188,10 +188,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get principalDisbursed
    * @return principalDisbursed
-  **/
+   **/
   @ApiModelProperty(example = "1000000", value = "")
   public Long getPrincipalDisbursed() {
     return principalDisbursed;
@@ -206,10 +206,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get principalPaid
    * @return principalPaid
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getPrincipalPaid() {
     return principalPaid;
@@ -224,10 +224,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get principalWrittenOff
    * @return principalWrittenOff
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getPrincipalWrittenOff() {
     return principalWrittenOff;
@@ -242,10 +242,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get principalOutstanding
    * @return principalOutstanding
-  **/
+   **/
   @ApiModelProperty(example = "1000000", value = "")
   public Long getPrincipalOutstanding() {
     return principalOutstanding;
@@ -260,10 +260,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get principalOverdue
    * @return principalOverdue
-  **/
+   **/
   @ApiModelProperty(example = "833333.3", value = "")
   public Double getPrincipalOverdue() {
     return principalOverdue;
@@ -278,10 +278,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get interestCharged
    * @return interestCharged
-  **/
+   **/
   @ApiModelProperty(example = "240000", value = "")
   public Long getInterestCharged() {
     return interestCharged;
@@ -296,10 +296,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get interestPaid
    * @return interestPaid
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getInterestPaid() {
     return interestPaid;
@@ -314,10 +314,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get interestWaived
    * @return interestWaived
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getInterestWaived() {
     return interestWaived;
@@ -332,10 +332,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get interestWrittenOff
    * @return interestWrittenOff
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getInterestWrittenOff() {
     return interestWrittenOff;
@@ -350,10 +350,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get interestOutstanding
    * @return interestOutstanding
-  **/
+   **/
   @ApiModelProperty(example = "240000", value = "")
   public Long getInterestOutstanding() {
     return interestOutstanding;
@@ -368,10 +368,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get interestOverdue
    * @return interestOverdue
-  **/
+   **/
   @ApiModelProperty(example = "200000", value = "")
   public Long getInterestOverdue() {
     return interestOverdue;
@@ -386,10 +386,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get feeChargesCharged
    * @return feeChargesCharged
-  **/
+   **/
   @ApiModelProperty(example = "18000", value = "")
   public Long getFeeChargesCharged() {
     return feeChargesCharged;
@@ -404,10 +404,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get feeChargesDueAtDisbursementCharged
    * @return feeChargesDueAtDisbursementCharged
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getFeeChargesDueAtDisbursementCharged() {
     return feeChargesDueAtDisbursementCharged;
@@ -422,10 +422,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get feeChargesPaid
    * @return feeChargesPaid
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getFeeChargesPaid() {
     return feeChargesPaid;
@@ -440,10 +440,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get feeChargesWaived
    * @return feeChargesWaived
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getFeeChargesWaived() {
     return feeChargesWaived;
@@ -458,10 +458,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get feeChargesWrittenOff
    * @return feeChargesWrittenOff
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getFeeChargesWrittenOff() {
     return feeChargesWrittenOff;
@@ -476,10 +476,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get feeChargesOutstanding
    * @return feeChargesOutstanding
-  **/
+   **/
   @ApiModelProperty(example = "18000", value = "")
   public Long getFeeChargesOutstanding() {
     return feeChargesOutstanding;
@@ -494,10 +494,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get feeChargesOverdue
    * @return feeChargesOverdue
-  **/
+   **/
   @ApiModelProperty(example = "15000", value = "")
   public Long getFeeChargesOverdue() {
     return feeChargesOverdue;
@@ -512,10 +512,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get penaltyChargesCharged
    * @return penaltyChargesCharged
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getPenaltyChargesCharged() {
     return penaltyChargesCharged;
@@ -530,10 +530,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get penaltyChargesPaid
    * @return penaltyChargesPaid
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getPenaltyChargesPaid() {
     return penaltyChargesPaid;
@@ -548,10 +548,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get penaltyChargesWaived
    * @return penaltyChargesWaived
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getPenaltyChargesWaived() {
     return penaltyChargesWaived;
@@ -566,10 +566,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get penaltyChargesWrittenOff
    * @return penaltyChargesWrittenOff
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getPenaltyChargesWrittenOff() {
     return penaltyChargesWrittenOff;
@@ -584,10 +584,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get penaltyChargesOutstanding
    * @return penaltyChargesOutstanding
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getPenaltyChargesOutstanding() {
     return penaltyChargesOutstanding;
@@ -602,10 +602,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get penaltyChargesOverdue
    * @return penaltyChargesOverdue
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getPenaltyChargesOverdue() {
     return penaltyChargesOverdue;
@@ -620,10 +620,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get totalExpectedRepayment
    * @return totalExpectedRepayment
-  **/
+   **/
   @ApiModelProperty(example = "1258000", value = "")
   public Long getTotalExpectedRepayment() {
     return totalExpectedRepayment;
@@ -638,10 +638,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get totalRepayment
    * @return totalRepayment
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getTotalRepayment() {
     return totalRepayment;
@@ -656,10 +656,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get totalExpectedCostOfLoan
    * @return totalExpectedCostOfLoan
-  **/
+   **/
   @ApiModelProperty(example = "258000", value = "")
   public Long getTotalExpectedCostOfLoan() {
     return totalExpectedCostOfLoan;
@@ -674,10 +674,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get totalCostOfLoan
    * @return totalCostOfLoan
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getTotalCostOfLoan() {
     return totalCostOfLoan;
@@ -692,10 +692,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get totalWaived
    * @return totalWaived
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getTotalWaived() {
     return totalWaived;
@@ -710,10 +710,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get totalWrittenOff
    * @return totalWrittenOff
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Long getTotalWrittenOff() {
     return totalWrittenOff;
@@ -728,10 +728,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get totalOutstanding
    * @return totalOutstanding
-  **/
+   **/
   @ApiModelProperty(example = "1258000", value = "")
   public Long getTotalOutstanding() {
     return totalOutstanding;
@@ -746,10 +746,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get totalOverdue
    * @return totalOverdue
-  **/
+   **/
   @ApiModelProperty(example = "1048333.3", value = "")
   public Double getTotalOverdue() {
     return totalOverdue;
@@ -759,21 +759,29 @@ public class GetLoansLoanIdSummary {
     this.totalOverdue = totalOverdue;
   }
 
-  public GetLoansLoanIdSummary overdueSinceDate(LocalDate overdueSinceDate) {
+  public GetLoansLoanIdSummary overdueSinceDate(List<Long> overdueSinceDate) {
     this.overdueSinceDate = overdueSinceDate;
     return this;
   }
 
-   /**
+  public GetLoansLoanIdSummary addOverdueSinceDateItem(Long overdueSinceDateItem) {
+    if (this.overdueSinceDate == null) {
+      this.overdueSinceDate = new ArrayList<Long>();
+    }
+    this.overdueSinceDate.add(overdueSinceDateItem);
+    return this;
+  }
+
+  /**
    * Get overdueSinceDate
    * @return overdueSinceDate
-  **/
-  @ApiModelProperty(example = "[2012, 5, 10]", value = "")
-  public LocalDate getOverdueSinceDate() {
+   **/
+  @ApiModelProperty(example = "[2012,5,10]", value = "")
+  public List<Long> getOverdueSinceDate() {
     return overdueSinceDate;
   }
 
-  public void setOverdueSinceDate(LocalDate overdueSinceDate) {
+  public void setOverdueSinceDate(List<Long> overdueSinceDate) {
     this.overdueSinceDate = overdueSinceDate;
   }
 
@@ -782,10 +790,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get linkedAccount
    * @return linkedAccount
-  **/
+   **/
   @ApiModelProperty(value = "")
   public GetLoansLoanIdLinkedAccount getLinkedAccount() {
     return linkedAccount;
@@ -808,10 +816,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get disbursementDetails
    * @return disbursementDetails
-  **/
+   **/
   @ApiModelProperty(value = "")
   public List<GetLoansLoanIdDisbursementDetails> getDisbursementDetails() {
     return disbursementDetails;
@@ -826,10 +834,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get fixedEmiAmount
    * @return fixedEmiAmount
-  **/
+   **/
   @ApiModelProperty(example = "1100.0", value = "")
   public Float getFixedEmiAmount() {
     return fixedEmiAmount;
@@ -844,10 +852,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get maxOutstandingLoanBalance
    * @return maxOutstandingLoanBalance
-  **/
+   **/
   @ApiModelProperty(example = "35000", value = "")
   public Long getMaxOutstandingLoanBalance() {
     return maxOutstandingLoanBalance;
@@ -862,10 +870,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get canDisburse
    * @return canDisburse
-  **/
+   **/
   @ApiModelProperty(example = "false", value = "")
   public Boolean isCanDisburse() {
     return canDisburse;
@@ -888,10 +896,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get emiAmountVariations
    * @return emiAmountVariations
-  **/
+   **/
   @ApiModelProperty(value = "")
   public List<GetLoansLoanIdEmiVariations> getEmiAmountVariations() {
     return emiAmountVariations;
@@ -906,10 +914,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get inArrears
    * @return inArrears
-  **/
+   **/
   @ApiModelProperty(example = "true", value = "")
   public Boolean isInArrears() {
     return inArrears;
@@ -924,10 +932,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get isNPA
    * @return isNPA
-  **/
+   **/
   @ApiModelProperty(example = "false", value = "")
   public Boolean isIsNPA() {
     return isNPA;
@@ -950,10 +958,10 @@ public class GetLoansLoanIdSummary {
     return this;
   }
 
-   /**
+  /**
    * Get overdueCharges
    * @return overdueCharges
-  **/
+   **/
   @ApiModelProperty(value = "")
   public List<GetLoansLoanIdOverdueCharges> getOverdueCharges() {
     return overdueCharges;
@@ -965,7 +973,7 @@ public class GetLoansLoanIdSummary {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -974,48 +982,48 @@ public class GetLoansLoanIdSummary {
     }
     GetLoansLoanIdSummary getLoansLoanIdSummary = (GetLoansLoanIdSummary) o;
     return Objects.equals(this.currency, getLoansLoanIdSummary.currency) &&
-        Objects.equals(this.principalDisbursed, getLoansLoanIdSummary.principalDisbursed) &&
-        Objects.equals(this.principalPaid, getLoansLoanIdSummary.principalPaid) &&
-        Objects.equals(this.principalWrittenOff, getLoansLoanIdSummary.principalWrittenOff) &&
-        Objects.equals(this.principalOutstanding, getLoansLoanIdSummary.principalOutstanding) &&
-        Objects.equals(this.principalOverdue, getLoansLoanIdSummary.principalOverdue) &&
-        Objects.equals(this.interestCharged, getLoansLoanIdSummary.interestCharged) &&
-        Objects.equals(this.interestPaid, getLoansLoanIdSummary.interestPaid) &&
-        Objects.equals(this.interestWaived, getLoansLoanIdSummary.interestWaived) &&
-        Objects.equals(this.interestWrittenOff, getLoansLoanIdSummary.interestWrittenOff) &&
-        Objects.equals(this.interestOutstanding, getLoansLoanIdSummary.interestOutstanding) &&
-        Objects.equals(this.interestOverdue, getLoansLoanIdSummary.interestOverdue) &&
-        Objects.equals(this.feeChargesCharged, getLoansLoanIdSummary.feeChargesCharged) &&
-        Objects.equals(this.feeChargesDueAtDisbursementCharged, getLoansLoanIdSummary.feeChargesDueAtDisbursementCharged) &&
-        Objects.equals(this.feeChargesPaid, getLoansLoanIdSummary.feeChargesPaid) &&
-        Objects.equals(this.feeChargesWaived, getLoansLoanIdSummary.feeChargesWaived) &&
-        Objects.equals(this.feeChargesWrittenOff, getLoansLoanIdSummary.feeChargesWrittenOff) &&
-        Objects.equals(this.feeChargesOutstanding, getLoansLoanIdSummary.feeChargesOutstanding) &&
-        Objects.equals(this.feeChargesOverdue, getLoansLoanIdSummary.feeChargesOverdue) &&
-        Objects.equals(this.penaltyChargesCharged, getLoansLoanIdSummary.penaltyChargesCharged) &&
-        Objects.equals(this.penaltyChargesPaid, getLoansLoanIdSummary.penaltyChargesPaid) &&
-        Objects.equals(this.penaltyChargesWaived, getLoansLoanIdSummary.penaltyChargesWaived) &&
-        Objects.equals(this.penaltyChargesWrittenOff, getLoansLoanIdSummary.penaltyChargesWrittenOff) &&
-        Objects.equals(this.penaltyChargesOutstanding, getLoansLoanIdSummary.penaltyChargesOutstanding) &&
-        Objects.equals(this.penaltyChargesOverdue, getLoansLoanIdSummary.penaltyChargesOverdue) &&
-        Objects.equals(this.totalExpectedRepayment, getLoansLoanIdSummary.totalExpectedRepayment) &&
-        Objects.equals(this.totalRepayment, getLoansLoanIdSummary.totalRepayment) &&
-        Objects.equals(this.totalExpectedCostOfLoan, getLoansLoanIdSummary.totalExpectedCostOfLoan) &&
-        Objects.equals(this.totalCostOfLoan, getLoansLoanIdSummary.totalCostOfLoan) &&
-        Objects.equals(this.totalWaived, getLoansLoanIdSummary.totalWaived) &&
-        Objects.equals(this.totalWrittenOff, getLoansLoanIdSummary.totalWrittenOff) &&
-        Objects.equals(this.totalOutstanding, getLoansLoanIdSummary.totalOutstanding) &&
-        Objects.equals(this.totalOverdue, getLoansLoanIdSummary.totalOverdue) &&
-        Objects.equals(this.overdueSinceDate, getLoansLoanIdSummary.overdueSinceDate) &&
-        Objects.equals(this.linkedAccount, getLoansLoanIdSummary.linkedAccount) &&
-        Objects.equals(this.disbursementDetails, getLoansLoanIdSummary.disbursementDetails) &&
-        Objects.equals(this.fixedEmiAmount, getLoansLoanIdSummary.fixedEmiAmount) &&
-        Objects.equals(this.maxOutstandingLoanBalance, getLoansLoanIdSummary.maxOutstandingLoanBalance) &&
-        Objects.equals(this.canDisburse, getLoansLoanIdSummary.canDisburse) &&
-        Objects.equals(this.emiAmountVariations, getLoansLoanIdSummary.emiAmountVariations) &&
-        Objects.equals(this.inArrears, getLoansLoanIdSummary.inArrears) &&
-        Objects.equals(this.isNPA, getLoansLoanIdSummary.isNPA) &&
-        Objects.equals(this.overdueCharges, getLoansLoanIdSummary.overdueCharges);
+            Objects.equals(this.principalDisbursed, getLoansLoanIdSummary.principalDisbursed) &&
+            Objects.equals(this.principalPaid, getLoansLoanIdSummary.principalPaid) &&
+            Objects.equals(this.principalWrittenOff, getLoansLoanIdSummary.principalWrittenOff) &&
+            Objects.equals(this.principalOutstanding, getLoansLoanIdSummary.principalOutstanding) &&
+            Objects.equals(this.principalOverdue, getLoansLoanIdSummary.principalOverdue) &&
+            Objects.equals(this.interestCharged, getLoansLoanIdSummary.interestCharged) &&
+            Objects.equals(this.interestPaid, getLoansLoanIdSummary.interestPaid) &&
+            Objects.equals(this.interestWaived, getLoansLoanIdSummary.interestWaived) &&
+            Objects.equals(this.interestWrittenOff, getLoansLoanIdSummary.interestWrittenOff) &&
+            Objects.equals(this.interestOutstanding, getLoansLoanIdSummary.interestOutstanding) &&
+            Objects.equals(this.interestOverdue, getLoansLoanIdSummary.interestOverdue) &&
+            Objects.equals(this.feeChargesCharged, getLoansLoanIdSummary.feeChargesCharged) &&
+            Objects.equals(this.feeChargesDueAtDisbursementCharged, getLoansLoanIdSummary.feeChargesDueAtDisbursementCharged) &&
+            Objects.equals(this.feeChargesPaid, getLoansLoanIdSummary.feeChargesPaid) &&
+            Objects.equals(this.feeChargesWaived, getLoansLoanIdSummary.feeChargesWaived) &&
+            Objects.equals(this.feeChargesWrittenOff, getLoansLoanIdSummary.feeChargesWrittenOff) &&
+            Objects.equals(this.feeChargesOutstanding, getLoansLoanIdSummary.feeChargesOutstanding) &&
+            Objects.equals(this.feeChargesOverdue, getLoansLoanIdSummary.feeChargesOverdue) &&
+            Objects.equals(this.penaltyChargesCharged, getLoansLoanIdSummary.penaltyChargesCharged) &&
+            Objects.equals(this.penaltyChargesPaid, getLoansLoanIdSummary.penaltyChargesPaid) &&
+            Objects.equals(this.penaltyChargesWaived, getLoansLoanIdSummary.penaltyChargesWaived) &&
+            Objects.equals(this.penaltyChargesWrittenOff, getLoansLoanIdSummary.penaltyChargesWrittenOff) &&
+            Objects.equals(this.penaltyChargesOutstanding, getLoansLoanIdSummary.penaltyChargesOutstanding) &&
+            Objects.equals(this.penaltyChargesOverdue, getLoansLoanIdSummary.penaltyChargesOverdue) &&
+            Objects.equals(this.totalExpectedRepayment, getLoansLoanIdSummary.totalExpectedRepayment) &&
+            Objects.equals(this.totalRepayment, getLoansLoanIdSummary.totalRepayment) &&
+            Objects.equals(this.totalExpectedCostOfLoan, getLoansLoanIdSummary.totalExpectedCostOfLoan) &&
+            Objects.equals(this.totalCostOfLoan, getLoansLoanIdSummary.totalCostOfLoan) &&
+            Objects.equals(this.totalWaived, getLoansLoanIdSummary.totalWaived) &&
+            Objects.equals(this.totalWrittenOff, getLoansLoanIdSummary.totalWrittenOff) &&
+            Objects.equals(this.totalOutstanding, getLoansLoanIdSummary.totalOutstanding) &&
+            Objects.equals(this.totalOverdue, getLoansLoanIdSummary.totalOverdue) &&
+            Objects.equals(this.overdueSinceDate, getLoansLoanIdSummary.overdueSinceDate) &&
+            Objects.equals(this.linkedAccount, getLoansLoanIdSummary.linkedAccount) &&
+            Objects.equals(this.disbursementDetails, getLoansLoanIdSummary.disbursementDetails) &&
+            Objects.equals(this.fixedEmiAmount, getLoansLoanIdSummary.fixedEmiAmount) &&
+            Objects.equals(this.maxOutstandingLoanBalance, getLoansLoanIdSummary.maxOutstandingLoanBalance) &&
+            Objects.equals(this.canDisburse, getLoansLoanIdSummary.canDisburse) &&
+            Objects.equals(this.emiAmountVariations, getLoansLoanIdSummary.emiAmountVariations) &&
+            Objects.equals(this.inArrears, getLoansLoanIdSummary.inArrears) &&
+            Objects.equals(this.isNPA, getLoansLoanIdSummary.isNPA) &&
+            Objects.equals(this.overdueCharges, getLoansLoanIdSummary.overdueCharges);
   }
 
   @Override
@@ -1028,7 +1036,7 @@ public class GetLoansLoanIdSummary {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetLoansLoanIdSummary {\n");
-    
+
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    principalDisbursed: ").append(toIndentedString(principalDisbursed)).append("\n");
     sb.append("    principalPaid: ").append(toIndentedString(principalPaid)).append("\n");
@@ -1080,7 +1088,7 @@ public class GetLoansLoanIdSummary {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
@@ -1088,4 +1096,6 @@ public class GetLoansLoanIdSummary {
   }
 
 }
+
+
 
