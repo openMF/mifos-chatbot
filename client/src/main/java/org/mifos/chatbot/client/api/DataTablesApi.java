@@ -30,7 +30,6 @@ import java.io.IOException;
 import org.mifos.chatbot.client.model.DeleteDataTablesDatatableAppTableIdDatatableIdResponse;
 import org.mifos.chatbot.client.model.DeleteDataTablesDatatableAppTableIdResponse;
 import org.mifos.chatbot.client.model.DeleteDataTablesResponse;
-import org.mifos.chatbot.client.model.ERRORUNKNOWN;
 import org.mifos.chatbot.client.model.GetDataTablesAppTableIdResponse;
 import org.mifos.chatbot.client.model.GetDataTablesResponse;
 import org.mifos.chatbot.client.model.PostDataTablesAppTableIdRequest;
@@ -600,7 +599,7 @@ public class DataTablesApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteDatatableEntries_0Call(ERRORUNKNOWN datatable, Long apptableId, Long datatableId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteDatatableEntries_0Call(String datatable, Long apptableId, Long datatableId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -645,7 +644,7 @@ public class DataTablesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteDatatableEntries_0ValidateBeforeCall(ERRORUNKNOWN datatable, Long apptableId, Long datatableId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteDatatableEntries_0ValidateBeforeCall(String datatable, Long apptableId, Long datatableId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'datatable' is set
         if (datatable == null) {
@@ -677,7 +676,7 @@ public class DataTablesApi {
      * @return DeleteDataTablesDatatableAppTableIdDatatableIdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public DeleteDataTablesDatatableAppTableIdDatatableIdResponse deleteDatatableEntries_0(ERRORUNKNOWN datatable, Long apptableId, Long datatableId) throws ApiException {
+    public DeleteDataTablesDatatableAppTableIdDatatableIdResponse deleteDatatableEntries_0(String datatable, Long apptableId, Long datatableId) throws ApiException {
         ApiResponse<DeleteDataTablesDatatableAppTableIdDatatableIdResponse> resp = deleteDatatableEntries_0WithHttpInfo(datatable, apptableId, datatableId);
         return resp.getData();
     }
@@ -691,7 +690,7 @@ public class DataTablesApi {
      * @return ApiResponse&lt;DeleteDataTablesDatatableAppTableIdDatatableIdResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<DeleteDataTablesDatatableAppTableIdDatatableIdResponse> deleteDatatableEntries_0WithHttpInfo(ERRORUNKNOWN datatable, Long apptableId, Long datatableId) throws ApiException {
+    public ApiResponse<DeleteDataTablesDatatableAppTableIdDatatableIdResponse> deleteDatatableEntries_0WithHttpInfo(String datatable, Long apptableId, Long datatableId) throws ApiException {
         com.squareup.okhttp.Call call = deleteDatatableEntries_0ValidateBeforeCall(datatable, apptableId, datatableId, null, null);
         Type localVarReturnType = new TypeToken<DeleteDataTablesDatatableAppTableIdDatatableIdResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -707,7 +706,7 @@ public class DataTablesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteDatatableEntries_0Async(ERRORUNKNOWN datatable, Long apptableId, Long datatableId, final ApiCallback<DeleteDataTablesDatatableAppTableIdDatatableIdResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteDatatableEntries_0Async(String datatable, Long apptableId, Long datatableId, final ApiCallback<DeleteDataTablesDatatableAppTableIdDatatableIdResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

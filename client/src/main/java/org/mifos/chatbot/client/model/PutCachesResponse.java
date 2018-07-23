@@ -15,7 +15,7 @@ package org.mifos.chatbot.client.model;
 
 import java.util.Objects;
 
-import client.model.PutCachechangesSwagger;
+import org.mifos.chatbot.client.model.PutCachechangesSwagger;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModelProperty;
 import org.mifos.chatbot.client.model.PutCachechangesSwagger;

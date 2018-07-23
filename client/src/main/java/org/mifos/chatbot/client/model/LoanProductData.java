@@ -15,9 +15,9 @@ package org.mifos.chatbot.client.model;
 
 import java.util.Objects;
 
-import client.model.LoanProductBorrowerCycleVariationData;
-import client.model.LoanProductConfigurableAttributes;
-import client.model.LoanProductInterestRecalculationData;
+import org.mifos.chatbot.client.model.LoanProductBorrowerCycleVariationData;
+import org.mifos.chatbot.client.model.LoanProductConfigurableAttributes;
+import org.mifos.chatbot.client.model.LoanProductInterestRecalculationData;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModelProperty;
 import org.mifos.chatbot.client.model.ChargeData;

@@ -15,8 +15,8 @@ package org.mifos.chatbot.client.model;
 
 import java.util.Objects;
 
-import client.model.GetLoansLoanIdCurrency;
-import client.model.PostLoansRepaymentSchedulePeriods;
+import org.mifos.chatbot.client.model.GetLoansLoanIdCurrency;
+import org.mifos.chatbot.client.model.PostLoansRepaymentSchedulePeriods;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModelProperty;
 import org.mifos.chatbot.client.model.GetLoansLoanIdCurrency;

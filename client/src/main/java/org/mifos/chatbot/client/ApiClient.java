@@ -77,7 +77,6 @@ public class ApiClient {
      * Constructor for ApiClient
      */
     public ApiClient() {
-//        httpClient = new OkHttpClient();
         httpClient = SSLPasser.getUnsafeOkHttpClient();
 
         verifyingSsl = false;

@@ -15,7 +15,7 @@ package org.mifos.chatbot.client.model;
 
 import java.util.Objects;
 
-import client.model.PutHookResponseChangesSwagger;
+import org.mifos.chatbot.client.model.PutHookResponseChangesSwagger;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModelProperty;
 import org.mifos.chatbot.client.model.PutHookResponseChangesSwagger;
