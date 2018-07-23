@@ -11,27 +11,27 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.GetClientClientIdAddressesResponse;
-import io.swagger.client.model.PostClientClientIdAddressesRequest;
-import io.swagger.client.model.PostClientClientIdAddressesResponse;
-import io.swagger.client.model.PutClientClientIdAddressesRequest;
-import io.swagger.client.model.PutClientClientIdAddressesResponse;
+import org.mifos.chatbot.client.model.GetClientClientIdAddressesResponse;
+import org.mifos.chatbot.client.model.PostClientClientIdAddressesRequest;
+import org.mifos.chatbot.client.model.PostClientClientIdAddressesResponse;
+import org.mifos.chatbot.client.model.PutClientClientIdAddressesRequest;
+import org.mifos.chatbot.client.model.PutClientClientIdAddressesResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class ClientsAddressApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/client/{clientid}/addresses"
+        String localVarPath = "/org/mifos/chatbot/client/{clientid}/addresses"
             .replaceAll("\\{" + "clientid" + "\\}", apiClient.escapeString(clientid.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -210,7 +210,7 @@ public class ClientsAddressApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/client/{clientid}/addresses"
+        String localVarPath = "/org/mifos/chatbot/client/{clientid}/addresses"
             .replaceAll("\\{" + "clientid" + "\\}", apiClient.escapeString(clientid.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -342,7 +342,7 @@ public class ClientsAddressApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/client/addresses/template";
+        String localVarPath = "/org/mifos/chatbot/client/addresses/template";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -457,7 +457,7 @@ public class ClientsAddressApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/client/{clientid}/addresses"
+        String localVarPath = "/org/mifos/chatbot/client/{clientid}/addresses"
             .replaceAll("\\{" + "clientid" + "\\}", apiClient.escapeString(clientid.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

@@ -1,6 +1,7 @@
 description = "Mifos Chatbot Client"
 
 dependencies {
+    compile group: 'io.swagger', name: 'swagger-core', version: '1.5.0'
     compile "io.swagger:swagger-annotations"
     compile "com.squareup.okhttp:okhttp"
     compile "com.squareup.okhttp:logging-interceptor"

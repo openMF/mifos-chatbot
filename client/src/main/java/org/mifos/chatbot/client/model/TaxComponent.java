@@ -11,21 +11,18 @@
  */
 
 
-package client.model;
+package org.mifos.chatbot.client.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
+import client.model.TaxComponentHistory;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.client.model.AppUser;
-import io.swagger.client.model.GLAccount;
-import io.swagger.client.model.TaxComponentHistory;
-import io.swagger.client.model.TaxGroupMappings;
-import java.io.IOException;
+import org.mifos.chatbot.client.model.AppUser;
+import org.mifos.chatbot.client.model.GLAccount;
+import org.mifos.chatbot.client.model.TaxComponentHistory;
+import org.mifos.chatbot.client.model.TaxGroupMappings;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;

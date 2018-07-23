@@ -11,42 +11,42 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.DeleteTellersTellerIdCashiersCashierIdResponse;
-import io.swagger.client.model.GetTellersResponse;
-import io.swagger.client.model.GetTellersTellerIdCashiersCashierIdResponse;
-import io.swagger.client.model.GetTellersTellerIdCashiersCashiersIdSummaryAndTransactionsResponse;
-import io.swagger.client.model.GetTellersTellerIdCashiersCashiersIdTransactionsResponse;
-import io.swagger.client.model.GetTellersTellerIdCashiersCashiersIdTransactionsTemplateResponse;
-import io.swagger.client.model.GetTellersTellerIdCashiersResponse;
-import io.swagger.client.model.GetTellersTellerIdCashiersTemplateResponse;
-import io.swagger.client.model.PostTellersRequest;
-import io.swagger.client.model.PostTellersResponse;
-import io.swagger.client.model.PostTellersTellerIdCashiersCashierIdAllocateRequest;
-import io.swagger.client.model.PostTellersTellerIdCashiersCashierIdAllocateResponse;
-import io.swagger.client.model.PostTellersTellerIdCashiersCashierIdSettleRequest;
-import io.swagger.client.model.PostTellersTellerIdCashiersCashierIdSettleResponse;
-import io.swagger.client.model.PostTellersTellerIdCashiersRequest;
-import io.swagger.client.model.PostTellersTellerIdCashiersResponse;
-import io.swagger.client.model.PutTellersRequest;
-import io.swagger.client.model.PutTellersResponse;
-import io.swagger.client.model.PutTellersTellerIdCashiersCashierIdRequest;
-import io.swagger.client.model.PutTellersTellerIdCashiersCashierIdResponse;
+import org.mifos.chatbot.client.model.DeleteTellersTellerIdCashiersCashierIdResponse;
+import org.mifos.chatbot.client.model.GetTellersResponse;
+import org.mifos.chatbot.client.model.GetTellersTellerIdCashiersCashierIdResponse;
+import org.mifos.chatbot.client.model.GetTellersTellerIdCashiersCashiersIdSummaryAndTransactionsResponse;
+import org.mifos.chatbot.client.model.GetTellersTellerIdCashiersCashiersIdTransactionsResponse;
+import org.mifos.chatbot.client.model.GetTellersTellerIdCashiersCashiersIdTransactionsTemplateResponse;
+import org.mifos.chatbot.client.model.GetTellersTellerIdCashiersResponse;
+import org.mifos.chatbot.client.model.GetTellersTellerIdCashiersTemplateResponse;
+import org.mifos.chatbot.client.model.PostTellersRequest;
+import org.mifos.chatbot.client.model.PostTellersResponse;
+import org.mifos.chatbot.client.model.PostTellersTellerIdCashiersCashierIdAllocateRequest;
+import org.mifos.chatbot.client.model.PostTellersTellerIdCashiersCashierIdAllocateResponse;
+import org.mifos.chatbot.client.model.PostTellersTellerIdCashiersCashierIdSettleRequest;
+import org.mifos.chatbot.client.model.PostTellersTellerIdCashiersCashierIdSettleResponse;
+import org.mifos.chatbot.client.model.PostTellersTellerIdCashiersRequest;
+import org.mifos.chatbot.client.model.PostTellersTellerIdCashiersResponse;
+import org.mifos.chatbot.client.model.PutTellersRequest;
+import org.mifos.chatbot.client.model.PutTellersResponse;
+import org.mifos.chatbot.client.model.PutTellersTellerIdCashiersCashierIdRequest;
+import org.mifos.chatbot.client.model.PutTellersTellerIdCashiersCashierIdResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

@@ -11,30 +11,30 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.GetAccountTransfersPageItems;
-import io.swagger.client.model.GetAccountTransfersResponse;
-import io.swagger.client.model.GetAccountTransfersTemplateRefundByTransferResponse;
-import io.swagger.client.model.GetAccountTransfersTemplateResponse;
-import io.swagger.client.model.PostAccountTransfersRefundByTransferRequest;
-import io.swagger.client.model.PostAccountTransfersRefundByTransferResponse;
-import io.swagger.client.model.PostAccountTransfersRequest;
-import io.swagger.client.model.PostAccountTransfersResponse;
+import org.mifos.chatbot.client.model.GetAccountTransfersPageItems;
+import org.mifos.chatbot.client.model.GetAccountTransfersResponse;
+import org.mifos.chatbot.client.model.GetAccountTransfersTemplateRefundByTransferResponse;
+import org.mifos.chatbot.client.model.GetAccountTransfersTemplateResponse;
+import org.mifos.chatbot.client.model.PostAccountTransfersRefundByTransferRequest;
+import org.mifos.chatbot.client.model.PostAccountTransfersRefundByTransferResponse;
+import org.mifos.chatbot.client.model.PostAccountTransfersRequest;
+import org.mifos.chatbot.client.model.PostAccountTransfersResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

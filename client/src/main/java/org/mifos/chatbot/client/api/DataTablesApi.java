@@ -11,39 +11,39 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.DeleteDataTablesDatatableAppTableIdDatatableIdResponse;
-import io.swagger.client.model.DeleteDataTablesDatatableAppTableIdResponse;
-import io.swagger.client.model.DeleteDataTablesResponse;
-import io.swagger.client.model.ERRORUNKNOWN;
-import io.swagger.client.model.GetDataTablesAppTableIdResponse;
-import io.swagger.client.model.GetDataTablesResponse;
-import io.swagger.client.model.PostDataTablesAppTableIdRequest;
-import io.swagger.client.model.PostDataTablesAppTableIdResponse;
-import io.swagger.client.model.PostDataTablesRegisterDatatableAppTable;
-import io.swagger.client.model.PostDataTablesRequest;
-import io.swagger.client.model.PostDataTablesResponse;
-import io.swagger.client.model.PutDataTablesAppTableIdDatatableIdRequest;
-import io.swagger.client.model.PutDataTablesAppTableIdDatatableIdResponse;
-import io.swagger.client.model.PutDataTablesAppTableIdRequest;
-import io.swagger.client.model.PutDataTablesAppTableIdResponse;
-import io.swagger.client.model.PutDataTablesRequest;
-import io.swagger.client.model.PutDataTablesResponse;
+import org.mifos.chatbot.client.model.DeleteDataTablesDatatableAppTableIdDatatableIdResponse;
+import org.mifos.chatbot.client.model.DeleteDataTablesDatatableAppTableIdResponse;
+import org.mifos.chatbot.client.model.DeleteDataTablesResponse;
+import org.mifos.chatbot.client.model.ERRORUNKNOWN;
+import org.mifos.chatbot.client.model.GetDataTablesAppTableIdResponse;
+import org.mifos.chatbot.client.model.GetDataTablesResponse;
+import org.mifos.chatbot.client.model.PostDataTablesAppTableIdRequest;
+import org.mifos.chatbot.client.model.PostDataTablesAppTableIdResponse;
+import org.mifos.chatbot.client.model.PostDataTablesRegisterDatatableAppTable;
+import org.mifos.chatbot.client.model.PostDataTablesRequest;
+import org.mifos.chatbot.client.model.PostDataTablesResponse;
+import org.mifos.chatbot.client.model.PutDataTablesAppTableIdDatatableIdRequest;
+import org.mifos.chatbot.client.model.PutDataTablesAppTableIdDatatableIdResponse;
+import org.mifos.chatbot.client.model.PutDataTablesAppTableIdRequest;
+import org.mifos.chatbot.client.model.PutDataTablesAppTableIdResponse;
+import org.mifos.chatbot.client.model.PutDataTablesRequest;
+import org.mifos.chatbot.client.model.PutDataTablesResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

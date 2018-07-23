@@ -11,29 +11,29 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.DeleteReportsResponse;
-import io.swagger.client.model.GetReportsResponse;
-import io.swagger.client.model.GetReportsTemplateResponse;
-import io.swagger.client.model.PostReportsResponse;
-import io.swagger.client.model.PostRepostRequest;
-import io.swagger.client.model.PutReportRequest;
-import io.swagger.client.model.PutReportResponse;
+import org.mifos.chatbot.client.model.DeleteReportsResponse;
+import org.mifos.chatbot.client.model.GetReportsResponse;
+import org.mifos.chatbot.client.model.GetReportsTemplateResponse;
+import org.mifos.chatbot.client.model.PostReportsResponse;
+import org.mifos.chatbot.client.model.PostRepostRequest;
+import org.mifos.chatbot.client.model.PutReportRequest;
+import org.mifos.chatbot.client.model.PutReportResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

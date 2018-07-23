@@ -11,30 +11,30 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.AccountingRuleData;
-import io.swagger.client.model.DeleteAccountingRulesResponse;
-import io.swagger.client.model.GetAccountRulesResponse;
-import io.swagger.client.model.GetAccountRulesTemplateResponse;
-import io.swagger.client.model.PostAccountingRulesRequest;
-import io.swagger.client.model.PostAccountingRulesResponse;
-import io.swagger.client.model.PutAccountingRulesRequest;
-import io.swagger.client.model.PutAccountingRulesResponse;
+import org.mifos.chatbot.client.model.AccountingRuleData;
+import org.mifos.chatbot.client.model.DeleteAccountingRulesResponse;
+import org.mifos.chatbot.client.model.GetAccountRulesResponse;
+import org.mifos.chatbot.client.model.GetAccountRulesTemplateResponse;
+import org.mifos.chatbot.client.model.PostAccountingRulesRequest;
+import org.mifos.chatbot.client.model.PostAccountingRulesResponse;
+import org.mifos.chatbot.client.model.PutAccountingRulesRequest;
+import org.mifos.chatbot.client.model.PutAccountingRulesResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

@@ -11,32 +11,32 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.DeleteSavingsAccountsAccountIdResponse;
-import io.swagger.client.model.GetSavingsAccountsAccountIdResponse;
-import io.swagger.client.model.GetSavingsAccountsResponse;
-import io.swagger.client.model.GetSavingsAccountsTemplateResponse;
-import io.swagger.client.model.PostSavingsAccountsAccountIdRequest;
-import io.swagger.client.model.PostSavingsAccountsAccountIdResponse;
-import io.swagger.client.model.PostSavingsAccountsRequest;
-import io.swagger.client.model.PostSavingsAccountsResponse;
-import io.swagger.client.model.PutSavingsAccountsAccountIdRequest;
-import io.swagger.client.model.PutSavingsAccountsAccountIdResponse;
+import org.mifos.chatbot.client.model.DeleteSavingsAccountsAccountIdResponse;
+import org.mifos.chatbot.client.model.GetSavingsAccountsAccountIdResponse;
+import org.mifos.chatbot.client.model.GetSavingsAccountsResponse;
+import org.mifos.chatbot.client.model.GetSavingsAccountsTemplateResponse;
+import org.mifos.chatbot.client.model.PostSavingsAccountsAccountIdRequest;
+import org.mifos.chatbot.client.model.PostSavingsAccountsAccountIdResponse;
+import org.mifos.chatbot.client.model.PostSavingsAccountsRequest;
+import org.mifos.chatbot.client.model.PostSavingsAccountsResponse;
+import org.mifos.chatbot.client.model.PutSavingsAccountsAccountIdRequest;
+import org.mifos.chatbot.client.model.PutSavingsAccountsAccountIdResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

@@ -11,7 +11,7 @@
  */
 
 
-package client.model;
+package org.mifos.chatbot.client.model;
 
 import java.util.Objects;
 

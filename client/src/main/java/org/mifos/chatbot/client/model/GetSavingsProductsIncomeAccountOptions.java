@@ -11,7 +11,7 @@
  */
 
 
-package io.swagger.client.model;
+package org.mifos.chatbot.client.model;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -21,9 +21,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.client.model.GetSavingsAssetTagId;
-import io.swagger.client.model.GetSavingsProductsIncomeType;
-import io.swagger.client.model.GetSavingsProductsLiabilityUsage;
+import org.mifos.chatbot.client.model.GetSavingsAssetTagId;
+import org.mifos.chatbot.client.model.GetSavingsProductsIncomeType;
+import org.mifos.chatbot.client.model.GetSavingsProductsLiabilityUsage;
 import java.io.IOException;
 
 /**
@@ -201,7 +201,7 @@ public class GetSavingsProductsIncomeAccountOptions {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -246,7 +246,7 @@ public class GetSavingsProductsIncomeAccountOptions {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

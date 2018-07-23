@@ -11,16 +11,14 @@
  */
 
 
-package client.auth;
+package org.mifos.chatbot.client.auth;
 
-import io.swagger.client.Pair;
+import org.mifos.chatbot.client.Pair;
 
 import com.squareup.okhttp.Credentials;
 
 import java.util.Map;
 import java.util.List;
-
-import java.io.UnsupportedEncodingException;
 
 public class HttpBasicAuth implements Authentication {
     private String username;

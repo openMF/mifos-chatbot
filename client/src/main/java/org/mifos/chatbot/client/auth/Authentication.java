@@ -11,9 +11,9 @@
  */
 
 
-package client.auth;
+package org.mifos.chatbot.client.auth;
 
-import io.swagger.client.Pair;
+import org.mifos.chatbot.client.Pair;
 
 import java.util.Map;
 import java.util.List;

@@ -11,24 +11,23 @@
  */
 
 
-package client.model;
+package org.mifos.chatbot.client.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
+import client.model.LoanProductBorrowerCycleVariationData;
+import client.model.LoanProductConfigurableAttributes;
+import client.model.LoanProductInterestRecalculationData;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.client.model.ChargeData;
-import io.swagger.client.model.CurrencyData;
-import io.swagger.client.model.EnumOptionData;
-import io.swagger.client.model.FundData;
-import io.swagger.client.model.LoanProductBorrowerCycleVariationData;
-import io.swagger.client.model.LoanProductConfigurableAttributes;
-import io.swagger.client.model.LoanProductInterestRecalculationData;
-import java.io.IOException;
+import org.mifos.chatbot.client.model.ChargeData;
+import org.mifos.chatbot.client.model.CurrencyData;
+import org.mifos.chatbot.client.model.EnumOptionData;
+import org.mifos.chatbot.client.model.FundData;
+import org.mifos.chatbot.client.model.LoanProductBorrowerCycleVariationData;
+import org.mifos.chatbot.client.model.LoanProductConfigurableAttributes;
+import org.mifos.chatbot.client.model.LoanProductInterestRecalculationData;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;

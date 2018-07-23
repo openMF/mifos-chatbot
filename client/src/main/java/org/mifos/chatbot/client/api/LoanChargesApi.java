@@ -11,31 +11,31 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.DeleteLoansLoanIdChargesChargeIdResponse;
-import io.swagger.client.model.GetLoansLoanIdChargesChargeIdResponse;
-import io.swagger.client.model.GetLoansLoanIdChargesTemplateResponse;
-import io.swagger.client.model.PostLoansLoanIdChargesChargeIdRequest;
-import io.swagger.client.model.PostLoansLoanIdChargesChargeIdResponse;
-import io.swagger.client.model.PostLoansLoanIdChargesRequest;
-import io.swagger.client.model.PostLoansLoanIdChargesResponse;
-import io.swagger.client.model.PutLoansLoanIdChargesChargeIdRequest;
-import io.swagger.client.model.PutLoansLoanIdChargesChargeIdResponse;
+import org.mifos.chatbot.client.model.DeleteLoansLoanIdChargesChargeIdResponse;
+import org.mifos.chatbot.client.model.GetLoansLoanIdChargesChargeIdResponse;
+import org.mifos.chatbot.client.model.GetLoansLoanIdChargesTemplateResponse;
+import org.mifos.chatbot.client.model.PostLoansLoanIdChargesChargeIdRequest;
+import org.mifos.chatbot.client.model.PostLoansLoanIdChargesChargeIdResponse;
+import org.mifos.chatbot.client.model.PostLoansLoanIdChargesRequest;
+import org.mifos.chatbot.client.model.PostLoansLoanIdChargesResponse;
+import org.mifos.chatbot.client.model.PutLoansLoanIdChargesChargeIdRequest;
+import org.mifos.chatbot.client.model.PutLoansLoanIdChargesChargeIdResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

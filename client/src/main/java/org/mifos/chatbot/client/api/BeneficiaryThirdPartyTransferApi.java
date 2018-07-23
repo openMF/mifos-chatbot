@@ -11,29 +11,29 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.DeleteSelfBeneficiariesTPTBeneficiaryIdResponse;
-import io.swagger.client.model.GetSelfBeneficiariesTPTResponse;
-import io.swagger.client.model.GetSelfBeneficiariesTPTTemplateResponse;
-import io.swagger.client.model.PostSelfBeneficiariesTPTRequest;
-import io.swagger.client.model.PostSelfBeneficiariesTPTResponse;
-import io.swagger.client.model.PutSelfBeneficiariesTPTBeneficiaryIdRequest;
-import io.swagger.client.model.PutSelfBeneficiariesTPTBeneficiaryIdResponse;
+import org.mifos.chatbot.client.model.DeleteSelfBeneficiariesTPTBeneficiaryIdResponse;
+import org.mifos.chatbot.client.model.GetSelfBeneficiariesTPTResponse;
+import org.mifos.chatbot.client.model.GetSelfBeneficiariesTPTTemplateResponse;
+import org.mifos.chatbot.client.model.PostSelfBeneficiariesTPTRequest;
+import org.mifos.chatbot.client.model.PostSelfBeneficiariesTPTResponse;
+import org.mifos.chatbot.client.model.PutSelfBeneficiariesTPTBeneficiaryIdRequest;
+import org.mifos.chatbot.client.model.PutSelfBeneficiariesTPTBeneficiaryIdResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

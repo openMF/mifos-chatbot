@@ -11,22 +11,17 @@
  */
 
 
-package client.model;
+package org.mifos.chatbot.client.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.client.model.AppUser;
-import io.swagger.client.model.Client;
-import io.swagger.client.model.Question;
-import io.swagger.client.model.Response;
-import io.swagger.client.model.Survey;
-import java.io.IOException;
+import org.mifos.chatbot.client.model.AppUser;
+import org.mifos.chatbot.client.model.Client;
+import org.mifos.chatbot.client.model.Question;
+import org.mifos.chatbot.client.model.Response;
+import org.mifos.chatbot.client.model.Survey;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -49,7 +44,7 @@ public class Scorecard {
   @SerializedName("appUser")
   private AppUser appUser = null;
 
-  @SerializedName("client")
+  @SerializedName("org/mifos/chatbot/client")
   private Client client = null;
 
   @SerializedName("createdOn")

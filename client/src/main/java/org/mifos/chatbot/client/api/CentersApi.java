@@ -11,33 +11,33 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.DeleteCentersCenterIdResponse;
-import io.swagger.client.model.GetCentersCenterIdAccountsResponse;
-import io.swagger.client.model.GetCentersCenterIdResponse;
-import io.swagger.client.model.GetCentersResponse;
-import io.swagger.client.model.GetCentersTemplateResponse;
-import io.swagger.client.model.PostCentersCenterIdRequest;
-import io.swagger.client.model.PostCentersCenterIdResponse;
-import io.swagger.client.model.PostCentersRequest;
-import io.swagger.client.model.PostCentersResponse;
-import io.swagger.client.model.PutCentersCenterIdRequest;
-import io.swagger.client.model.PutCentersCenterIdResponse;
+import org.mifos.chatbot.client.model.DeleteCentersCenterIdResponse;
+import org.mifos.chatbot.client.model.GetCentersCenterIdAccountsResponse;
+import org.mifos.chatbot.client.model.GetCentersCenterIdResponse;
+import org.mifos.chatbot.client.model.GetCentersResponse;
+import org.mifos.chatbot.client.model.GetCentersTemplateResponse;
+import org.mifos.chatbot.client.model.PostCentersCenterIdRequest;
+import org.mifos.chatbot.client.model.PostCentersCenterIdResponse;
+import org.mifos.chatbot.client.model.PostCentersRequest;
+import org.mifos.chatbot.client.model.PostCentersResponse;
+import org.mifos.chatbot.client.model.PutCentersCenterIdRequest;
+import org.mifos.chatbot.client.model.PutCentersCenterIdResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

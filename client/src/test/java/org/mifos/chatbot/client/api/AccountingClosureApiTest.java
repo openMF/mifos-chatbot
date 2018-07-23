@@ -14,7 +14,7 @@
 package org.mifos.chatbot.client.api;
 
 import org.mifos.chatbot.client.ApiException;
-//import org.mifos.chatbot.client.api.client.api.AccountingClosureApi;
+//import org.mifos.chatbot.client.api.client.AccountingClosureApi;
 //import org.mifos.chatbot.client.api.client.model.PostGLCLosuresRequest;
 //import org.mifos.chatbot.client.api.client.model.PostGlClosuresResponse;
 import org.mifos.chatbot.client.model.DeleteGlClosuresResponse;
@@ -26,10 +26,7 @@ import org.mifos.chatbot.client.model.PutGlClosuresResponse;
 import org.junit.Test;
 import org.junit.Ignore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for AccountingClosureApi

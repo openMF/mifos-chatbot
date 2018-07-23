@@ -11,25 +11,26 @@
  */
 
 
-package client.model;
+package org.mifos.chatbot.client.model;
 
 import java.util.Objects;
+
+import client.model.*;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.client.model.Charge;
-import io.swagger.client.model.LoanProductConfigurableAttributes;
-import io.swagger.client.model.LoanProductFloatingRates;
-import io.swagger.client.model.LoanProductGuaranteeDetails;
-import io.swagger.client.model.LoanProductInterestRecalculationDetails;
-import io.swagger.client.model.LoanProductRelatedDetail;
-import io.swagger.client.model.LoanTransactionProcessingStrategy;
-import io.swagger.client.model.MonetaryCurrency;
-import io.swagger.client.model.Money;
+import org.mifos.chatbot.client.model.Charge;
+import org.mifos.chatbot.client.model.LoanProductConfigurableAttributes;
+import org.mifos.chatbot.client.model.LoanProductFloatingRates;
+import org.mifos.chatbot.client.model.LoanProductGuaranteeDetails;
+import org.mifos.chatbot.client.model.LoanProductInterestRecalculationDetails;
+import org.mifos.chatbot.client.model.LoanProductRelatedDetail;
+import org.mifos.chatbot.client.model.LoanTransactionProcessingStrategy;
+import org.mifos.chatbot.client.model.MonetaryCurrency;
+import org.mifos.chatbot.client.model.Money;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;

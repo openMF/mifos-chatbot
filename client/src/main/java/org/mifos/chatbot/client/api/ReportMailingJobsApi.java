@@ -11,30 +11,30 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.DeleteReportMailingJobsRequest;
-import io.swagger.client.model.DeleteReportMailingJobsResponse;
-import io.swagger.client.model.GetReportMailingJobsResponse;
-import io.swagger.client.model.GetReportMailingJobsTemplate;
-import io.swagger.client.model.PostReportMailingJobsRequest;
-import io.swagger.client.model.PostReportMailingJobsResponse;
-import io.swagger.client.model.PutReportMailingJobsRequest;
-import io.swagger.client.model.PutReportMailingJobsResponse;
+import org.mifos.chatbot.client.model.DeleteReportMailingJobsRequest;
+import org.mifos.chatbot.client.model.DeleteReportMailingJobsResponse;
+import org.mifos.chatbot.client.model.GetReportMailingJobsResponse;
+import org.mifos.chatbot.client.model.GetReportMailingJobsTemplate;
+import org.mifos.chatbot.client.model.PostReportMailingJobsRequest;
+import org.mifos.chatbot.client.model.PostReportMailingJobsResponse;
+import org.mifos.chatbot.client.model.PutReportMailingJobsRequest;
+import org.mifos.chatbot.client.model.PutReportMailingJobsResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

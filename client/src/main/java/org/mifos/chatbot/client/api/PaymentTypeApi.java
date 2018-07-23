@@ -11,29 +11,29 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.DeletePaymentTypesPaymentTypeIdResponse;
-import io.swagger.client.model.GetPaymentTypesPaymentTypeIdResponse;
-import io.swagger.client.model.GetPaymentTypesResponse;
-import io.swagger.client.model.PostPaymentTypesRequest;
-import io.swagger.client.model.PostPaymentTypesResponse;
-import io.swagger.client.model.PutPaymentTypesPaymentTypeIdRequest;
-import io.swagger.client.model.PutPaymentTypesPaymentTypeIdResponse;
+import org.mifos.chatbot.client.model.DeletePaymentTypesPaymentTypeIdResponse;
+import org.mifos.chatbot.client.model.GetPaymentTypesPaymentTypeIdResponse;
+import org.mifos.chatbot.client.model.GetPaymentTypesResponse;
+import org.mifos.chatbot.client.model.PostPaymentTypesRequest;
+import org.mifos.chatbot.client.model.PostPaymentTypesResponse;
+import org.mifos.chatbot.client.model.PutPaymentTypesPaymentTypeIdRequest;
+import org.mifos.chatbot.client.model.PutPaymentTypesPaymentTypeIdResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

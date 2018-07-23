@@ -11,31 +11,31 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.GetAccountsTypeAccountIdResponse;
-import io.swagger.client.model.GetAccountsTypeResponse;
-import io.swagger.client.model.GetAccountsTypeTemplateResponse;
-import io.swagger.client.model.PostAccountsTypeAccountIdRequest;
-import io.swagger.client.model.PostAccountsTypeAccountIdResponse;
-import io.swagger.client.model.PostAccountsTypeRequest;
-import io.swagger.client.model.PostAccountsTypeResponse;
-import io.swagger.client.model.PutAccountsTypeAccountIdRequest;
-import io.swagger.client.model.PutAccountsTypeAccountIdResponse;
+import org.mifos.chatbot.client.model.GetAccountsTypeAccountIdResponse;
+import org.mifos.chatbot.client.model.GetAccountsTypeResponse;
+import org.mifos.chatbot.client.model.GetAccountsTypeTemplateResponse;
+import org.mifos.chatbot.client.model.PostAccountsTypeAccountIdRequest;
+import org.mifos.chatbot.client.model.PostAccountsTypeAccountIdResponse;
+import org.mifos.chatbot.client.model.PostAccountsTypeRequest;
+import org.mifos.chatbot.client.model.PostAccountsTypeResponse;
+import org.mifos.chatbot.client.model.PutAccountsTypeAccountIdRequest;
+import org.mifos.chatbot.client.model.PutAccountsTypeAccountIdResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

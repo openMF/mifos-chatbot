@@ -14,7 +14,8 @@
 package org.mifos.chatbot.client.api;
 
 import com.google.gson.reflect.TypeToken;
-import io.swagger.client.model.*;
+import org.mifos.chatbot.client.*;
+import org.mifos.chatbot.client.model.*;
 
 import java.io.IOException;
 import java.lang.reflect.Type;

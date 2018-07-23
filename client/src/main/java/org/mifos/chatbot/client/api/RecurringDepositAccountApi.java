@@ -11,32 +11,32 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.DeleteRecurringDepositAccountsResponse;
-import io.swagger.client.model.GetRecurringDepositAccountsAccountIdResponse;
-import io.swagger.client.model.GetRecurringDepositAccountsResponse;
-import io.swagger.client.model.GetRecurringDepositAccountsTemplateResponse;
-import io.swagger.client.model.PostRecurringDepositAccountsAccountIdRequest;
-import io.swagger.client.model.PostRecurringDepositAccountsAccountIdResponse;
-import io.swagger.client.model.PostRecurringDepositAccountsRequest;
-import io.swagger.client.model.PostRecurringDepositAccountsResponse;
-import io.swagger.client.model.PutRecurringDepositAccountsAccountIdRequest;
-import io.swagger.client.model.PutRecurringDepositAccountsAccountIdResponse;
+import org.mifos.chatbot.client.model.DeleteRecurringDepositAccountsResponse;
+import org.mifos.chatbot.client.model.GetRecurringDepositAccountsAccountIdResponse;
+import org.mifos.chatbot.client.model.GetRecurringDepositAccountsResponse;
+import org.mifos.chatbot.client.model.GetRecurringDepositAccountsTemplateResponse;
+import org.mifos.chatbot.client.model.PostRecurringDepositAccountsAccountIdRequest;
+import org.mifos.chatbot.client.model.PostRecurringDepositAccountsAccountIdResponse;
+import org.mifos.chatbot.client.model.PostRecurringDepositAccountsRequest;
+import org.mifos.chatbot.client.model.PostRecurringDepositAccountsResponse;
+import org.mifos.chatbot.client.model.PutRecurringDepositAccountsAccountIdRequest;
+import org.mifos.chatbot.client.model.PutRecurringDepositAccountsAccountIdResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

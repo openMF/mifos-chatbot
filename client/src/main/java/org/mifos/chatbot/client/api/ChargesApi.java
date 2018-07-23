@@ -11,29 +11,29 @@
  */
 
 
-package client.api;
+package org.mifos.chatbot.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import org.mifos.chatbot.client.ApiCallback;
+import org.mifos.chatbot.client.ApiClient;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.ApiResponse;
+import org.mifos.chatbot.client.Configuration;
+import org.mifos.chatbot.client.Pair;
+import org.mifos.chatbot.client.ProgressRequestBody;
+import org.mifos.chatbot.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
 
-import io.swagger.client.model.DeleteChargesChargeIdResponse;
-import io.swagger.client.model.GetChargesResponse;
-import io.swagger.client.model.GetChargesTemplateResponse;
-import io.swagger.client.model.PostChargesRequest;
-import io.swagger.client.model.PostChargesResponse;
-import io.swagger.client.model.PutChargesChargeIdRequest;
-import io.swagger.client.model.PutChargesChargeIdResponse;
+import org.mifos.chatbot.client.model.DeleteChargesChargeIdResponse;
+import org.mifos.chatbot.client.model.GetChargesResponse;
+import org.mifos.chatbot.client.model.GetChargesTemplateResponse;
+import org.mifos.chatbot.client.model.PostChargesRequest;
+import org.mifos.chatbot.client.model.PostChargesResponse;
+import org.mifos.chatbot.client.model.PutChargesChargeIdRequest;
+import org.mifos.chatbot.client.model.PutChargesChargeIdResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

@@ -11,22 +11,18 @@
  */
 
 
-package client.model;
+package org.mifos.chatbot.client.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.client.model.Client;
-import io.swagger.client.model.Group;
-import io.swagger.client.model.GroupLevel;
-import io.swagger.client.model.Office;
-import io.swagger.client.model.Staff;
-import java.io.IOException;
+import org.mifos.chatbot.client.model.Client;
+import org.mifos.chatbot.client.model.Group;
+import org.mifos.chatbot.client.model.GroupLevel;
+import org.mifos.chatbot.client.model.Office;
+import org.mifos.chatbot.client.model.Staff;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.threeten.bp.LocalDate;

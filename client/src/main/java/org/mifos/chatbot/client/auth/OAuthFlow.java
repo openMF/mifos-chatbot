@@ -11,7 +11,7 @@
  */
 
 
-package client.auth;
+package org.mifos.chatbot.client.auth;
 
 public enum OAuthFlow {
     accessCode, implicit, password, application
