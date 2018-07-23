@@ -46,6 +46,13 @@ public class MifosChatAdapterServiceTest {
     }
 
     // TODO: add more tests
+    @Test
+    public void nextDueDateTest() {
+        Intent nextDueDateIntent = new Intent("getNextDueDate");
+
+        List<MifosResponse> response = chatbotAdapterService.handle(nextDueDateIntent);
+        log.info(">>>> Handler response: \n{}", response.get(0).getContent());
+    }
 
     @Test
     public void settings() {
