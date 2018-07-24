@@ -1,11 +1,10 @@
 package org.mifos.chatbot.protocol;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.annotation.Bean;
+import org.mifos.chatbot.protocol.slack.SlackIntegration;
 
-public class SlackIntegratorTest {
-    SlackIntegrator slackIntegrator;
+public class SlackIntegrationTest {
+    SlackIntegration slackIntegrator;
 
     @Test
     public void startBotTest() {

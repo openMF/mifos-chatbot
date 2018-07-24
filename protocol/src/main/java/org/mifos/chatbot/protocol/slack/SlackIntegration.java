@@ -1,4 +1,4 @@
-package org.mifos.chatbot.protocol;
+package org.mifos.chatbot.protocol.slack;
 
 import com.ullink.slack.simpleslackapi.SlackChannel;
 import com.ullink.slack.simpleslackapi.SlackSession;
@@ -11,6 +11,7 @@ import java.io.IOException;
  * This class is used for integration with Slack bot, user input module
  *
  * I plan to use JBot Framework to help me care about the underlying details, like the connection with Websocket
+ * https://dzone.com/articles/make-slack-bots-in-java-in-minutes
  */
 @Slf4j
 public class SlackIntegration {
@@ -24,5 +25,5 @@ public class SlackIntegration {
 //        SlackChannel channel = session.findChannelByName("general"); //make sure bot is a member of the channel.
 //        session.sendMessage(channel, "hi im a bot" );
 //    }
-    
+
 }
