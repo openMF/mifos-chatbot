@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * https://github.com/rampatra/jbot/blob/master/jbot-example/src/main/java/example/jbot/JBotApplication.java
  */
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "me.ramswaroop.jbot")
 public class SlackIntegrationApplication {
     /**
      * Entry point of the application. Run this method to start the sample bots,
