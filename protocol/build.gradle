@@ -6,7 +6,7 @@ dependencies {
 
     // slack
     compile "io.takari.slack:simple-slack-api"
-    compile group: 'me.ramswaroop.jbot', name: 'jbot', version: '2.0.0'
+    compile("me.ramswaroop.jbot:jbot:4.1.0")
 
     // xmpp
     compile "org.igniterealtime.smack:smack-java7"
