@@ -97,6 +97,7 @@ allprojects  {
             dependency "com.squareup.okhttp3:okhttp-android-support:3.10.0"
             dependency "com.squareup.okhttp3:okhttp-urlconnection:3.10.0"
             dependency "io.takari.slack:simple-slack-api:0.5.2"
+            dependency "me.ramswaroop.jbot:jbot:4.1.0"
             dependency "com.viber:viber-bot:1.0.11"
             dependency "org.igniterealtime.smack:smack-java7:4.1.0"
             dependency "org.igniterealtime.smack:smack-tcp:4.1.0"

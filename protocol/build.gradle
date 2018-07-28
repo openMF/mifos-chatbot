@@ -1,12 +1,14 @@
 description = "Mifos Chatbot Protocol"
 
 dependencies {
+    compile project(":core")
+    compile project(":adapter")
+
     // viber
     compile "com.viber:viber-bot"
 
     // slack
-    compile "io.takari.slack:simple-slack-api"
-    compile("me.ramswaroop.jbot:jbot:4.1.0")
+    compile "me.ramswaroop.jbot:jbot"
 
     // xmpp
     compile "org.igniterealtime.smack:smack-java7"

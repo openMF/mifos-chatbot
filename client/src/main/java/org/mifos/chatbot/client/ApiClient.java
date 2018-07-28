@@ -19,6 +19,7 @@ import com.squareup.okhttp.logging.HttpLoggingInterceptor.Level;
 import okio.BufferedSink;
 import okio.Okio;
 import org.mifos.chatbot.client.util.SSLPasser;
+import org.springframework.stereotype.Component;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
@@ -50,6 +51,7 @@ import org.mifos.chatbot.client.auth.HttpBasicAuth;
 import org.mifos.chatbot.client.auth.ApiKeyAuth;
 import org.mifos.chatbot.client.auth.OAuth;
 
+@Component
 public class ApiClient {
 
     private String basePath = "https://demo.openmf.org/fineract-provider/api/v1";

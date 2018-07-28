@@ -20,12 +20,12 @@ public class NextDueDateHandler extends BaseIntentHandler {
     private static final String INTENT_KEYWORD = "DueDate";
 
     @Autowired
-    LoansApi loansApi;
+    private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {
-        apiClient.setBasePath("https://demo.openmf.org/fineract-provider/api/v1");
-        return intent.getKeyword().contains(INTENT_KEYWORD);
+        log.info(INTENT_KEYWORD.toLowerCase());
+        return intent.getKeyword().toLowerCase().contains(INTENT_KEYWORD.toLowerCase());
     }
 
     @Override

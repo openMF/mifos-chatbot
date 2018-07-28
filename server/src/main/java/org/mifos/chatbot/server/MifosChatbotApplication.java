@@ -8,7 +8,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 @SpringBootApplication
 public class MifosChatbotApplication {
 	public static void main(String[] args) {
-//        ApplicationContext context = new ClassPathXmlApplicationContext();
 		SpringApplication.run(MifosChatbotApplication.class, args);
 	}
 }

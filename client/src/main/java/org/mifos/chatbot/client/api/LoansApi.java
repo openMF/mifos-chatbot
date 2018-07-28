@@ -37,6 +37,7 @@ import org.mifos.chatbot.client.model.PostLoansRequest;
 import org.mifos.chatbot.client.model.PostLoansResponse;
 import org.mifos.chatbot.client.model.PutLoansLoanIdRequest;
 import org.mifos.chatbot.client.model.PutLoansLoanIdResponse;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class LoansApi {
     private ApiClient apiClient;
 

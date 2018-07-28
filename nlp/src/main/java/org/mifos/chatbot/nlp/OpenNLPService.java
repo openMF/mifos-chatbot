@@ -12,6 +12,7 @@ import org.mifos.chatbot.core.NLPService;
 import org.mifos.chatbot.core.model.Intent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class OpenNLPService implements NLPService {
 
     Logger logger = LoggerFactory.getLogger(OpenNLPService.class);
@@ -70,7 +72,8 @@ public class OpenNLPService implements NLPService {
     }
 
     private String[] detectSentence(String paragraph) throws IOException {
-        InputStream is = new FileInputStream("src/main/resources/models/en-sent.bin");
+//        InputStream is = new FileInputStream("src/main/resources/models/en-sent.bin");
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("models/en-sent.bin");
         SentenceModel model = new SentenceModel(is);
         SentenceDetectorME sdetector = new SentenceDetectorME(model);
 
@@ -84,7 +87,8 @@ public class OpenNLPService implements NLPService {
     }
 
     private String[] tokenize(String sentence) throws IOException {
-        InputStream is = new FileInputStream("src/test/resources/models/en-token.bin");
+//        InputStream is = new FileInputStream("src/test/resources/models/en-token.bin");
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("models/en-token.bin");
         TokenizerModel model = new TokenizerModel(is);
         Tokenizer tokenizer = new TokenizerME(model);
 
@@ -96,13 +100,15 @@ public class OpenNLPService implements NLPService {
 
     private Span[] findName(String[] tokens) throws IOException {
         // TODO: change to ClassLoader to load the model from resource folder
-        InputStream is = new FileInputStream("src/test/resources/models/en-ner-second-try.bin");
+//        InputStream is = new FileInputStream("src/test/resources/models/en-ner-second-try.bin");
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("models/en-ner-second-try.bin");
         TokenNameFinderModel model = new TokenNameFinderModel(is);
         NameFinderME nameFinder = new NameFinderME(model);
 
         Span nameSpans[] = nameFinder.find(tokens);
 
         System.out.println(nameSpans.length + " spans found. ");
+        System.out.println(System.getProperty("user.dir"));
 
         is.close();
         return nameSpans;

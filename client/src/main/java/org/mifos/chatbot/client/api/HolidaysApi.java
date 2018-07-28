@@ -35,6 +35,7 @@ import org.mifos.chatbot.client.model.PostHolidaysRequest;
 import org.mifos.chatbot.client.model.PostHolidaysResponse;
 import org.mifos.chatbot.client.model.PutHolidaysHolidayIdRequest;
 import org.mifos.chatbot.client.model.PutHolidaysHolidayIdResponse;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class HolidaysApi {
     private ApiClient apiClient;
 
