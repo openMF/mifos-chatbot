@@ -1,18 +1,13 @@
 package org.mifos.chatbot.adapter.handler;
 
-import io.swagger.annotations.OAuth2Definition;
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.client.ApiException;
 import org.mifos.chatbot.client.api.LoansApi;
-import org.mifos.chatbot.client.model.GetHolidaysResponse;
 import org.mifos.chatbot.client.model.GetLoansLoanIdResponse;
-import org.mifos.chatbot.client.model.GetLoansResponse;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Slf4j
 @Component
@@ -32,6 +27,7 @@ public class NextDueDateHandler extends BaseIntentHandler {
     public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
+            // TODO: How to pass the parameters
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(1L, false);
 
             // TODO: Correct the response, current response is just for unit test
