@@ -8,11 +8,21 @@ import org.springframework.stereotype.Component;
 public class MifosSettings {
     private String apiUrl;
 
+    private String slackApiToken;
+
     public String getApiUrl() {
         return apiUrl;
     }
 
     public void setApiUrl(String apiUrl) {
         this.apiUrl = apiUrl;
+    }
+
+    public String getSlackApiToken() {
+        return slackApiToken;
+    }
+
+    public void setSlackApiToken(String slackApiToken) {
+        this.slackApiToken = slackApiToken;
     }
 }

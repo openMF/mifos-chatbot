@@ -1,15 +1,17 @@
 description = "Mifos Chatbot Server"
 
-apply plugin: 'org.springframework.boot'
+apply plugin: "org.springframework.boot"
 
 bootRun {
-    main = 'org.mifos.chatbot.server.MifosChatbotApplication'
+    main = "org.mifos.chatbot.server.MifosChatbotApplication"
 }
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter')
-    compile project(':core')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
-    testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
+    compile("org.springframework.boot:spring-boot-starter")
+    compile project(":core")
+    compile project(":nlp")
+    compile project(":client")
+    compile project(":adapter")
+    compile project(":protocol")
+    testCompile "org.springframework.boot:spring-boot-starter-test"
 }

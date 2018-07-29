@@ -2,18 +2,23 @@ description = "Mifos Chatbot Protocol"
 
 dependencies {
     compile project(":core")
-    compile project(":adapter")
 
     // viber
     compile "com.viber:viber-bot"
 
     // slack
-    compile "me.ramswaroop.jbot:jbot"
+    compile "io.takari.slack:simple-slack-api"
 
     // xmpp
     compile "org.igniterealtime.smack:smack-java7"
     compile "org.igniterealtime.smack:smack-tcp"
     compile "org.igniterealtime.smack:smack-im"
     compile "org.igniterealtime.smack:smack-extensions"
+
+    compile 'org.springframework:spring-core'
+    compile 'org.springframework:spring-context'
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile 'junit:junit'
 }
 

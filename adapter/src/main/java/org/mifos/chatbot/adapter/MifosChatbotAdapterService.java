@@ -1,6 +1,7 @@
 package org.mifos.chatbot.adapter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.mifos.chatbot.core.AdapterService;
 import org.mifos.chatbot.core.IntentHandler;
 import org.mifos.chatbot.core.NLPService;
 import org.mifos.chatbot.core.model.Intent;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class MifosChatbotAdapterService {
+public class MifosChatbotAdapterService implements AdapterService {
     @Autowired
     private NLPService openNLPService;
 
