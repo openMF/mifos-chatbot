@@ -32,7 +32,7 @@ public class SlackServiceTest {
     @Test
     public void sendMessage() {
         Message m = new Message();
-        m.setTo("Dingfan");
+        m.setTo("zhaodingfanhaha@gmail.com");
         m.setText("Hello World from Dingfan!");
         slackChatService.send(m);
     }

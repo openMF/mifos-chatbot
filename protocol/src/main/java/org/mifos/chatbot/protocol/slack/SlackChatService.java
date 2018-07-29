@@ -62,7 +62,7 @@ public class SlackChatService implements ChatService {
 
     @Override
     public void send(Message msg) {
-        SlackUser user = session.findUserByUserName(msg.getTo());
+        SlackUser user = session.findUserByEmail(msg.getTo());
         session.sendMessageToUser(user, msg.getText(), null);
     }
 }
