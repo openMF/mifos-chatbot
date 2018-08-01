@@ -1,14 +1,23 @@
 package org.mifos.chatbot.adapter.handler;
 
 import lombok.extern.slf4j.Slf4j;
+import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.api.LoansApi;
+import org.mifos.chatbot.client.model.GetLoansLoanIdResponse;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Slf4j
 @Component
 public class LoanStatusHandler extends BaseIntentHandler {
     private static final String INTENT_KEYWORD = "loanStatus";
+
+    @Autowired
+    private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {
@@ -19,7 +28,6 @@ public class LoanStatusHandler extends BaseIntentHandler {
                 return false;
             }
         }
-//        return INTENT_KEYWORD.equals(intent.getKeyword());
         return true;
     }
 
@@ -28,9 +36,13 @@ public class LoanStatusHandler extends BaseIntentHandler {
         MifosResponse response = new MifosResponse();
 
         // SomeLoanStatusObject result = apiClient.execute(); // TODO: do your thing here and call the loan status api!
-        // response.setContent(result.toString());
-//        response.setContent(INTENT_KEYWORD + ": NOT YET IMPLEMENTED!!!");
-
+        try {
+            GetLoansLoanIdResponse result = loansApi.retrieveLoan(1L, false);
+            response.setContent(result.toString());
+        } catch (ApiException e) {
+            log.error("Something wrong in loans status, ", e);
+            response.setContent(e.getMessage());
+        }
 
         return response;
     }

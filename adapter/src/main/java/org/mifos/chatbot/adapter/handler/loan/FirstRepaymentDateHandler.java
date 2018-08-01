@@ -1,4 +1,4 @@
 package org.mifos.chatbot.adapter.handler;
 
-public class BaseIntentHandler {
+public class FirstRepaymentDateHandler {
 }

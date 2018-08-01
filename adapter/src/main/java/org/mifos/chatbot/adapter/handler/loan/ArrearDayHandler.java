@@ -1,4 +1,4 @@
 package org.mifos.chatbot.adapter.handler;
 
-public class DuePrincipalHandler {
+public class ArrearDayHandler {
 }
