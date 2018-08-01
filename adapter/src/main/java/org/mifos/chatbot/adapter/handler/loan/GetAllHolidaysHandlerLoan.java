@@ -1,4 +1,4 @@
-package org.mifos.chatbot.adapter.handler;
+package org.mifos.chatbot.adapter.handler.loan;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.client.ApiException;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class GetAllHolidaysHandler extends BaseIntentHandler {
+public class GetAllHolidaysHandlerLoan extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "getAllHolidays";
 
     @Autowired

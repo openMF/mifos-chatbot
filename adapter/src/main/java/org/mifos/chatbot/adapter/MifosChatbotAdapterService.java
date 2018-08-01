@@ -6,6 +6,7 @@ import org.mifos.chatbot.core.IntentHandler;
 import org.mifos.chatbot.core.NLPService;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
+import org.mifos.chatbot.nlp.OpenNLPService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 @Service
 public class MifosChatbotAdapterService implements AdapterService {
     @Autowired
-    private NLPService openNLPService;
+    private OpenNLPService openNLPService;
 
     @Autowired
     private List<IntentHandler> handlers;

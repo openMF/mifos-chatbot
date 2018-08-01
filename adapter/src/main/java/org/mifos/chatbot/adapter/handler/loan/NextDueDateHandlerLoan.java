@@ -1,11 +1,10 @@
-package org.mifos.chatbot.adapter.handler;
+package org.mifos.chatbot.adapter.handler.loan;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.time.FastDateFormat;
 import org.mifos.chatbot.client.ApiException;
 import org.mifos.chatbot.client.api.LoansApi;
-import org.mifos.chatbot.client.model.GetLoansLoanIdRepaymentFrequencyType;
 import org.mifos.chatbot.client.model.GetLoansLoanIdResponse;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
@@ -18,7 +17,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class NextDueDateHandler extends BaseIntentHandler {
+public class NextDueDateHandlerLoan extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "DueDate";
 
     @Autowired

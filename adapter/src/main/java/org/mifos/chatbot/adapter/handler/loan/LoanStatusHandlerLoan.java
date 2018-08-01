@@ -1,4 +1,4 @@
-package org.mifos.chatbot.adapter.handler;
+package org.mifos.chatbot.adapter.handler.loan;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.client.ApiException;
@@ -9,11 +9,9 @@ import org.mifos.chatbot.core.model.MifosResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Slf4j
 @Component
-public class LoanStatusHandler extends BaseIntentHandler {
+public class LoanStatusHandlerLoan extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "loanStatus";
 
     @Autowired

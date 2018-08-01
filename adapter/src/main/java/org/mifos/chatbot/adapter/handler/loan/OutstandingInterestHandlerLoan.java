@@ -1,4 +1,4 @@
-package org.mifos.chatbot.adapter.handler;
+package org.mifos.chatbot.adapter.handler.loan;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.client.model.LoanProductInterestRecalculationData;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class OutstandingInterestHandler extends BaseIntentHandler {
+public class OutstandingInterestHandlerLoan extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "outstandingInterest";
 
     @Override

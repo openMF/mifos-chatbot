@@ -1,4 +1,4 @@
-package org.mifos.chatbot.adapter.handler;
+package org.mifos.chatbot.adapter.handler.loan;
 
 public class LoanDisburseDateHandler {
 }

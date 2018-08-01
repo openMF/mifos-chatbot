@@ -11,10 +11,10 @@ public class OpenNLPServiceTest {
     @Autowired
     private NLPService nlpService;
 
-    @Before
-    public void setup() {
-        nlpService = new OpenNLPService();
-    }
+//    @Before
+//    public void setup() {
+//        nlpService = new OpenNLPService();
+//    }
 
     // Intent should be specific enough to point to the RESTful API of Mifos
     @Test

@@ -1,4 +1,4 @@
-package org.mifos.chatbot.adapter.handler;
+package org.mifos.chatbot.adapter.handler.loan;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.core.model.Intent;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class OutstandingPrincipalHandler extends BaseIntentHandler {
+public class OutstandingPrincipalHandlerLoan extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "outstandingPrincipal";
 
     @Override

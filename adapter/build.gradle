@@ -3,6 +3,7 @@ description = "Mifos Chatbot Adapter"
 dependencies {
     compile project(':core')
     compile project(':client')
+    compile project(':nlp')
     compile 'org.springframework:spring-core'
     compile 'org.springframework:spring-context'
 
