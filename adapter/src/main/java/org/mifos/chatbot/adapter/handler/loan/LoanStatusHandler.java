@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class LoanStatusHandlerLoan extends BaseLoanIntentHandler {
+public class LoanStatusHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "loanStatus";
 
     @Autowired

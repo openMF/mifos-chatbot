@@ -7,9 +7,11 @@ import org.mifos.chatbot.client.model.GetLoansLoanIdResponse;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Slf4j
-public class DueInterestHandlerLoan extends BaseLoanIntentHandler {
+@Component
+public class DueInterestHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "dueInterest";
 
     @Autowired
@@ -25,8 +27,10 @@ public class DueInterestHandlerLoan extends BaseLoanIntentHandler {
         MifosResponse response = new MifosResponse();
         try {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(2L, false);
+            response.setContent(String.valueOf(result.getSummary().getInterestOverdue()));
         } catch (ApiException e) {
             log.info("Error", e);
+            response.setContent(e.getMessage());
         }
 
         return response;

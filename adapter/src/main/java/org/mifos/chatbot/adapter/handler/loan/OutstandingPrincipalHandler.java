@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class OutstandingPrincipalHandlerLoan extends BaseLoanIntentHandler {
+public class OutstandingPrincipalHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "outstandingPrincipal";
 
     @Override

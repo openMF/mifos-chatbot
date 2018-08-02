@@ -13,7 +13,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class GetAllHolidaysHandlerLoan extends BaseLoanIntentHandler {
+public class GetAllHolidaysHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "getAllHolidays";
 
     @Autowired

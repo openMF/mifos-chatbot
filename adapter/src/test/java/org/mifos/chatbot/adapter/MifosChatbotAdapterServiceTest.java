@@ -29,6 +29,7 @@ public class MifosChatbotAdapterServiceTest {
 
         List<MifosResponse> responses = chatbotAdapterService.handle(loanStatusIntent);
 
+        //
         for(MifosResponse response : responses) {
             log.info("Handler response: \n{}", response.getContent());
         }
@@ -51,6 +52,36 @@ public class MifosChatbotAdapterServiceTest {
         Intent nextDueDateIntent = new Intent("checkmynext duedate");
 
         List<MifosResponse> responses = chatbotAdapterService.handle(nextDueDateIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void arrearDayTest() {
+        Intent arrearDayIntent = new Intent("arrearday");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(arrearDayIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void dueInterestTest() {
+        Intent dueInterestIntent = new Intent("dueInterest");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(dueInterestIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void firstRepaymentDateTest() {
+        Intent firstRepaymentDateIntent = new Intent("firstrepaymentdate");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(firstRepaymentDateIntent);
         for(MifosResponse response : responses) {
             log.info(">>>> Handler response: \n{}", response.getContent());
         }

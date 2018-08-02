@@ -17,7 +17,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class NextDueDateHandlerLoan extends BaseLoanIntentHandler {
+public class NextDueDateHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "DueDate";
 
     @Autowired

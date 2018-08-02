@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class OutstandingInterestHandlerLoan extends BaseLoanIntentHandler {
+public class OutstandingInterestHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "outstandingInterest";
 
     @Override
