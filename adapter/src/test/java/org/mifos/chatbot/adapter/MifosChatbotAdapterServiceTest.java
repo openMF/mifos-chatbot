@@ -88,6 +88,126 @@ public class MifosChatbotAdapterServiceTest {
     }
 
     @Test
+    public void clientActivationDateTest() {
+        Intent clientActivationDateIntent = new Intent("activationdate");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(clientActivationDateIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void disbursementAmountTest() {
+        Intent disbursementAmountIntent = new Intent("disbursementamount");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(disbursementAmountIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void disbursementDateTest() {
+        Intent disbursementDateIntent = new Intent("disbursementDate");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(disbursementDateIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void disbursementInterestTest() {
+        Intent disbursementInterestIntent = new Intent("disbursementInterest");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(disbursementInterestIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void maturityDateTest() {
+        Intent maturityDateIntent = new Intent("maturityDate");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(maturityDateIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void outstandingInterestTest() {
+        Intent outstandingInterestIntent = new Intent("outstandingInterest");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(outstandingInterestIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void outstandingPrincipalTest() {
+        Intent outstandingPrincipalIntent = new Intent("outstandingPrincipal");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(outstandingPrincipalIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void overdueInterestTest() {
+        Intent overdueInterestIntent = new Intent("overdueInterest");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(overdueInterestIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void overduePrincipalTest() {
+        Intent overduePrincipalIntent = new Intent("overduePrincipal");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(overduePrincipalIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void penaltyChargeTest() {
+        Intent penaltyChargeIntent = new Intent("penaltyCharge");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(penaltyChargeIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void previousPaymentDateTest() {
+        Intent previousPaymentDateIntent = new Intent("previousPaymentDate");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(previousPaymentDateIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void interestRateTest() {
+        Intent interestRateIntent = new Intent("interestRate");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(interestRateIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
     public void settings() {
         log.warn("This is the API url: {}", settings.getApiUrl()); // just to demonstrate how dependency injected properties are working
     }

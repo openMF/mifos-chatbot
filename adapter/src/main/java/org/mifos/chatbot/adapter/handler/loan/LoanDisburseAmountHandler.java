@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class LoanDisburseAmountHandler extends BaseLoanIntentHandler {
-    private static final String INTENT_KEYWORD = "dueInterest";
+    private static final String INTENT_KEYWORD = "disbursementAmount";
 
     @Autowired
     LoansApi loansApi;
@@ -27,8 +27,10 @@ public class LoanDisburseAmountHandler extends BaseLoanIntentHandler {
         MifosResponse response = new MifosResponse();
         try {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(2L, false);
+            response.setContent(String.valueOf(result.getSummary().getPrincipalDisbursed()));
         } catch (ApiException e) {
             log.info("Error", e);
+            response.setContent(e.getMessage());
         }
 
         return response;

@@ -7,10 +7,12 @@ import org.mifos.chatbot.client.model.GetClientsClientIdResponse;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Slf4j
+@Component
 public class ClientActivationDateHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "activationdate";
 
@@ -28,7 +30,8 @@ public class ClientActivationDateHandler extends BaseLoanIntentHandler {
         try {
 //            GetLoansLoanIdResponse result = loansApi.retrieveLoan(2L, false);
             GetClientsClientIdResponse result = clientApi.retrieveOne(1L, false);
-//            List<Long> date = result.getActivationDate();
+            List<Long> date = result.getActivationDate();
+            log.info(date.toString());
 
         } catch (ApiException e) {
             log.info("Error", e);

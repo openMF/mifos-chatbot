@@ -13,6 +13,7 @@
 
 package org.mifos.chatbot.client.model;
 
+import java.util.List;
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -30,7 +31,7 @@ import org.threeten.bp.LocalDate;
 
 public class GetClientsTimeline {
   @SerializedName("submittedOnDate")
-  private LocalDate submittedOnDate = null;
+  private List<Long> submittedOnDate = null;
 
   @SerializedName("submittedByUsername")
   private String submittedByUsername = null;
@@ -42,7 +43,7 @@ public class GetClientsTimeline {
   private String submittedByLastname = null;
 
   @SerializedName("activatedOnDate")
-  private LocalDate activatedOnDate = null;
+  private List<Long> activatedOnDate = null;
 
   @SerializedName("activatedByUsername")
   private String activatedByUsername = null;
@@ -53,7 +54,7 @@ public class GetClientsTimeline {
   @SerializedName("activatedByLastname")
   private String activatedByLastname = null;
 
-  public GetClientsTimeline submittedOnDate(LocalDate submittedOnDate) {
+  public GetClientsTimeline submittedOnDate(List<Long> submittedOnDate) {
     this.submittedOnDate = submittedOnDate;
     return this;
   }
@@ -63,11 +64,11 @@ public class GetClientsTimeline {
    * @return submittedOnDate
   **/
   @ApiModelProperty(example = "[2013, 1, 1]", value = "")
-  public LocalDate getSubmittedOnDate() {
+  public List<Long> getSubmittedOnDate() {
     return submittedOnDate;
   }
 
-  public void setSubmittedOnDate(LocalDate submittedOnDate) {
+  public void setSubmittedOnDate(List<Long> submittedOnDate) {
     this.submittedOnDate = submittedOnDate;
   }
 
@@ -125,7 +126,7 @@ public class GetClientsTimeline {
     this.submittedByLastname = submittedByLastname;
   }
 
-  public GetClientsTimeline activatedOnDate(LocalDate activatedOnDate) {
+  public GetClientsTimeline activatedOnDate(List<Long> activatedOnDate) {
     this.activatedOnDate = activatedOnDate;
     return this;
   }
@@ -135,11 +136,11 @@ public class GetClientsTimeline {
    * @return activatedOnDate
   **/
   @ApiModelProperty(example = "[2013, 1, 1]", value = "")
-  public LocalDate getActivatedOnDate() {
+  public List<Long> getActivatedOnDate() {
     return activatedOnDate;
   }
 
-  public void setActivatedOnDate(LocalDate activatedOnDate) {
+  public void setActivatedOnDate(List<Long> activatedOnDate) {
     this.activatedOnDate = activatedOnDate;
   }
 

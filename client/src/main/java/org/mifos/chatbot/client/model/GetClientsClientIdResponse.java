@@ -46,7 +46,7 @@ public class GetClientsClientIdResponse {
   private Boolean active = null;
 
   @SerializedName("activationDate")
-  private LocalDate activationDate = null;
+  private List<Long> activationDate = null;
 
   @SerializedName("firstname")
   private String firstname = null;
@@ -147,7 +147,7 @@ public class GetClientsClientIdResponse {
     this.active = active;
   }
 
-  public GetClientsClientIdResponse activationDate(LocalDate activationDate) {
+  public GetClientsClientIdResponse activationDate(List<Long> activationDate) {
     this.activationDate = activationDate;
     return this;
   }
@@ -157,11 +157,11 @@ public class GetClientsClientIdResponse {
    * @return activationDate
   **/
   @ApiModelProperty(example = "[2013, 1, 1]", value = "")
-  public LocalDate getActivationDate() {
+  public List<Long> getActivationDate() {
     return activationDate;
   }
 
-  public void setActivationDate(LocalDate activationDate) {
+  public void setActivationDate(List<Long> activationDate) {
     this.activationDate = activationDate;
   }
 
