@@ -16,7 +16,7 @@ public class LoanDisburseDateHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "disbursementDate";
 
     @Autowired
-    LoansApi loansApi;
+    private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {

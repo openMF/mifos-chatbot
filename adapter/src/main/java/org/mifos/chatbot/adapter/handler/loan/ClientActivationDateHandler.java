@@ -17,7 +17,7 @@ public class ClientActivationDateHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "activationdate";
 
     @Autowired
-    ClientApi clientApi;
+    private ClientApi clientApi;
 
     @Override
     public Boolean canHandle(Intent intent) {

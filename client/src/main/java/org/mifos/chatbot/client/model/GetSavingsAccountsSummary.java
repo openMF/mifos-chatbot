@@ -33,10 +33,10 @@ public class GetSavingsAccountsSummary {
   private GetSavingsCurrency currency = null;
 
   @SerializedName("accountBalance")
-  private Integer accountBalance = null;
+  private Double accountBalance = null;
 
   @SerializedName("availableBalance")
-  private Integer availableBalance = null;
+  private Double availableBalance = null;
 
   public GetSavingsAccountsSummary currency(GetSavingsCurrency currency) {
     this.currency = currency;
@@ -56,7 +56,7 @@ public class GetSavingsAccountsSummary {
     this.currency = currency;
   }
 
-  public GetSavingsAccountsSummary accountBalance(Integer accountBalance) {
+  public GetSavingsAccountsSummary accountBalance(Double accountBalance) {
     this.accountBalance = accountBalance;
     return this;
   }
@@ -66,15 +66,15 @@ public class GetSavingsAccountsSummary {
    * @return accountBalance
   **/
   @ApiModelProperty(example = "0", value = "")
-  public Integer getAccountBalance() {
+  public Double getAccountBalance() {
     return accountBalance;
   }
 
-  public void setAccountBalance(Integer accountBalance) {
+  public void setAccountBalance(Double accountBalance) {
     this.accountBalance = accountBalance;
   }
 
-  public GetSavingsAccountsSummary availableBalance(Integer availableBalance) {
+  public GetSavingsAccountsSummary availableBalance(Double availableBalance) {
     this.availableBalance = availableBalance;
     return this;
   }
@@ -84,11 +84,11 @@ public class GetSavingsAccountsSummary {
    * @return availableBalance
   **/
   @ApiModelProperty(example = "0", value = "")
-  public Integer getAvailableBalance() {
+  public Double getAvailableBalance() {
     return availableBalance;
   }
 
-  public void setAvailableBalance(Integer availableBalance) {
+  public void setAvailableBalance(Double availableBalance) {
     this.availableBalance = availableBalance;
   }
 

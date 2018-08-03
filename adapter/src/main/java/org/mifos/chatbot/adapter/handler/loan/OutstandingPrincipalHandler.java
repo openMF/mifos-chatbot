@@ -15,7 +15,7 @@ public class OutstandingPrincipalHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "outstandingPrincipal";
 
     @Autowired
-    LoansApi loansApi;
+    private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {

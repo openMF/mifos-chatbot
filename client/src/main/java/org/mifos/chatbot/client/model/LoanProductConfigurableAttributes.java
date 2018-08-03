@@ -28,7 +28,7 @@ public class LoanProductConfigurableAttributes {
   @SerializedName("id")
   private Long id = null;
 
-  @SerializedName("loanProduct")
+  @SerializedName("loanproduct")
   private LoanProduct loanProduct = null;
 
   @SerializedName("amortizationBoolean")
@@ -82,8 +82,8 @@ public class LoanProductConfigurableAttributes {
   }
 
    /**
-   * Get loanProduct
-   * @return loanProduct
+   * Get loanproduct
+   * @return loanproduct
   **/
   @ApiModelProperty(value = "")
   public LoanProduct getLoanProduct() {
@@ -291,7 +291,7 @@ public class LoanProductConfigurableAttributes {
     sb.append("class LoanProductConfigurableAttributes {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    loanProduct: ").append(toIndentedString(loanProduct)).append("\n");
+    sb.append("    loanproduct: ").append(toIndentedString(loanProduct)).append("\n");
     sb.append("    amortizationBoolean: ").append(toIndentedString(amortizationBoolean)).append("\n");
     sb.append("    arrearsToleranceBoolean: ").append(toIndentedString(arrearsToleranceBoolean)).append("\n");
     sb.append("    graceOnArrearsAgingBoolean: ").append(toIndentedString(graceOnArrearsAgingBoolean)).append("\n");

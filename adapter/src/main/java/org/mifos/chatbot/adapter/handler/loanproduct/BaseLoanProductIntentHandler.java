@@ -1,4 +1,4 @@
-package org.mifos.chatbot.adapter.handler.loanProduct;
+package org.mifos.chatbot.adapter.handler.loanproduct;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.client.ApiClient;

@@ -318,7 +318,7 @@ public class CreditBureauConfigurationApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/CreditBureauConfiguration/loanProduct";
+        String localVarPath = "/CreditBureauConfiguration/loanproduct";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

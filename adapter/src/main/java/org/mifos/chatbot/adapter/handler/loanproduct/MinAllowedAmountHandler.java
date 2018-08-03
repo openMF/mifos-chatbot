@@ -1,4 +1,4 @@
-package org.mifos.chatbot.adapter.handler.loanProduct;
+package org.mifos.chatbot.adapter.handler.loanproduct;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.client.ApiException;
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class MaxAllowedAmountHandler extends BaseLoanProductIntentHandler {
-    private static final String INTENT_KEYWORD = "maxAllowedAmount";
+public class MinAllowedAmountHandler extends BaseLoanProductIntentHandler {
+    private static final String INTENT_KEYWORD = "minAllowedAmount";
 
     @Autowired
-    LoanProductsApi loanProductsApi;
+    private LoanProductsApi loanProductsApi;
 
     @Override
     public Boolean canHandle(Intent intent) {
@@ -30,6 +30,7 @@ public class MaxAllowedAmountHandler extends BaseLoanProductIntentHandler {
             response.setContent(String.valueOf(result.getMinPrincipal()));
         } catch (ApiException e) {
             log.info("Error", e);
+            response.setContent(e.getMessage());
         }
 
         return response;

@@ -248,6 +248,16 @@ public class MifosChatbotAdapterServiceTest {
     }
 
     @Test
+    public void lastActiveTransactionDateTest() {
+        Intent lastActiveTransactionDateIntent = new Intent("lastactivetransactiondate");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(lastActiveTransactionDateIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
     public void settings() {
         log.warn("This is the API url: {}", settings.getApiUrl()); // just to demonstrate how dependency injected properties are working
     }

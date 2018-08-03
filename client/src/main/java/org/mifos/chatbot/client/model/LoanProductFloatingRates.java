@@ -32,7 +32,7 @@ public class LoanProductFloatingRates {
   @SerializedName("id")
   private Long id = null;
 
-  @SerializedName("loanProduct")
+  @SerializedName("loanproduct")
   private LoanProduct loanProduct = null;
 
   @SerializedName("floatingRate")
@@ -80,8 +80,8 @@ public class LoanProductFloatingRates {
   }
 
    /**
-   * Get loanProduct
-   * @return loanProduct
+   * Get loanproduct
+   * @return loanproduct
   **/
   @ApiModelProperty(value = "")
   public LoanProduct getLoanProduct() {
@@ -251,7 +251,7 @@ public class LoanProductFloatingRates {
     sb.append("class LoanProductFloatingRates {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    loanProduct: ").append(toIndentedString(loanProduct)).append("\n");
+    sb.append("    loanproduct: ").append(toIndentedString(loanProduct)).append("\n");
     sb.append("    floatingRate: ").append(toIndentedString(floatingRate)).append("\n");
     sb.append("    interestRateDifferential: ").append(toIndentedString(interestRateDifferential)).append("\n");
     sb.append("    minDifferentialLendingRate: ").append(toIndentedString(minDifferentialLendingRate)).append("\n");

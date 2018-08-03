@@ -105,7 +105,7 @@ public class GetLoanProductsProductIdResponse {
   private String transactionProcessingStrategyName = null;
 
   @SerializedName("charges")
-  private List<Integer> charges = null;
+  private List<GetLoansLoanIdOverdueCharges> charges = null;
 
   @SerializedName("productsPrincipalVariationsForBorrowerCycle")
   private List<GetLoanProductsPrincipalVariationsForBorrowerCycle> productsPrincipalVariationsForBorrowerCycle = null;
@@ -242,7 +242,7 @@ public class GetLoanProductsProductIdResponse {
    * Get status
    * @return status
   **/
-  @ApiModelProperty(example = "loanProduct.active", value = "")
+  @ApiModelProperty(example = "loanproduct.active", value = "")
   public String getStatus() {
     return status;
   }
@@ -521,14 +521,14 @@ public class GetLoanProductsProductIdResponse {
     this.transactionProcessingStrategyName = transactionProcessingStrategyName;
   }
 
-  public GetLoanProductsProductIdResponse charges(List<Integer> charges) {
+  public GetLoanProductsProductIdResponse charges(List<GetLoansLoanIdOverdueCharges> charges) {
     this.charges = charges;
     return this;
   }
 
-  public GetLoanProductsProductIdResponse addChargesItem(Integer chargesItem) {
+  public GetLoanProductsProductIdResponse addChargesItem(GetLoansLoanIdOverdueCharges chargesItem) {
     if (this.charges == null) {
-      this.charges = new ArrayList<Integer>();
+      this.charges = new ArrayList<GetLoansLoanIdOverdueCharges>();
     }
     this.charges.add(chargesItem);
     return this;
@@ -539,11 +539,11 @@ public class GetLoanProductsProductIdResponse {
    * @return charges
   **/
   @ApiModelProperty(example = "\"[]\"", value = "")
-  public List<Integer> getCharges() {
+  public List<GetLoansLoanIdOverdueCharges> getCharges() {
     return charges;
   }
 
-  public void setCharges(List<Integer> charges) {
+  public void setCharges(List<GetLoansLoanIdOverdueCharges> charges) {
     this.charges = charges;
   }
 

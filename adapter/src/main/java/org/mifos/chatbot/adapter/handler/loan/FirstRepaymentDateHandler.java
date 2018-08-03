@@ -19,7 +19,7 @@ public class FirstRepaymentDateHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "firstRepaymentDate";
 
     @Autowired
-    LoansApi loansApi;
+    private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {

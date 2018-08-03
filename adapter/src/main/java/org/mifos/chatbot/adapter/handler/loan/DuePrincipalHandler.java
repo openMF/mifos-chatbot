@@ -13,7 +13,7 @@ public class DuePrincipalHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "dueInterest";
 
     @Autowired
-    LoansApi loansApi;
+    private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {

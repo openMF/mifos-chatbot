@@ -278,7 +278,7 @@ public class GetLoanProductsResponse {
    * Get status
    * @return status
   **/
-  @ApiModelProperty(example = "loanProduct.active", value = "")
+  @ApiModelProperty(example = "loanproduct.active", value = "")
   public String getStatus() {
     return status;
   }

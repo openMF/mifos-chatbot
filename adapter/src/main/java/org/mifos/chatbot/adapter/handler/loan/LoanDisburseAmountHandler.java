@@ -15,7 +15,7 @@ public class LoanDisburseAmountHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "disbursementAmount";
 
     @Autowired
-    LoansApi loansApi;
+    private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {

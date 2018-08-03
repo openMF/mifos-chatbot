@@ -15,7 +15,7 @@ public class OverduePrincipalHandler extends BaseLoanIntentHandler {
     private static final String INTENT_KEYWORD = "overduePrincipal";
 
     @Autowired
-    LoansApi loansApi;
+    private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {
