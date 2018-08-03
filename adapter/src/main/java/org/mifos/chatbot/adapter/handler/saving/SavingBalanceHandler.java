@@ -1,5 +1,6 @@
 package org.mifos.chatbot.adapter.handler.saving;
 
+import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.adapter.handler.HandlerUtils;
 import org.mifos.chatbot.client.ApiException;
 import org.mifos.chatbot.client.api.SavingsAccountApi;
@@ -8,6 +9,7 @@ import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@Slf4j
 public class SavingBalanceHandler extends BaseSavingIntentHandler {
     private static final String INTENT_KEYWORD = "savingBalance";
 
@@ -24,7 +26,7 @@ public class SavingBalanceHandler extends BaseSavingIntentHandler {
         MifosResponse response = new MifosResponse();
         try {
             GetSavingsAccountsAccountIdResponse result = savingsAccountApi.retrieveOne(1L, false, "all");
-            response.setContent(String.valueOf(result.));
+            response.setContent(String.valueOf(result.getSummary().getAccountBalance()));
         } catch (ApiException e) {
             log.info("Error", e);
             response.setContent(e.getMessage());
