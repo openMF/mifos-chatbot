@@ -73,17 +73,17 @@ public class GetClientsClientIdResponse {
   private String savingsProductName = null;
 
   @SerializedName("groups")
-  private List<String> groups = null;
+  private List<GetClientsGroup> groups = null;
 
   public GetClientsClientIdResponse id(Integer id) {
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "27", value = "")
   public Integer getId() {
     return id;
@@ -98,10 +98,10 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  /**
    * Get accountNo
    * @return accountNo
-  **/
+   **/
   @ApiModelProperty(example = "27", value = "")
   public Long getAccountNo() {
     return accountNo;
@@ -116,10 +116,10 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   **/
   @ApiModelProperty(value = "")
   public GetClientsClientIdStatus getStatus() {
     return status;
@@ -134,10 +134,10 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  /**
    * Get active
    * @return active
-  **/
+   **/
   @ApiModelProperty(example = "true", value = "")
   public Boolean isActive() {
     return active;
@@ -152,11 +152,19 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  public GetClientsClientIdResponse addActivationDateItem(Long activationDateItem) {
+    if (this.activationDate == null) {
+      this.activationDate = new ArrayList<Long>();
+    }
+    this.activationDate.add(activationDateItem);
+    return this;
+  }
+
+  /**
    * Get activationDate
    * @return activationDate
-  **/
-  @ApiModelProperty(example = "[2013, 1, 1]", value = "")
+   **/
+  @ApiModelProperty(example = "[2013,1,1]", value = "")
   public List<Long> getActivationDate() {
     return activationDate;
   }
@@ -170,10 +178,10 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  /**
    * Get firstname
    * @return firstname
-  **/
+   **/
   @ApiModelProperty(example = "savings", value = "")
   public String getFirstname() {
     return firstname;
@@ -188,10 +196,10 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  /**
    * Get lastname
    * @return lastname
-  **/
+   **/
   @ApiModelProperty(example = "test", value = "")
   public String getLastname() {
     return lastname;
@@ -206,10 +214,10 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  /**
    * Get displayName
    * @return displayName
-  **/
+   **/
   @ApiModelProperty(example = "savings test", value = "")
   public String getDisplayName() {
     return displayName;
@@ -224,10 +232,10 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  /**
    * Get officeId
    * @return officeId
-  **/
+   **/
   @ApiModelProperty(example = "1", value = "")
   public Integer getOfficeId() {
     return officeId;
@@ -242,10 +250,10 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  /**
    * Get officeName
    * @return officeName
-  **/
+   **/
   @ApiModelProperty(example = "Head Office", value = "")
   public String getOfficeName() {
     return officeName;
@@ -260,10 +268,10 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  /**
    * Get timeline
    * @return timeline
-  **/
+   **/
   @ApiModelProperty(value = "")
   public GetClientsTimeline getTimeline() {
     return timeline;
@@ -278,10 +286,10 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  /**
    * Get savingsProductId
    * @return savingsProductId
-  **/
+   **/
   @ApiModelProperty(example = "4", value = "")
   public Integer getSavingsProductId() {
     return savingsProductId;
@@ -296,10 +304,10 @@ public class GetClientsClientIdResponse {
     return this;
   }
 
-   /**
+  /**
    * Get savingsProductName
    * @return savingsProductName
-  **/
+   **/
   @ApiModelProperty(example = "account overdraft", value = "")
   public String getSavingsProductName() {
     return savingsProductName;
@@ -309,35 +317,35 @@ public class GetClientsClientIdResponse {
     this.savingsProductName = savingsProductName;
   }
 
-  public GetClientsClientIdResponse groups(List<String> groups) {
+  public GetClientsClientIdResponse groups(List<GetClientsGroup> groups) {
     this.groups = groups;
     return this;
   }
 
-  public GetClientsClientIdResponse addGroupsItem(String groupsItem) {
+  public GetClientsClientIdResponse addGroupsItem(GetClientsGroup groupsItem) {
     if (this.groups == null) {
-      this.groups = new ArrayList<String>();
+      this.groups = new ArrayList<GetClientsGroup>();
     }
     this.groups.add(groupsItem);
     return this;
   }
 
-   /**
+  /**
    * Get groups
    * @return groups
-  **/
+   **/
   @ApiModelProperty(example = "\"[]\"", value = "")
-  public List<String> getGroups() {
+  public List<GetClientsGroup> getGroups() {
     return groups;
   }
 
-  public void setGroups(List<String> groups) {
+  public void setGroups(List<GetClientsGroup> groups) {
     this.groups = groups;
   }
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -346,19 +354,19 @@ public class GetClientsClientIdResponse {
     }
     GetClientsClientIdResponse getClientsClientIdResponse = (GetClientsClientIdResponse) o;
     return Objects.equals(this.id, getClientsClientIdResponse.id) &&
-        Objects.equals(this.accountNo, getClientsClientIdResponse.accountNo) &&
-        Objects.equals(this.status, getClientsClientIdResponse.status) &&
-        Objects.equals(this.active, getClientsClientIdResponse.active) &&
-        Objects.equals(this.activationDate, getClientsClientIdResponse.activationDate) &&
-        Objects.equals(this.firstname, getClientsClientIdResponse.firstname) &&
-        Objects.equals(this.lastname, getClientsClientIdResponse.lastname) &&
-        Objects.equals(this.displayName, getClientsClientIdResponse.displayName) &&
-        Objects.equals(this.officeId, getClientsClientIdResponse.officeId) &&
-        Objects.equals(this.officeName, getClientsClientIdResponse.officeName) &&
-        Objects.equals(this.timeline, getClientsClientIdResponse.timeline) &&
-        Objects.equals(this.savingsProductId, getClientsClientIdResponse.savingsProductId) &&
-        Objects.equals(this.savingsProductName, getClientsClientIdResponse.savingsProductName) &&
-        Objects.equals(this.groups, getClientsClientIdResponse.groups);
+            Objects.equals(this.accountNo, getClientsClientIdResponse.accountNo) &&
+            Objects.equals(this.status, getClientsClientIdResponse.status) &&
+            Objects.equals(this.active, getClientsClientIdResponse.active) &&
+            Objects.equals(this.activationDate, getClientsClientIdResponse.activationDate) &&
+            Objects.equals(this.firstname, getClientsClientIdResponse.firstname) &&
+            Objects.equals(this.lastname, getClientsClientIdResponse.lastname) &&
+            Objects.equals(this.displayName, getClientsClientIdResponse.displayName) &&
+            Objects.equals(this.officeId, getClientsClientIdResponse.officeId) &&
+            Objects.equals(this.officeName, getClientsClientIdResponse.officeName) &&
+            Objects.equals(this.timeline, getClientsClientIdResponse.timeline) &&
+            Objects.equals(this.savingsProductId, getClientsClientIdResponse.savingsProductId) &&
+            Objects.equals(this.savingsProductName, getClientsClientIdResponse.savingsProductName) &&
+            Objects.equals(this.groups, getClientsClientIdResponse.groups);
   }
 
   @Override
@@ -371,7 +379,7 @@ public class GetClientsClientIdResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetClientsClientIdResponse {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    accountNo: ").append(toIndentedString(accountNo)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -394,7 +402,7 @@ public class GetClientsClientIdResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

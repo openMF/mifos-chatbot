@@ -16,8 +16,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class InterestRateHandler extends BaseLoanProductIntentHandler {
     private static final String INTENT_KEYWORD = "interestRate";
-//    @Autowired
-////    LoansApi loansApi;
 
     @Autowired
     LoanProductsApi loanProductsApi;
@@ -31,7 +29,6 @@ public class InterestRateHandler extends BaseLoanProductIntentHandler {
     public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-//            GetLoansLoanIdResponse result = loansApi.retrieveLoan(2L, false);
             GetLoanProductsProductIdResponse result = loanProductsApi.retrieveLoanProductDetails(2L);
             response.setContent(String.valueOf(result.getAnnualInterestRate()));
         } catch (ApiException e) {

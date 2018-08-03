@@ -208,6 +208,46 @@ public class MifosChatbotAdapterServiceTest {
     }
 
     @Test
+    public void loanTermTest() {
+        Intent loanTermIntent = new Intent("loanTerm");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(loanTermIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void maxAllowedAmountTest() {
+        Intent maxAllowedAmountIntent = new Intent("maxAllowedAmount");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(maxAllowedAmountIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void minAllowedAmountTest() {
+        Intent minAllowedAmountIntent = new Intent("minAllowedAmount");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(minAllowedAmountIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void repaymentNumberTest() {
+        Intent repaymentNumberIntent = new Intent("repaymentNumber");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(repaymentNumberIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
     public void settings() {
         log.warn("This is the API url: {}", settings.getApiUrl()); // just to demonstrate how dependency injected properties are working
     }

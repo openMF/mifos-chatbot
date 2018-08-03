@@ -2,10 +2,7 @@ package org.mifos.chatbot.adapter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.client.ApiClient;
-import org.mifos.chatbot.client.api.ClientApi;
-import org.mifos.chatbot.client.api.HolidaysApi;
-import org.mifos.chatbot.client.api.LoanProductsApi;
-import org.mifos.chatbot.client.api.LoansApi;
+import org.mifos.chatbot.client.api.*;
 import org.mifos.chatbot.core.model.MifosSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -49,5 +46,10 @@ public class TestConfiguration {
     @Bean
     public LoanProductsApi loanProductsApi() {
         return new LoanProductsApi(apiClient());
+    }
+
+    @Bean
+    public SavingsAccountApi savingsAccountApi() {
+        return new SavingsAccountApi(apiClient());
     }
 }
