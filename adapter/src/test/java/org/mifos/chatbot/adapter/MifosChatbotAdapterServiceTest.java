@@ -89,7 +89,7 @@ public class MifosChatbotAdapterServiceTest {
 
     @Test
     public void clientActivationDateTest() {
-        Intent clientActivationDateIntent = new Intent("activationdate");
+        Intent clientActivationDateIntent = new Intent("clientactivationdate");
 
         List<MifosResponse> responses = chatbotAdapterService.handle(clientActivationDateIntent);
         for(MifosResponse response : responses) {
@@ -248,10 +248,30 @@ public class MifosChatbotAdapterServiceTest {
     }
 
     @Test
-    public void lastActiveTransactionDateTest() {
-        Intent lastActiveTransactionDateIntent = new Intent("lastactivetransactiondate");
+    public void savingActivationDateTest() {
+        Intent savingActivationDateIntent = new Intent("savingActivationDate");
 
-        List<MifosResponse> responses = chatbotAdapterService.handle(lastActiveTransactionDateIntent);
+        List<MifosResponse> responses = chatbotAdapterService.handle(savingActivationDateIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void savingBalanceTest() {
+        Intent savingBalanceIntent = new Intent("savingBalance");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(savingBalanceIntent);
+        for(MifosResponse response : responses) {
+            log.info(">>>> Handler response: \n{}", response.getContent());
+        }
+    }
+
+    @Test
+    public void savingInterestTest() {
+        Intent savingInterestIntent = new Intent("savingInterest");
+
+        List<MifosResponse> responses = chatbotAdapterService.handle(savingInterestIntent);
         for(MifosResponse response : responses) {
             log.info(">>>> Handler response: \n{}", response.getContent());
         }

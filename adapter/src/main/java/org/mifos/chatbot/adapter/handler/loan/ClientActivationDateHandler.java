@@ -1,6 +1,7 @@
 package org.mifos.chatbot.adapter.handler.loan;
 
 import lombok.extern.slf4j.Slf4j;
+import org.mifos.chatbot.adapter.handler.HandlerUtils;
 import org.mifos.chatbot.client.ApiException;
 import org.mifos.chatbot.client.api.ClientApi;
 import org.mifos.chatbot.client.model.GetClientsClientIdResponse;
@@ -14,7 +15,7 @@ import java.util.List;
 @Slf4j
 @Component
 public class ClientActivationDateHandler extends BaseLoanIntentHandler {
-    private static final String INTENT_KEYWORD = "activationdate";
+    private static final String INTENT_KEYWORD = "clientactivationdate";
 
     @Autowired
     private ClientApi clientApi;
@@ -28,13 +29,12 @@ public class ClientActivationDateHandler extends BaseLoanIntentHandler {
     public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-//            GetLoansLoanIdResponse result = loansApi.retrieveLoan(2L, false);
             GetClientsClientIdResponse result = clientApi.retrieveOne(1L, false);
             List<Long> date = result.getActivationDate();
-            log.info(date.toString());
-
+            response.setContent(HandlerUtils.convertListToDate(date).toString());
         } catch (ApiException e) {
             log.info("Error", e);
+            response.setContent(e.getMessage());
         }
 
         return response;

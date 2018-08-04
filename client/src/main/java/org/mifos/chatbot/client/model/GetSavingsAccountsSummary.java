@@ -38,15 +38,18 @@ public class GetSavingsAccountsSummary {
   @SerializedName("availableBalance")
   private Double availableBalance = null;
 
+  @SerializedName("totalInterestEarned")
+  private Double totalInterestEarned = null;
+
   public GetSavingsAccountsSummary currency(GetSavingsCurrency currency) {
     this.currency = currency;
     return this;
   }
 
-   /**
+  /**
    * Get currency
    * @return currency
-  **/
+   **/
   @ApiModelProperty(value = "")
   public GetSavingsCurrency getCurrency() {
     return currency;
@@ -61,10 +64,10 @@ public class GetSavingsAccountsSummary {
     return this;
   }
 
-   /**
+  /**
    * Get accountBalance
    * @return accountBalance
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Double getAccountBalance() {
     return accountBalance;
@@ -79,10 +82,10 @@ public class GetSavingsAccountsSummary {
     return this;
   }
 
-   /**
+  /**
    * Get availableBalance
    * @return availableBalance
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
   public Double getAvailableBalance() {
     return availableBalance;
@@ -92,9 +95,27 @@ public class GetSavingsAccountsSummary {
     this.availableBalance = availableBalance;
   }
 
+  public GetSavingsAccountsSummary totalInterestEarned(Double totalInterestEarned) {
+    this.totalInterestEarned = totalInterestEarned;
+    return this;
+  }
+
+  /**
+   * Get totalInterestEarned
+   * @return totalInterestEarned
+   **/
+  @ApiModelProperty(value = "")
+  public Double getTotalInterestEarned() {
+    return totalInterestEarned;
+  }
+
+  public void setTotalInterestEarned(Double totalInterestEarned) {
+    this.totalInterestEarned = totalInterestEarned;
+  }
+
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -103,13 +124,14 @@ public class GetSavingsAccountsSummary {
     }
     GetSavingsAccountsSummary getSavingsAccountsSummary = (GetSavingsAccountsSummary) o;
     return Objects.equals(this.currency, getSavingsAccountsSummary.currency) &&
-        Objects.equals(this.accountBalance, getSavingsAccountsSummary.accountBalance) &&
-        Objects.equals(this.availableBalance, getSavingsAccountsSummary.availableBalance);
+            Objects.equals(this.accountBalance, getSavingsAccountsSummary.accountBalance) &&
+            Objects.equals(this.availableBalance, getSavingsAccountsSummary.availableBalance) &&
+            Objects.equals(this.totalInterestEarned, getSavingsAccountsSummary.totalInterestEarned);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(currency, accountBalance, availableBalance);
+    return Objects.hash(currency, accountBalance, availableBalance, totalInterestEarned);
   }
 
 
@@ -117,10 +139,11 @@ public class GetSavingsAccountsSummary {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetSavingsAccountsSummary {\n");
-    
+
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    accountBalance: ").append(toIndentedString(accountBalance)).append("\n");
     sb.append("    availableBalance: ").append(toIndentedString(availableBalance)).append("\n");
+    sb.append("    totalInterestEarned: ").append(toIndentedString(totalInterestEarned)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -129,7 +152,7 @@ public class GetSavingsAccountsSummary {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -1,6 +1,7 @@
 package org.mifos.chatbot.adapter.handler.loan;
 
 import lombok.extern.slf4j.Slf4j;
+import org.mifos.chatbot.adapter.handler.HandlerUtils;
 import org.mifos.chatbot.client.ApiException;
 import org.mifos.chatbot.client.api.LoansApi;
 import org.mifos.chatbot.client.model.GetLoansLoanIdResponse;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class PreviousPaymentDateHandler extends BaseLoanIntentHandler {
-    private static final String INTENT_KEYWORD = "dueInterest";
+    private static final String INTENT_KEYWORD = "previousPaymentDate";
 
     @Autowired
     private LoansApi loansApi;
@@ -27,7 +28,7 @@ public class PreviousPaymentDateHandler extends BaseLoanIntentHandler {
         MifosResponse response = new MifosResponse();
         try {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(2L, false);
-            response.setContent(result.getSummary().getOverdueSinceDate().toString());
+            response.setContent(HandlerUtils.convertListToDate(result.getSummary().getOverdueSinceDate()).toString());
         } catch (ApiException e) {
             log.info("Error", e);
             response.setContent(e.getMessage());

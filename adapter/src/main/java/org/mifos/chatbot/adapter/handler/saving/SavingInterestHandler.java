@@ -9,8 +9,10 @@ import org.mifos.chatbot.client.model.GetSavingsAccountsAccountIdResponse;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Slf4j
+@Component
 public class SavingInterestHandler extends BaseLoanProductIntentHandler {
     private static final String INTENT_KEYWORD = "savingInterest";
 
@@ -27,7 +29,7 @@ public class SavingInterestHandler extends BaseLoanProductIntentHandler {
         MifosResponse response = new MifosResponse();
         try {
             GetSavingsAccountsAccountIdResponse result = savingsAccountApi.retrieveOne(1L, false, "all");
-            response.setContent(String.valueOf(result.getSummary().getAvailableBalance()));
+            response.setContent(String.valueOf(result.getSummary().getTotalInterestEarned()));
         } catch (ApiException e) {
             log.info("Error", e);
             response.setContent(e.getMessage());

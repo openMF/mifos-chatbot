@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class OverdueInterestHandler extends BaseLoanIntentHandler {
-    private static final String INTENT_KEYWORD = "outstandingInterest";
+    private static final String INTENT_KEYWORD = "overdueInterest";
 
     @Autowired
     private LoansApi loansApi;

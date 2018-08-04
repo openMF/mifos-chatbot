@@ -8,8 +8,10 @@ import org.mifos.chatbot.client.model.GetSavingsAccountsAccountIdResponse;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Slf4j
+@Component
 public class SavingBalanceHandler extends BaseSavingIntentHandler {
     private static final String INTENT_KEYWORD = "savingBalance";
 
