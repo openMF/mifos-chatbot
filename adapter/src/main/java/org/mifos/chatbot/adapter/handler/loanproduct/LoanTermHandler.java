@@ -23,10 +23,10 @@ public class LoanTermHandler extends BaseLoanProductIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent) {
+    public MifosResponse handle(Intent intent, Long id) {
         MifosResponse response = new MifosResponse();
         try {
-            GetLoanProductsProductIdResponse result = loanProductsApi.retrieveLoanProductDetails(2L);
+            GetLoanProductsProductIdResponse result = loanProductsApi.retrieveLoanProductDetails(id);
             String rePaymentFrequency = result.getRepaymentFrequencyType().getValue();
             int numOfRepayments = result.getNumberOfRepayments();
 

@@ -29,11 +29,11 @@ public class GetAllHolidaysHandler extends BaseLoanIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent) {
+    public MifosResponse handle(Intent intent, Long id) {
         MifosResponse response = new MifosResponse();
 
         // TODO: figure out if we need these parameters, which ones are required
-        Long officeId = 1L; // probably you have to detect to which office the user belongs or this is just set statically
+//        Long officeId = 1L; // probably you have to detect to which office the user belongs or this is just set statically
         String fromDate = null;
         String toDate = null;
         String locale = null;
@@ -41,7 +41,7 @@ public class GetAllHolidaysHandler extends BaseLoanIntentHandler {
 
         try {
             List<GetHolidaysResponse> result = holidaysApi.retrieveAllHolidays(
-                officeId,
+                id,
                 fromDate,
                 toDate,
                 locale,

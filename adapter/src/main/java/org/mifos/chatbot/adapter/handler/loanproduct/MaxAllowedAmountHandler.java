@@ -23,10 +23,10 @@ public class MaxAllowedAmountHandler extends BaseLoanProductIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent) {
+    public MifosResponse handle(Intent intent, Long id) {
         MifosResponse response = new MifosResponse();
         try {
-            GetLoanProductsProductIdResponse result = loanProductsApi.retrieveLoanProductDetails(1L);
+            GetLoanProductsProductIdResponse result = loanProductsApi.retrieveLoanProductDetails(id);
             response.setContent(String.valueOf(result.getMinPrincipal()));
         } catch (ApiException e) {
             log.info("Error", e);

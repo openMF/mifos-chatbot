@@ -24,10 +24,10 @@ public class PreviousPaymentDateHandler extends BaseLoanIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent) {
+    public MifosResponse handle(Intent intent, Long id) {
         MifosResponse response = new MifosResponse();
         try {
-            GetLoansLoanIdResponse result = loansApi.retrieveLoan(2L, false);
+            GetLoansLoanIdResponse result = loansApi.retrieveLoan(id, false);
             response.setContent(HandlerUtils.convertListToDate(result.getSummary().getOverdueSinceDate()).toString());
         } catch (ApiException e) {
             log.info("Error", e);

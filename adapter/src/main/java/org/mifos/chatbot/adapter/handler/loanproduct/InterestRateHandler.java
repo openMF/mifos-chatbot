@@ -23,10 +23,10 @@ public class InterestRateHandler extends BaseLoanProductIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent) {
+    public MifosResponse handle(Intent intent, Long id) {
         MifosResponse response = new MifosResponse();
         try {
-            GetLoanProductsProductIdResponse result = loanProductsApi.retrieveLoanProductDetails(2L);
+            GetLoanProductsProductIdResponse result = loanProductsApi.retrieveLoanProductDetails(id);
             response.setContent(String.valueOf(result.getAnnualInterestRate()));
         } catch (ApiException e) {
             log.info("Error", e);

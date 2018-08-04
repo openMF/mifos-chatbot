@@ -30,12 +30,12 @@ public class LoanStatusHandler extends BaseLoanIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent) {
+    public MifosResponse handle(Intent intent, Long id) {
         MifosResponse response = new MifosResponse();
 
         // SomeLoanStatusObject result = apiClient.execute(); // TODO: do your thing here and call the loan status api!
         try {
-            GetLoansLoanIdResponse result = loansApi.retrieveLoan(1L, false);
+            GetLoansLoanIdResponse result = loansApi.retrieveLoan(id, false);
             response.setContent(result.toString());
         } catch (ApiException e) {
             log.error("Something wrong in loans status, ", e);

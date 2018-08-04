@@ -8,18 +8,17 @@ import org.mifos.chatbot.core.model.Intent;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class OpenNLPServiceTest {
-    @Autowired
-    private NLPService nlpService;
+    private OpenNLPService nlpService;
 
-//    @Before
-//    public void setup() {
-//        nlpService = new OpenNLPService();
-//    }
+    @Before
+    public void setup() {
+        nlpService = new OpenNLPService();
+    }
 
     // Intent should be specific enough to point to the RESTful API of Mifos
     @Test
     public void recognizeTest() {
-        Intent[] results = nlpService.recognize("not at all");
+        Intent[] results = nlpService.recognize("give 1 as my id");
         // TODO: Update NLP model, its detection is not accurate
         for(int i = 0; i < results.length ;i++)
             System.out.println(results[i].getKeyword());

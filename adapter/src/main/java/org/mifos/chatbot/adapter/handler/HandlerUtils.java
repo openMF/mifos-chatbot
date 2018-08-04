@@ -11,6 +11,9 @@ import java.util.List;
 public class HandlerUtils {
 
     public static Date convertListToDate(List<Long> list) {
+        if(list == null) {
+            log.warn("The date is empty. ");
+        }
         StringBuffer sb = new StringBuffer();
         sb.append(String.format("%04d", list.get(0)));
         sb.append(String.format("%02d", list.get(1)));
