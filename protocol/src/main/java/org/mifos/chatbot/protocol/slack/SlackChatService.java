@@ -42,23 +42,20 @@ public class SlackChatService implements ChatService {
     public void connect(ChatCallBack chatCallBack) {
         try {
             session.connect();
-            session.addMessagePostedListener(new SlackMessagePostedListener() {
-                @Override
-                public void onEvent(SlackMessagePosted event, SlackSession session) {
-                    if(callback!=null) {
-                        Message m = new Message();
-                        m.setFrom(event.getSender().getId());
-                        m.setText(event.getMessageContent());
+            session.addMessagePostedListener((event, session) -> {
+                if(callback!=null) {
+                    Message m = new Message();
+                    m.setFrom(event.getSender().getId());
+                    m.setText(event.getMessageContent());
 
-                        callback.onMessage(m);
-                    }
+                    callback.onMessage(m);
+                }
 
+                if(callback!=null) {
                     List<MifosResponse> responseList = adapterService.handle(event.getMessageContent());
+
                     for(MifosResponse response : responseList) {
-                        Message msg = new Message();
-                        msg.setText(response.getContent());
-                        msg.setTo("zhaodingfanhaha@gmail.com");
-                        send(msg);
+                        callback.onResponse(response);
                     }
                 }
             });

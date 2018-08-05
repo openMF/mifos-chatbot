@@ -3,6 +3,9 @@ package org.mifos.chatbot.server.config;
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.mifos.chatbot.core.ChatService;
+import org.mifos.chatbot.core.model.Message;
+import org.mifos.chatbot.core.model.MifosResponse;
 import org.mifos.chatbot.core.model.MifosSettings;
 import org.mifos.chatbot.protocol.slack.SlackChatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,22 @@ public class ProtocolConfig {
     @Bean
     public SlackChatService slackChatService(SlackSession session) {
         SlackChatService slackChatService = new SlackChatService(session);
-        slackChatService.connect(msg -> log.info("We've got a response: {}", msg.getText()));
+
+        slackChatService.connect(new ChatService.ChatCallBack() {
+            @Override
+            public void onMessage(Message msg) {
+                log.info("We've got a response: {}", msg.getText());
+            }
+
+            @Override
+            public void onResponse(MifosResponse response) {
+                Message msg = new Message();
+                msg.setText(response.getContent());
+                msg.setTo("zhaodingfanhaha@gmail.com");
+                slackChatService.send(msg);
+            }
+        });
+
         return slackChatService;
     }
 }
