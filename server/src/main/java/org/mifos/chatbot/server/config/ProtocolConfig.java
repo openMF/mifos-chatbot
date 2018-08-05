@@ -21,8 +21,8 @@ public class ProtocolConfig {
     }
 
     @Bean
-    public SlackChatService slackChatService() {
-        SlackChatService slackChatService = new SlackChatService();
+    public SlackChatService slackChatService(SlackSession session) {
+        SlackChatService slackChatService = new SlackChatService(session);
         slackChatService.connect(msg -> log.info("We've got a response: {}", msg.getText()));
         return slackChatService;
     }

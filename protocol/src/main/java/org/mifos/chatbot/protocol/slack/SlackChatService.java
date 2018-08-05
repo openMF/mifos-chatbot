@@ -27,6 +27,14 @@ public class SlackChatService implements ChatService {
     @Autowired
     private AdapterService adapterService;
 
+    public SlackChatService() {
+
+    }
+
+    public SlackChatService(SlackSession session) {
+        this.session = session;
+    }
+
     @Override
     public void connect(ChatCallBack chatCallBack) {
         try {
