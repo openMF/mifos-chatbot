@@ -8,9 +8,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.core.AdapterService;
 import org.mifos.chatbot.core.ChatService;
 import org.mifos.chatbot.core.model.Message;
+import org.mifos.chatbot.core.model.MifosResponse;
 import org.mifos.chatbot.core.model.MifosSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -50,7 +53,13 @@ public class SlackChatService implements ChatService {
                         callback.onMessage(m);
                     }
 
-                    adapterService.handle(event.getMessageContent());
+                    List<MifosResponse> responseList = adapterService.handle(event.getMessageContent());
+                    for(MifosResponse response : responseList) {
+                        Message msg = new Message();
+                        msg.setText(response.getContent());
+                        msg.setTo("zhaodingfanhaha@gmail.com");
+                        send(msg);
+                    }
                 }
             });
         } catch (Exception e) {
