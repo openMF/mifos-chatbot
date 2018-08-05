@@ -45,13 +45,11 @@ public class SlackChatService implements ChatService {
             session.addMessagePostedListener((event, session) -> {
                 if(callback!=null) {
                     Message m = new Message();
-                    m.setFrom(event.getSender().getId());
+                    m.setFrom(event.getSender().getUserMail());
                     m.setText(event.getMessageContent());
 
                     callback.onMessage(m);
-                }
 
-                if(callback!=null) {
                     List<MifosResponse> responseList = adapterService.handle(event.getMessageContent());
 
                     for(MifosResponse response : responseList) {
