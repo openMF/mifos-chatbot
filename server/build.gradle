@@ -7,11 +7,16 @@ bootRun {
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter")
+    compile "org.aspectj:aspectjrt"
+    compile "org.aspectj:aspectjweaver"
+    compile "org.springframework.boot:spring-boot-starter-security"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter"
     compile project(":core")
     compile project(":nlp")
     compile project(":client")
     compile project(":adapter")
     compile project(":protocol")
     testCompile "org.springframework.boot:spring-boot-starter-test"
+    testCompile "org.springframework.security:spring-security-test"
 }

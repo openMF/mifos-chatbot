@@ -27,7 +27,6 @@ public class TestConfiguration {
     @Autowired
     private MifosSettings settings;
 
-
     @Bean
     public SlackSession slackSession() {
         return SlackSessionFactory.createWebSocketSlackSession(settings.getSlackApiToken());
