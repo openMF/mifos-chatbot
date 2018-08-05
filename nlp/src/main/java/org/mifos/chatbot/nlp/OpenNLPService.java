@@ -61,6 +61,9 @@ public class OpenNLPService implements NLPService {
                     sb.append(tokenString[j]);
                 }
                 resultIntents[i] = new Intent(sb.toString());
+
+                // TODO: not sure if this has to be done here, but somewhere you have to do something similar!
+                resultIntents[i].addParameter("ID", findId(sb.toString()));
             }
 
             return resultIntents;
@@ -108,5 +111,10 @@ public class OpenNLPService implements NLPService {
 
         is.close();
         return nameSpans;
+    }
+
+    // TODO: please improve this, I have no idea which input you need (the whole text, a span, a sentence), but OpenNLP should be able to detect IDs
+    private Long findId(Object input) {
+        return 1L;
     }
 }

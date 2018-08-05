@@ -35,7 +35,8 @@ public class LoanStatusHandler extends BaseLoanIntentHandler {
 
         // SomeLoanStatusObject result = apiClient.execute(); // TODO: do your thing here and call the loan status api!
         try {
-            GetLoansLoanIdResponse result = loansApi.retrieveLoan(id, false);
+            // TODO: and this is how you should retrieve the ID (or any other parameter you need); no need to add another parameter in the "handle" function
+            GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
             response.setContent(result.toString());
         } catch (ApiException e) {
             log.error("Something wrong in loans status, ", e);

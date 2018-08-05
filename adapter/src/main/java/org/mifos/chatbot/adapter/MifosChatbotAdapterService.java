@@ -34,9 +34,13 @@ public class MifosChatbotAdapterService implements AdapterService {
     public List<MifosResponse> handle(String input) {
         List<MifosResponse> results = new ArrayList<>();
         Intent[] intents = openNLPService.recognize(input);
+
+        // TODO: ID and other parameter detection should not be done here; that's why you have the OpenNLP module!!!
         Long id = 1L; // default id, set to 1
+
         for(Intent intent : intents) {
             try {
+                // TODO: how can the keyword ever contain a Long ID?!?
                 id = Long.parseLong(intent.getKeyword());
             } catch (NumberFormatException e) {
                 continue;
