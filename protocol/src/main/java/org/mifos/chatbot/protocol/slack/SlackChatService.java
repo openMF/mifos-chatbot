@@ -39,8 +39,9 @@ public class SlackChatService implements ChatService {
     }
 
     @Override
-    public void connect(ChatCallBack chatCallBack) {
+    public void connect(ChatCallBack callback) {
         try {
+            this.callback = callback;
             session.connect();
             session.addMessagePostedListener((event, session) -> {
                 if(callback!=null) {
