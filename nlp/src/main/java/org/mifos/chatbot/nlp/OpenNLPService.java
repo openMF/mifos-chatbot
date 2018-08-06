@@ -63,7 +63,7 @@ public class OpenNLPService implements NLPService {
                 resultIntents[i] = new Intent(sb.toString());
 
                 // TODO: not sure if this has to be done here, but somewhere you have to do something similar!
-                resultIntents[i].addParameter("ID", findId(sb.toString()));
+                resultIntents[i].addParameter("ID", findId(tokenString, resultSpans[i].getStart(), resultSpans[i].getEnd()));
             }
 
             return resultIntents;
@@ -113,8 +113,29 @@ public class OpenNLPService implements NLPService {
         return nameSpans;
     }
 
-    // TODO: please improve this, I have no idea which input you need (the whole text, a span, a sentence), but OpenNLP should be able to detect IDs
-    private Long findId(Object input) {
-        return 1L;
+    // TODO: please improve this
+
+    /**
+     * For ID number, we can use regex extraction to do the detection because of its simplicity of structure, which only contains number
+     *
+     * We have tokenize the string. Hence, what we have to do is to find out whether the token is full of number
+     *
+     * Default ID is 1
+     *
+     * @param tokenString
+     * @param start
+     * @param end
+     * @return
+     */
+    private Long findId(String[] tokenString, int start, int end) {
+        Long result = 1L;
+        for(int i = start ; i <= end ; i++) {
+            try {
+                result = Long.parseLong(tokenString[i]);
+            } catch (NumberFormatException e) {
+                continue;
+            }
+        }
+        return result;
     }
 }
