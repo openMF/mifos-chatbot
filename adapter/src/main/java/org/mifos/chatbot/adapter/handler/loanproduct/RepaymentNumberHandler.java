@@ -23,10 +23,10 @@ public class RepaymentNumberHandler extends BaseLoanProductIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-            GetLoanProductsProductIdResponse result = loanProductsApi.retrieveLoanProductDetails(id);
+            GetLoanProductsProductIdResponse result = loanProductsApi.retrieveLoanProductDetails(intent.getParameterAsLong("ID"));
             response.setContent(String.valueOf(result.getNumberOfRepayments()));
         } catch (ApiException e) {
             log.info("Error", e);

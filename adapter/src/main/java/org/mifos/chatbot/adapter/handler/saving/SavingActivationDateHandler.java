@@ -24,10 +24,10 @@ public class SavingActivationDateHandler extends BaseSavingIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-            GetSavingsAccountsAccountIdResponse result = savingsAccountApi.retrieveOne(id, false, "all");
+            GetSavingsAccountsAccountIdResponse result = savingsAccountApi.retrieveOne(intent.getParameterAsLong("ID"), false, "all");
             response.setContent(HandlerUtils.convertListToDate(result.getTimeline().getActivatedOnDate()).toString());
         } catch (ApiException e) {
             log.info("Error", e);

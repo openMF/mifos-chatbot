@@ -30,7 +30,7 @@ public class LoanStatusHandler extends BaseLoanIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
 
         // SomeLoanStatusObject result = apiClient.execute(); // TODO: do your thing here and call the loan status api!

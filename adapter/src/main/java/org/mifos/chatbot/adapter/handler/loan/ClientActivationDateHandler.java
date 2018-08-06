@@ -26,10 +26,10 @@ public class ClientActivationDateHandler extends BaseLoanIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-            GetClientsClientIdResponse result = clientApi.retrieveOne(id, false);
+            GetClientsClientIdResponse result = clientApi.retrieveOne(intent.getParameterAsLong("ID"), false);
             List<Long> date = result.getActivationDate();
             response.setContent(HandlerUtils.convertListToDate(date).toString());
         } catch (ApiException e) {

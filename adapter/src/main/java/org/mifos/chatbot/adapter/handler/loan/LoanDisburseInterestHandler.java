@@ -23,10 +23,10 @@ public class LoanDisburseInterestHandler extends BaseLoanIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-            GetLoansLoanIdResponse result = loansApi.retrieveLoan(id, false);
+            GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
             response.setContent(String.valueOf(result.getSummary().getFeeChargesDueAtDisbursementCharged()));
         } catch (ApiException e) {
             log.info("Error", e);

@@ -24,11 +24,11 @@ public class OutstandingInterestHandler extends BaseLoanIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         // TODO: implement this
         MifosResponse response = new MifosResponse();
         try {
-            GetLoansLoanIdResponse result = loansApi.retrieveLoan(id, false);
+            GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
             response.setContent(String.valueOf(result.getSummary().getInterestOutstanding()));
         } catch (ApiException e) {
             log.info("Error", e);

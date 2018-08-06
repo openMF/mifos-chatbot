@@ -24,10 +24,10 @@ public class SavingBalanceHandler extends BaseSavingIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-            GetSavingsAccountsAccountIdResponse result = savingsAccountApi.retrieveOne(id, false, "all");
+            GetSavingsAccountsAccountIdResponse result = savingsAccountApi.retrieveOne(intent.getParameterAsLong("ID"), false, "all");
             response.setContent(String.valueOf(result.getSummary().getAccountBalance()));
         } catch (ApiException e) {
             log.info("Error", e);

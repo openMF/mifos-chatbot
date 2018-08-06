@@ -29,11 +29,11 @@ public class NextDueDateHandler extends BaseLoanIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
             // TODO: How to pass the parameters
-            GetLoansLoanIdResponse result = loansApi.retrieveLoan(id, false);
+            GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
 
             // TODO: Correct the response, current response is just for unit test
             List<Long> overDueSinceDate = result.getSummary().getOverdueSinceDate();

@@ -30,10 +30,10 @@ public class ArrearDayHandler extends BaseLoanIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-            GetLoansLoanIdResponse result = loansApi.retrieveLoan(id, false);
+            GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
             List<Long> overdueSinceDate = result.getSummary().getOverdueSinceDate();
 
             StringBuffer sb = new StringBuffer();

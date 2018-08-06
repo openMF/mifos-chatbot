@@ -27,10 +27,10 @@ public class FirstRepaymentDateHandler extends BaseLoanIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-            GetLoansLoanIdResponse result = loansApi.retrieveLoan(id, false);
+            GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
             Date date = HandlerUtils.convertListToDate(result.getTimeline().getActualDisbursementDate());
             String frequency = result.getRepaymentFrequencyType().getValue();
             int term = 0;

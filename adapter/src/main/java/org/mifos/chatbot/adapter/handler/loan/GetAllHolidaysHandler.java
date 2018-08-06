@@ -22,14 +22,12 @@ public class GetAllHolidaysHandler extends BaseLoanIntentHandler {
     @Override
     public Boolean canHandle(Intent intent) {
         // TODO: improve if necessary
-//        apiClient.setBasePath("https://localhost:8443/fineract-provider/api/v1");
-//        apiClient.setBasePath("https://demo.openmf.org/fineract-provider/api/v1");
         log.info("The current base path is : " + apiClient.getBasePath());
         return INTENT_KEYWORD.equals(intent.getKeyword());
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
 
         // TODO: figure out if we need these parameters, which ones are required
@@ -41,11 +39,11 @@ public class GetAllHolidaysHandler extends BaseLoanIntentHandler {
 
         try {
             List<GetHolidaysResponse> result = holidaysApi.retrieveAllHolidays(
-                id,
-                fromDate,
-                toDate,
-                locale,
-                dateFormat);
+                    intent.getParameterAsLong("ID"),
+                    fromDate,
+                    toDate,
+                    locale,
+                    dateFormat);
 
             response.setContent(result.toString());
 

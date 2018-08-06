@@ -24,10 +24,10 @@ public class LoanMaturityDateHandler extends BaseLoanIntentHandler {
     }
 
     @Override
-    public MifosResponse handle(Intent intent, Long id) {
+    public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-            GetLoansLoanIdResponse result = loansApi.retrieveLoan(id, false);
+            GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
             response.setContent(HandlerUtils.convertListToDate(result.getTimeline().getExpectedMaturityDate()).toString());
         } catch (ApiException e) {
             log.info("Error", e);
