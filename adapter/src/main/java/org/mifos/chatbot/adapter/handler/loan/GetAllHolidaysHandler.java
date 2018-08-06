@@ -22,7 +22,7 @@ public class GetAllHolidaysHandler extends BaseLoanIntentHandler {
     @Override
     public Boolean canHandle(Intent intent) {
         // TODO: improve if necessary
-        log.info("The current base path is : " + apiClient.getBasePath());
+//        log.info("The current base path is : " + apiClient.getBasePath());
         return INTENT_KEYWORD.equals(intent.getKeyword());
     }
 

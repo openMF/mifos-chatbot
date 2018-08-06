@@ -51,6 +51,7 @@ public class SlackChatService implements ChatService {
 
                     callback.onMessage(m);
 
+                    log.info("Slack : " + event.getMessageContent());
                     List<MifosResponse> responseList = adapterService.handle(event.getMessageContent());
 
                     for(MifosResponse response : responseList) {

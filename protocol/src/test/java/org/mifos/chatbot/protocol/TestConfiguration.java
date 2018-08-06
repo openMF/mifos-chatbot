@@ -36,7 +36,7 @@ public class TestConfiguration {
     public AdapterService adapterService() {
         return new AdapterService() {
             @Override
-            public List<MifosResponse> handle(Intent intent, Long id) {
+            public List<MifosResponse> handle(Intent intent) {
                 return Collections.emptyList();
             }
 

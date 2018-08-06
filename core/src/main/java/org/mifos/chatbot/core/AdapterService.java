@@ -6,7 +6,7 @@ import org.mifos.chatbot.core.model.MifosResponse;
 import java.util.List;
 
 public interface AdapterService {
-    List<MifosResponse> handle(Intent intent, Long id);
+    List<MifosResponse> handle(Intent intent);
 
     List<MifosResponse> handle(String input);
 }

@@ -23,7 +23,8 @@ public class MifosChatbotAdapterService implements AdapterService {
     @Autowired
     private List<IntentHandler> handlers;
 
-    public List<MifosResponse> handle(Intent intent, Long id) {
+    @Override
+    public List<MifosResponse> handle(Intent intent) {
         return handlers
             .stream()
             .filter(handler -> handler.canHandle(intent))
@@ -31,6 +32,7 @@ public class MifosChatbotAdapterService implements AdapterService {
             .collect(Collectors.toList());
     }
 
+    @Override
     public List<MifosResponse> handle(String input) {
         List<MifosResponse> results = new ArrayList<>();
         Intent[] intents = openNLPService.recognize(input);
@@ -39,8 +41,7 @@ public class MifosChatbotAdapterService implements AdapterService {
         Long id = 1L; // default id, set to 1
 
         for(Intent intent : intents) {
-            id = intent.getParameterAsLong("ID");
-            results.addAll(handle(intent, id));
+            results.addAll(handle(intent));
         }
         return results;
     }
