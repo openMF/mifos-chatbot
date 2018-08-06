@@ -27,7 +27,7 @@ public class MifosChatbotAdapterService implements AdapterService {
         return handlers
             .stream()
             .filter(handler -> handler.canHandle(intent))
-            .map(handler -> handler.handle(intent, id))
+            .map(handler -> handler.handle(intent))
             .collect(Collectors.toList());
     }
 
@@ -39,14 +39,7 @@ public class MifosChatbotAdapterService implements AdapterService {
         Long id = 1L; // default id, set to 1
 
         for(Intent intent : intents) {
-            try {
-                // TODO: how can the keyword ever contain a Long ID?!?
-                id = Long.parseLong(intent.getKeyword());
-            } catch (NumberFormatException e) {
-                continue;
-            }
-        }
-        for(Intent intent : intents) {
+            id = intent.getParameterAsLong("ID");
             results.addAll(handle(intent, id));
         }
         return results;

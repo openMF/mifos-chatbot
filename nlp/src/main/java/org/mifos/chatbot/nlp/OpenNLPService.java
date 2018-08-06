@@ -42,31 +42,35 @@ public class OpenNLPService implements NLPService {
         // TODO: provide confidence level for recognition result
         try {
             String[] sentences = detectSentence(text);
-
-            List<String> tokens = new ArrayList<>();
+            List<Intent> resultIntents = new ArrayList<>();
             for(String sentence : sentences) {
-                tokens.addAll(Arrays.asList(tokenize(sentence)));
-            }
-
-            String[] tokenString = new String[tokens.size()];
-            tokenString = tokens.toArray(tokenString);
-            Span[] resultSpans = findName(tokenString);
-
-            Intent[] resultIntents = new Intent[resultSpans.length];
-            for(int i = 0; i < resultIntents.length ; i++) {
-                StringBuilder sb = new StringBuilder();
-                sb.append(tokenString[resultSpans[i].getStart()]);
-                for(int j = resultSpans[i].getStart()+1 ; j < resultSpans[i].getEnd() ; j++) {
-                    sb.append(" ");
-                    sb.append(tokenString[j]);
+                List<Intent> subResultIntents = new ArrayList<>();
+                String[] tokens = tokenize(sentence);
+                Span[] resultSpans = findName(tokens);
+                for (Span span : resultSpans) {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(tokens[span.getStart()]);
+                    for(int i = span.getStart()+1 ; i < span.getEnd() ; i++) {
+                        sb.append(" " + tokens[i]);
+                    }
+                    subResultIntents.add(new Intent(sb.toString()));
                 }
-                resultIntents[i] = new Intent(sb.toString());
 
-                // TODO: not sure if this has to be done here, but somewhere you have to do something similar!
-                resultIntents[i].addParameter("ID", findId(tokenString, resultSpans[i].getStart(), resultSpans[i].getEnd()));
+                Long id = findId(tokens);
+                String date = findDate(tokens);
+                for(Intent intent : subResultIntents) {
+                    intent.addParameter("ID", id);
+                    intent.addParameter("Date", date);
+                }
+                resultIntents.addAll(subResultIntents);
             }
 
-            return resultIntents;
+            Intent[] intents = new Intent[resultIntents.size()];
+            for(int i = 0 ; i < resultIntents.size() ; i++) {
+                intents[i] = resultIntents.get(i);
+            }
+
+            return intents;
         } catch (IOException e) {
             logger.error("Cannot read model information : ", e);
         }
@@ -100,17 +104,37 @@ public class OpenNLPService implements NLPService {
     }
 
     private Span[] findName(String[] tokens) throws IOException {
-        InputStream is = this.getClass().getClassLoader().getResourceAsStream("models/en-ner-second-try.bin");
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("models/en-ner-third-try.bin");
         TokenNameFinderModel model = new TokenNameFinderModel(is);
         NameFinderME nameFinder = new NameFinderME(model);
 
         Span nameSpans[] = nameFinder.find(tokens);
 
         System.out.println(nameSpans.length + " spans found. ");
-        System.out.println(System.getProperty("user.dir"));
+//        System.out.println(System.getProperty("user.dir"));
 
         is.close();
         return nameSpans;
+    }
+
+    /*
+        However, only using en-ner-date model cannot detect date from input text
+     */
+    private String findDate(String[] tokenString) throws IOException {
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("models/en-ner-date.bin");
+        TokenNameFinderModel model = new TokenNameFinderModel(is);
+        NameFinderME dateFinder = new NameFinderME(model);
+
+        Span[] dateSpans = dateFinder.find(tokenString);
+        StringBuilder sb = new StringBuilder();
+        for(Span span : dateSpans) {
+            for(int i = span.getStart() ; i < span.getEnd() ; i++) {
+                sb.append(" " + tokenString[i]);
+            }
+        }
+
+        is.close();
+        return sb.toString();
     }
 
     // TODO: please improve this
@@ -122,20 +146,18 @@ public class OpenNLPService implements NLPService {
      *
      * Default ID is 1
      *
-     * @param tokenString
-     * @param start
-     * @param end
+     * @param tokens This param contains the series of tokens detected from tokenisation process
      * @return
      */
-    private Long findId(String[] tokenString, int start, int end) {
-        Long result = 1L;
-        for(int i = start ; i <= end ; i++) {
+    private Long findId(String[] tokens) {
+        Long id = 1L;
+        for(String token: tokens) {
             try {
-                result = Long.parseLong(tokenString[i]);
+                id = Long.parseLong(token);
             } catch (NumberFormatException e) {
-                continue;
             }
         }
-        return result;
+
+        return id;
     }
 }
