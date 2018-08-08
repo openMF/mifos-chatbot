@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class OutstandingInterestHandler extends BaseLoanIntentHandler {
-    private static final String INTENT_KEYWORD = "outstandingInterest";
+    private static final String[] INTENT_KEYWORDS = {"outstanding", "Interest"};
 
     @Autowired
     private LoansApi loansApi;
@@ -20,7 +20,12 @@ public class OutstandingInterestHandler extends BaseLoanIntentHandler {
     @Override
     public Boolean canHandle(Intent intent) {
         // TODO: improve if necessary
-        return intent.getKeyword().toLowerCase().contains(INTENT_KEYWORD.toLowerCase());
+        for(String intent_keyword : INTENT_KEYWORDS) {
+            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase()))
+                return false;
+        }
+
+        return true;
     }
 
     @Override

@@ -13,14 +13,19 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class SavingBalanceHandler extends BaseSavingIntentHandler {
-    private static final String INTENT_KEYWORD = "savingBalance";
+    private static final String[] INTENT_KEYWORDS = {"saving", "Balance"};
 
     @Autowired
     private SavingsAccountApi savingsAccountApi;
 
     @Override
     public Boolean canHandle(Intent intent) {
-        return intent.getKeyword().toLowerCase().contains(INTENT_KEYWORD.toLowerCase());
+        for(String intent_keyword : INTENT_KEYWORDS) {
+            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase()))
+                return false;
+        }
+
+        return true;
     }
 
     @Override

@@ -10,14 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Slf4j
 public class DuePrincipalHandler extends BaseLoanIntentHandler {
-    private static final String INTENT_KEYWORD = "dueInterest";
+    private static final String[] INTENT_KEYWORDS = {"due", "principal"};
 
     @Autowired
     private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {
-        return intent.getKeyword().toLowerCase().contains(INTENT_KEYWORD.toLowerCase());
+        for(String intent_keyword : INTENT_KEYWORDS) {
+            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase()))
+                return false;
+        }
+
+        return true;
     }
 
     @Override

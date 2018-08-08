@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class LoanStatusHandler extends BaseLoanIntentHandler {
-    private static final String INTENT_KEYWORD = "loanStatus";
+    private static final String[] INTENT_KEYWORDS = {"loan", "Status"};
 
     @Autowired
     private LoansApi loansApi;
@@ -20,20 +20,17 @@ public class LoanStatusHandler extends BaseLoanIntentHandler {
     @Override
     public Boolean canHandle(Intent intent) {
         // TODO: improve if necessary
-        String[] keywords = intent.getKeyword().split(" ");
-        for (String keyword : keywords) {
-            if(!INTENT_KEYWORD.contains(keyword)) {
+        for(String intent_keyword : INTENT_KEYWORDS) {
+            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase()))
                 return false;
-            }
         }
+
         return true;
     }
 
     @Override
     public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
-
-        // SomeLoanStatusObject result = apiClient.execute(); // TODO: do your thing here and call the loan status api!
         try {
             // TODO: and this is how you should retrieve the ID (or any other parameter you need); no need to add another parameter in the "handle" function
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);

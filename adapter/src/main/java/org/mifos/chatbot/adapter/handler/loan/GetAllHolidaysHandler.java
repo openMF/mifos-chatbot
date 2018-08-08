@@ -14,16 +14,19 @@ import java.util.List;
 @Slf4j
 @Component
 public class GetAllHolidaysHandler extends BaseLoanIntentHandler {
-    private static final String INTENT_KEYWORD = "getAllHolidays";
+    private static final String[] INTENT_KEYWORDS = {"get", "All", "Holidays"};
 
     @Autowired
     private HolidaysApi holidaysApi;
 
     @Override
     public Boolean canHandle(Intent intent) {
-        // TODO: improve if necessary
-//        log.info("The current base path is : " + apiClient.getBasePath());
-        return INTENT_KEYWORD.equals(intent.getKeyword());
+        for(String intent_keyword : INTENT_KEYWORDS) {
+            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase()))
+                return false;
+        }
+
+        return true;
     }
 
     @Override

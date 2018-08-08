@@ -16,14 +16,19 @@ import java.util.Date;
 @Slf4j
 @Component
 public class FirstRepaymentDateHandler extends BaseLoanIntentHandler {
-    private static final String INTENT_KEYWORD = "firstRepaymentDate";
+    private static final String[] INTENT_KEYWORDS = {"first", "Repayment", "Date"};
 
     @Autowired
     private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {
-        return intent.getKeyword().toLowerCase().contains(INTENT_KEYWORD.toLowerCase());
+        for(String intent_keyword : INTENT_KEYWORDS) {
+            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase()))
+                return false;
+        }
+
+        return true;
     }
 
     @Override
@@ -33,7 +38,7 @@ public class FirstRepaymentDateHandler extends BaseLoanIntentHandler {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
             Date date = HandlerUtils.convertListToDate(result.getTimeline().getActualDisbursementDate());
             String frequency = result.getRepaymentFrequencyType().getValue();
-            int term = 0;
+            int term;
             if(frequency.equalsIgnoreCase("weeks")) {
                 term = result.getRepaymentEvery() * 7;
                 date = DateUtils.addDays(date, term);
