@@ -77,7 +77,7 @@ public class MifosChatbotAdapterServiceTest {
     @Test
     public void dueInterestTest() {
         Intent dueInterestIntent = new Intent("dueInterest");
-        dueInterestIntent.addParameter("ID", 1L);
+        dueInterestIntent.addParameter("ID", 2L);
 
         List<MifosResponse> responses = chatbotAdapterService.handle(dueInterestIntent);
         for(MifosResponse response : responses) {
@@ -154,7 +154,7 @@ public class MifosChatbotAdapterServiceTest {
     @Test
     public void outstandingInterestTest() {
         Intent outstandingInterestIntent = new Intent("outstandingInterest");
-        outstandingInterestIntent.addParameter("ID", 1L);
+        outstandingInterestIntent.addParameter("ID", 2L);
 
         List<MifosResponse> responses = chatbotAdapterService.handle(outstandingInterestIntent);
         for(MifosResponse response : responses) {
@@ -165,7 +165,7 @@ public class MifosChatbotAdapterServiceTest {
     @Test
     public void outstandingPrincipalTest() {
         Intent outstandingPrincipalIntent = new Intent("outstandingPrincipal");
-        outstandingPrincipalIntent.addParameter("ID", 1L);
+        outstandingPrincipalIntent.addParameter("ID", 2L);
 
         List<MifosResponse> responses = chatbotAdapterService.handle(outstandingPrincipalIntent);
         for(MifosResponse response : responses) {
@@ -176,7 +176,7 @@ public class MifosChatbotAdapterServiceTest {
     @Test
     public void overdueInterestTest() {
         Intent overdueInterestIntent = new Intent("overdueInterest");
-        overdueInterestIntent.addParameter("ID", 1L);
+        overdueInterestIntent.addParameter("ID", 2L);
 
         List<MifosResponse> responses = chatbotAdapterService.handle(overdueInterestIntent);
         for(MifosResponse response : responses) {
@@ -187,7 +187,7 @@ public class MifosChatbotAdapterServiceTest {
     @Test
     public void overduePrincipalTest() {
         Intent overduePrincipalIntent = new Intent("overduePrincipal");
-        overduePrincipalIntent.addParameter("ID", 1L);
+        overduePrincipalIntent.addParameter("ID", 2L);
 
         List<MifosResponse> responses = chatbotAdapterService.handle(overduePrincipalIntent);
         for(MifosResponse response : responses) {
@@ -198,7 +198,7 @@ public class MifosChatbotAdapterServiceTest {
     @Test
     public void penaltyChargeTest() {
         Intent penaltyChargeIntent = new Intent("penaltyCharge");
-        penaltyChargeIntent.addParameter("ID", 1L);
+        penaltyChargeIntent.addParameter("ID", 2L);
 
         List<MifosResponse> responses = chatbotAdapterService.handle(penaltyChargeIntent);
         for(MifosResponse response : responses) {
