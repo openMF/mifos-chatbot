@@ -1,5 +1,6 @@
 package org.mifos.chatbot.nlp;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Before;
@@ -24,9 +25,16 @@ public class OpenNLPServiceTest {
         // TODO: Update NLP model, its detection is not accurate
         for(int i = 0; i < results.length ;i++) {
             log.info(results[i].getKeyword());
-            log.info(results[i].getParameterAsString("ID"));
-            log.info(results[i].getParameterAsString("Date"));
         }
-//        Assert.assertTrue(results[0].getKeyword().equals("Interest rate"));
+        Assert.assertTrue(hasKeyword(results, "next due date"));
+    }
+
+    private Boolean hasKeyword(Intent[] intents, String keyword) {
+        for(Intent intent : intents) {
+            if(intent.getKeyword().equalsIgnoreCase(keyword))
+                return true;
+        }
+
+        return false;
     }
 }

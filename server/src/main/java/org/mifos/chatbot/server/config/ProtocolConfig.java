@@ -40,6 +40,15 @@ public class ProtocolConfig {
                 msg.setTo("zhaodingfanhaha@gmail.com");
                 slackChatService.send(msg);
             }
+
+            @Override
+            public void onCheckingUsernameAndPassword() {
+                Message msg = new Message();
+                msg.setText("Please key in your username and password with tag of `username: ` and `password: `(be careful about the space) " +
+                        "\nRemember to put in two messages~");
+                msg.setTo("zhaodingfanhaha@gmail.com");
+                slackChatService.send(msg);
+            }
         });
 
         return slackChatService;
