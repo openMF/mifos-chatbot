@@ -50,6 +50,8 @@ public class SlackChatService implements ChatService {
             callback.onCheckingUsernameAndPassword();
 
             session.addMessagePostedListener((event, session) -> {
+                final String noAuth = "Please enter the correct username or password with correct tag";
+                final String noIntent = "cannot find intent from it ";
                 Boolean authenticated = false;
 
                 if(event.getMessageContent().toLowerCase().contains("username".toLowerCase())) {
@@ -61,11 +63,11 @@ public class SlackChatService implements ChatService {
                 if(authMap.get("Username").equals(settings.getUsername()) && authMap.get("Password").equals(settings.getPassword())) {
                      authenticated = true;
                 }
-                if(!authenticated && authMap.containsKey("Username") && authMap.containsKey("Password")){
+                if(!authenticated && authMap.containsKey("Username") && authMap.containsKey("Password") && !event.getMessageContent().equals(noAuth)){
                     MifosResponse response = new MifosResponse();
-                    response.setContent("Please enter the correct username or password with correct tag");
+                    response.setContent(noAuth);
                     // TODO: The reason why it will iterate over and over again is that it will always has the response, which contains the same msg content as the posted msg
-//                    callback.onResponse(initialResponse);
+                    callback.onResponse(response);
                 }
 
                 if(callback != null && authenticated) {
@@ -82,10 +84,10 @@ public class SlackChatService implements ChatService {
                         for (MifosResponse response : responseList) {
                             callback.onResponse(response);
                         }
-                    } else {
+                    } else if(!event.getMessageContent().equals(noIntent)) {
                         MifosResponse errorResponse = new MifosResponse();
-                        errorResponse.setContent("cannot find intent from it ");
-//                        responseList.set(0, errorResponse);
+                        errorResponse.setContent(noIntent);
+                        callback.onResponse(errorResponse);
                     }
                 }
             });
