@@ -21,8 +21,9 @@ public class LoanStatusHandler extends BaseLoanIntentHandler {
     public Boolean canHandle(Intent intent) {
         // TODO: improve if necessary
         for(String intent_keyword : INTENT_KEYWORDS) {
-            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase()))
+            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase())) {
                 return false;
+            }
         }
 
         return true;

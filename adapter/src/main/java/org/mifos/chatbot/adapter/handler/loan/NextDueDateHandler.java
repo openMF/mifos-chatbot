@@ -26,8 +26,9 @@ public class NextDueDateHandler extends BaseLoanIntentHandler {
     @Override
     public Boolean canHandle(Intent intent) {
         for(String intent_keyword : INTENT_KEYWORDS) {
-            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase()))
+            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase())) {
                 return false;
+            }
         }
 
         return true;

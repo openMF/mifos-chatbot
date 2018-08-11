@@ -19,10 +19,10 @@ public class OutstandingInterestHandler extends BaseLoanIntentHandler {
 
     @Override
     public Boolean canHandle(Intent intent) {
-        // TODO: improve if necessary
         for(String intent_keyword : INTENT_KEYWORDS) {
-            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase()))
+            if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase())) {
                 return false;
+            }
         }
 
         return true;
@@ -30,7 +30,6 @@ public class OutstandingInterestHandler extends BaseLoanIntentHandler {
 
     @Override
     public MifosResponse handle(Intent intent) {
-        // TODO: implement this
         MifosResponse response = new MifosResponse();
         try {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
