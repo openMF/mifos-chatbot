@@ -14,11 +14,11 @@ Hence, my work can be divided into these phases.
 According to the description of the project idea:
 
 > Main components needed are: <br>
-1. NLU (natural language understanding) /NLP (natural language processing) <br>
+>1. NLU (natural language understanding) /NLP (natural language processing) <br>
 This component is probably a good candidate for integrating a suitable existing OS project. <br><br>
-2. Chat platform and/or protocols <br>
+>2. Chat platform and/or protocols <br>
 To establish the communication between user and the bot logic the project could either leverage (at least) one of the major chat platforms (e. g. Facebook messenger etc.) and/or use open source protocols like XMPP or IRC. It's probably best to evaluate existing chat frameworks/client libraries <br><br>
-3. Fineract adapter <br>
+>3. Fineract adapter <br>
 This is the part where most of the student's attention is needed (see use cases below). The student would have to evaluate to which extent a chatbot framework could be integrated or if there are better arguments to develop something Mifos specific.
 
 Hence, for the final product, it has multiple modules that cover different functions of the Chatbot. Different modules integrates to build the whole workflow.
@@ -30,6 +30,35 @@ It contains the following modules:
 4. nlp
 5. protocol
 6. server
+
+## Setup
+
+The setup process of this project is quite concise.
+
+Dependencies needed:
+1. Java 1.8 <br>
+For your information, this project requires the Java version to be exactly `1.8`. If you have both Java 10 and Java 1.8 together on your operating system, you can use the bash command export JAVA_HOME=`/usr/libexec/java_home -v 1.8` to change Java version 1.8.
+
+2. Gradle <br>
+Use Gradle to solve the dependency management problem.
+
+3. IDE ==> IntelliJ or Eclipse <br>
+These two IDEs provide a lot of useful plugins to facilitate the coding process. For example, `Lombok plugin` is a kind of plugin that injects the instance of logging method into usage.
+
+After setting up the dependencies, you are ready to play with it.
+
+## Play with Chatbot 
+
+If you want to play with it as a user, then you should get an account in Slack `Mifos` workspace first. Within this workspace, you search for an app called `chatbot`. Then you can type in your query and wait for response. Remember that the query should within the scope of [project requirements](https://mifosforge.jira.com/wiki/spaces/RES/pages/225411076/Google+Summer+of+Code+2018+Ideas#GoogleSummerofCode2018Ideas-Mifos/FineractChatbot&Adapter).
+> Tips: Currently this project has not been deployed to a server, which means I only run it from my local machine. Hence, this application will not run all the time, the function of always responding to queries will be achieved when this project is hosted on a web server.
+
+However, if you want to play with it as a developer.
+
+1. You can try out the unit tests in every modules to understand more about functions of these modules.
+
+2. You have to apply for a Slack bot user account, which means create you own bot user in Slack Application page. You Slack bot is distinguished by a token given by Slack. You have to place the token into `application.properties` and configure it properly.
+
+3. You can run this application with Gradle commands. You navigate your terminal to server package. After that, you can execute the command `server:BootRun` to start your own Chatbot.
 
 ## Working period
 
@@ -71,7 +100,7 @@ This is the last period of my Google Summer of Code internship. After completing
 <br><br> 3. After getting the response from API handlers, the controller will put the response back to Slack interface to send back to users. Users may put several requests into one Slack message.
 <br><br> After completing one cycle of the workflow, user will get the information they want. If they don't get the correct information, they will receive the error message instead.
 
-* Then another work is to add the unit tests and the documentation of this project to let other developers who would like to contribute to this project give their contribution to this project.
+* Then another work is to add the unit tests and the documentation of this project to let other developers who would like to contribute to this project give their contribution to this project.  
 
 ## Function Illustration
 
@@ -85,7 +114,7 @@ The Slack service implements `Callback` interface, which handles the function of
 
 This is a very important module of Chatbot which distinguishes this Chatbot with other normal chatbots that require user to input specific command to trigger the response. Instead, it will can accept natural language as input. This implementation will make it convenient for users to interact with Chatbot because they do not need to memorise all the complicated commands.
 
-This function stays in `nlp` module. It has series of sub-functions to achieve the purpose of extracting the user's intent from user raw input. Basically, the sub-functions include: 
+This function stays in `nlp` module. It has series of sub-functions to achieve the purpose of extracting the user's intent from user raw input. Basically, the sub-functions include:  
 1. sentence detector
 2. tokeniser
 3. name finder / other entity finders
@@ -106,17 +135,43 @@ Then the OpenNLP engine will pass the results to API handlers.
 
 #### Adapter -- Swagger code generation
 
-The `adapter` module
+The `client` module contains the Java client of Fineract APIs that will be queried in this Chatbot. Then the `handler` module contains the handler of those Java client of APIs. Specifically speaking, the `client` module contains APIs like `LoansApi`, `CurrencyApi` and `SavingsApi`. Those Java clients of APIs can function like live API of Fineract. Those APIs are generated by the Swagger code generation.
 
-#### Controller - core module
+The `handler` module contains adapter between Fineract API executors and `nlp` module. For every handler of the Fineract request, it will contain a function to check which intent it should handle and another function which executes the corresponding Fineract API and returns the selected field from the JSON response of the API request.
 
-## Appreciation
-I would like to express my special thanks to those who helped me during the project.
-All the colleagues, Sanyam, Ed, Aleks
+For example, if the user want to query his/her due interest, after the processing of OpenNLP engine, the input has been processed as a series of spans, then Intent ["due interest"] is available for the processing in the `handler` module.
 
-## Product
+1. In the `MifosChatbotAdapterService` class, the handler will implement the stream filter to locate the corresponding handler to handle the request. During the selection proess, `DueInterestHandler` is selected to be the handler.
 
+2. In the handler, it will execute the `handle` function, which executes the `LoansApi` to query information about Loans. In the technical aspect, it executes the `retrieveLoan` method to retrieve information.
+
+3. After that, the function will select the field named `InterestOverDue` and pass it back to Slack interface.
+
+#### Controller - Server Module
+
+The controller of this project stays in `server` module. This module controls the whole logic of this project. The workflow mentioned above is in the `server` module and the controller will care about the configuration details and dependency injection.
+
+The basic workflow is `Slack` service ==> `NLP` ==> `AdapterService` ==> `Slack`. After completing one work cycle, the user will get the response back from this Chatbot.
+
+There is another module inside the system called `core`. This module controls the interfaces of this project. For example, if `server` module want to use service from other modules, it will call the service from `core` module to let Spring help it handle the dependency injection to avoid over coupling.
 
 ## Future Improvements
 
+There are still some future improvements that you can make if you are interested about this project. 
+
+1. Authentication part: Currently the authentication is quite basic, it only checks user input with pre-defined username & password. Two factor authentication is preferable for financial information application. 
+
+2. Notification: Currently the project can only send response back to users after they ask questions. The ideal state is that the Chatbot can push notifications to users even they are not focusing on Chatbot and asking questions to Chatbot. 
+
+3. The coding style can be more concise.  
+
 ## Contribution later
+
+You can refer to developer part of section #Play with Chatbot, you can make some changes and test your changes by running the application. 
+
+## Appreciation
+
+I would like to express my thanks to those who helped me during the project. Thanks Mr Ad Cable for answering my questions patiently and giving me useful advice during weekly check-ins. Thanks for Sanyam for providing me the complete version of Fineract API documentation and helping me through the process of discovering the JSON file of Fineract API. Without his help, I cannot find the updated version of Fineract API.
+
+Then I would like to express my especial thankfulness to my mentor Mr Aleks. I received a lot of help during the whole process of Google Summer of Code. Whenever I got into trouble, He would always provide useful help to me.
+
