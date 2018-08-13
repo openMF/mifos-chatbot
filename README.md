@@ -37,6 +37,8 @@ After forking and cloning chatbot project , do a gradle import run the unit test
 
 Key in text in the chatbot and read the response to understand more.
 
+For example, you can type `Check my arrear day`, `Check my due interest`, `Check my next due date` in the Slack interface. Then you will receive response from the Slack bot, like "478 days" as the response of `arrear day`, "1150.0" as the response of `due interest` and `Sat Apr 29 00:00:00 SGT 2017` as the response of `next due date`. 
+
 ### Playing with Fineract and Chatbot
 
 As you may know, the Chatbot project will query information from Fineract. Hence, we are supposed to have a public instance or a local instance of Fineract running on Tomcat server.
