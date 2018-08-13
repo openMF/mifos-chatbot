@@ -1,3 +1,18 @@
+/**
+ * Copyright 2018 Dingfan Zhao
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
 /*
  * Apache Fineract API Documentation
  * Apache Fineract is a secure, multi-tenanted microfinance platform. <br />              The goal of the Apache Fineract API is to empower developers to build apps on top of the Apache Fineract Platform. The reference app [  https://demo.openmf.org  ] (username: mifos, password: password) works on the same demo tenant as the interactive links in this documentation.              <br/>The API                 is organized around REST [ https://en.wikipedia.org/wiki/Representational_state_transfer ]               <br/> Find out more about Apache Fineract on [ https://demo.openmf.org/api-docs/apiLive.htm#top ]              <br/> You can Try The API From Your Browser itself at [ https://demo.openmf.org/api-docs/apiLive.htm#interact ]              <br/> The Generic Options are available at [ https://demo.openmf.org/api-docs/apiLive.htm#genopts ]              <br/> Find out more about Updating Dates and Numbers at [ https://demo.openmf.org/api-docs/apiLive.htm#dates_and_numbers ]              <br/> For the Authentication and the Basic of HTTP and HTTPS refer [ https://demo.openmf.org/api-docs/apiLive.htm#authentication_overview ]              <br/> Check about ERROR codes at [ https://demo.openmf.org/api-docs/apiLive.htm#errors ]               <br/> <br/> Please refer to the old documentation for any documentation queries [ https://demo.openmf.org/api-docs/apiLive.htm ]              <br/>             ______________________________________________________________________________________________________________________________          
@@ -40,97 +55,97 @@ public class GetLoansLoanIdSummary {
   private GetLoansLoanIdCurrency currency = null;
 
   @SerializedName("principalDisbursed")
-  private Long principalDisbursed = null;
+  private Double principalDisbursed = null;
 
   @SerializedName("principalPaid")
-  private Long principalPaid = null;
+  private Double principalPaid = null;
 
   @SerializedName("principalWrittenOff")
-  private Long principalWrittenOff = null;
+  private Double principalWrittenOff = null;
 
   @SerializedName("principalOutstanding")
-  private Long principalOutstanding = null;
+  private Double principalOutstanding = null;
 
   @SerializedName("principalOverdue")
   private Double principalOverdue = null;
 
   @SerializedName("interestCharged")
-  private Long interestCharged = null;
+  private Double interestCharged = null;
 
   @SerializedName("interestPaid")
-  private Long interestPaid = null;
+  private Double interestPaid = null;
 
   @SerializedName("interestWaived")
-  private Long interestWaived = null;
+  private Double interestWaived = null;
 
   @SerializedName("interestWrittenOff")
-  private Long interestWrittenOff = null;
+  private Double interestWrittenOff = null;
 
   @SerializedName("interestOutstanding")
-  private Long interestOutstanding = null;
+  private Double interestOutstanding = null;
 
   @SerializedName("interestOverdue")
-  private Long interestOverdue = null;
+  private Double interestOverdue = null;
 
   @SerializedName("feeChargesCharged")
-  private Long feeChargesCharged = null;
+  private Double feeChargesCharged = null;
 
   @SerializedName("feeChargesDueAtDisbursementCharged")
-  private Long feeChargesDueAtDisbursementCharged = null;
+  private Double feeChargesDueAtDisbursementCharged = null;
 
   @SerializedName("feeChargesPaid")
-  private Long feeChargesPaid = null;
+  private Double feeChargesPaid = null;
 
   @SerializedName("feeChargesWaived")
-  private Long feeChargesWaived = null;
+  private Double feeChargesWaived = null;
 
   @SerializedName("feeChargesWrittenOff")
-  private Long feeChargesWrittenOff = null;
+  private Double feeChargesWrittenOff = null;
 
   @SerializedName("feeChargesOutstanding")
-  private Long feeChargesOutstanding = null;
+  private Double feeChargesOutstanding = null;
 
   @SerializedName("feeChargesOverdue")
-  private Long feeChargesOverdue = null;
+  private Double feeChargesOverdue = null;
 
   @SerializedName("penaltyChargesCharged")
-  private Long penaltyChargesCharged = null;
+  private Double penaltyChargesCharged = null;
 
   @SerializedName("penaltyChargesPaid")
-  private Long penaltyChargesPaid = null;
+  private Double penaltyChargesPaid = null;
 
   @SerializedName("penaltyChargesWaived")
-  private Long penaltyChargesWaived = null;
+  private Double penaltyChargesWaived = null;
 
   @SerializedName("penaltyChargesWrittenOff")
-  private Long penaltyChargesWrittenOff = null;
+  private Double penaltyChargesWrittenOff = null;
 
   @SerializedName("penaltyChargesOutstanding")
-  private Long penaltyChargesOutstanding = null;
+  private Double penaltyChargesOutstanding = null;
 
   @SerializedName("penaltyChargesOverdue")
-  private Long penaltyChargesOverdue = null;
+  private Double penaltyChargesOverdue = null;
 
   @SerializedName("totalExpectedRepayment")
-  private Long totalExpectedRepayment = null;
+  private Double totalExpectedRepayment = null;
 
   @SerializedName("totalRepayment")
-  private Long totalRepayment = null;
+  private Double totalRepayment = null;
 
   @SerializedName("totalExpectedCostOfLoan")
-  private Long totalExpectedCostOfLoan = null;
+  private Double totalExpectedCostOfLoan = null;
 
   @SerializedName("totalCostOfLoan")
-  private Long totalCostOfLoan = null;
+  private Double totalCostOfLoan = null;
 
   @SerializedName("totalWaived")
-  private Long totalWaived = null;
+  private Double totalWaived = null;
 
   @SerializedName("totalWrittenOff")
-  private Long totalWrittenOff = null;
+  private Double totalWrittenOff = null;
 
   @SerializedName("totalOutstanding")
-  private Long totalOutstanding = null;
+  private Double totalOutstanding = null;
 
   @SerializedName("totalOverdue")
   private Double totalOverdue = null;
@@ -183,7 +198,7 @@ public class GetLoansLoanIdSummary {
     this.currency = currency;
   }
 
-  public GetLoansLoanIdSummary principalDisbursed(Long principalDisbursed) {
+  public GetLoansLoanIdSummary principalDisbursed(Double principalDisbursed) {
     this.principalDisbursed = principalDisbursed;
     return this;
   }
@@ -192,16 +207,16 @@ public class GetLoansLoanIdSummary {
    * Get principalDisbursed
    * @return principalDisbursed
    **/
-  @ApiModelProperty(example = "1000000", value = "")
-  public Long getPrincipalDisbursed() {
+  @ApiModelProperty(example = "1000000.0", value = "")
+  public Double getPrincipalDisbursed() {
     return principalDisbursed;
   }
 
-  public void setPrincipalDisbursed(Long principalDisbursed) {
+  public void setPrincipalDisbursed(Double principalDisbursed) {
     this.principalDisbursed = principalDisbursed;
   }
 
-  public GetLoansLoanIdSummary principalPaid(Long principalPaid) {
+  public GetLoansLoanIdSummary principalPaid(Double principalPaid) {
     this.principalPaid = principalPaid;
     return this;
   }
@@ -210,16 +225,16 @@ public class GetLoansLoanIdSummary {
    * Get principalPaid
    * @return principalPaid
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getPrincipalPaid() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getPrincipalPaid() {
     return principalPaid;
   }
 
-  public void setPrincipalPaid(Long principalPaid) {
+  public void setPrincipalPaid(Double principalPaid) {
     this.principalPaid = principalPaid;
   }
 
-  public GetLoansLoanIdSummary principalWrittenOff(Long principalWrittenOff) {
+  public GetLoansLoanIdSummary principalWrittenOff(Double principalWrittenOff) {
     this.principalWrittenOff = principalWrittenOff;
     return this;
   }
@@ -228,16 +243,16 @@ public class GetLoansLoanIdSummary {
    * Get principalWrittenOff
    * @return principalWrittenOff
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getPrincipalWrittenOff() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getPrincipalWrittenOff() {
     return principalWrittenOff;
   }
 
-  public void setPrincipalWrittenOff(Long principalWrittenOff) {
+  public void setPrincipalWrittenOff(Double principalWrittenOff) {
     this.principalWrittenOff = principalWrittenOff;
   }
 
-  public GetLoansLoanIdSummary principalOutstanding(Long principalOutstanding) {
+  public GetLoansLoanIdSummary principalOutstanding(Double principalOutstanding) {
     this.principalOutstanding = principalOutstanding;
     return this;
   }
@@ -246,12 +261,12 @@ public class GetLoansLoanIdSummary {
    * Get principalOutstanding
    * @return principalOutstanding
    **/
-  @ApiModelProperty(example = "1000000", value = "")
-  public Long getPrincipalOutstanding() {
+  @ApiModelProperty(example = "1000000.0", value = "")
+  public Double getPrincipalOutstanding() {
     return principalOutstanding;
   }
 
-  public void setPrincipalOutstanding(Long principalOutstanding) {
+  public void setPrincipalOutstanding(Double principalOutstanding) {
     this.principalOutstanding = principalOutstanding;
   }
 
@@ -273,7 +288,7 @@ public class GetLoansLoanIdSummary {
     this.principalOverdue = principalOverdue;
   }
 
-  public GetLoansLoanIdSummary interestCharged(Long interestCharged) {
+  public GetLoansLoanIdSummary interestCharged(Double interestCharged) {
     this.interestCharged = interestCharged;
     return this;
   }
@@ -282,16 +297,16 @@ public class GetLoansLoanIdSummary {
    * Get interestCharged
    * @return interestCharged
    **/
-  @ApiModelProperty(example = "240000", value = "")
-  public Long getInterestCharged() {
+  @ApiModelProperty(example = "240000.0", value = "")
+  public Double getInterestCharged() {
     return interestCharged;
   }
 
-  public void setInterestCharged(Long interestCharged) {
+  public void setInterestCharged(Double interestCharged) {
     this.interestCharged = interestCharged;
   }
 
-  public GetLoansLoanIdSummary interestPaid(Long interestPaid) {
+  public GetLoansLoanIdSummary interestPaid(Double interestPaid) {
     this.interestPaid = interestPaid;
     return this;
   }
@@ -300,16 +315,16 @@ public class GetLoansLoanIdSummary {
    * Get interestPaid
    * @return interestPaid
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getInterestPaid() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getInterestPaid() {
     return interestPaid;
   }
 
-  public void setInterestPaid(Long interestPaid) {
+  public void setInterestPaid(Double interestPaid) {
     this.interestPaid = interestPaid;
   }
 
-  public GetLoansLoanIdSummary interestWaived(Long interestWaived) {
+  public GetLoansLoanIdSummary interestWaived(Double interestWaived) {
     this.interestWaived = interestWaived;
     return this;
   }
@@ -318,16 +333,16 @@ public class GetLoansLoanIdSummary {
    * Get interestWaived
    * @return interestWaived
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getInterestWaived() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getInterestWaived() {
     return interestWaived;
   }
 
-  public void setInterestWaived(Long interestWaived) {
+  public void setInterestWaived(Double interestWaived) {
     this.interestWaived = interestWaived;
   }
 
-  public GetLoansLoanIdSummary interestWrittenOff(Long interestWrittenOff) {
+  public GetLoansLoanIdSummary interestWrittenOff(Double interestWrittenOff) {
     this.interestWrittenOff = interestWrittenOff;
     return this;
   }
@@ -336,16 +351,16 @@ public class GetLoansLoanIdSummary {
    * Get interestWrittenOff
    * @return interestWrittenOff
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getInterestWrittenOff() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getInterestWrittenOff() {
     return interestWrittenOff;
   }
 
-  public void setInterestWrittenOff(Long interestWrittenOff) {
+  public void setInterestWrittenOff(Double interestWrittenOff) {
     this.interestWrittenOff = interestWrittenOff;
   }
 
-  public GetLoansLoanIdSummary interestOutstanding(Long interestOutstanding) {
+  public GetLoansLoanIdSummary interestOutstanding(Double interestOutstanding) {
     this.interestOutstanding = interestOutstanding;
     return this;
   }
@@ -354,16 +369,16 @@ public class GetLoansLoanIdSummary {
    * Get interestOutstanding
    * @return interestOutstanding
    **/
-  @ApiModelProperty(example = "240000", value = "")
-  public Long getInterestOutstanding() {
+  @ApiModelProperty(example = "240000.0", value = "")
+  public Double getInterestOutstanding() {
     return interestOutstanding;
   }
 
-  public void setInterestOutstanding(Long interestOutstanding) {
+  public void setInterestOutstanding(Double interestOutstanding) {
     this.interestOutstanding = interestOutstanding;
   }
 
-  public GetLoansLoanIdSummary interestOverdue(Long interestOverdue) {
+  public GetLoansLoanIdSummary interestOverdue(Double interestOverdue) {
     this.interestOverdue = interestOverdue;
     return this;
   }
@@ -372,16 +387,16 @@ public class GetLoansLoanIdSummary {
    * Get interestOverdue
    * @return interestOverdue
    **/
-  @ApiModelProperty(example = "200000", value = "")
-  public Long getInterestOverdue() {
+  @ApiModelProperty(example = "200000.0", value = "")
+  public Double getInterestOverdue() {
     return interestOverdue;
   }
 
-  public void setInterestOverdue(Long interestOverdue) {
+  public void setInterestOverdue(Double interestOverdue) {
     this.interestOverdue = interestOverdue;
   }
 
-  public GetLoansLoanIdSummary feeChargesCharged(Long feeChargesCharged) {
+  public GetLoansLoanIdSummary feeChargesCharged(Double feeChargesCharged) {
     this.feeChargesCharged = feeChargesCharged;
     return this;
   }
@@ -390,16 +405,16 @@ public class GetLoansLoanIdSummary {
    * Get feeChargesCharged
    * @return feeChargesCharged
    **/
-  @ApiModelProperty(example = "18000", value = "")
-  public Long getFeeChargesCharged() {
+  @ApiModelProperty(example = "18000.0", value = "")
+  public Double getFeeChargesCharged() {
     return feeChargesCharged;
   }
 
-  public void setFeeChargesCharged(Long feeChargesCharged) {
+  public void setFeeChargesCharged(Double feeChargesCharged) {
     this.feeChargesCharged = feeChargesCharged;
   }
 
-  public GetLoansLoanIdSummary feeChargesDueAtDisbursementCharged(Long feeChargesDueAtDisbursementCharged) {
+  public GetLoansLoanIdSummary feeChargesDueAtDisbursementCharged(Double feeChargesDueAtDisbursementCharged) {
     this.feeChargesDueAtDisbursementCharged = feeChargesDueAtDisbursementCharged;
     return this;
   }
@@ -408,16 +423,16 @@ public class GetLoansLoanIdSummary {
    * Get feeChargesDueAtDisbursementCharged
    * @return feeChargesDueAtDisbursementCharged
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getFeeChargesDueAtDisbursementCharged() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getFeeChargesDueAtDisbursementCharged() {
     return feeChargesDueAtDisbursementCharged;
   }
 
-  public void setFeeChargesDueAtDisbursementCharged(Long feeChargesDueAtDisbursementCharged) {
+  public void setFeeChargesDueAtDisbursementCharged(Double feeChargesDueAtDisbursementCharged) {
     this.feeChargesDueAtDisbursementCharged = feeChargesDueAtDisbursementCharged;
   }
 
-  public GetLoansLoanIdSummary feeChargesPaid(Long feeChargesPaid) {
+  public GetLoansLoanIdSummary feeChargesPaid(Double feeChargesPaid) {
     this.feeChargesPaid = feeChargesPaid;
     return this;
   }
@@ -426,16 +441,16 @@ public class GetLoansLoanIdSummary {
    * Get feeChargesPaid
    * @return feeChargesPaid
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getFeeChargesPaid() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getFeeChargesPaid() {
     return feeChargesPaid;
   }
 
-  public void setFeeChargesPaid(Long feeChargesPaid) {
+  public void setFeeChargesPaid(Double feeChargesPaid) {
     this.feeChargesPaid = feeChargesPaid;
   }
 
-  public GetLoansLoanIdSummary feeChargesWaived(Long feeChargesWaived) {
+  public GetLoansLoanIdSummary feeChargesWaived(Double feeChargesWaived) {
     this.feeChargesWaived = feeChargesWaived;
     return this;
   }
@@ -444,16 +459,16 @@ public class GetLoansLoanIdSummary {
    * Get feeChargesWaived
    * @return feeChargesWaived
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getFeeChargesWaived() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getFeeChargesWaived() {
     return feeChargesWaived;
   }
 
-  public void setFeeChargesWaived(Long feeChargesWaived) {
+  public void setFeeChargesWaived(Double feeChargesWaived) {
     this.feeChargesWaived = feeChargesWaived;
   }
 
-  public GetLoansLoanIdSummary feeChargesWrittenOff(Long feeChargesWrittenOff) {
+  public GetLoansLoanIdSummary feeChargesWrittenOff(Double feeChargesWrittenOff) {
     this.feeChargesWrittenOff = feeChargesWrittenOff;
     return this;
   }
@@ -462,16 +477,16 @@ public class GetLoansLoanIdSummary {
    * Get feeChargesWrittenOff
    * @return feeChargesWrittenOff
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getFeeChargesWrittenOff() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getFeeChargesWrittenOff() {
     return feeChargesWrittenOff;
   }
 
-  public void setFeeChargesWrittenOff(Long feeChargesWrittenOff) {
+  public void setFeeChargesWrittenOff(Double feeChargesWrittenOff) {
     this.feeChargesWrittenOff = feeChargesWrittenOff;
   }
 
-  public GetLoansLoanIdSummary feeChargesOutstanding(Long feeChargesOutstanding) {
+  public GetLoansLoanIdSummary feeChargesOutstanding(Double feeChargesOutstanding) {
     this.feeChargesOutstanding = feeChargesOutstanding;
     return this;
   }
@@ -480,16 +495,16 @@ public class GetLoansLoanIdSummary {
    * Get feeChargesOutstanding
    * @return feeChargesOutstanding
    **/
-  @ApiModelProperty(example = "18000", value = "")
-  public Long getFeeChargesOutstanding() {
+  @ApiModelProperty(example = "18000.0", value = "")
+  public Double getFeeChargesOutstanding() {
     return feeChargesOutstanding;
   }
 
-  public void setFeeChargesOutstanding(Long feeChargesOutstanding) {
+  public void setFeeChargesOutstanding(Double feeChargesOutstanding) {
     this.feeChargesOutstanding = feeChargesOutstanding;
   }
 
-  public GetLoansLoanIdSummary feeChargesOverdue(Long feeChargesOverdue) {
+  public GetLoansLoanIdSummary feeChargesOverdue(Double feeChargesOverdue) {
     this.feeChargesOverdue = feeChargesOverdue;
     return this;
   }
@@ -498,16 +513,16 @@ public class GetLoansLoanIdSummary {
    * Get feeChargesOverdue
    * @return feeChargesOverdue
    **/
-  @ApiModelProperty(example = "15000", value = "")
-  public Long getFeeChargesOverdue() {
+  @ApiModelProperty(example = "15000.0", value = "")
+  public Double getFeeChargesOverdue() {
     return feeChargesOverdue;
   }
 
-  public void setFeeChargesOverdue(Long feeChargesOverdue) {
+  public void setFeeChargesOverdue(Double feeChargesOverdue) {
     this.feeChargesOverdue = feeChargesOverdue;
   }
 
-  public GetLoansLoanIdSummary penaltyChargesCharged(Long penaltyChargesCharged) {
+  public GetLoansLoanIdSummary penaltyChargesCharged(Double penaltyChargesCharged) {
     this.penaltyChargesCharged = penaltyChargesCharged;
     return this;
   }
@@ -516,16 +531,16 @@ public class GetLoansLoanIdSummary {
    * Get penaltyChargesCharged
    * @return penaltyChargesCharged
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getPenaltyChargesCharged() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getPenaltyChargesCharged() {
     return penaltyChargesCharged;
   }
 
-  public void setPenaltyChargesCharged(Long penaltyChargesCharged) {
+  public void setPenaltyChargesCharged(Double penaltyChargesCharged) {
     this.penaltyChargesCharged = penaltyChargesCharged;
   }
 
-  public GetLoansLoanIdSummary penaltyChargesPaid(Long penaltyChargesPaid) {
+  public GetLoansLoanIdSummary penaltyChargesPaid(Double penaltyChargesPaid) {
     this.penaltyChargesPaid = penaltyChargesPaid;
     return this;
   }
@@ -534,16 +549,16 @@ public class GetLoansLoanIdSummary {
    * Get penaltyChargesPaid
    * @return penaltyChargesPaid
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getPenaltyChargesPaid() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getPenaltyChargesPaid() {
     return penaltyChargesPaid;
   }
 
-  public void setPenaltyChargesPaid(Long penaltyChargesPaid) {
+  public void setPenaltyChargesPaid(Double penaltyChargesPaid) {
     this.penaltyChargesPaid = penaltyChargesPaid;
   }
 
-  public GetLoansLoanIdSummary penaltyChargesWaived(Long penaltyChargesWaived) {
+  public GetLoansLoanIdSummary penaltyChargesWaived(Double penaltyChargesWaived) {
     this.penaltyChargesWaived = penaltyChargesWaived;
     return this;
   }
@@ -552,16 +567,16 @@ public class GetLoansLoanIdSummary {
    * Get penaltyChargesWaived
    * @return penaltyChargesWaived
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getPenaltyChargesWaived() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getPenaltyChargesWaived() {
     return penaltyChargesWaived;
   }
 
-  public void setPenaltyChargesWaived(Long penaltyChargesWaived) {
+  public void setPenaltyChargesWaived(Double penaltyChargesWaived) {
     this.penaltyChargesWaived = penaltyChargesWaived;
   }
 
-  public GetLoansLoanIdSummary penaltyChargesWrittenOff(Long penaltyChargesWrittenOff) {
+  public GetLoansLoanIdSummary penaltyChargesWrittenOff(Double penaltyChargesWrittenOff) {
     this.penaltyChargesWrittenOff = penaltyChargesWrittenOff;
     return this;
   }
@@ -570,16 +585,16 @@ public class GetLoansLoanIdSummary {
    * Get penaltyChargesWrittenOff
    * @return penaltyChargesWrittenOff
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getPenaltyChargesWrittenOff() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getPenaltyChargesWrittenOff() {
     return penaltyChargesWrittenOff;
   }
 
-  public void setPenaltyChargesWrittenOff(Long penaltyChargesWrittenOff) {
+  public void setPenaltyChargesWrittenOff(Double penaltyChargesWrittenOff) {
     this.penaltyChargesWrittenOff = penaltyChargesWrittenOff;
   }
 
-  public GetLoansLoanIdSummary penaltyChargesOutstanding(Long penaltyChargesOutstanding) {
+  public GetLoansLoanIdSummary penaltyChargesOutstanding(Double penaltyChargesOutstanding) {
     this.penaltyChargesOutstanding = penaltyChargesOutstanding;
     return this;
   }
@@ -588,16 +603,16 @@ public class GetLoansLoanIdSummary {
    * Get penaltyChargesOutstanding
    * @return penaltyChargesOutstanding
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getPenaltyChargesOutstanding() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getPenaltyChargesOutstanding() {
     return penaltyChargesOutstanding;
   }
 
-  public void setPenaltyChargesOutstanding(Long penaltyChargesOutstanding) {
+  public void setPenaltyChargesOutstanding(Double penaltyChargesOutstanding) {
     this.penaltyChargesOutstanding = penaltyChargesOutstanding;
   }
 
-  public GetLoansLoanIdSummary penaltyChargesOverdue(Long penaltyChargesOverdue) {
+  public GetLoansLoanIdSummary penaltyChargesOverdue(Double penaltyChargesOverdue) {
     this.penaltyChargesOverdue = penaltyChargesOverdue;
     return this;
   }
@@ -606,16 +621,16 @@ public class GetLoansLoanIdSummary {
    * Get penaltyChargesOverdue
    * @return penaltyChargesOverdue
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getPenaltyChargesOverdue() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getPenaltyChargesOverdue() {
     return penaltyChargesOverdue;
   }
 
-  public void setPenaltyChargesOverdue(Long penaltyChargesOverdue) {
+  public void setPenaltyChargesOverdue(Double penaltyChargesOverdue) {
     this.penaltyChargesOverdue = penaltyChargesOverdue;
   }
 
-  public GetLoansLoanIdSummary totalExpectedRepayment(Long totalExpectedRepayment) {
+  public GetLoansLoanIdSummary totalExpectedRepayment(Double totalExpectedRepayment) {
     this.totalExpectedRepayment = totalExpectedRepayment;
     return this;
   }
@@ -624,16 +639,16 @@ public class GetLoansLoanIdSummary {
    * Get totalExpectedRepayment
    * @return totalExpectedRepayment
    **/
-  @ApiModelProperty(example = "1258000", value = "")
-  public Long getTotalExpectedRepayment() {
+  @ApiModelProperty(example = "1258000.0", value = "")
+  public Double getTotalExpectedRepayment() {
     return totalExpectedRepayment;
   }
 
-  public void setTotalExpectedRepayment(Long totalExpectedRepayment) {
+  public void setTotalExpectedRepayment(Double totalExpectedRepayment) {
     this.totalExpectedRepayment = totalExpectedRepayment;
   }
 
-  public GetLoansLoanIdSummary totalRepayment(Long totalRepayment) {
+  public GetLoansLoanIdSummary totalRepayment(Double totalRepayment) {
     this.totalRepayment = totalRepayment;
     return this;
   }
@@ -642,16 +657,16 @@ public class GetLoansLoanIdSummary {
    * Get totalRepayment
    * @return totalRepayment
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getTotalRepayment() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getTotalRepayment() {
     return totalRepayment;
   }
 
-  public void setTotalRepayment(Long totalRepayment) {
+  public void setTotalRepayment(Double totalRepayment) {
     this.totalRepayment = totalRepayment;
   }
 
-  public GetLoansLoanIdSummary totalExpectedCostOfLoan(Long totalExpectedCostOfLoan) {
+  public GetLoansLoanIdSummary totalExpectedCostOfLoan(Double totalExpectedCostOfLoan) {
     this.totalExpectedCostOfLoan = totalExpectedCostOfLoan;
     return this;
   }
@@ -660,16 +675,16 @@ public class GetLoansLoanIdSummary {
    * Get totalExpectedCostOfLoan
    * @return totalExpectedCostOfLoan
    **/
-  @ApiModelProperty(example = "258000", value = "")
-  public Long getTotalExpectedCostOfLoan() {
+  @ApiModelProperty(example = "258000.0", value = "")
+  public Double getTotalExpectedCostOfLoan() {
     return totalExpectedCostOfLoan;
   }
 
-  public void setTotalExpectedCostOfLoan(Long totalExpectedCostOfLoan) {
+  public void setTotalExpectedCostOfLoan(Double totalExpectedCostOfLoan) {
     this.totalExpectedCostOfLoan = totalExpectedCostOfLoan;
   }
 
-  public GetLoansLoanIdSummary totalCostOfLoan(Long totalCostOfLoan) {
+  public GetLoansLoanIdSummary totalCostOfLoan(Double totalCostOfLoan) {
     this.totalCostOfLoan = totalCostOfLoan;
     return this;
   }
@@ -678,16 +693,16 @@ public class GetLoansLoanIdSummary {
    * Get totalCostOfLoan
    * @return totalCostOfLoan
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getTotalCostOfLoan() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getTotalCostOfLoan() {
     return totalCostOfLoan;
   }
 
-  public void setTotalCostOfLoan(Long totalCostOfLoan) {
+  public void setTotalCostOfLoan(Double totalCostOfLoan) {
     this.totalCostOfLoan = totalCostOfLoan;
   }
 
-  public GetLoansLoanIdSummary totalWaived(Long totalWaived) {
+  public GetLoansLoanIdSummary totalWaived(Double totalWaived) {
     this.totalWaived = totalWaived;
     return this;
   }
@@ -696,16 +711,16 @@ public class GetLoansLoanIdSummary {
    * Get totalWaived
    * @return totalWaived
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getTotalWaived() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getTotalWaived() {
     return totalWaived;
   }
 
-  public void setTotalWaived(Long totalWaived) {
+  public void setTotalWaived(Double totalWaived) {
     this.totalWaived = totalWaived;
   }
 
-  public GetLoansLoanIdSummary totalWrittenOff(Long totalWrittenOff) {
+  public GetLoansLoanIdSummary totalWrittenOff(Double totalWrittenOff) {
     this.totalWrittenOff = totalWrittenOff;
     return this;
   }
@@ -714,16 +729,16 @@ public class GetLoansLoanIdSummary {
    * Get totalWrittenOff
    * @return totalWrittenOff
    **/
-  @ApiModelProperty(example = "0", value = "")
-  public Long getTotalWrittenOff() {
+  @ApiModelProperty(example = "0.0", value = "")
+  public Double getTotalWrittenOff() {
     return totalWrittenOff;
   }
 
-  public void setTotalWrittenOff(Long totalWrittenOff) {
+  public void setTotalWrittenOff(Double totalWrittenOff) {
     this.totalWrittenOff = totalWrittenOff;
   }
 
-  public GetLoansLoanIdSummary totalOutstanding(Long totalOutstanding) {
+  public GetLoansLoanIdSummary totalOutstanding(Double totalOutstanding) {
     this.totalOutstanding = totalOutstanding;
     return this;
   }
@@ -732,12 +747,12 @@ public class GetLoansLoanIdSummary {
    * Get totalOutstanding
    * @return totalOutstanding
    **/
-  @ApiModelProperty(example = "1258000", value = "")
-  public Long getTotalOutstanding() {
+  @ApiModelProperty(example = "1258000.0", value = "")
+  public Double getTotalOutstanding() {
     return totalOutstanding;
   }
 
-  public void setTotalOutstanding(Long totalOutstanding) {
+  public void setTotalOutstanding(Double totalOutstanding) {
     this.totalOutstanding = totalOutstanding;
   }
 
@@ -1096,6 +1111,8 @@ public class GetLoansLoanIdSummary {
   }
 
 }
+
+
 
 
 

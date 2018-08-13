@@ -1,3 +1,18 @@
+/**
+ * Copyright 2018 Dingfan Zhao
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
 /*
  * Apache Fineract API Documentation
  * Apache Fineract is a secure, multi-tenanted microfinance platform. <br />              The goal of the Apache Fineract API is to empower developers to build apps on top of the Apache Fineract Platform. The reference app [  https://demo.openmf.org  ] (username: mifos, password: password) works on the same demo tenant as the interactive links in this documentation.              <br/>The API                 is organized around REST [ https://en.wikipedia.org/wiki/Representational_state_transfer ]               <br/> Find out more about Apache Fineract on [ https://demo.openmf.org/api-docs/apiLive.htm#top ]              <br/> You can Try The API From Your Browser itself at [ https://demo.openmf.org/api-docs/apiLive.htm#interact ]              <br/> The Generic Options are available at [ https://demo.openmf.org/api-docs/apiLive.htm#genopts ]              <br/> Find out more about Updating Dates and Numbers at [ https://demo.openmf.org/api-docs/apiLive.htm#dates_and_numbers ]              <br/> For the Authentication and the Basic of HTTP and HTTPS refer [ https://demo.openmf.org/api-docs/apiLive.htm#authentication_overview ]              <br/> Check about ERROR codes at [ https://demo.openmf.org/api-docs/apiLive.htm#errors ]               <br/> <br/> Please refer to the old documentation for any documentation queries [ https://demo.openmf.org/api-docs/apiLive.htm ]              <br/>             ______________________________________________________________________________________________________________________________          
@@ -33,20 +48,23 @@ public class GetSavingsAccountsSummary {
   private GetSavingsCurrency currency = null;
 
   @SerializedName("accountBalance")
-  private Integer accountBalance = null;
+  private Double accountBalance = null;
 
   @SerializedName("availableBalance")
-  private Integer availableBalance = null;
+  private Double availableBalance = null;
+
+  @SerializedName("totalInterestEarned")
+  private Double totalInterestEarned = null;
 
   public GetSavingsAccountsSummary currency(GetSavingsCurrency currency) {
     this.currency = currency;
     return this;
   }
 
-   /**
+  /**
    * Get currency
    * @return currency
-  **/
+   **/
   @ApiModelProperty(value = "")
   public GetSavingsCurrency getCurrency() {
     return currency;
@@ -56,45 +74,63 @@ public class GetSavingsAccountsSummary {
     this.currency = currency;
   }
 
-  public GetSavingsAccountsSummary accountBalance(Integer accountBalance) {
+  public GetSavingsAccountsSummary accountBalance(Double accountBalance) {
     this.accountBalance = accountBalance;
     return this;
   }
 
-   /**
+  /**
    * Get accountBalance
    * @return accountBalance
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
-  public Integer getAccountBalance() {
+  public Double getAccountBalance() {
     return accountBalance;
   }
 
-  public void setAccountBalance(Integer accountBalance) {
+  public void setAccountBalance(Double accountBalance) {
     this.accountBalance = accountBalance;
   }
 
-  public GetSavingsAccountsSummary availableBalance(Integer availableBalance) {
+  public GetSavingsAccountsSummary availableBalance(Double availableBalance) {
     this.availableBalance = availableBalance;
     return this;
   }
 
-   /**
+  /**
    * Get availableBalance
    * @return availableBalance
-  **/
+   **/
   @ApiModelProperty(example = "0", value = "")
-  public Integer getAvailableBalance() {
+  public Double getAvailableBalance() {
     return availableBalance;
   }
 
-  public void setAvailableBalance(Integer availableBalance) {
+  public void setAvailableBalance(Double availableBalance) {
     this.availableBalance = availableBalance;
+  }
+
+  public GetSavingsAccountsSummary totalInterestEarned(Double totalInterestEarned) {
+    this.totalInterestEarned = totalInterestEarned;
+    return this;
+  }
+
+  /**
+   * Get totalInterestEarned
+   * @return totalInterestEarned
+   **/
+  @ApiModelProperty(value = "")
+  public Double getTotalInterestEarned() {
+    return totalInterestEarned;
+  }
+
+  public void setTotalInterestEarned(Double totalInterestEarned) {
+    this.totalInterestEarned = totalInterestEarned;
   }
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -103,13 +139,14 @@ public class GetSavingsAccountsSummary {
     }
     GetSavingsAccountsSummary getSavingsAccountsSummary = (GetSavingsAccountsSummary) o;
     return Objects.equals(this.currency, getSavingsAccountsSummary.currency) &&
-        Objects.equals(this.accountBalance, getSavingsAccountsSummary.accountBalance) &&
-        Objects.equals(this.availableBalance, getSavingsAccountsSummary.availableBalance);
+            Objects.equals(this.accountBalance, getSavingsAccountsSummary.accountBalance) &&
+            Objects.equals(this.availableBalance, getSavingsAccountsSummary.availableBalance) &&
+            Objects.equals(this.totalInterestEarned, getSavingsAccountsSummary.totalInterestEarned);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(currency, accountBalance, availableBalance);
+    return Objects.hash(currency, accountBalance, availableBalance, totalInterestEarned);
   }
 
 
@@ -117,10 +154,11 @@ public class GetSavingsAccountsSummary {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetSavingsAccountsSummary {\n");
-    
+
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    accountBalance: ").append(toIndentedString(accountBalance)).append("\n");
     sb.append("    availableBalance: ").append(toIndentedString(availableBalance)).append("\n");
+    sb.append("    totalInterestEarned: ").append(toIndentedString(totalInterestEarned)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -129,7 +167,7 @@ public class GetSavingsAccountsSummary {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

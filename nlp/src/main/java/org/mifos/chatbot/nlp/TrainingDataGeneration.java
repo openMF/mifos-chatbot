@@ -1,17 +1,35 @@
+/**
+ * Copyright 2018 Dingfan Zhao
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
 package org.mifos.chatbot.nlp;
+
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+@Slf4j
 public class TrainingDataGeneration{
 	public static void main(String[] args) {
-        System.out.println(System.getProperty("user.dir"));
+        log.info(System.getProperty("user.dir"));
 		dataFileGeneration();
 	}
 
 	private static void dataFileGeneration() {
-		File fout = new File("nlp/src/main/resources/TrainingDataFinance-2.txt");
+		File fout = new File("nlp/src/main/resources/TrainingDataFinance-3.txt");
 		try {
             FileOutputStream fos = new FileOutputStream(fout);
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
@@ -73,15 +91,23 @@ public class TrainingDataGeneration{
         return sb.toString();
     }
 
-    // For this category issue, it does not need to recognize the day, because it is handled by the Mifos API
+    /**
+     * For this category issue, it does not need to recognize the day, because it is handled by the Mifos API
+     *
+     * Updates: Actually we can contain the keyword "day" in the "category" because the date keyword can be detected using the pre-existing
+     * model to detect
+     *
+     * @param category
+     * @return
+     */
     private static String generateCategoryTag(String category) {
         StringBuffer sb = new StringBuffer();
         sb.append(" <START:category> ");
         sb.append(category);
         sb.append(" <END>");
-        if(sb.indexOf("day") != -1) {
-            sb.insert(sb.indexOf("day"), " <END> <START:date> ");
-        }
+//        if(sb.indexOf("day") != -1) {
+//            sb.insert(sb.indexOf("day"), " <END> <START:date> ");
+//        }
 
         return sb.toString();
     }

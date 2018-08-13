@@ -1,3 +1,18 @@
+/**
+ * Copyright 2018 Dingfan Zhao
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
 /*
  * Apache Fineract API Documentation
  * Apache Fineract is a secure, multi-tenanted microfinance platform. <br />              The goal of the Apache Fineract API is to empower developers to build apps on top of the Apache Fineract Platform. The reference app [  https://demo.openmf.org  ] (username: mifos, password: password) works on the same demo tenant as the interactive links in this documentation.              <br/>The API                 is organized around REST [ https://en.wikipedia.org/wiki/Representational_state_transfer ]               <br/> Find out more about Apache Fineract on [ https://demo.openmf.org/api-docs/apiLive.htm#top ]              <br/> You can Try The API From Your Browser itself at [ https://demo.openmf.org/api-docs/apiLive.htm#interact ]              <br/> The Generic Options are available at [ https://demo.openmf.org/api-docs/apiLive.htm#genopts ]              <br/> Find out more about Updating Dates and Numbers at [ https://demo.openmf.org/api-docs/apiLive.htm#dates_and_numbers ]              <br/> For the Authentication and the Basic of HTTP and HTTPS refer [ https://demo.openmf.org/api-docs/apiLive.htm#authentication_overview ]              <br/> Check about ERROR codes at [ https://demo.openmf.org/api-docs/apiLive.htm#errors ]               <br/> <br/> Please refer to the old documentation for any documentation queries [ https://demo.openmf.org/api-docs/apiLive.htm ]              <br/>             ______________________________________________________________________________________________________________________________          
@@ -28,7 +43,7 @@ public class LoanProductConfigurableAttributes {
   @SerializedName("id")
   private Long id = null;
 
-  @SerializedName("loanProduct")
+  @SerializedName("loanproduct")
   private LoanProduct loanProduct = null;
 
   @SerializedName("amortizationBoolean")
@@ -82,8 +97,8 @@ public class LoanProductConfigurableAttributes {
   }
 
    /**
-   * Get loanProduct
-   * @return loanProduct
+   * Get loanproduct
+   * @return loanproduct
   **/
   @ApiModelProperty(value = "")
   public LoanProduct getLoanProduct() {
@@ -291,7 +306,7 @@ public class LoanProductConfigurableAttributes {
     sb.append("class LoanProductConfigurableAttributes {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    loanProduct: ").append(toIndentedString(loanProduct)).append("\n");
+    sb.append("    loanproduct: ").append(toIndentedString(loanProduct)).append("\n");
     sb.append("    amortizationBoolean: ").append(toIndentedString(amortizationBoolean)).append("\n");
     sb.append("    arrearsToleranceBoolean: ").append(toIndentedString(arrearsToleranceBoolean)).append("\n");
     sb.append("    graceOnArrearsAgingBoolean: ").append(toIndentedString(graceOnArrearsAgingBoolean)).append("\n");

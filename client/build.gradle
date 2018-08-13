@@ -1,11 +1,14 @@
 description = "Mifos Chatbot Client"
 
 dependencies {
-    compile group: 'io.swagger', name: 'swagger-core', version: '1.5.0'
+    compile "io.swagger:swagger-core"
     compile "io.swagger:swagger-annotations"
     compile "com.squareup.okhttp:okhttp"
     compile "com.squareup.okhttp:logging-interceptor"
     compile "com.google.code.gson:gson"
     compile "io.gsonfire:gson-fire"
     compile "org.threeten:threetenbp"
+    compile "org.springframework:spring-core"
+    compile "org.springframework:spring-context"
+    testCompile("org.springframework.boot:spring-boot-starter-test")
 }

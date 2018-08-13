@@ -1,6 +1,8 @@
 description = "Mifos Chatbot Protocol"
 
 dependencies {
+    compile project(":core")
+
     // viber
     compile "com.viber:viber-bot"
 
@@ -12,5 +14,11 @@ dependencies {
     compile "org.igniterealtime.smack:smack-tcp"
     compile "org.igniterealtime.smack:smack-im"
     compile "org.igniterealtime.smack:smack-extensions"
+
+    compile "org.springframework:spring-core"
+    compile "org.springframework:spring-context"
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile "junit:junit"
 }
 

@@ -1,11 +1,14 @@
+// The sample response in API doc is not updated to latest version, please refer to the dynamic response
+
+Enquiry of Loan Details:
 * Allow authenticated user/client to query loan details:
 * Status of loan
 * Outstanding principal and interest
-    * GET https://DomainName/fineract-provider/api/v1/loans
+    * GET https://DomainName/fineract-provider/api/v1/loans{loanId}
     * There are two fields in the response of this request principalOutstanding & interestOutstanding
 * Next due date, due principal and interest
     * For due principal, GET https://DomainName/api/v1/loans/{loanId} There is a field called “principalOverdue”
-    * I have a question about the difference between overdue and due
+    * I have a question about the difference between overdue and due 
     * For due date, “overdueSinceDate” + “repaymentEvery” (one time period of repayment)
     * For due interest, “interestOverdue”
 * Previous payment date, principal and interest (the last transaction of loan)
@@ -28,53 +31,84 @@
 * Saving interest (to date amount)
 * Next meeting date
 
-* Enquiry of Savings Details
-    * Saving activated date
+Enquiry of Savings Details
+* Saving activated date
+    * https://demo.openmf.org/fineract-provider/api/v1/savingsaccounts/1?officeId=1&tenantIdentifier=default
+    * Field “activatedOnDate”
+* Saving balance
+    * Same API, field “accountBalance”
+* Saving interest (to date amount)
+    * “nominalAnnualInterestRate”, times “accountBalance” / 365
+* Last active transaction date
+    * Same API, “lastActiveTransactionDate”
+
+Notifications through Chat Adapter
+// This part will be implemented at last
+* Notification will be sent thru Mifos/Chat adapter to respective clients on the following events occur on their accounts. 
+    * Client account activation
+        * POST https://Domain Name/api/v1/clients/{clientId}?command=activate
+        * Return status code 
+    * Client account rejection
+        * POST https://Domain Name/api/v1/clients/{clientId}?command=reject
+        * Return status code to indicate whether successful
+    * Loan disbursal
+        * POST https://DomainName/api/v1/loans/{loanId}?command=disburse
+    * Loan close
+    * Next due principal and interest (1/2 days in advance)
+    * Payment posted (there may have delay due to data entry)
+    * Next meeting date
+    * Saving deposit
+    * Saving withdrawal
+    * Saving close
+    * Update/delete details of clients (address, phone number, NRIC number)
+    * Update/delete details of group (group name, group leader, loan officer name)
+    * Upload documents
+
+Enquiry about Loan Products
+* Check user/client authentication
+    * Get username & password then compare with data in database
+    * POST https://DomainName/api/v1/self/authentication?username={username}&password={password}
+* Get MFI name, 9-digits clients ID (xxxxxxxxx)
+    * GET https://DomainName/api/v1/clients/{clientId}, “accountNo”
+* (Provide a list of available loan products of MFI)
+    * ORG — GET https://DomainName/api/v1/loanproducts
+* Allow authenticated user/client to query loan product details based on selected product:
+    * Loan term
+        * GET https://DomainName/api/v1/loanproducts/{productId}
+        * Field “numberOfRepayments” * “repaymentFrequencyType.value”
+    * Interest rate
+        * Field “interestRatePerPeriod”
+    * Max and min allowed amount to borrow
+        * “minPrincipal”, “maxPrincipal”
+    * Number of installments/repayments
+        * “numberOfRepayments”
+
+Enquiry about Group Information
+* Mifos/Chat adapter will allow authenticated user (group leader) to enquiry on group member details.
+    * Same as above
+* Check user/client authentication.
+    * Same as above
+* Get MFI name, group leader name, group ID, center ID, branch name, (Is a group leader?)
+    * Group leader name: 
+    * Group ID: GET https://DomainName/fineract-provider/api/v1/groups/1?associations=clientMembers, “externalID”
+    * Center ID: GET https://DomainName/fineract-provider/api/v1/centers/8, “status.id”
+    * Branch name: “officeName”?
+* Allow authenticated client(group leader) to query group details:
+    * Next meeting date
+        * 
+    * Clients who have overdue loan
+
+Enquiry about Branch Information
+* Mifos/Chat adapter will allow authenticated user(branch manager) to enquiry on branch details.
+* Check user/client authentication
+* Get MFI name, branch manager Name, user id/name, Branch Name, (Is a branch manager?)
+* Allow authenticated branch manager to query branch details:
+    * Number of clients of his/her branch
+    * Expected disbursement principal (today)
+    * Outstanding principal and interest
     * Saving balance
-    * Saving interest (to date amount)
-    * Last active transaction date
-* Notifications through Chat Adapter
-    * Notification will be sent thru Mifos/Chat adapter to respective clients on the following events occur on their accounts. 
-        * Client account activation
-        * Client account rejection
-        * Loan disbursal
-        * Loan close
-        * Next due principal and interest (1/2 days in advance)
-        * Payment posted (there may have delay due to data entry)
-        * Next meeting date
-        * Saving deposit
-        * Saving withdrawal
-        * Saving close
-        * Update/delete details of clients (address, phone number, NRIC number)
-        * Update/delete details of group (group name, group leader, loan officer name)
-        * Upload documents
-* Enquiry about Loan Products
-    * Check user/client authentication
-    * Get MFI name, 9-digits clients ID (xxxxxxxxx)
-    * (Provide a list of available loan products of MFI)
-    * Allow authenticated user/client to query loan product details based on selected product:
-        * Loan term
-        * Interest rate
-        * Max and min allowed amount to borrow
-        * Number of installments/repayments
-* Enquiry about Group Information
-    * Mifos/Chat adapter will allow authenticated user (group leader) to enquiry on group member details.
-    * Check user/client authentication.
-    * Get MFI name, group leader name, group ID, center ID, branch name, (Is a group leader?)
-    * Allow authenticated client(group leader) to query group details:
-        * Next meeting date
-        * Clients who have overdue loan
-* Enquiry about Branch Information
-    * Mifos/Chat adapter will allow authenticated user(branch manager) to enquiry on branch details.
-    * Check user/client authentication
-    * Get MFI name, branch manager Name, user id/name, Branch Name, (Is a branch manager?)
-    * Allow authenticated branch manager to query branch details:
-        * Number of clients of his/her branch
-        * Expected disbursement principal (today)
-        * Outstanding principal and interest
-        * Saving balance
-        * Number of clients awaiting for disbursal (today)
-        * New registered clients (today)
-        * Prospective clients (as of today)
-        * Number of clients (dormant) as of today
-        * Number of village/bloc/ward in a branch
+    * Number of clients awaiting for disbursal (today)
+    * New registered clients (today)
+    * Prospective clients (as of today)
+    * Number of clients (dormant) as of today
+    * Number of village/bloc/ward in a branch
