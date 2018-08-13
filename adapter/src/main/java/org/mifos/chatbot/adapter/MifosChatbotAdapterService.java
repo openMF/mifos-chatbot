@@ -18,7 +18,6 @@ package org.mifos.chatbot.adapter;
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.core.AdapterService;
 import org.mifos.chatbot.core.IntentHandler;
-import org.mifos.chatbot.core.NLPService;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.mifos.chatbot.nlp.OpenNLPService;
@@ -52,7 +51,6 @@ public class MifosChatbotAdapterService implements AdapterService {
         List<MifosResponse> results = new ArrayList<>();
         Intent[] intents = openNLPService.recognize(input);
 
-        // TODO: ID and other parameter detection should not be done here; that's why you have the OpenNLP module!!!
         Long id = 1L; // default id, set to 1
 
         for(Intent intent : intents) {

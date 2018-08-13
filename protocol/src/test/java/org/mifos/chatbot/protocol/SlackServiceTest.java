@@ -20,7 +20,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mifos.chatbot.core.ChatService;
 import org.mifos.chatbot.core.model.Message;
+import org.mifos.chatbot.core.model.MifosResponse;
 import org.mifos.chatbot.protocol.slack.SlackChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -36,7 +38,29 @@ public class SlackServiceTest {
 
     @Before
     public void setUp() {
-        slackChatService.connect(msg -> log.info("We've got a response: {}", msg.getText()));
+        slackChatService.connect(new ChatService.ChatCallBack() {
+            @Override
+            public void onMessage(Message msg) {
+                log.info("We've got a response: {}", msg.getText());
+            }
+
+            @Override
+            public void onResponse(MifosResponse response) {
+                Message msg = new Message();
+                msg.setText(response.getContent());
+                msg.setTo("zhaodingfanhaha@gmail.com");
+                slackChatService.send(msg);
+            }
+
+            @Override
+            public void onCheckingUsernameAndPassword() {
+                Message msg = new Message();
+                msg.setText("Please key in your username and password with tag of `username: ` and `password: `(be careful about the space) " +
+                        "\nRemember to put in two messages~");
+                msg.setTo("zhaodingfanhaha@gmail.com");
+                slackChatService.send(msg);
+            }
+        });
     }
 
     @After
@@ -50,10 +74,5 @@ public class SlackServiceTest {
         m.setTo("zhaodingfanhaha@gmail.com");
         m.setText("Hello World from Dingfan!");
         slackChatService.send(m);
-    }
-
-    @Test
-    public void receiveMessage() {
-        // TODO: implement this
     }
 }

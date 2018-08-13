@@ -29,7 +29,6 @@ public class AdapterConfig {
 
     @Bean
     public ApiClient apiClient() {
-        // TODO: improve this
         return new ApiClient()
             .setBasePath(settings.getApiUrl());
     }

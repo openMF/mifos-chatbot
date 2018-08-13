@@ -54,7 +54,6 @@ public class OpenNLPService implements NLPService {
      */
     @Override
     public Intent[] recognize(String text) {
-        // TODO: provide confidence level for recognition result
         try {
             String[] sentences = detectSentence(text);
             List<Intent> resultIntents = new ArrayList<>();
@@ -151,8 +150,6 @@ public class OpenNLPService implements NLPService {
         is.close();
         return sb.toString();
     }
-
-    // TODO: please improve this
 
     /**
      * For ID number, we can use regex extraction to do the detection because of its simplicity of structure, which only contains number

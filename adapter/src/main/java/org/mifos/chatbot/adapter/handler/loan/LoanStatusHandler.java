@@ -34,7 +34,6 @@ public class LoanStatusHandler extends BaseLoanIntentHandler {
 
     @Override
     public Boolean canHandle(Intent intent) {
-        // TODO: improve if necessary
         for(String intent_keyword : INTENT_KEYWORDS) {
             if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase())) {
                 return false;
@@ -48,7 +47,6 @@ public class LoanStatusHandler extends BaseLoanIntentHandler {
     public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-            // TODO: and this is how you should retrieve the ID (or any other parameter you need); no need to add another parameter in the "handle" function
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
             response.setContent(result.toString());
         } catch (ApiException e) {

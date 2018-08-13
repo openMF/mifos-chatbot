@@ -37,7 +37,6 @@ public class OpenNLPServiceTest {
     @Test
     public void recognizeTest() {
         Intent[] results = nlpService.recognize("check my next due date, date is 2017/09/13");
-        // TODO: Update NLP model, its detection is not accurate
         for(int i = 0; i < results.length ;i++) {
             log.info(results[i].getKeyword());
         }

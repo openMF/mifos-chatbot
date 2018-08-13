@@ -53,10 +53,8 @@ public class NextDueDateHandler extends BaseLoanIntentHandler {
     public MifosResponse handle(Intent intent) {
         MifosResponse response = new MifosResponse();
         try {
-            // TODO: How to pass the parameters
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
 
-            // TODO: Correct the response, current response is just for unit test
             List<Long> overDueSinceDate = result.getSummary().getOverdueSinceDate();
             String frequency = result.getRepaymentFrequencyType().getValue();
             int numOfPeriod = result.getRepaymentEvery();
@@ -72,6 +70,7 @@ public class NextDueDateHandler extends BaseLoanIntentHandler {
         return response;
     }
 
+    // TODO: extracted as a util function
     private String getNextDueDate(List<Long> overDueSinceDate, String frequency, int numOfPeriod) {
         StringBuffer sb = new StringBuffer();
         sb.append(String.format("%04d", overDueSinceDate.get(0)));

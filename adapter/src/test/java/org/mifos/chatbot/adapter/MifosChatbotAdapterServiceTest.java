@@ -66,7 +66,6 @@ public class MifosChatbotAdapterServiceTest {
         }
     }
 
-    // TODO: add more tests
     @Test
     public void nextDueDateTest() {
         Intent nextDueDateIntent = new Intent("checkmynext duedate");
