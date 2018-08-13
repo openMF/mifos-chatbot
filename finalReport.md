@@ -171,7 +171,7 @@ You can refer to developer part of section #Play with Chatbot, you can make some
 
 ## Appreciation
 
-I would like to express my thanks to those who helped me during the project. Thanks Mr Ad Cable for answering my questions patiently and giving me useful advice during weekly check-ins. Thanks for Sanyam for providing me the complete version of Fineract API documentation and helping me through the process of discovering the JSON file of Fineract API. Without his help, I cannot find the updated version of Fineract API.
+I would like to express my thanks to those who helped me during the project. Thanks Mr Ed Cable for answering my questions patiently and giving me useful advice during weekly check-ins. Thanks for Sanyam for providing me the complete version of Fineract API documentation and helping me through the process of discovering the JSON file of Fineract API. Without his help, I cannot find the updated version of Fineract API.
 
 Then I would like to express my especial thankfulness to my mentor Mr Aleks. I received a lot of help during the whole process of Google Summer of Code. Whenever I got into trouble, He would always provide useful help to me.
 
