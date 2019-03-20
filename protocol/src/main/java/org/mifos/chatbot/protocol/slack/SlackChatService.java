@@ -69,11 +69,11 @@ public class SlackChatService implements ChatService {
                 final String noIntent = "cannot find intent from it ";
                 Boolean authenticated = false;
 
-                if(event.getMessageContent().toLowerCase().contains("username".toLowerCase())) {
-                     authMap.put("Username", event.getMessageContent().replaceAll("(?i)username: ", ""));
+                if(event.getMessageContent().toLowerCase().contains("`username :".toLowerCase())) {
+                     authMap.put("Username", event.getMessageContent().replaceAll("`", "").replaceAll("(?i)username: ", ""));
                 }
-                if(event.getMessageContent().toLowerCase().contains("password".toLowerCase())) {
-                    authMap.put("Password", event.getMessageContent().replaceAll("(?)password: ", ""));
+                if(event.getMessageContent().toLowerCase().contains("`password :".toLowerCase())) {
+                    authMap.put("Password", event.getMessageContent().replaceAll("`", "").replaceAll("(?)password: ", ""));
                 }
                 if(authMap.get("Username").equals(settings.getUsername()) && authMap.get("Password").equals(settings.getPassword())) {
                      authenticated = true;
