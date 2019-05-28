@@ -25,6 +25,7 @@ import org.mifos.chatbot.core.model.Message;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.mifos.chatbot.protocol.slack.SlackChatService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -32,6 +33,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfiguration.class)
 public class SlackServiceTest {
+
+    @Value("${user.slackEmail}")
+    private String userEmail;
 
     @Autowired
     private SlackChatService slackChatService;
@@ -48,7 +52,7 @@ public class SlackServiceTest {
             public void onResponse(MifosResponse response) {
                 Message msg = new Message();
                 msg.setText(response.getContent());
-                msg.setTo("zhaodingfanhaha@gmail.com");
+                msg.setTo(userEmail);
                 slackChatService.send(msg);
             }
 
@@ -57,7 +61,7 @@ public class SlackServiceTest {
                 Message msg = new Message();
                 msg.setText("Please key in your username and password with tag of `username: ` and `password: `(be careful about the space) " +
                         "\nRemember to put in two messages~");
-                msg.setTo("zhaodingfanhaha@gmail.com");
+                msg.setTo(userEmail);
                 slackChatService.send(msg);
             }
         });
@@ -71,8 +75,8 @@ public class SlackServiceTest {
     @Test
     public void sendMessage() {
         Message m = new Message();
-        m.setTo("zhaodingfanhaha@gmail.com");
-        m.setText("Hello World from Dingfan!");
+        m.setTo(userEmail);
+        m.setText("Hello World!");
         slackChatService.send(m);
     }
 }

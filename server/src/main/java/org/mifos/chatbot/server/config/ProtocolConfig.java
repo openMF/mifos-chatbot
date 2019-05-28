@@ -24,12 +24,17 @@ import org.mifos.chatbot.core.model.MifosResponse;
 import org.mifos.chatbot.core.model.MifosSettings;
 import org.mifos.chatbot.protocol.slack.SlackChatService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Slf4j
 @Configuration
 public class ProtocolConfig {
+
+    @Value("${user.slackEmail}")
+    private String userEmail;
+
     @Autowired
     private MifosSettings settings;
 
@@ -52,7 +57,7 @@ public class ProtocolConfig {
             public void onResponse(MifosResponse response) {
                 Message msg = new Message();
                 msg.setText(response.getContent());
-                msg.setTo("zhaodingfanhaha@gmail.com");
+                msg.setTo(userEmail);
                 slackChatService.send(msg);
             }
 
@@ -61,7 +66,7 @@ public class ProtocolConfig {
                 Message msg = new Message();
                 msg.setText("Please key in your username and password with tag of `username: ` and `password: `(be careful about the space) " +
                         "\nRemember to put in two messages~");
-                msg.setTo("zhaodingfanhaha@gmail.com");
+                msg.setTo(userEmail);
                 slackChatService.send(msg);
             }
         });
