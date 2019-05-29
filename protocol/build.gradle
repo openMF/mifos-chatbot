@@ -15,6 +15,9 @@ dependencies {
     compile "org.igniterealtime.smack:smack-im"
     compile "org.igniterealtime.smack:smack-extensions"
 
+    //facebook messenger
+    compile 'com.github.messenger4j:messenger4j:1.1.0'
+
     compile "org.springframework:spring-core"
     compile "org.springframework:spring-context"
 
