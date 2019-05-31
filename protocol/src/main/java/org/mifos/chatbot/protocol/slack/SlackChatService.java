@@ -67,25 +67,28 @@ public class SlackChatService implements ChatService {
             session.addMessagePostedListener((event, session) -> {
                 final String noAuth = "Please enter the correct username or password with correct tag";
                 final String noIntent = "cannot find intent from it ";
-                Boolean authenticated = false;
+                final String messageText = event.getMessageContent();
+                //todo work when implementing auth solution
+//                Boolean authenticated = false;
+//
+//                if(event.getMessageContent().toLowerCase().contains("username".toLowerCase())) {
+//                     authMap.put("Username", event.getMessageContent().replaceAll("(?i)username: ", ""));
+//                }
+//                if(event.getMessageContent().toLowerCase().contains("password".toLowerCase())) {
+//                    authMap.put("Password", event.getMessageContent().replaceAll("(?)password: ", ""));
+//                }
+//                if(authMap.get("Username").equals(settings.getUsername()) && authMap.get("Password").equals(settings.getPassword())) {
+//                     authenticated = true;
+//                }
+//                if(!authenticated && authMap.containsKey("Username") && authMap.containsKey("Password") && !event.getMessageContent().equals(noAuth)){
+//                    MifosResponse response = new MifosResponse();
+//                    response.setContent(noAuth);
+//                    // TODO: The reason why it will iterate over and over again is that it will always has the response, which contains the same msg content as the posted msg
+//                    callback.onResponse(response);
+//                }
 
-                if(event.getMessageContent().toLowerCase().contains("username".toLowerCase())) {
-                     authMap.put("Username", event.getMessageContent().replaceAll("(?i)username: ", ""));
-                }
-                if(event.getMessageContent().toLowerCase().contains("password".toLowerCase())) {
-                    authMap.put("Password", event.getMessageContent().replaceAll("(?)password: ", ""));
-                }
-                if(authMap.get("Username").equals(settings.getUsername()) && authMap.get("Password").equals(settings.getPassword())) {
-                     authenticated = true;
-                }
-                if(!authenticated && authMap.containsKey("Username") && authMap.containsKey("Password") && !event.getMessageContent().equals(noAuth)){
-                    MifosResponse response = new MifosResponse();
-                    response.setContent(noAuth);
-                    // TODO: The reason why it will iterate over and over again is that it will always has the response, which contains the same msg content as the posted msg
-                    callback.onResponse(response);
-                }
-
-                if(callback != null && authenticated) {
+//                if(callback != null && authenticated) {
+                if(callback != null) {
                     Message m = new Message();
                     m.setFrom(event.getSender().getUserMail());
                     m.setText(event.getMessageContent());
