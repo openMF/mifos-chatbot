@@ -13,9 +13,15 @@ import com.github.messenger4j.webhook.Event;
 import com.github.messenger4j.webhook.event.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.NotImplementedException;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.mifos.chatbot.client.ApiClient;
 import org.mifos.chatbot.core.AdapterService;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.mifos.chatbot.core.model.MifosSettings;
+import org.mifos.chatbot.database.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -69,7 +75,7 @@ public class FacebookMessengerChatService {
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = {"/", ""}, method = RequestMethod.POST)
     public ResponseEntity<Void> handleCallback(@RequestBody final String payload, @RequestHeader(SIGNATURE_HEADER_NAME) final String signature) {
         try {
             this.messenger.onReceiveEvents(payload, of(signature), event -> {
@@ -155,7 +161,10 @@ public class FacebookMessengerChatService {
     }
 
     private void handleMessageEchoEvent(MessageEchoEvent event) {
-        throw new NotImplementedException("User " + event.senderId() + " taped on Echo event. Application doesn't support Message-echo event.");
+        final String senderId = event.senderId();
+        final String recipientId = event.recipientId();
+        final String messageId = event.messageId();
+        log.info("Received echo for message '{}' that has been sent to recipient '{}' by sender '{}' at '{}'", messageId, recipientId, senderId, event.timestamp());
     }
 
     private void handleMessageDeliveredEvent(MessageDeliveredEvent event) {
