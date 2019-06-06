@@ -97,9 +97,11 @@ public class FacebookMessengerChatService {
             });
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (MessengerVerificationException e) {
+            log.error(e.getStackTrace().toString());
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         } catch (NotImplementedException e) {
-            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
+            log.error(e.getStackTrace().toString());
+            return ResponseEntity.status(HttpStatus.OK).build();
         }
     }
 
@@ -108,6 +110,22 @@ public class FacebookMessengerChatService {
         final String senderId = event.senderId();
 
         //todo manage login
+        if (messageText.toLowerCase().contains("login:")) {
+            StringBuilder username = new StringBuilder();
+            StringBuilder password = new StringBuilder();
+            String creds = messageText.replaceAll("login:", "");
+            for (int i = 0; i < creds.length(); i++) {
+                if (creds.charAt(i) == ':') {
+                    for (i++; i < creds.length(); i++) {
+                        password.append(creds.charAt(i));
+                    }
+                    break;
+                }
+                username.append(creds.charAt(i));
+            }
+            System.out.println(username.toString()+"#"+password.toString());
+            return;
+        }
         List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
         if (!responseList.isEmpty()) {
             for (MifosResponse response : responseList) {
