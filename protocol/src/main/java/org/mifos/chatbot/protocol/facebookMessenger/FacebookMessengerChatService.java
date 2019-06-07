@@ -111,6 +111,20 @@ public class FacebookMessengerChatService {
         }
     }
 
+    private boolean authUser(String username, String password) {
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpPost post = new HttpPost(settings.getApiUrl() + "authentication?username=" + username + "&password=" + password + "&tenantIdentifier=mifos");
+        try {
+            HttpResponse response = client.execute(post);
+            if(response.getStatusLine().getStatusCode() == 200) {
+                return true;
+            }
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return false;
+    }
+
     private void handleTextMessageEvent(TextMessageEvent event) {
         final String messageText = event.text();
         final String senderId = event.senderId();
