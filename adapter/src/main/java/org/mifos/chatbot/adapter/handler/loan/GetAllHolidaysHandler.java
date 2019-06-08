@@ -17,6 +17,7 @@ package org.mifos.chatbot.adapter.handler.loan;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.Configuration;
 import org.mifos.chatbot.client.api.HolidaysApi;
 import org.mifos.chatbot.client.model.GetHolidaysResponse;
 import org.mifos.chatbot.core.model.Intent;
@@ -47,6 +48,7 @@ public class GetAllHolidaysHandler extends BaseLoanIntentHandler {
 
     @Override
     public MifosResponse handle(Intent intent) {
+        holidaysApi.setApiClient(Configuration.getDefaultApiClient());
         MifosResponse response = new MifosResponse();
 
         String fromDate = null;

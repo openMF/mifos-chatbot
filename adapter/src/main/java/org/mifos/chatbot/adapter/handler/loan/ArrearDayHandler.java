@@ -20,6 +20,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.time.FastDateFormat;
 import org.mifos.chatbot.adapter.handler.HandlerUtils;
 import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.Configuration;
 import org.mifos.chatbot.client.api.LoansApi;
 import org.mifos.chatbot.client.model.GetLoansLoanIdResponse;
 import org.mifos.chatbot.core.model.Intent;
@@ -53,6 +54,7 @@ public class ArrearDayHandler extends BaseLoanIntentHandler {
 
     @Override
     public MifosResponse handle(Intent intent) {
+        loansApi.setApiClient(Configuration.getDefaultApiClient());
         MifosResponse response = new MifosResponse();
         try {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);

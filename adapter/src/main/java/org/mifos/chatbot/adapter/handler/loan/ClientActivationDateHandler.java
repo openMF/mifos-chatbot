@@ -18,6 +18,7 @@ package org.mifos.chatbot.adapter.handler.loan;
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.adapter.handler.HandlerUtils;
 import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.Configuration;
 import org.mifos.chatbot.client.api.ClientApi;
 import org.mifos.chatbot.client.model.GetClientsClientIdResponse;
 import org.mifos.chatbot.core.model.Intent;
@@ -48,6 +49,7 @@ public class ClientActivationDateHandler extends BaseLoanIntentHandler {
 
     @Override
     public MifosResponse handle(Intent intent) {
+        clientApi.setApiClient(Configuration.getDefaultApiClient());
         MifosResponse response = new MifosResponse();
         try {
             GetClientsClientIdResponse result = clientApi.retrieveOne(intent.getParameterAsLong("ID"), false);
