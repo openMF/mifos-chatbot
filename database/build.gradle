@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+description = "Mifos Chatbot Database"
+
+group 'org.mifos.chatbot'
+version '1.0.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(":core")
+    compile 'mysql:mysql-connector-java:5.1.+'
+    compile "org.springframework:spring-core"
+    compile "org.springframework:spring-context"
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
