@@ -13,6 +13,7 @@ include ":nlp"
 include ":protocol"
 include ":adapter"
 include ":server"
+include ':database'
 
 project(":client").projectDir = "$rootDir/client" as File
 project(":core").projectDir = "$rootDir/core" as File
@@ -20,3 +21,4 @@ project(":nlp").projectDir = "$rootDir/nlp" as File
 project(":protocol").projectDir = "$rootDir/protocol" as File
 project(":adapter").projectDir = "$rootDir/adapter" as File
 project(":server").projectDir = "$rootDir/server" as File
+project(":database").projectDir = "$rootDir/database" as File
