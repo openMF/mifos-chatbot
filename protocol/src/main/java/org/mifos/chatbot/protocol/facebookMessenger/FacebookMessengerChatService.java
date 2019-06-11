@@ -21,6 +21,7 @@ import org.mifos.chatbot.client.ApiClient;
 import org.mifos.chatbot.core.AdapterService;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.mifos.chatbot.core.model.MifosSettings;
+import org.mifos.chatbot.database.dao.UserRepository;
 import org.mifos.chatbot.database.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,6 +29,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sql.DataSource;
 import java.util.Collections;
 import java.util.List;
 
@@ -54,6 +56,12 @@ public class FacebookMessengerChatService {
 
     @Autowired
     private AdapterService adapterService;
+
+    @Autowired
+    DataSource dataSource;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
     public FacebookMessengerChatService(final Messenger messenger) {
@@ -143,7 +151,26 @@ public class FacebookMessengerChatService {
                 }
                 username.append(creds.charAt(i));
             }
-            System.out.println(username.toString()+"#"+password.toString());
+            if (authUser(username.toString(), password.toString())) {
+                User user = userRepository.findUserByUsername(username.toString());
+                if (user == null) {
+                    userRepository.addUserByFBID(
+                            username.toString(),
+                            password.toString(),
+                            senderId
+                    );
+                } else {
+                    userRepository.updateUserFBID(
+                            username.toString(),
+                            password.toString(),
+                            senderId
+                    );
+                }
+                sendTextMessage(senderId, "Login successfully.");
+            } else {
+                sendTextMessage(senderId, "Please enter valid credentials.");
+                return;
+            }
             return;
         }
         List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
