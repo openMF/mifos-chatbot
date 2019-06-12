@@ -151,25 +151,33 @@ public class FacebookMessengerChatService {
                 }
                 username.append(creds.charAt(i));
             }
-            if (authUser(username.toString(), password.toString())) {
-                User user = userRepository.findUserByUsername(username.toString());
-                if (user == null) {
-                    userRepository.addUserByFBID(
-                            username.toString(),
-                            password.toString(),
-                            senderId
-                    );
-                } else {
-                    userRepository.updateUserFBID(
-                            username.toString(),
-                            password.toString(),
-                            senderId
-                    );
-                }
-                sendTextMessage(senderId, "Login successfully.");
+            if(userRepository.FBIDExist(senderId)) {
+                sendTextMessage(senderId, "You are already logged in, please logout first.");
             } else {
-                sendTextMessage(senderId, "Please enter valid credentials.");
-                return;
+                if (authUser(username.toString(), password.toString())) {
+                    User user = userRepository.findUserByUsername(username.toString());
+                    System.out.println("check user by username USER:");
+                    System.out.println(user);
+                    if (user == null) {
+                        System.out.println("ADD");
+                        userRepository.addUserByFBID(
+                                username.toString(),
+                                password.toString(),
+                                senderId
+                        );
+                    } else {
+                        System.out.println("UPDATE");
+                        userRepository.updateUserFBID(
+                                username.toString(),
+                                password.toString(),
+                                senderId
+                        );
+                    }
+                    sendTextMessage(senderId, "Login successfully.");
+                } else {
+                    sendTextMessage(senderId, "Please enter valid credentials.");
+                    return;
+                }
             }
             return;
         }
