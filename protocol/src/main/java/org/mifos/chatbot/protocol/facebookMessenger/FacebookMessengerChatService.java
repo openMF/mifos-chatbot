@@ -30,6 +30,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.sql.DataSource;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 
@@ -133,6 +135,11 @@ public class FacebookMessengerChatService {
         return false;
     }
 
+    private static String base64Encode(String input) {
+        final byte[] authBytes = input.getBytes(StandardCharsets.UTF_8);
+        return Base64.getEncoder().encodeToString(authBytes);
+    }
+
     private void handleTextMessageEvent(TextMessageEvent event) {
         final String messageText = event.text();
         final String senderId = event.senderId();
@@ -156,17 +163,13 @@ public class FacebookMessengerChatService {
             } else {
                 if (authUser(username.toString(), password.toString())) {
                     User user = userRepository.findUserByUsername(username.toString());
-                    System.out.println("check user by username USER:");
-                    System.out.println(user);
                     if (user == null) {
-                        System.out.println("ADD");
                         userRepository.addUserByFBID(
                                 username.toString(),
                                 password.toString(),
                                 senderId
                         );
                     } else {
-                        System.out.println("UPDATE");
                         userRepository.updateUserFBID(
                                 username.toString(),
                                 password.toString(),
@@ -181,10 +184,19 @@ public class FacebookMessengerChatService {
             }
             return;
         }
-        List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
-        if (!responseList.isEmpty()) {
-            for (MifosResponse response : responseList) {
-                sendTextMessage(senderId, response.getContent());
+        User user = userRepository.findUserByFBID(senderId);
+        if(user != null) {
+            String username = user.getUsername();
+            String password = user.getSecret_Pass();
+            if(authUser(username, password)) {
+                ApiClient apiClient = new ApiClient(base64Encode(username + ":" + password));
+                org.mifos.chatbot.client.Configuration.setDefaultApiClient(apiClient);
+                List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
+                if (!responseList.isEmpty()) {
+                    for (MifosResponse response : responseList) {
+                        sendTextMessage(senderId, response.getContent());
+                    }
+                }
             }
         }
     }
