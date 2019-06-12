@@ -144,7 +144,16 @@ public class FacebookMessengerChatService {
         final String messageText = event.text();
         final String senderId = event.senderId();
 
-        //todo manage login
+        if (messageText.toLowerCase().contains("logout")) {
+            User user = userRepository.findUserByFBID(senderId);
+            if(user != null) {
+                userRepository.removeUser(user.getUsername());
+                sendTextMessage(senderId, "Logged out successfully.");
+            } else {
+                sendTextMessage(senderId, "You are already logged out.");
+            }
+            return;
+        }
         if (messageText.toLowerCase().contains("login:")) {
             StringBuilder username = new StringBuilder();
             StringBuilder password = new StringBuilder();
