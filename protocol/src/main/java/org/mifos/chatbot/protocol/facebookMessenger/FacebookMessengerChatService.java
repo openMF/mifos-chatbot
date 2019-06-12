@@ -197,7 +197,12 @@ public class FacebookMessengerChatService {
                         sendTextMessage(senderId, response.getContent());
                     }
                 }
+            } else {
+                sendTextMessage(senderId, "Your previous credentials are not correct. Please logout and login again.");
+                //todo not sure userRepository.removeUser(username);
             }
+        } else {
+            sendTextMessage(senderId, "Please login first.");
         }
     }
 
