@@ -57,6 +57,24 @@ public class UserRepository {
         }
     }
 
+    public User findUserByTelegramID(String telegram_userID) {
+        List<User> l = jdbcTemplate.query(
+                "SELECT * FROM users_creds WHERE telegram_userID = '" + telegram_userID + "'",
+                (rs, rowNum) -> new User(
+                        rs.getString("Username"),
+                        rs.getString("secret_Pass"),
+                        rs.getString("FB_userID"),
+                        rs.getString("slack_userID"),
+                        rs.getString("telegram_userID"),
+                        rs.getString("skype_userID"))
+        );
+        try {
+            return l.get(0);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public void addUser(String username, String secret_Pass, String FB_userID, String slack_userID, String telegram_userID, String skype_userID) {
         jdbcTemplate.update("INSERT INTO users_creds VALUES (?,?,?,?,?,?)",
                 username, secret_Pass, FB_userID,slack_userID,telegram_userID,skype_userID);
@@ -67,9 +85,19 @@ public class UserRepository {
                 FB_userID, username, secret_Pass);
     }
 
+    public void addUserByTelegramID(String username, String secret_Pass, String telegram_userID) {
+        jdbcTemplate.update("INSERT INTO users_creds (telegram_userID, Username, secret_Pass) VALUES (?,?,?)",
+                telegram_userID, username, secret_Pass);
+    }
+
     public void updateUserFBID(String username, String secret_Pass, String FB_userID) {
         jdbcTemplate.update("UPDATE users_creds SET FB_userID = ? WHERE Username = ? AND secret_Pass = ?",
                 FB_userID, username, secret_Pass);
+    }
+
+    public void updateUserTelegramID(String username, String secret_Pass, String telegram_userID) {
+        jdbcTemplate.update("UPDATE users_creds SET telegram_userID = ? WHERE Username = ? AND secret_Pass = ?",
+                telegram_userID, username, secret_Pass);
     }
 
     public void removeUser(String username) {
@@ -78,6 +106,11 @@ public class UserRepository {
 
     public boolean FBIDExist(String senderId) {
         User user = findUserByFBID(senderId);
+        return user != null;
+    }
+
+    public boolean TelegramIDExist(String senderId) {
+        User user = findUserByTelegramID(senderId);
         return user != null;
     }
 }
