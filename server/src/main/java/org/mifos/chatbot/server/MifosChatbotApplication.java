@@ -16,6 +16,7 @@
 package org.mifos.chatbot.server;
 
 import com.github.messenger4j.Messenger;
+import org.mifos.chatbot.protocol.telegram.TelegramChatService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,20 +24,27 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.telegram.telegrambots.ApiContextInitializer;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "org.mifos.chatbot")
 @EnableCaching(proxyTargetClass = true)
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class MifosChatbotApplication {
-	@Bean
-	public Messenger messenger(@Value("${messenger4j.pageAccessToken}") String pageAccessToken,
-							   @Value("${messenger4j.appSecret}") final String appSecret,
-							   @Value("${messenger4j.verifyToken}") final String verifyToken) {
-		return Messenger.create(pageAccessToken, appSecret, verifyToken);
-	}
+    @Bean
+    public Messenger messenger(@Value("${messenger4j.pageAccessToken}") String pageAccessToken,
+                               @Value("${messenger4j.appSecret}") final String appSecret,
+                               @Value("${messenger4j.verifyToken}") final String verifyToken) {
+        return Messenger.create(pageAccessToken, appSecret, verifyToken);
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(MifosChatbotApplication.class, args);
-	}
+    @Bean
+    public TelegramChatService telegramChatService() {
+        return new TelegramChatService();
+    }
+
+    public static void main(String[] args) {
+        ApiContextInitializer.init();
+        SpringApplication.run(MifosChatbotApplication.class, args);
+    }
 }
