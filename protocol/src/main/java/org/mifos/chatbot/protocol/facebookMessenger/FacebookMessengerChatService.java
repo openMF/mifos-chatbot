@@ -205,10 +205,12 @@ public class FacebookMessengerChatService {
                     for (MifosResponse response : responseList) {
                         sendTextMessage(senderId, response.getContent());
                     }
+                } else {
+                    sendTextMessage(senderId, "Sorry i didn't get that.");
                 }
             } else {
-                sendTextMessage(senderId, "Your previous credentials are not correct. Please logout and login again.");
-                //todo not sure userRepository.removeUser(username);
+                sendTextMessage(senderId, "Your previous credentials are not correct. Please login again.");
+                userRepository.removeUser(username);
             }
         } else {
             sendTextMessage(senderId, "Please login first.");
