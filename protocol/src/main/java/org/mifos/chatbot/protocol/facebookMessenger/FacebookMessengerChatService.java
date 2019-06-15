@@ -123,7 +123,7 @@ public class FacebookMessengerChatService {
 
     private boolean authUser(String username, String password) {
         HttpClient client = HttpClientBuilder.create().build();
-        HttpPost post = new HttpPost(settings.getApiUrl() + "authentication?username=" + username + "&password=" + password + "&tenantIdentifier=mifos");
+        HttpPost post = new HttpPost(settings.getApiUrl() + "/authentication?username=" + username + "&password=" + password + "&tenantIdentifier=mifos");
         try {
             HttpResponse response = client.execute(post);
             if(response.getStatusLine().getStatusCode() == 200) {
