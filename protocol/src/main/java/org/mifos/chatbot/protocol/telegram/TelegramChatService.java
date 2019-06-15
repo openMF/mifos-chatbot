@@ -110,10 +110,7 @@ public class TelegramChatService extends TelegramLongPollingBot {
                 if(authUser(username, password)) {
                     ApiClient apiClient = new ApiClient(base64Encode(username + ":" + password));
                     org.mifos.chatbot.client.Configuration.setDefaultApiClient(apiClient);
-                    System.out.println("ooo");
                     List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
-                    System.out.println("111");
-                    System.out.println(responseList.size());
                     if (!responseList.isEmpty()) {
                         for (MifosResponse response : responseList) {
                             sendTextMessage(senderId, response.getContent());
@@ -173,7 +170,6 @@ public class TelegramChatService extends TelegramLongPollingBot {
 
     @PostConstruct
     public void registerBot() {
-        System.out.println("Running telegram chat service");
         TelegramBotsApi botsApi = new TelegramBotsApi();
         try {
             botsApi.registerBot(this);
