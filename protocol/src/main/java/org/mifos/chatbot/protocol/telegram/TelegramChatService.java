@@ -51,9 +51,9 @@ public class TelegramChatService extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
-            log.info("Message received");
             final String messageText = update.getMessage().getText();
             final long senderId = update.getMessage().getChatId();
+            log.info("Telegram: Message received of length " + messageText.length() + " from user: " + senderId);
             if (messageText.toLowerCase().contains("logout")) {
                 User user = userRepository.findUserByTelegramID(Long.toString(senderId));
                 if(user != null) {
@@ -129,6 +129,7 @@ public class TelegramChatService extends TelegramLongPollingBot {
     }
 
     private void sendTextMessage(long recipientId, String text) {
+        log.info("Telegram: Sending message of length " + text.length() + " to user: " + recipientId);
         SendMessage message = new SendMessage()
                 .setChatId(recipientId)
                 .setText(text);
@@ -173,7 +174,9 @@ public class TelegramChatService extends TelegramLongPollingBot {
         TelegramBotsApi botsApi = new TelegramBotsApi();
         try {
             botsApi.registerBot(this);
+            log.info("Telegram: Telegram bot registered");
         } catch (TelegramApiException e) {
+            log.error("Telegram: Unable to register telegram bot");
             e.printStackTrace();
         }
     }

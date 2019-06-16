@@ -143,7 +143,7 @@ public class FacebookMessengerChatService {
     private void handleTextMessageEvent(TextMessageEvent event) {
         final String messageText = event.text();
         final String senderId = event.senderId();
-
+        log.info("Facebook messenger: Message received of length " + messageText.length() + " from user: " + senderId);
         if (messageText.toLowerCase().contains("logout")) {
             User user = userRepository.findUserByFBID(senderId);
             if(user != null) {
@@ -259,6 +259,7 @@ public class FacebookMessengerChatService {
     }
 
     private void sendTextMessage(String recipientId, String text) {
+        log.info("Telegram: Sending message of length " + text.length() + " to user: " + recipientId);
         try {
             final IdRecipient recipient = IdRecipient.create(recipientId);
             final NotificationType notificationType = NotificationType.REGULAR;
