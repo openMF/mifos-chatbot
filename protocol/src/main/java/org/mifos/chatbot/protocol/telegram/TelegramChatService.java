@@ -77,7 +77,7 @@ public class TelegramChatService extends TelegramLongPollingBot {
                     }
                     username.append(creds.charAt(i));
                 }
-                if(userRepository.TelegramIDExist(Long.toString(senderId))) {
+                if(userRepository.telegramIDExist(Long.toString(senderId))) {
                     sendTextMessage(senderId, "You are already logged in, please logout first.");
                 } else {
                     if (authUser(username.toString(), password.toString())) {
