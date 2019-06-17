@@ -75,6 +75,24 @@ public class UserRepository {
         }
     }
 
+    public User findUserBySlackID(String slack_userID) {
+        List<User> l = jdbcTemplate.query(
+                "SELECT * FROM users_creds WHERE slack_userID = '" + slack_userID + "'",
+                (rs, rowNum) -> new User(
+                        rs.getString("Username"),
+                        rs.getString("secret_Pass"),
+                        rs.getString("FB_userID"),
+                        rs.getString("slack_userID"),
+                        rs.getString("telegram_userID"),
+                        rs.getString("skype_userID"))
+        );
+        try {
+            return l.get(0);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public void addUser(String username, String secret_Pass, String FB_userID, String slack_userID, String telegram_userID, String skype_userID) {
         jdbcTemplate.update("INSERT INTO users_creds VALUES (?,?,?,?,?,?)",
                 username, secret_Pass, FB_userID,slack_userID,telegram_userID,skype_userID);
@@ -90,6 +108,11 @@ public class UserRepository {
                 telegram_userID, username, secret_Pass);
     }
 
+    public void addUserBySlackID(String username, String secret_Pass, String slack_userID) {
+        jdbcTemplate.update("INSERT INTO users_creds (slack_userID, Username, secret_Pass) VALUES (?,?,?)",
+                slack_userID, username, secret_Pass);
+    }
+
     public void updateUserFBID(String username, String secret_Pass, String FB_userID) {
         jdbcTemplate.update("UPDATE users_creds SET FB_userID = ? WHERE Username = ? AND secret_Pass = ?",
                 FB_userID, username, secret_Pass);
@@ -98,6 +121,11 @@ public class UserRepository {
     public void updateUserTelegramID(String username, String secret_Pass, String telegram_userID) {
         jdbcTemplate.update("UPDATE users_creds SET telegram_userID = ? WHERE Username = ? AND secret_Pass = ?",
                 telegram_userID, username, secret_Pass);
+    }
+
+    public void updateUserSlackID(String username, String secret_Pass, String slack_userID) {
+        jdbcTemplate.update("UPDATE users_creds SET slack_userID = ? WHERE Username = ? AND secret_Pass = ?",
+                slack_userID, username, secret_Pass);
     }
 
     public void removeUser(String username) {
@@ -109,8 +137,13 @@ public class UserRepository {
         return user != null;
     }
 
-    public boolean TelegramIDExist(String senderId) {
+    public boolean telegramIDExist(String senderId) {
         User user = findUserByTelegramID(senderId);
+        return user != null;
+    }
+
+    public boolean slackIDExist(String senderId) {
+        User user = findUserBySlackID(senderId);
         return user != null;
     }
 }
