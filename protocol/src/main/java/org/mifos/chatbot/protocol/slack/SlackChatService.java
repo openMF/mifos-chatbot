@@ -20,18 +20,24 @@ import com.ullink.slack.simpleslackapi.SlackUser;
 import com.ullink.slack.simpleslackapi.events.SlackMessagePosted;
 import com.ullink.slack.simpleslackapi.listeners.SlackMessagePostedListener;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.mifos.chatbot.client.ApiClient;
 import org.mifos.chatbot.core.AdapterService;
 import org.mifos.chatbot.core.ChatService;
 import org.mifos.chatbot.core.model.Message;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.mifos.chatbot.core.model.MifosSettings;
+import org.mifos.chatbot.database.dao.UserRepository;
+import org.mifos.chatbot.database.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.sql.DataSource;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -48,6 +54,12 @@ public class SlackChatService implements ChatService {
     @Autowired
     private AdapterService adapterService;
 
+    @Autowired
+    DataSource dataSource;
+
+    @Autowired
+    UserRepository userRepository;
+
     public SlackChatService() {
 
     }
@@ -61,57 +73,118 @@ public class SlackChatService implements ChatService {
         try {
             this.callback = callback;
             session.connect();
-            Map<String, String> authMap = new HashMap<>();
-            callback.onCheckingUsernameAndPassword();
-
+//            Map<String, String> authMap = new HashMap<>();
+//            callback.onCheckingUsernameAndPassword();
             session.addMessagePostedListener((event, session) -> {
-                final String noAuth = "Please enter the correct username or password with correct tag";
-                final String noIntent = "cannot find intent from it ";
+                if(event.getSender().isBot()) {
+                    return;
+                }
+//                final String noAuth = "Please enter the correct username or password with correct tag";
+//                final String noIntent = "cannot find intent from it ";
+                final String senderId = event.getSender().getUserMail();
                 final String messageText = event.getMessageContent();
-                //todo work when implementing auth solution
-//                Boolean authenticated = false;
-//
-//                if(event.getMessageContent().toLowerCase().contains("username".toLowerCase())) {
-//                     authMap.put("Username", event.getMessageContent().replaceAll("(?i)username: ", ""));
-//                }
-//                if(event.getMessageContent().toLowerCase().contains("password".toLowerCase())) {
-//                    authMap.put("Password", event.getMessageContent().replaceAll("(?)password: ", ""));
-//                }
-//                if(authMap.get("Username").equals(settings.getUsername()) && authMap.get("Password").equals(settings.getPassword())) {
-//                     authenticated = true;
-//                }
-//                if(!authenticated && authMap.containsKey("Username") && authMap.containsKey("Password") && !event.getMessageContent().equals(noAuth)){
-//                    MifosResponse response = new MifosResponse();
-//                    response.setContent(noAuth);
-//                    // TODO: The reason why it will iterate over and over again is that it will always has the response, which contains the same msg content as the posted msg
-//                    callback.onResponse(response);
-//                }
-
-//                if(callback != null && authenticated) {
-                if(callback != null) {
-                    Message m = new Message();
-                    m.setFrom(event.getSender().getUserMail());
-                    m.setText(event.getMessageContent());
-
-                    callback.onMessage(m);
-
-                    log.info("Slack : " + event.getMessageContent());
-                    List<MifosResponse> responseList = adapterService.handle(event.getMessageContent());
-
-                    if(!responseList.isEmpty()) {
-                        for (MifosResponse response : responseList) {
-                            callback.onResponse(response);
-                        }
-                    } else if(!event.getMessageContent().equals(noIntent)) {
-                        MifosResponse errorResponse = new MifosResponse();
-                        errorResponse.setContent(noIntent);
-                        callback.onResponse(errorResponse);
+                MifosResponse mifosResponse = new MifosResponse();
+                log.info("Slack: Message received of length " + messageText.length() + " from user: " + senderId);
+                if (messageText.toLowerCase().contains("logout")) {
+                    User user = userRepository.findUserBySlackID(senderId);
+                    if(user != null) {
+                        userRepository.removeUser(user.getUsername());
+                        sendTextMessage(senderId, "Logged out successfully.");
+                    } else {
+                        sendTextMessage(senderId, "You are already logged out.");
                     }
+                    return;
+                }
+                if (messageText.toLowerCase().contains("login:")) {
+                    StringBuilder username = new StringBuilder();
+                    StringBuilder password = new StringBuilder();
+                    String creds = messageText.replaceAll("login:", "");
+                    for (int i = 0; i < creds.length(); i++) {
+                        if (creds.charAt(i) == ':') {
+                            for (i++; i < creds.length(); i++) {
+                                password.append(creds.charAt(i));
+                            }
+                            break;
+                        }
+                        username.append(creds.charAt(i));
+                    }
+                    if(userRepository.slackIDExist(senderId)) {
+                        sendTextMessage(senderId, "You are already logged in, please logout first.");
+                    } else {
+                        if (authUser(username.toString(), password.toString())) {
+                            User user = userRepository.findUserByUsername(username.toString());
+                            if (user == null) {
+                                userRepository.addUserBySlackID(
+                                        username.toString(),
+                                        password.toString(),
+                                        senderId
+                                );
+                            } else {
+                                userRepository.updateUserSlackID(
+                                        username.toString(),
+                                        password.toString(),
+                                        senderId
+                                );
+                            }
+                            sendTextMessage(senderId, "Login successfully.");
+                        } else {
+                            sendTextMessage(senderId, "Please enter valid credentials.");
+                            return;
+                        }
+                    }
+                    return;
+                }
+                User user = userRepository.findUserBySlackID(senderId);
+                if(user != null) {
+                    String username = user.getUsername();
+                    String password = user.getSecret_Pass();
+                    if(authUser(username, password)) {
+                        ApiClient apiClient = new ApiClient(base64Encode(username + ":" + password));
+                        org.mifos.chatbot.client.Configuration.setDefaultApiClient(apiClient);
+                        List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
+                        if (!responseList.isEmpty()) {
+                            for (MifosResponse response : responseList) {
+                                sendTextMessage(senderId, response.getContent());
+                            }
+                        } else {
+                            sendTextMessage(senderId, "Sorry i didn't get that.");
+                        }
+                    } else {
+                        sendTextMessage(senderId, "Your previous credentials are not correct. Please login again.");
+                        userRepository.removeUser(username);
+                    }
+                } else {
+                    sendTextMessage(senderId, "Please login first.");
                 }
             });
         } catch (Exception e) {
             log.error(e.toString(), e);
         }
+    }
+
+    private boolean authUser(String username, String password) {
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpPost post = new HttpPost(settings.getApiUrl() + "/authentication?username=" + username + "&password=" + password + "&tenantIdentifier=mifos");
+        try {
+            HttpResponse response = client.execute(post);
+            if(response.getStatusLine().getStatusCode() == 200) {
+                return true;
+            }
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
+        return false;
+    }
+
+    private static String base64Encode(String input) {
+        final byte[] authBytes = input.getBytes(StandardCharsets.UTF_8);
+        return Base64.getEncoder().encodeToString(authBytes);
+    }
+
+    private void sendTextMessage(String recipientId, String text) {
+        MifosResponse mifosResponse = new MifosResponse();
+        mifosResponse.setContent(text);
+        callback.onResponse(mifosResponse, recipientId);
     }
 
     @Override
