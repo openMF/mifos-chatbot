@@ -54,21 +54,13 @@ public class ProtocolConfig {
             }
 
             @Override
-            public void onResponse(MifosResponse response) {
+            public void onResponse(MifosResponse response, String recipientId) {
                 Message msg = new Message();
                 msg.setText(response.getContent());
-                msg.setTo(userEmail);
+                msg.setTo(recipientId);
                 slackChatService.send(msg);
             }
 
-            @Override
-            public void onCheckingUsernameAndPassword() {
-                Message msg = new Message();
-                msg.setText("Please key in your username and password with tag of `username: ` and `password: `(be careful about the space) " +
-                        "\nRemember to put in two messages~");
-                msg.setTo(userEmail);
-                slackChatService.send(msg);
-            }
         });
 
         return slackChatService;
