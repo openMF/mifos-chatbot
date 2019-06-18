@@ -17,8 +17,6 @@ package org.mifos.chatbot.protocol.slack;
 
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.SlackUser;
-import com.ullink.slack.simpleslackapi.events.SlackMessagePosted;
-import com.ullink.slack.simpleslackapi.listeners.SlackMessagePostedListener;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -37,7 +35,8 @@ import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Base64;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -73,14 +72,10 @@ public class SlackChatService implements ChatService {
         try {
             this.callback = callback;
             session.connect();
-//            Map<String, String> authMap = new HashMap<>();
-//            callback.onCheckingUsernameAndPassword();
             session.addMessagePostedListener((event, session) -> {
                 if(event.getSender().isBot()) {
                     return;
                 }
-//                final String noAuth = "Please enter the correct username or password with correct tag";
-//                final String noIntent = "cannot find intent from it ";
                 final String senderId = event.getSender().getUserMail();
                 final String messageText = event.getMessageContent();
                 MifosResponse mifosResponse = new MifosResponse();
