@@ -78,7 +78,6 @@ public class SlackChatService implements ChatService {
                 }
                 final String senderId = event.getSender().getUserMail();
                 final String messageText = event.getMessageContent();
-                MifosResponse mifosResponse = new MifosResponse();
                 log.info("Slack: Message received of length " + messageText.length() + " from user: " + senderId);
                 if (messageText.toLowerCase().contains("logout")) {
                     User user = userRepository.findUserBySlackID(senderId);
