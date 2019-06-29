@@ -30,6 +30,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Collections;
@@ -123,13 +124,16 @@ public class FacebookMessengerChatService {
 
     private boolean authUser(String username, String password) {
         HttpClient client = HttpClientBuilder.create().build();
-        HttpPost post = new HttpPost(settings.getApiUrl() + "/authentication?username=" + username + "&password=" + password + "&tenantIdentifier=mifos");
+        String authUrl = settings.getApiUrl() + "/authentication?username=" + username + "&password=" + password + "&tenantIdentifier=mifos";
+        HttpPost post = new HttpPost(authUrl);
         try {
             HttpResponse response = client.execute(post);
             if(response.getStatusLine().getStatusCode() == 200) {
                 return true;
+            } else if(response.getStatusLine().getStatusCode() == 401) {
+                log.info("Invalid login attempt with creds: {} and password: {}", username, password);
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             log.error(e.toString());
         }
         return false;
@@ -140,80 +144,97 @@ public class FacebookMessengerChatService {
         return Base64.getEncoder().encodeToString(authBytes);
     }
 
+    /**
+     * This function is divided in 3 parts. First checks that message is to logout user, second checks that message is
+     * to login user and third is to resolve message and send response to it.
+     * @param event Facebook Messenger text message event
+     */
     private void handleTextMessageEvent(TextMessageEvent event) {
         final String messageText = event.text();
         final String senderId = event.senderId();
         log.info("Facebook messenger: Message received of length " + messageText.length() + " from user: " + senderId);
         if (messageText.toLowerCase().contains("logout")) {
-            User user = userRepository.findUserByFBID(senderId);
-            if(user != null) {
-                userRepository.removeUser(user.getUsername());
-                sendTextMessage(senderId, "Logged out successfully.");
-            } else {
-                sendTextMessage(senderId, "You are already logged out.");
-            }
+            handleLogout(senderId, messageText);
             return;
         }
         if (messageText.toLowerCase().contains("login:")) {
-            StringBuilder username = new StringBuilder();
-            StringBuilder password = new StringBuilder();
-            String creds = messageText.replaceAll("login:", "");
-            for (int i = 0; i < creds.length(); i++) {
-                if (creds.charAt(i) == ':') {
-                    for (i++; i < creds.length(); i++) {
-                        password.append(creds.charAt(i));
-                    }
-                    break;
-                }
-                username.append(creds.charAt(i));
-            }
-            if(userRepository.FBIDExist(senderId)) {
-                sendTextMessage(senderId, "You are already logged in, please logout first.");
-            } else {
-                if (authUser(username.toString(), password.toString())) {
-                    User user = userRepository.findUserByUsername(username.toString());
-                    if (user == null) {
-                        userRepository.addUserByFBID(
-                                username.toString(),
-                                password.toString(),
-                                senderId
-                        );
-                    } else {
-                        userRepository.updateUserFBID(
-                                username.toString(),
-                                password.toString(),
-                                senderId
-                        );
-                    }
-                    sendTextMessage(senderId, "Login successfully.");
-                } else {
-                    sendTextMessage(senderId, "Please enter valid credentials.");
-                    return;
-                }
-            }
+            handleLogin(senderId, messageText);
             return;
         }
         User user = userRepository.findUserByFBID(senderId);
         if(user != null) {
-            String username = user.getUsername();
-            String password = user.getSecret_Pass();
-            if(authUser(username, password)) {
-                ApiClient apiClient = new ApiClient(base64Encode(username + ":" + password));
-                org.mifos.chatbot.client.Configuration.setDefaultApiClient(apiClient);
-                List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
-                if (!responseList.isEmpty()) {
-                    for (MifosResponse response : responseList) {
-                        sendTextMessage(senderId, response.getContent());
-                    }
-                } else {
-                    sendTextMessage(senderId, "Sorry i didn't get that.");
-                }
-            } else {
-                sendTextMessage(senderId, "Your previous credentials are not correct. Please login again.");
-                userRepository.removeUser(username);
-            }
+            handleMessageAndGenerateResponse(user, senderId, messageText);
         } else {
             sendTextMessage(senderId, "Please login first.");
+        }
+    }
+
+    private void handleMessageAndGenerateResponse(User user, String senderId, String messageText) {
+        String username = user.getUsername();
+        String password = user.getSecret_Pass();
+        if(authUser(username, password)) {
+            ApiClient apiClient = new ApiClient(base64Encode(username + ":" + password));
+            org.mifos.chatbot.client.Configuration.setDefaultApiClient(apiClient);
+            List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
+            if (!responseList.isEmpty()) {
+                for (MifosResponse response : responseList) {
+                    sendTextMessage(senderId, response.getContent());
+                }
+            } else {
+                sendTextMessage(senderId, "Sorry i didn't get that.");
+            }
+        } else {
+            sendTextMessage(senderId, "Your previous credentials are not correct. Please login again.");
+            userRepository.removeUser(username);
+        }
+    }
+
+    private void handleLogin(String senderId, String messageText) {
+        StringBuilder username = new StringBuilder();
+        StringBuilder password = new StringBuilder();
+        String creds = messageText.replaceAll("login:", "");
+        //extracting username and password from message
+        for (int i = 0; i < creds.length(); i++) {
+            if (creds.charAt(i) == ':') {
+                for (i++; i < creds.length(); i++) {
+                    password.append(creds.charAt(i));
+                }
+                break;
+            }
+            username.append(creds.charAt(i));
+        }
+        if(userRepository.FBIDExist(senderId)) {
+            sendTextMessage(senderId, "You are already logged in, please logout first.");
+        } else {
+            if (authUser(username.toString(), password.toString())) {
+                User user = userRepository.findUserByUsername(username.toString());
+                if (user == null) {
+                    userRepository.addUserByFBID(
+                            username.toString(),
+                            password.toString(),
+                            senderId
+                    );
+                } else {
+                    userRepository.updateUserFBID(
+                            username.toString(),
+                            password.toString(),
+                            senderId
+                    );
+                }
+                sendTextMessage(senderId, "Login successfully.");
+            } else {
+                sendTextMessage(senderId, "Please enter valid credentials.");
+            }
+        }
+    }
+
+    private void handleLogout(String senderId, String messageText) {
+        User user = userRepository.findUserByFBID(senderId);
+        if(user != null) {
+            userRepository.removeUser(user.getUsername());
+            sendTextMessage(senderId, "Logged out successfully.");
+        } else {
+            sendTextMessage(senderId, "You are already logged out.");
         }
     }
 

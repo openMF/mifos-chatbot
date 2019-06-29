@@ -1,5 +1,6 @@
 package org.mifos.chatbot.database.dao;
 
+import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.database.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,128 +9,140 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+@Slf4j
 public class UserRepository {
+
+    private String tableName = "users_creds";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public List<User> findAll() {
+        final String findAllQuery = "SELECT * FROM " + tableName;
         return jdbcTemplate.query(
-                "SELECT * FROM users_creds",
-                (rs, rowNum) -> new User(rs.getString("Username"),
-                        rs.getString("secret_Pass"), rs.getString("FB_userID"), rs.getString("slack_userID"), rs.getString("telegram_userID"), rs.getString("skype_userID"))
+                findAllQuery,
+                (rs, rowNum) -> new User(rs.getString("username"),
+                        rs.getString("secret_key"), rs.getString("fb_userid"), rs.getString("slack_userid"), rs.getString("telegram_userid"), rs.getString("skype_userid"))
         );
     }
 
     public User findUserByUsername(String username) {
-        List<User> l = jdbcTemplate.query(
-                "SELECT * FROM users_creds WHERE Username = '" + username + "'",
+        final String findUserByUsernameQuery = "SELECT * FROM " + tableName + " WHERE username = '" + username + "'";
+        List<User> users = jdbcTemplate.query(
+                findUserByUsernameQuery,
                 (rs, rowNum) -> new User(
-                        rs.getString("Username"),
-                        rs.getString("secret_Pass"),
-                        rs.getString("FB_userID"),
-                        rs.getString("slack_userID"),
-                        rs.getString("telegram_userID"),
-                        rs.getString("skype_userID"))
+                        rs.getString("username"),
+                        rs.getString("secret_key"),
+                        rs.getString("fb_userid"),
+                        rs.getString("slack_userid"),
+                        rs.getString("telegram_userid"),
+                        rs.getString("skype_userid"))
         );
         try {
-            return l.get(0);
+            return users.get(0);
         } catch (Exception e) {
+            log.info("User with username: " + username + " not found.");
             return null;
         }
     }
 
-    public User findUserByFBID(String FB_userID) {
-        List<User> l = jdbcTemplate.query(
-                "SELECT * FROM users_creds WHERE FB_userID = '" + FB_userID + "'",
+    public User findUserByFBID(String fbUserid) {
+        final String findUserByFBIDQuery = "SELECT * FROM " + tableName + " WHERE fb_userid = '" + fbUserid + "'";
+        List<User> users = jdbcTemplate.query(
+                findUserByFBIDQuery,
                 (rs, rowNum) -> new User(
-                        rs.getString("Username"),
-                        rs.getString("secret_Pass"),
-                        rs.getString("FB_userID"),
-                        rs.getString("slack_userID"),
-                        rs.getString("telegram_userID"),
-                        rs.getString("skype_userID"))
+                        rs.getString("username"),
+                        rs.getString("secret_key"),
+                        rs.getString("fb_userid"),
+                        rs.getString("slack_userid"),
+                        rs.getString("telegram_userid"),
+                        rs.getString("skype_userid"))
         );
         try {
-            return l.get(0);
+            return users.get(0);
         } catch (Exception e) {
+            log.info("User with FB messenger ID: " + fbUserid + " not found.");
             return null;
         }
     }
 
-    public User findUserByTelegramID(String telegram_userID) {
-        List<User> l = jdbcTemplate.query(
-                "SELECT * FROM users_creds WHERE telegram_userID = '" + telegram_userID + "'",
+    public User findUserByTelegramID(String telegramUserid) {
+        final String findUserByTelegramIDQuery = "SELECT * FROM " + tableName + " WHERE telegram_userid = '" + telegramUserid + "'";
+        List<User> users = jdbcTemplate.query(
+                findUserByTelegramIDQuery,
                 (rs, rowNum) -> new User(
-                        rs.getString("Username"),
-                        rs.getString("secret_Pass"),
-                        rs.getString("FB_userID"),
-                        rs.getString("slack_userID"),
-                        rs.getString("telegram_userID"),
-                        rs.getString("skype_userID"))
+                        rs.getString("username"),
+                        rs.getString("secret_key"),
+                        rs.getString("fb_userid"),
+                        rs.getString("slack_userid"),
+                        rs.getString("telegram_userid"),
+                        rs.getString("skype_userid"))
         );
         try {
-            return l.get(0);
+            return users.get(0);
         } catch (Exception e) {
+            log.info("User with telegram ID: " + telegramUserid + " not found.");
             return null;
         }
     }
 
-    public User findUserBySlackID(String slack_userID) {
+    public User findUserBySlackID(String slackUserid) {
+        final String findUserBySlackIDQuery = "SELECT * FROM " + tableName + " WHERE slack_userid = '" + slackUserid + "'";
         List<User> l = jdbcTemplate.query(
-                "SELECT * FROM users_creds WHERE slack_userID = '" + slack_userID + "'",
+                findUserBySlackIDQuery,
                 (rs, rowNum) -> new User(
                         rs.getString("Username"),
-                        rs.getString("secret_Pass"),
-                        rs.getString("FB_userID"),
-                        rs.getString("slack_userID"),
-                        rs.getString("telegram_userID"),
-                        rs.getString("skype_userID"))
+                        rs.getString("secret_key"),
+                        rs.getString("fb_userid"),
+                        rs.getString("slack_userid"),
+                        rs.getString("telegram_userid"),
+                        rs.getString("skype_userid"))
         );
         try {
             return l.get(0);
         } catch (Exception e) {
+            log.info("User with slack ID: " + slackUserid + " not found.");
             return null;
         }
     }
 
-    public void addUser(String username, String secret_Pass, String FB_userID, String slack_userID, String telegram_userID, String skype_userID) {
-        jdbcTemplate.update("INSERT INTO users_creds VALUES (?,?,?,?,?,?)",
-                username, secret_Pass, FB_userID,slack_userID,telegram_userID,skype_userID);
+    public void addUser(String username, String secretKey, String fbUserid, String slackUserid, String telegramUserid, String skypeUserid) {
+        jdbcTemplate.update("INSERT INTO ? VALUES (?,?,?,?,?,?)",
+                tableName, username, secretKey, fbUserid, slackUserid, telegramUserid, skypeUserid);
     }
 
-    public void addUserByFBID(String username, String secret_Pass, String FB_userID) {
-        jdbcTemplate.update("INSERT INTO users_creds (FB_userID, Username, secret_Pass) VALUES (?,?,?)",
-                FB_userID, username, secret_Pass);
+    public void addUserByFBID(String username, String secretKey, String fbUserid) {
+        jdbcTemplate.update("INSERT INTO ? (fb_userid, Username, secret_key) VALUES (?,?,?)",
+                tableName, fbUserid, username, secretKey);
     }
 
-    public void addUserByTelegramID(String username, String secret_Pass, String telegram_userID) {
-        jdbcTemplate.update("INSERT INTO users_creds (telegram_userID, Username, secret_Pass) VALUES (?,?,?)",
-                telegram_userID, username, secret_Pass);
+    public void addUserByTelegramID(String username, String secretKey, String telegramUserid) {
+        jdbcTemplate.update("INSERT INTO ? (telegram_userid, Username, secret_key) VALUES (?,?,?)",
+                tableName, telegramUserid, username, secretKey);
     }
 
-    public void addUserBySlackID(String username, String secret_Pass, String slack_userID) {
-        jdbcTemplate.update("INSERT INTO users_creds (slack_userID, Username, secret_Pass) VALUES (?,?,?)",
-                slack_userID, username, secret_Pass);
+    public void addUserBySlackID(String username, String secretKey, String slackUserid) {
+        jdbcTemplate.update("INSERT INTO ? (slack_userid, Username, secret_key) VALUES (?,?,?)",
+                tableName, slackUserid, username, secretKey);
     }
 
-    public void updateUserFBID(String username, String secret_Pass, String FB_userID) {
-        jdbcTemplate.update("UPDATE users_creds SET FB_userID = ? WHERE Username = ? AND secret_Pass = ?",
-                FB_userID, username, secret_Pass);
+    public void updateUserFBID(String username, String secretKey, String fbUserid) {
+        jdbcTemplate.update("UPDATE ? SET fb_userid = ? WHERE Username = ? AND secret_key = ?",
+                tableName, fbUserid, username, secretKey);
     }
 
-    public void updateUserTelegramID(String username, String secret_Pass, String telegram_userID) {
-        jdbcTemplate.update("UPDATE users_creds SET telegram_userID = ? WHERE Username = ? AND secret_Pass = ?",
-                telegram_userID, username, secret_Pass);
+    public void updateUserTelegramID(String username, String secretKey, String telegramUserid) {
+        jdbcTemplate.update("UPDATE ? SET telegram_userid = ? WHERE Username = ? AND secret_key = ?",
+                tableName, telegramUserid, username, secretKey);
     }
 
-    public void updateUserSlackID(String username, String secret_Pass, String slack_userID) {
-        jdbcTemplate.update("UPDATE users_creds SET slack_userID = ? WHERE Username = ? AND secret_Pass = ?",
-                slack_userID, username, secret_Pass);
+    public void updateUserSlackID(String username, String secretKey, String slackUserid) {
+        jdbcTemplate.update("UPDATE ? SET slack_userid = ? WHERE Username = ? AND secret_key = ?",
+                tableName, slackUserid, username, secretKey);
     }
 
     public void removeUser(String username) {
-        jdbcTemplate.update("DELETE FROM users_creds WHERE Username = '" + username + "'");
+        jdbcTemplate.update("DELETE FROM " + tableName + " WHERE Username = '" + username + "'");
     }
 
     public boolean FBIDExist(String senderId) {
