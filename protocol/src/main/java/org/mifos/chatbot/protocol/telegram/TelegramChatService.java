@@ -80,7 +80,7 @@ public class TelegramChatService extends TelegramLongPollingBot {
 
     private void handleMessageAndGenerateResponse(User user, long senderId, String messageText) {
         String username = user.getUsername();
-        String password = user.getSecret_Pass();
+        String password = base64Decode(user.getSecret_Pass());
         if(authUser(username, password)) {
             ApiClient apiClient = new ApiClient(base64Encode(username + ":" + password));
             org.mifos.chatbot.client.Configuration.setDefaultApiClient(apiClient);
@@ -119,13 +119,13 @@ public class TelegramChatService extends TelegramLongPollingBot {
                 if (user == null) {
                     userRepository.addUserByTelegramID(
                             username.toString(),
-                            password.toString(),
+                            base64Encode(password.toString()),
                             Long.toString(senderId)
                     );
                 } else {
                     userRepository.updateUserTelegramID(
                             username.toString(),
-                            password.toString(),
+                            base64Encode(password.toString()),
                             Long.toString(senderId)
                     );
                 }
@@ -178,6 +178,10 @@ public class TelegramChatService extends TelegramLongPollingBot {
     private static String base64Encode(String input) {
         final byte[] authBytes = input.getBytes(StandardCharsets.UTF_8);
         return Base64.getEncoder().encodeToString(authBytes);
+    }
+
+    private static String base64Decode(String input) {
+        return String.valueOf(Base64.getDecoder().decode(input));
     }
 
     @Override

@@ -144,6 +144,10 @@ public class FacebookMessengerChatService {
         return Base64.getEncoder().encodeToString(authBytes);
     }
 
+    private static String base64Decode(String input) {
+        return String.valueOf(Base64.getDecoder().decode(input));
+    }
+
     /**
      * This function is divided in 3 parts. First checks that message is to logout user, second checks that message is
      * to login user and third is to resolve message and send response to it.
@@ -171,7 +175,7 @@ public class FacebookMessengerChatService {
 
     private void handleMessageAndGenerateResponse(User user, String senderId, String messageText) {
         String username = user.getUsername();
-        String password = user.getSecret_Pass();
+        String password = base64Decode(user.getSecret_Pass());
         if(authUser(username, password)) {
             ApiClient apiClient = new ApiClient(base64Encode(username + ":" + password));
             org.mifos.chatbot.client.Configuration.setDefaultApiClient(apiClient);
@@ -211,13 +215,13 @@ public class FacebookMessengerChatService {
                 if (user == null) {
                     userRepository.addUserByFBID(
                             username.toString(),
-                            password.toString(),
+                            base64Encode(password.toString()),
                             senderId
                     );
                 } else {
                     userRepository.updateUserFBID(
                             username.toString(),
-                            password.toString(),
+                            base64Encode(password.toString()),
                             senderId
                     );
                 }
