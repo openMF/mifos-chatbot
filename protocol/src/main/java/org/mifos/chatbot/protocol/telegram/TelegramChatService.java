@@ -129,7 +129,7 @@ public class TelegramChatService extends TelegramLongPollingBot {
                             Long.toString(senderId)
                     );
                 }
-                sendTextMessage(senderId, "Login successfully.");
+                sendTextMessage(senderId, "Login successful.");
             } else {
                 sendTextMessage(senderId, "Please enter valid credentials.");
             }

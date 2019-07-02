@@ -151,7 +151,7 @@ public class SlackChatService implements ChatService {
                             senderId
                     );
                 }
-                sendTextMessage(senderId, "Login successfully.");
+                sendTextMessage(senderId, "Login successful.");
             } else {
                 sendTextMessage(senderId, "Please enter valid credentials.");
             }

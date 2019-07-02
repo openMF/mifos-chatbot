@@ -225,7 +225,7 @@ public class FacebookMessengerChatService {
                             senderId
                     );
                 }
-                sendTextMessage(senderId, "Login successfully.");
+                sendTextMessage(senderId, "Login successful.");
             } else {
                 sendTextMessage(senderId, "Please enter valid credentials.");
             }
