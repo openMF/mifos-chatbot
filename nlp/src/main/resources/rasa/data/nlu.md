@@ -285,3 +285,83 @@
 - check previous payment date
 - look previous payment date
 - give previous payment date
+
+## intent:interest_rate
+- my interest rate
+- what is my interest rate
+- whats my interest rate
+- what's my interest rate
+- check my interest rate
+- look my interest rate
+- give my interest rate
+- interest rate
+- what is interest rate
+- whats interest rate
+- what's interest rate
+- check interest rate
+- look interest rate
+- give interest rate
+
+## intent:loan_term
+- my loan term
+- what is my loan term
+- whats my loan term
+- what's my loan term
+- check my loan term
+- look my loan term
+- give my loan term
+- loan term
+- what is loan term
+- whats loan term
+- what's loan term
+- check loan term
+- look loan term
+- give loan term
+
+## intent:max_allowed_amount
+- my max allowed amount
+- what is my max allowed amount
+- whats my max allowed amount
+- what's my max allowed amount
+- check my max allowed amount
+- look my max allowed amount
+- give my max allowed amount
+- max allowed amount
+- what is max allowed amount
+- whats max allowed amount
+- what's max allowed amount
+- check max allowed amount
+- look max allowed amount
+- give max allowed amount
+
+## intent:min_allowed_amount
+- my min allowed amount
+- what is my min allowed amount
+- whats my min allowed amount
+- what's my min allowed amount
+- check my min allowed amount
+- look my min allowed amount
+- give my min allowed amount
+- min allowed amount
+- what is min allowed amount
+- whats min allowed amount
+- what's min allowed amount
+- check min allowed amount
+- look min allowed amount
+- give min allowed amount
+
+## intent:repayment_number
+- my repayment number
+- what is my repayment number
+- whats my repayment number
+- what's my repayment number
+- check my repayment number
+- look my repayment number
+- give my repayment number
+- repayment number
+- what is repayment number
+- whats repayment number
+- what's repayment number
+- check repayment number
+- look repayment number
+- give repayment number
