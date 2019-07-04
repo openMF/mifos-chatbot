@@ -365,3 +365,51 @@
 - check repayment number
 - look repayment number
 - give repayment number
+
+## intent:saving_activation_date
+- my repayment number
+- what is my repayment number
+- whats my repayment number
+- what's my repayment number
+- check my repayment number
+- look my repayment number
+- give my repayment number
+- repayment number
+- what is repayment number
+- whats repayment number
+- what's repayment number
+- check repayment number
+- look repayment number
+- give repayment number
+
+## intent:saving_balance
+- my repayment number
+- what is my repayment number
+- whats my repayment number
+- what's my repayment number
+- check my repayment number
+- look my repayment number
+- give my repayment number
+- repayment number
+- what is repayment number
+- whats repayment number
+- what's repayment number
+- check repayment number
+- look repayment number
+- give repayment number
+
+## intent:saving_interest
+- my repayment number
+- what is my repayment number
+- whats my repayment number
+- what's my repayment number
+- check my repayment number
+- look my repayment number
+- give my repayment number
+- repayment number
+- what is repayment number
+- whats repayment number
+- what's repayment number
+- check repayment number
+- look repayment number
+- give repayment number
