@@ -367,49 +367,49 @@
 - give repayment number
 
 ## intent:saving_activation_date
-- my repayment number
-- what is my repayment number
-- whats my repayment number
-- what's my repayment number
-- check my repayment number
-- look my repayment number
-- give my repayment number
-- repayment number
-- what is repayment number
-- whats repayment number
-- what's repayment number
-- check repayment number
-- look repayment number
-- give repayment number
+- my saving activation date
+- what is my saving activation date
+- whats my saving activation date
+- what's my saving activation date
+- check my saving activation date
+- look my saving activation date
+- give my saving activation date
+- saving activation date
+- what is saving activation date
+- whats saving activation date
+- what's saving activation date
+- check saving activation date
+- look saving activation date
+- give saving activation date
 
 ## intent:saving_balance
-- my repayment number
-- what is my repayment number
-- whats my repayment number
-- what's my repayment number
-- check my repayment number
-- look my repayment number
-- give my repayment number
-- repayment number
-- what is repayment number
-- whats repayment number
-- what's repayment number
-- check repayment number
-- look repayment number
-- give repayment number
+- my saving balance
+- what is my saving balance
+- whats my saving balance
+- what's my saving balance
+- check my saving balance
+- look my saving balance
+- give my saving balance
+- saving balance
+- what is saving balance
+- whats saving balance
+- what's saving balance
+- check saving balance
+- look saving balance
+- give saving balance
 
 ## intent:saving_interest
-- my repayment number
-- what is my repayment number
-- whats my repayment number
-- what's my repayment number
-- check my repayment number
-- look my repayment number
-- give my repayment number
-- repayment number
-- what is repayment number
-- whats repayment number
-- what's repayment number
-- check repayment number
-- look repayment number
-- give repayment number
+- my saving interest
+- what is my saving interest
+- whats my saving interest
+- what's my saving interest
+- check my saving interest
+- look my saving interest
+- give my saving interest
+- saving interest
+- what is saving interest
+- whats saving interest
+- what's saving interest
+- check saving interest
+- look saving interest
+- give saving interest
