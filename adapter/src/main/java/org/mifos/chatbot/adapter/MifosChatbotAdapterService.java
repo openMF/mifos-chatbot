@@ -20,10 +20,11 @@ import org.mifos.chatbot.core.AdapterService;
 import org.mifos.chatbot.core.IntentHandler;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
-import org.mifos.chatbot.nlp.OpenNLPService;
+import org.mifos.chatbot.nlp.RasaNLUService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +33,7 @@ import java.util.stream.Collectors;
 @Service
 public class MifosChatbotAdapterService implements AdapterService {
     @Autowired
-    private OpenNLPService openNLPService;
+    private RasaNLUService rasaNLUService;
 
     @Autowired
     private List<IntentHandler> handlers;
@@ -49,8 +50,12 @@ public class MifosChatbotAdapterService implements AdapterService {
     @Override
     public List<MifosResponse> handle(String input) {
         List<MifosResponse> results = new ArrayList<>();
-        Intent[] intents = openNLPService.recognize(input);
-
+        Intent[] intents = null;
+        try {
+            intents = rasaNLUService.recognize(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Long id = 1L; // default id, set to 1
 
         for(Intent intent : intents) {
