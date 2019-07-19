@@ -12,6 +12,33 @@ If you want to contribute to this project, there are several things that you hav
 4. Gradle
 5. Slack account
 
+And for NLU, you should require
+1. Python 3.6.1 (as NOW Rasa NLU is having dependency issues with Python 3.7)
+2. Microsoft VC++ Compiler
+3. Rasa (for offline training and testing models)
+
+```
+# install Rasa NLU using these commands
+
+pip install rasa[spacy]
+python -m spacy download en_core_web_md
+python -m spacy link en_core_web_md en
+```
+
+###### Rasa structure
+```
+rasa/
+|-- data/
+|    |
+|    |-- nlu.md
+|
+|-- models
+|    |
+|    |-- nlu-XXXXXXXX-XXXXXX.tar.gz
+|
+|-- config.yml
+``` 
+
 ## Getting started
 
 ### Installing on Mac OS
@@ -31,6 +58,20 @@ Download Gradle from [official website](https://gradle.org/install/).
 Slack
 1. Join Mifos workspace and search for `chatbot` in the application page to access service. 
 2. If you want to have your own Slack bot, apply from [here](https://api.slack.com/apps?new_app=1). 
+
+### Training your own model
+Use the following command to train Rasa NLU model. Make sure you have prerequisites for Rasa and Rasa is installed on your local system. 
+```
+rasa train nlu
+```
+
+### Deploying and testing your own model
+Use the following command to run Rasa NLU model locally. 
+```
+# start a server with your NLU model
+rasa run --enable-api -m models/nlu-XXXXXXXX-XXXXXX.tar.gz
+rasa shell -m models/nlu-XXXXXXXX-XXXXXX.tar.gz
+```
 
 ### Playing with chatbot
 After forking and cloning chatbot project , do a gradle import run the unit tests in those modules to understand the function of each module.<br>
