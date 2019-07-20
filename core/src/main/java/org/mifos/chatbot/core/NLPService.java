@@ -24,5 +24,5 @@ import java.io.IOException;
  * If there are other NLP engines, simply add more interfaces for additional NLP engines
  */
 public interface NLPService {
-    Intent[] recognize(String text) throws IOException;
+    Intent recognize(String text) throws IOException;
 }

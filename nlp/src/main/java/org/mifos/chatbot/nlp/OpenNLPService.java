@@ -51,7 +51,7 @@ public class OpenNLPService implements NLPService {
      * @author Zhao Dingfan
      */
     @Override
-    public Intent[] recognize(String text) {
+    public Intent recognize(String text) {
         try {
             String[] sentences = detectSentence(text);
             List<Intent> resultIntents = new ArrayList<>();
@@ -77,12 +77,10 @@ public class OpenNLPService implements NLPService {
                 resultIntents.addAll(subResultIntents);
             }
 
-            Intent[] intents = new Intent[resultIntents.size()];
-            for(int i = 0 ; i < resultIntents.size() ; i++) {
-                intents[i] = resultIntents.get(i);
-            }
+            Intent intent = null;
+                intent = resultIntents.get(0);
 
-            return intents;
+            return intent;
         } catch (IOException e) {
             logger.error("Cannot read model information : ", e);
         }
