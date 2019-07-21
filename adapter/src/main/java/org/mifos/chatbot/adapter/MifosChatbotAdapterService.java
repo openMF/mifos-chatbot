@@ -50,17 +50,15 @@ public class MifosChatbotAdapterService implements AdapterService {
     @Override
     public List<MifosResponse> handle(String input) {
         List<MifosResponse> results = new ArrayList<>();
-        Intent[] intents = null;
+        Intent intent = null;
         try {
-            intents = rasaNLUService.recognize(input);
+            intent = rasaNLUService.recognize(input);
         } catch (IOException e) {
             e.printStackTrace();
         }
         Long id = 1L; // default id, set to 1
 
-        for(Intent intent : intents) {
-            results.addAll(handle(intent));
-        }
+        results.addAll(handle(intent));
         return results;
     }
 
