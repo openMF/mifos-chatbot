@@ -29,7 +29,7 @@ public class RasaNLUService implements NLPService {
     String url;
 
     @Override
-    public Intent[] recognize(String input) throws IOException {
+    public Intent recognize(String input) throws IOException {
         JSONObject payload = createPayload(input);
         HttpResponse rasaNLUResponse = getResponseFromRasaNLU(payload);
         String result = getResult(rasaNLUResponse);
@@ -44,19 +44,20 @@ public class RasaNLUService implements NLPService {
         return getIntent(resultJSON);
     }
 
-    private Intent[] getIntent(JSONObject resultJSON) {
+    private Intent getIntent(JSONObject resultJSON) {
         if (resultJSON == null) {
             return null;
         }
         List<Intent> resultIntents = new ArrayList<>();
         String subIntent = resultJSON.get("intent").toString().split("\"")[5];
-        for (String s : subIntent.split("_")) {
-            resultIntents.add(new Intent(s));
+        resultIntents.add(new Intent(subIntent));
+        Intent intents=null ;
+        for (Intent resultIntent : resultIntents) {
+            intents = resultIntent;
+            intents.addParameter("ID", 1);
+            intents.addParameter("Date", "");
         }
-        Intent[] intents = new Intent[resultIntents.size()];
-        for (int i = 0; i < resultIntents.size(); i++) {
-            intents[i] = resultIntents.get(i);
-        }
+        log.info("Found {} intents", intents);
         return intents;
     }
 
@@ -70,19 +71,19 @@ public class RasaNLUService implements NLPService {
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
         post.setEntity(new StringEntity(payload.toString(), ContentType.APPLICATION_JSON));
-        HttpResponse response = client.execute(post);
-        return response;
+        return client.execute(post);
     }
 
     private String getResult(HttpResponse RasaNLUResponse) throws IOException {
         BufferedReader rd = new BufferedReader(
                 new InputStreamReader(RasaNLUResponse.getEntity().getContent()));
 
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         String line = "";
         while ((line = rd.readLine()) != null) {
             result.append(line);
         }
+        log.info("Result from RasaNLU {}", result.toString());
         return result.toString();
     }
 }
