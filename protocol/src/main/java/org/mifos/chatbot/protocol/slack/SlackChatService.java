@@ -102,7 +102,7 @@ public class SlackChatService implements ChatService {
 
     private void handleMessageAndGenerateResponse(User user, String senderId, String messageText) {
         String username = user.getUsername();
-        String password = base64Decode(user.getSecret_Pass());
+        String password = user.getSecret_Pass();
         if(authUser(username, password)) {
             ApiClient apiClient = new ApiClient(base64Encode(username + ":" + password));
             org.mifos.chatbot.client.Configuration.setDefaultApiClient(apiClient);
@@ -141,13 +141,13 @@ public class SlackChatService implements ChatService {
                 if (user == null) {
                     userRepository.addUserBySlackID(
                             username.toString(),
-                            base64Encode(password.toString()),
+                            password.toString(),
                             senderId
                     );
                 } else {
                     userRepository.updateUserSlackID(
                             username.toString(),
-                            base64Encode(password.toString()),
+                            password.toString(),
                             senderId
                     );
                 }
@@ -170,7 +170,7 @@ public class SlackChatService implements ChatService {
 
     private boolean authUser(String username, String password) {
         HttpClient client = HttpClientBuilder.create().build();
-        String authUrl = settings.getApiUrl() + "/authentication?username=" + username + "&password=" + password + "&tenantIdentifier=mifos";
+        String authUrl = settings.getApiUrl() + "/authentication?username=" + username + "&password=" + password + "&tenantIdentifier=default";
         HttpPost post = new HttpPost(authUrl);
         try {
             HttpResponse response = client.execute(post);
