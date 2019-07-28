@@ -10,9 +10,12 @@ import java.util.Random;
 @Slf4j
 @Component
 public class SmallTalkHandler extends BaseSmallTalkHandler {
-    private static final String[] INTENT_KEYWORDS = {"greet_bye", "greet_hello"};
+    private static final String[] INTENT_KEYWORDS = {"greet_bye", "greet_goodevening", "greet_goodmorning", "greet_goodnight", "greet_hello"};
     private static final String[][] GREET_RESPONSE = {
             {"Bye Bye", "I'll see you later", "Bye, Have a nice day", "Goodbye", "Nice to talk to you!", "Nice to meet you!", "I'll miss you :'("},
+            {"Good evening", "How is your day going?", "How's your day been?", ":) you too"},
+            {"Good morning", "Good morning! How are you today?", "Have a exciting day"},
+            {"Good night", "Talk to you soon!", "Have a great sleep", "Zzzz -_-"},
             {"Hello", "Hola", "Hi", "Hi there, friend!", "Hey!"}
     };
 
