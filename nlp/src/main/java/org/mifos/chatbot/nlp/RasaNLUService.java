@@ -1,5 +1,6 @@
 package org.mifos.chatbot.nlp;
 
+import com.joestelmach.natty.Parser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -19,6 +20,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -41,33 +43,33 @@ public class RasaNLUService implements NLPService {
             log.error(e.toString());
             resultJSON = null;
         }
-        return getIntent(resultJSON);
+        return getIntent(resultJSON, input);
     }
 
-    private Intent getIntent(JSONObject resultJSON) {
+    private Intent getIntent(JSONObject resultJSON, String input) {
         if (resultJSON == null) {
             return null;
         }
         List<Intent> resultIntents = new ArrayList<>();
         String subIntent = resultJSON.get("intent").toString().split("\"")[5];
         resultIntents.add(new Intent(subIntent));
-        Intent intents=null ;
+        Intent intents = null;
         for (Intent resultIntent : resultIntents) {
             intents = resultIntent;
-            intents.addParameter("ID", 1);
-            intents.addParameter("Date", "");
+            intents.addParameter("ID", findId(input));
+            intents.addParameter("Date", findDate(input));
         }
         log.info("Found {} intents", intents);
         return intents;
     }
 
-    private JSONObject createPayload (String input) {
+    private JSONObject createPayload(String input) {
         JSONObject payload = new JSONObject();
         payload.put("text", input);
         return payload;
     }
 
-    private HttpResponse getResponseFromRasaNLU (JSONObject payload) throws IOException {
+    private HttpResponse getResponseFromRasaNLU(JSONObject payload) throws IOException {
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
         post.setEntity(new StringEntity(payload.toString(), ContentType.APPLICATION_JSON));
@@ -86,4 +88,26 @@ public class RasaNLUService implements NLPService {
         log.info("Result from RasaNLU {}", result.toString());
         return result.toString();
     }
+
+    private String findDate(String input) throws IndexOutOfBoundsException {
+        try {
+            List<Date> dates = new Parser().parse(input).get(0).getDates();
+            Date date = dates.get(0);
+            return (date.getMonth() + 1) + "-" + date.getDate() + "-" + (date.getYear() + 1900);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    private long findId(String input) {
+        long id = 1L;
+        for (String token : input.split(" ")) {
+            try {
+                id = Long.parseLong(token);
+            } catch (NumberFormatException e) {
+            }
+        }
+        return id;
+    }
+
 }
