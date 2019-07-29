@@ -7,4 +7,5 @@ dependencies {
     compile "org.apache.opennlp:opennlp-tools"
     compile 'org.apache.httpcomponents:httpclient:4.5.9'
     compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    compile 'com.joestelmach:natty:0.11'
 }
