@@ -88,6 +88,17 @@ public class SlackChatService implements ChatService {
                     handleLogin(senderId, messageText);
                     return;
                 }
+                if(adapterService.isSmallTalkRequest(messageText.toLowerCase())) {
+                    List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
+                    if (!responseList.isEmpty()) {
+                        for (MifosResponse response : responseList) {
+                            sendTextMessage(senderId, response.getContent());
+                        }
+                    } else {
+                        sendTextMessage(senderId, "Can you please try saying that in different way.");
+                    }
+                    return;
+                }
                 User user = userRepository.findUserBySlackID(senderId);
                 if(user != null) {
                     handleMessageAndGenerateResponse(user, senderId, messageText);
