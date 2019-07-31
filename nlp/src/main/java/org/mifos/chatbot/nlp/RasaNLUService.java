@@ -53,14 +53,14 @@ public class RasaNLUService implements NLPService {
         List<Intent> resultIntents = new ArrayList<>();
         String subIntent = resultJSON.get("intent").toString().split("\"")[5];
         resultIntents.add(new Intent(subIntent));
-        Intent intents = null;
+        Intent intent = null;
         for (Intent resultIntent : resultIntents) {
-            intents = resultIntent;
-            intents.addParameter("ID", findId(input));
-            intents.addParameter("Date", findDate(input));
+            intent = resultIntent;
+            intent.addParameter("ID", findId(input));
+            intent.addParameter("Date", findDate(input));
         }
-        log.info("Found {} intents", intents);
-        return intents;
+        log.info("Found {} intents", intent);
+        return intent;
     }
 
     private JSONObject createPayload(String input) {

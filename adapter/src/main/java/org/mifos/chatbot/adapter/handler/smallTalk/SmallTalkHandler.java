@@ -32,7 +32,7 @@ public class SmallTalkHandler extends BaseSmallTalkHandler {
             "sad",
             "testing"
     };
-    private static final String[][] GREET_RESPONSE = {
+    private static final String[][] RESPONSE = {
             {"I am mifos Assistant, here to assist you.", "I am mifos Assistant, i can solve your queries like your loan interest or principal overdue, etc."},
             {"I'm a relatively new bot", "I'm still a newbie in human years"},
             {"I'm sorry but i'm constantly perfecting my domain.", "i am sorry you feel that way. I am still learning. Please provide my developers your valuable feedback to improve me."},
@@ -73,7 +73,7 @@ public class SmallTalkHandler extends BaseSmallTalkHandler {
         MifosResponse mifosResponse = new MifosResponse();
         for(int i=0; i<INTENT_KEYWORDS.length; i++) {
             if(intentKeyword.equals(INTENT_KEYWORDS[i])) {
-                mifosResponse.setContent((GREET_RESPONSE[i][new Random().nextInt(GREET_RESPONSE[i].length)]));
+                mifosResponse.setContent((RESPONSE[i][new Random().nextInt(RESPONSE[i].length)]));
                 return mifosResponse;
             }
         }
