@@ -22,9 +22,6 @@ dependencies {
 
     //telegram
     compile group: 'org.telegram', name: 'telegrambots', version: '4.3.1'
-
-    //skype
-    compile "fr.delthas:javaskype:1.0.23"
     
     compile "org.springframework:spring-core"
     compile "org.springframework:spring-context"
