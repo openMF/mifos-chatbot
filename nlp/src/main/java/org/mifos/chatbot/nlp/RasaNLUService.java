@@ -43,7 +43,7 @@ public class RasaNLUService implements NLPService {
             log.error(e.toString());
             resultJSON = null;
         }
-        return getIntent(resultJSON, input);
+            return getIntent(resultJSON, input);
     }
 
     private Intent getIntent(JSONObject resultJSON, String input) {
@@ -59,7 +59,7 @@ public class RasaNLUService implements NLPService {
             intent.addParameter("ID", findId(input));
             intent.addParameter("Date", findDate(input));
         }
-        log.info("Found {} intents", intent);
+        log.info("Found {} intents", intent.getKeyword());
         return intent;
     }
 
