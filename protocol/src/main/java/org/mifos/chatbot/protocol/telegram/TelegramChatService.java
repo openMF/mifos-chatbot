@@ -69,6 +69,17 @@ public class TelegramChatService extends TelegramLongPollingBot {
                 handleLogin(senderId, messageText);
                 return;
             }
+            if(adapterService.isSmallTalkRequest(messageText.toLowerCase())) {
+                List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
+                if (!responseList.isEmpty()) {
+                    for (MifosResponse response : responseList) {
+                        sendTextMessage(senderId, response.getContent());
+                    }
+                } else {
+                    sendTextMessage(senderId, "Can you please try saying that in different way.");
+                }
+                return;
+            }
             User user = userRepository.findUserByTelegramID(Long.toString(senderId));
             if(user != null) {
                 handleMessageAndGenerateResponse(user, senderId, messageText);
@@ -80,7 +91,7 @@ public class TelegramChatService extends TelegramLongPollingBot {
 
     private void handleMessageAndGenerateResponse(User user, long senderId, String messageText) {
         String username = user.getUsername();
-        String password = base64Decode(user.getSecret_Pass());
+        String password = user.getSecret_Pass();
         if(authUser(username, password)) {
             ApiClient apiClient = new ApiClient(base64Encode(username + ":" + password));
             org.mifos.chatbot.client.Configuration.setDefaultApiClient(apiClient);
@@ -119,13 +130,13 @@ public class TelegramChatService extends TelegramLongPollingBot {
                 if (user == null) {
                     userRepository.addUserByTelegramID(
                             username.toString(),
-                            base64Encode(password.toString()),
+                            password.toString(),
                             Long.toString(senderId)
                     );
                 } else {
                     userRepository.updateUserTelegramID(
                             username.toString(),
-                            base64Encode(password.toString()),
+                            password.toString(),
                             Long.toString(senderId)
                     );
                 }

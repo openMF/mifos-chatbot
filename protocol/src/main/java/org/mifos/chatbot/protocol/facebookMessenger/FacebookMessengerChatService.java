@@ -165,6 +165,17 @@ public class FacebookMessengerChatService {
             handleLogin(senderId, messageText);
             return;
         }
+        if(adapterService.isSmallTalkRequest(messageText.toLowerCase())) {
+            List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
+            if (!responseList.isEmpty()) {
+                for (MifosResponse response : responseList) {
+                    sendTextMessage(senderId, response.getContent());
+                }
+            } else {
+                sendTextMessage(senderId, "Can you please try saying that in different way.");
+            }
+            return;
+        }
         User user = userRepository.findUserByFBID(senderId);
         if(user != null) {
             handleMessageAndGenerateResponse(user, senderId, messageText);
@@ -175,7 +186,7 @@ public class FacebookMessengerChatService {
 
     private void handleMessageAndGenerateResponse(User user, String senderId, String messageText) {
         String username = user.getUsername();
-        String password = base64Decode(user.getSecret_Pass());
+        String password = user.getSecret_Pass();
         if(authUser(username, password)) {
             ApiClient apiClient = new ApiClient(base64Encode(username + ":" + password));
             org.mifos.chatbot.client.Configuration.setDefaultApiClient(apiClient);
@@ -215,13 +226,13 @@ public class FacebookMessengerChatService {
                 if (user == null) {
                     userRepository.addUserByFBID(
                             username.toString(),
-                            base64Encode(password.toString()),
+                            password.toString(),
                             senderId
                     );
                 } else {
                     userRepository.updateUserFBID(
                             username.toString(),
-                            base64Encode(password.toString()),
+                            password.toString(),
                             senderId
                     );
                 }
