@@ -30,7 +30,7 @@ import java.util.List;
 @Slf4j
 @Component
 public class GetAllHolidaysHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"get", "All", "Holidays"};
+    private static final String[] INTENT_KEYWORDS = {"get_all_holidays"};
 
     @Autowired
     private HolidaysApi holidaysApi;

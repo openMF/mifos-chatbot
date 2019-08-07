@@ -31,7 +31,7 @@ import java.util.List;
 @Slf4j
 @Component
 public class ClientActivationDateHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"client", "activation", "date"};
+    private static final String[] INTENT_KEYWORDS = {"client_activation_date"};
 
     @Autowired
     private ClientApi clientApi;

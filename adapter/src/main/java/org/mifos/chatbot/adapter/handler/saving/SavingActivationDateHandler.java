@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class SavingActivationDateHandler extends BaseSavingIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"saving", "Activation", "Date"};
+    private static final String[] INTENT_KEYWORDS = {"saving_activation_date"};
 
     @Autowired
     private SavingsAccountApi savingsAccountApi;

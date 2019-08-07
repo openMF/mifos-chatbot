@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class PreviousPaymentDateHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"previous", "Payment", "Date"};
+    private static final String[] INTENT_KEYWORDS = {"previous_payment_date"};
 
     @Autowired
     private LoansApi loansApi;

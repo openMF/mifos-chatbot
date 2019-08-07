@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class OverduePrincipalHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"overdue", "Principal"};
+    private static final String[] INTENT_KEYWORDS = {"overdue_principal"};
 
     @Autowired
     private LoansApi loansApi;

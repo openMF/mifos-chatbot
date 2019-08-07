@@ -23,10 +23,12 @@ import org.mifos.chatbot.client.model.GetLoansLoanIdResponse;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Slf4j
+@Component
 public class DuePrincipalHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"due", "principal"};
+    private static final String[] INTENT_KEYWORDS = {"due_principal"};
 
     @Autowired
     private LoansApi loansApi;

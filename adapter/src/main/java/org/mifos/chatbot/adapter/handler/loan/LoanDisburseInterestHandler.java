@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class LoanDisburseInterestHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"disbursement", "Interest"};
+    private static final String[] INTENT_KEYWORDS = {"disbursement_interest"};
 
     @Autowired
     private LoansApi loansApi;

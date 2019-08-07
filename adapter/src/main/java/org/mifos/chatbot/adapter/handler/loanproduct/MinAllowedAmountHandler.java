@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class MinAllowedAmountHandler extends BaseLoanProductIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"min", "Allowed", "Amount"};
+    private static final String[] INTENT_KEYWORDS = {"min_allowed_amount"};
 
     @Autowired
     private LoanProductsApi loanProductsApi;

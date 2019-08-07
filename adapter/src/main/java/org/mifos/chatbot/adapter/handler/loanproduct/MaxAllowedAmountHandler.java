@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class MaxAllowedAmountHandler extends BaseLoanProductIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"max", "Allowed", "Amount"};
+    private static final String[] INTENT_KEYWORDS = {"max_allowed_amount"};
 
     @Autowired
     private LoanProductsApi loanProductsApi;

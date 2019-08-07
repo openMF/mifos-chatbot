@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class SavingBalanceHandler extends BaseSavingIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"saving", "Balance"};
+    private static final String[] INTENT_KEYWORDS = {"saving_balance"};
 
     @Autowired
     private SavingsAccountApi savingsAccountApi;

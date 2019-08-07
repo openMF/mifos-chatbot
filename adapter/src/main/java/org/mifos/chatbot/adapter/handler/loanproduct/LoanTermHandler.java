@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class LoanTermHandler extends BaseLoanProductIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"loan", "Term"};
+    private static final String[] INTENT_KEYWORDS = {"loan_term"};
 
     @Autowired
     private LoanProductsApi loanProductsApi;

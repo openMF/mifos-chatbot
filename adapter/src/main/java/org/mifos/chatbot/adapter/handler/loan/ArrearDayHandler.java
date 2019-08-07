@@ -36,13 +36,14 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Component
 public class ArrearDayHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"arrear", "day"};
+    private static final String[] INTENT_KEYWORDS = {"arrear_day"};
 
     @Autowired
     private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {
+        // not removing this logic because it is possible that multiple intent can be handled with same handler
         for(String intent_keyword : INTENT_KEYWORDS) {
             if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase())) {
                 return false;

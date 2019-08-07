@@ -32,7 +32,7 @@ import java.util.Date;
 @Slf4j
 @Component
 public class FirstRepaymentDateHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"first", "Repayment", "Date"};
+    private static final String[] INTENT_KEYWORDS = {"first_repayment_date"};
 
     @Autowired
     private LoansApi loansApi;
