@@ -413,3 +413,478 @@
 - check saving interest
 - look saving interest
 - give saving interest
+
+## intent:greet_bye
+- bye-bye
+- bye bye take care
+- thanks bye bye
+- i must go
+- ok bye
+- hope to see you later
+- bye
+- see you
+- leave me alone
+- that's it goodbye
+- goodbye
+- see you soon
+- goodbye for now
+- talk to you later
+- bye for now
+- bye bye see you soon
+- never mind bye
+- goodbye see you later
+- good bye
+- go to bed
+- alright bye
+- okay bye
+- bye bye see you
+- now bye
+- i said bye
+- see you tomorrow
+- get lost
+- you can go now
+- okay see you later
+- see ya
+- till next time
+- that's all goodbye
+- okay thank you bye
+
+## intent:greet_goodevening
+- hello good evening
+- good evening there
+- good evening to you
+- hey good evening
+- evening
+- good evening
+
+## intent:greet_goodmorning
+- good morning
+- have a great morning
+- and a good morning to you
+- good morning to you
+- hello good morning
+- hi good morning
+- good morning too
+- morning
+- top of the morning to you
+- a good morning
+- have a nice morning
+- good morning there
+
+## intent:greet_goodnight
+- good good night
+- thanks goodnight
+- have a good night
+- thank you good night
+- good night to you
+- goodnight
+- night
+- okay have a good night
+- good night for now
+- good tonight
+- bye good night
+- sweet dreams
+- good night see you tomorrow
+- good night
+- alright goodnight
+- good night bye
+
+## intent:greet_hello
+- hey
+- hi
+- i greet you
+- afternoon
+- hi there
+- hey there
+- heya
+- hello there
+- hello
+- just going to say hi
+- greetings
+- a good day
+- long time no see
+- lovely day isn't it
+- howdy
+- hello hi
+- hello again
+
+## intent:greet
+- is everything okay
+- how do you do
+- how is your evening
+- how are you
+- how do you feel
+- how is it
+- are you okay
+- how is it going
+- how your day is going
+- how are you feeling
+- how are you going
+- how about you
+- how has your day been
+- how is your day going
+- hope you re having a pleasant evening
+- how are you today
+- what about your day
+- how is your day
+- how are the things going
+- are you having a good day
+- how is your life
+- what was your day like
+- are you alright
+- i'm fine and you
+- how are you doing this morning
+- how has your day been going
+- how's your day
+- how was your day
+- how are you getting on
+- how's your day going
+- how is your day going on
+- is everything all right
+- how is your morning so far
+- how is your morning going
+- how is your day being
+- hope your day is going well
+- how's life
+- how are you doing
+- it was very nice to meet you
+- pleasure to meet you
+- pleasure to meet you too
+- nice meeting you
+- nice to meet you too
+- good to know each other
+- glad to meet you
+- nice to meet you
+- it was nice meeting you
+- pleased to meet you
+- nice to see you again
+- glad to see you too
+- lovely to see you
+- good to see you
+- it's nice to see you
+- i'm glad to see you
+- great to see you too
+- it's good to see you too
+- i am glad to see you again
+- how good it is to see you
+- nice to see you
+- always a pleasure to see you
+- glad to see you
+- good to see you again
+- great to see you again
+- it's good to see you
+- great to see you
+- then what's up
+- i said what's up
+- what is going on
+- what's up
+- good what's up
+- what's up today
+- hey what's up
+- what is up
+
+## intent:acquaintence
+- tell me about your personality
+- i want to know you better
+- define yourself
+- describe yourself
+- tell me about yourself
+- all about you
+- tell me some stuff about you
+- talk some stuff about you
+- talk about yourself
+- about yourself
+- who are you
+- introduce yourself
+- i want to know more about you
+- what are you
+- what is your personality
+- say about you
+- tell me about you
+- why are you here
+
+## intent:age
+- are you 21 years old
+- what is your age
+- how old are you
+- age of yours
+- how old is your platform
+- tell me your age
+- i'd like to know your age
+
+## intent:bad_bot
+- you're not helping me
+- you are terrible
+- you're bad
+- you're really bad
+- you are horrible
+- you are waste
+- you're not a good
+- you are useless
+- you are disgusting
+- you are no good
+- you're the worst ever
+- you are so useless
+- you're the worst
+- you are so bad
+- you're a bad
+- you're terrible
+- you're very bad
+- you are very bad
+- you're awful
+- you're not very good
+- you're worthless
+- you are a waste of time
+- you are lame
+- you are totally useless
+- you are bad
+- you are not cool
+- you are not good
+
+## intent:help
+- i need you to help me
+- help me
+- can you help me now
+- i need help
+- i need a hand
+- need your help
+- can you help me with that
+- can help me
+- please help me
+- assistance
+- do you want to help me
+- will you help me
+- can you help me with something
+- do you help me
+- can you help
+- assist me
+- can u help me
+- need help
+- assist
+- can you assist me
+- could you give me a hand
+- i need you to do something for me
+- can you help me out
+- sos
+- i need you right now
+- i need you
+- are you going to help me
+- can you help me
+- help
+- you can help me
+- would you help me
+- you help me
+- can you do something for me
+- i need some help
+- do me a favor
+- help me with a problem
+- i want your help
+- i need your help
+- can you help us
+- what should i do
+- guide me
+- help me with advice
+- any advice
+- any suggestions
+- give me some good advice
+- what can you recommend
+- can you offer any advice
+- what do you recommend
+- what do you suggest
+- can you advise me
+- i could use some advice
+- i seek your advice
+- can i ask for your advice
+- what should i do about it
+- what is your advice
+- can you give me advice
+- i need an advice from you
+- advise me
+- i need advice
+- give me a wise advice
+- do you have any advice for me
+- give me some advice about
+
+## intent:chatbot
+- are you a program
+- are you just a bot
+- you are chatbot
+- are you a bot
+- are you a robot
+- you are a bot
+- are you a chatbot
+- you're a robot
+- i don't think you're fake
+- you are so real
+- are you real
+- are you a real person
+- you are real
+- i think you are real
+- you are a real person
+- you are not real
+- glad you're real
+- i suppose you're real
+- you are not fake
+- are you a real human
+
+## intent:good_bot
+- you are a pro
+- you are very good at it
+- you are good
+- you are awesome
+- you are so amazing
+- you are very helpful
+- you are good at it
+- you work well
+- you are a professional
+- you are the nicest person in the world
+- you make my day
+- you are very lovely
+- you are too good
+- let's tell everyone that you are awesome
+- you are so good
+- i'd like to tell everyone that you are awesome
+- you are really nice
+- you are the best in the world
+- you are cool
+- you are so lovely
+- you rock
+- you're awesome
+- you're perfect
+- you are really good
+- i want to tell everyone how awesome you are
+- you're a true professional
+- you are the best ever
+- you are so fine
+- you are the best
+- you're just super
+- you work very well
+- you almost sound human
+- you are amazing
+- you're so kind
+- you are so helpful
+- you are really amazing
+- you are so cool
+- you're great
+- you are very useful
+- you are wonderful
+- you are very kind
+- you are very cool
+- i want to let everyone know that you are awesome
+- you are so awesome
+- you made my day
+
+## intent:origin
+- where did you come from
+- from where are you
+- what's your homeland
+- what is your country
+- where have you been born
+- are you from far aways
+- where do you come from
+- your homeland is
+- where are you from
+- where were you born
+- were you born here
+
+## intent:sure
+- are you sure now
+- are you sure today
+- are you sure right now
+- are you sure tonight
+- are you sure
+
+## intent:thank_you
+- thanks again
+- all thank you
+- well thank you
+- thank you so much
+- great thank you
+- thank you again
+- thnx
+- thanks for your help
+- appreciate your help
+- i thank you
+- perfect thank you
+- well thanks
+- thank you my friend
+- thank you that will be all
+- thank you
+- i appreciate it
+- thanks buddy
+- cheers
+- you helped a lot thank you
+- thanks love
+- so nice of you
+- no thank you that's all
+- very good thank you
+- thanks a lot
+- good thanks
+- alright thanks
+- thank you for your help
+- thanks so much
+- terrific thank you
+- thanks
+- alright thank you
+- thanx
+- nice thank you
+
+## intent:welcome
+- you're so welcome
+- that's my pleasure
+- anytime
+- anything you want
+- my pleasure
+- welcome
+- welcome here
+- sure welcome
+- you're welcome
+
+## intent:well_done
+- great work
+- good work
+- bravo
+- way to go
+- good job
+- nice work
+- amazing work
+- well done
+- great job
+
+## intent:angry
+- i'm being mad
+- i am angry with you
+- i am mad
+- i am mad at you
+- i'm angry
+- i'm enraged
+- i'm furious
+
+## intent:happy
+- i'm happy to see you
+- i am happy
+- i'm happy to help
+- happy
+- i'm happy for you
+- if you're happy then i'm happy
+
+## intent:sad
+- i am sad
+- i am feeling sad
+- i'm having a bad day
+- i'm unhappy
+- i want to cry
+- i'm not happy
+- i am upset
+- i am depressed
+- i'm grieving
+
+## intent:testing
+- i want to test you
+- testing chatbot
+- let me test you
+- just testing you
+- i am testing you
+- testing
+- can i test you
+- test
