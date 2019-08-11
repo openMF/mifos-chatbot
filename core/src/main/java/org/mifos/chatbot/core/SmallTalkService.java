@@ -3,7 +3,7 @@ package org.mifos.chatbot.core;
 import org.mifos.chatbot.core.model.Intent;
 
 public interface SmallTalkService {
-    static final String[] 2SMALL_TALK_INTENTS = {
+    static final String[] SMALL_TALK_INTENTS = {
             "acquaintance",
             "age",
             "bad_bot",
