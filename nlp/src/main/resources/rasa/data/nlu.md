@@ -450,7 +450,7 @@
 - okay thank you bye
 
 ## intent:greet_goodevening
-- hello good evening
+- goodevening
 - good evening there
 - good evening to you
 - hey good evening
@@ -462,7 +462,7 @@
 - have a great morning
 - and a good morning to you
 - good morning to you
-- hello good morning
+- goodmorning
 - hi good morning
 - good morning too
 - morning
@@ -482,7 +482,6 @@
 - okay have a good night
 - good night for now
 - good tonight
-- bye good night
 - sweet dreams
 - good night see you tomorrow
 - good night
@@ -496,7 +495,6 @@
 - afternoon
 - hi there
 - hey there
-- heya
 - hello there
 - hello
 - just going to say hi

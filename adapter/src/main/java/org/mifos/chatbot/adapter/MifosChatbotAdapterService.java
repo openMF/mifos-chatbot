@@ -18,6 +18,7 @@ package org.mifos.chatbot.adapter;
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.core.AdapterService;
 import org.mifos.chatbot.core.IntentHandler;
+import org.mifos.chatbot.core.SmallTalkService;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.mifos.chatbot.nlp.RasaNLUService;
@@ -37,6 +38,9 @@ public class MifosChatbotAdapterService implements AdapterService {
 
     @Autowired
     private List<IntentHandler> handlers;
+
+    @Autowired
+    private SmallTalkService smallTalkService;
 
     @Override
     public List<MifosResponse> handle(Intent intent) {
@@ -70,7 +74,7 @@ public class MifosChatbotAdapterService implements AdapterService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return SmallTalk.isSmallTalkRequest(intent);
+        return smallTalkService.isSmallTalkRequest(intent);
     }
 
     /*

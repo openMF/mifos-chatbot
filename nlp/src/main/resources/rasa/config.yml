@@ -1,7 +1,14 @@
 # Configuration for Rasa NLU.
 # https://rasa.com/docs/rasa/nlu/components/
 language: en
-pipeline: supervised_embeddings
+pipeline:
+  - name: "nlp_spacy"
+  - name: "spacy_tokenizer_lemma.SpacyTokenizer"
+  - name: "intent_entity_featurizer_regex"
+  - name: "intent_featurizer_spacy"
+  - name: "ner_crf"
+  - name: "ner_synonyms"
+  - name: "intent_classifier_sklearn"
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
