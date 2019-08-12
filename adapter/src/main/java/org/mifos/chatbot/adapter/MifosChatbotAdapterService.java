@@ -53,17 +53,13 @@ public class MifosChatbotAdapterService implements AdapterService {
 
     @Override
     public List<MifosResponse> handle(String input) {
-        List<MifosResponse> results = new ArrayList<>();
         Intent intent = null;
         try {
             intent = rasaNLUService.recognize(input);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Long id = 1L; // default id, set to 1
-
-        results.addAll(handle(intent));
-        return results;
+        return new ArrayList<>(handle(intent));
     }
 
     @Override
@@ -76,12 +72,4 @@ public class MifosChatbotAdapterService implements AdapterService {
         }
         return smallTalkService.isSmallTalkRequest(intent);
     }
-
-    /*
-
-
-      [Slack/Viber/XMPP/IRC/Skype] -> NLP -> Intent1, Intent2, Intent3 -> AdapterService(Intent) -> responses -> [Slack/Viber/XMPP/IRC/Skype]
-
-
-     */
 }
