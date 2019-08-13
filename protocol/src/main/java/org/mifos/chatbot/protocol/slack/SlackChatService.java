@@ -222,6 +222,7 @@ public class SlackChatService implements ChatService {
 
     @Override
     public void send(Message msg) {
+        log.info("Slack: Sending message of length " + msg.getText().length() + " to user: " + msg.getTo());
         SlackUser user = session.findUserByEmail(msg.getTo());
         session.sendMessageToUser(user, msg.getText(), null);
     }

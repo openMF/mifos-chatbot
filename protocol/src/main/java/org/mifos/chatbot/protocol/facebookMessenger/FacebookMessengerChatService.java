@@ -32,9 +32,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static com.github.messenger4j.Messenger.*;
 import static java.util.Optional.empty;
@@ -148,6 +146,14 @@ public class FacebookMessengerChatService {
         return String.valueOf(Base64.getDecoder().decode(input));
     }
 
+    private static Collection<String> createChunk(String input, int size) {
+        ArrayList<String> split = new ArrayList<>();
+        for (int i = 0; i <= input.length() / size; i++) {
+            split.add(input.substring(i * size, Math.min(input.length(), (i + 1) * size)));
+        }
+        return split;
+    }
+
     /**
      * This function is divided in 3 parts. First checks that message is to logout user, second checks that message is
      * to login user and third is to resolve message and send response to it.
@@ -169,7 +175,10 @@ public class FacebookMessengerChatService {
             List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
             if (!responseList.isEmpty()) {
                 for (MifosResponse response : responseList) {
-                    sendTextMessage(senderId, response.getContent());
+                    Collection<String> chunk = createChunk(response.getContent(), 1000);
+                    for (String str : chunk) {
+                        sendTextMessage(senderId, str);
+                    }
                 }
             } else {
                 sendTextMessage(senderId, "Can you please try saying that in different way.");
@@ -193,7 +202,10 @@ public class FacebookMessengerChatService {
             List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
             if (!responseList.isEmpty()) {
                 for (MifosResponse response : responseList) {
-                    sendTextMessage(senderId, response.getContent());
+                    Collection<String> chunk = createChunk(response.getContent(), 1000);
+                    for (String str : chunk) {
+                        sendTextMessage(senderId, str);
+                    }
                 }
             } else {
                 sendTextMessage(senderId, "Sorry i didn't get that.");
@@ -295,7 +307,7 @@ public class FacebookMessengerChatService {
     }
 
     private void sendTextMessage(String recipientId, String text) {
-        log.info("Telegram: Sending message of length " + text.length() + " to user: " + recipientId);
+        log.info("Facebook: Sending message of length " + text.length() + " to user: " + recipientId);
         try {
             final IdRecipient recipient = IdRecipient.create(recipientId);
             final NotificationType notificationType = NotificationType.REGULAR;

@@ -24,9 +24,7 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
+import java.util.*;
 
 @Slf4j
 @Component
@@ -73,7 +71,10 @@ public class TelegramChatService extends TelegramLongPollingBot {
                 List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
                 if (!responseList.isEmpty()) {
                     for (MifosResponse response : responseList) {
-                        sendTextMessage(senderId, response.getContent());
+                        Collection<String> chunk = createChunk(response.getContent(), 1000);
+                        for (String str : chunk) {
+                            sendTextMessage(senderId, str);
+                        }
                     }
                 } else {
                     sendTextMessage(senderId, "Can you please try saying that in different way.");
@@ -98,7 +99,10 @@ public class TelegramChatService extends TelegramLongPollingBot {
             List<MifosResponse> responseList = adapterService.handle(messageText.toLowerCase());
             if (!responseList.isEmpty()) {
                 for (MifosResponse response : responseList) {
-                    sendTextMessage(senderId, response.getContent());
+                    Collection<String> chunk = createChunk(response.getContent(), 1000);
+                    for (String str : chunk) {
+                        sendTextMessage(senderId, str);
+                    }
                 }
             } else {
                 sendTextMessage(senderId, "Sorry i didn't get that.");
@@ -193,6 +197,14 @@ public class TelegramChatService extends TelegramLongPollingBot {
 
     private static String base64Decode(String input) {
         return String.valueOf(Base64.getDecoder().decode(input));
+    }
+
+    private static Collection<String> createChunk(String input, int size) {
+        ArrayList<String> split = new ArrayList<>();
+        for (int i = 0; i <= input.length() / size; i++) {
+            split.add(input.substring(i * size, Math.min(input.length(), (i + 1) * size)));
+        }
+        return split;
     }
 
     @Override
