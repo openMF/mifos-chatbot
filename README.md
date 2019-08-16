@@ -35,7 +35,19 @@ There are two options.
 
 ##### MySQL:
 1. Download from [official website](https://dev.mysql.com/downloads/mysql/), install it and configure it. During installation, if the user does not set the initial password, then the initial password should be set in the System Preferences -> MySQL -> set initial password. Then configure mysql in the classpath. 
-2. If you want to use Cloud Service for database, you are free to do that. Remember to update `application.properties` file. 
+1.1. If you want to use Cloud Service for database, you are free to do that. Remember to update `application.properties` file. 
+2. Create table `user_creds` using following MySQL command
+```
+create table users_creds
+(
+	username varchar(255) not null,
+	secret_key varchar(255) not null,
+	fb_userid varchar(255) null,
+	slack_userid varchar(255) null,
+	telegram_userid varchar(255) null,
+	skype_userid varchar(255) null
+);
+```
 
 ##### Gradle:
 Download Gradle from [official website](https://gradle.org/install/). 
