@@ -60,6 +60,10 @@ public class ArrearDayHandler extends BaseLoanIntentHandler {
         try {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
             List<Long> overdueSinceDate = result.getSummary().getOverdueSinceDate();
+            if(overdueSinceDate == null) {
+                response.setContent("No data found for the given id.");
+                return response;
+            }
 //
 //            StringBuffer sb = new StringBuffer();
 //            sb.append(String.format("%04d", overdueSinceDate.get(0)));
@@ -77,7 +81,7 @@ public class ArrearDayHandler extends BaseLoanIntentHandler {
 
             long diffDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
-            response.setContent(String.valueOf(diffDays) + " days");
+            response.setContent(diffDays + " days");
         } catch (ApiException e) {
             log.info("Error", e);
             response.setContent(e.getMessage());

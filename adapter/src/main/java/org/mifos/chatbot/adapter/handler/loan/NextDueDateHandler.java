@@ -62,8 +62,11 @@ public class NextDueDateHandler extends BaseLoanIntentHandler {
             int numOfPeriod = result.getRepaymentEvery();
 
             String date = getNextDueDate(overDueSinceDate, frequency, numOfPeriod);
-
-            response.setContent(date);
+            if (date != null) {
+                response.setContent(date);
+            } else {
+                response.setContent("No data found for the given id.");
+            }
 
         } catch (ApiException e) {
             log.error(e.toString(), e);
@@ -74,13 +77,13 @@ public class NextDueDateHandler extends BaseLoanIntentHandler {
 
     // TODO: extracted as a util function
     private String getNextDueDate(List<Long> overDueSinceDate, String frequency, int numOfPeriod) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(String.format("%04d", overDueSinceDate.get(0)));
-        sb.append(String.format("%02d", overDueSinceDate.get(1)));
-        sb.append(String.format("%02d", overDueSinceDate.get(2)));
-        String dateStr = sb.toString();
-        FastDateFormat fdf = FastDateFormat.getInstance("yyyyMMdd");
         try {
+            StringBuffer sb = new StringBuffer();
+            sb.append(String.format("%04d", overDueSinceDate.get(0)));
+            sb.append(String.format("%02d", overDueSinceDate.get(1)));
+            sb.append(String.format("%02d", overDueSinceDate.get(2)));
+            String dateStr = sb.toString();
+            FastDateFormat fdf = FastDateFormat.getInstance("yyyyMMdd");
             Date date = fdf.parse(dateStr);
             if(frequency.equalsIgnoreCase("weeks")) {
                 date = DateUtils.addDays(date, 7);
@@ -93,7 +96,6 @@ public class NextDueDateHandler extends BaseLoanIntentHandler {
         } catch (ParseException e) {
             log.error("Exception when parsing, ", e);
         }
-
         return null;
     }
 }

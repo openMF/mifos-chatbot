@@ -51,7 +51,12 @@ public class PreviousPaymentDateHandler extends BaseLoanIntentHandler {
         MifosResponse response = new MifosResponse();
         try {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
-            response.setContent(HandlerUtils.convertListToDate(result.getSummary().getOverdueSinceDate()).toString());
+            try {
+                response.setContent(HandlerUtils.convertListToDate(result.getSummary().getOverdueSinceDate()).toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+                response.setContent("No data found for the given id.");
+            }
         } catch (ApiException e) {
             log.info("Error", e);
             response.setContent(e.getMessage());
