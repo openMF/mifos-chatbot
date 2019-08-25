@@ -19,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.time.FastDateFormat;
 import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.Configuration;
 import org.mifos.chatbot.client.api.LoansApi;
 import org.mifos.chatbot.client.model.GetLoansLoanIdResponse;
 import org.mifos.chatbot.core.model.Intent;
@@ -33,7 +34,7 @@ import java.util.List;
 @Slf4j
 @Component
 public class NextDueDateHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"Due", "Date"};
+    private static final String[] INTENT_KEYWORDS = {"due_date"};
 
     @Autowired
     private LoansApi loansApi;
@@ -51,6 +52,7 @@ public class NextDueDateHandler extends BaseLoanIntentHandler {
 
     @Override
     public MifosResponse handle(Intent intent) {
+        loansApi.setApiClient(Configuration.getDefaultApiClient());
         MifosResponse response = new MifosResponse();
         try {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
@@ -60,8 +62,11 @@ public class NextDueDateHandler extends BaseLoanIntentHandler {
             int numOfPeriod = result.getRepaymentEvery();
 
             String date = getNextDueDate(overDueSinceDate, frequency, numOfPeriod);
-
-            response.setContent(date);
+            if (date != null) {
+                response.setContent(date);
+            } else {
+                response.setContent("No data found for the given id.");
+            }
 
         } catch (ApiException e) {
             log.error(e.toString(), e);
@@ -72,13 +77,13 @@ public class NextDueDateHandler extends BaseLoanIntentHandler {
 
     // TODO: extracted as a util function
     private String getNextDueDate(List<Long> overDueSinceDate, String frequency, int numOfPeriod) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(String.format("%04d", overDueSinceDate.get(0)));
-        sb.append(String.format("%02d", overDueSinceDate.get(1)));
-        sb.append(String.format("%02d", overDueSinceDate.get(2)));
-        String dateStr = sb.toString();
-        FastDateFormat fdf = FastDateFormat.getInstance("yyyyMMdd");
         try {
+            StringBuffer sb = new StringBuffer();
+            sb.append(String.format("%04d", overDueSinceDate.get(0)));
+            sb.append(String.format("%02d", overDueSinceDate.get(1)));
+            sb.append(String.format("%02d", overDueSinceDate.get(2)));
+            String dateStr = sb.toString();
+            FastDateFormat fdf = FastDateFormat.getInstance("yyyyMMdd");
             Date date = fdf.parse(dateStr);
             if(frequency.equalsIgnoreCase("weeks")) {
                 date = DateUtils.addDays(date, 7);
@@ -91,7 +96,6 @@ public class NextDueDateHandler extends BaseLoanIntentHandler {
         } catch (ParseException e) {
             log.error("Exception when parsing, ", e);
         }
-
         return null;
     }
 }

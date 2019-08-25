@@ -2,6 +2,8 @@ description = "Mifos Chatbot Protocol"
 
 dependencies {
     compile project(":core")
+    compile project(":database")
+    compile project(":client")
 
     // viber
     compile "com.viber:viber-bot"
@@ -15,8 +17,16 @@ dependencies {
     compile "org.igniterealtime.smack:smack-im"
     compile "org.igniterealtime.smack:smack-extensions"
 
+    //facebook messenger
+    compile 'com.github.messenger4j:messenger4j:1.1.0'
+
+    //telegram
+    compile group: 'org.telegram', name: 'telegrambots', version: '4.3.1'
+    
     compile "org.springframework:spring-core"
     compile "org.springframework:spring-context"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter"
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile "junit:junit"

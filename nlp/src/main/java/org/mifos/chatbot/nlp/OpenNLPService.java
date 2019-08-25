@@ -28,12 +28,10 @@ import org.mifos.chatbot.core.model.Intent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -53,7 +51,7 @@ public class OpenNLPService implements NLPService {
      * @author Zhao Dingfan
      */
     @Override
-    public Intent[] recognize(String text) {
+    public Intent recognize(String text) {
         try {
             String[] sentences = detectSentence(text);
             List<Intent> resultIntents = new ArrayList<>();
@@ -79,12 +77,10 @@ public class OpenNLPService implements NLPService {
                 resultIntents.addAll(subResultIntents);
             }
 
-            Intent[] intents = new Intent[resultIntents.size()];
-            for(int i = 0 ; i < resultIntents.size() ; i++) {
-                intents[i] = resultIntents.get(i);
-            }
+            Intent intent = null;
+                intent = resultIntents.get(0);
 
-            return intents;
+            return intent;
         } catch (IOException e) {
             logger.error("Cannot read model information : ", e);
         }

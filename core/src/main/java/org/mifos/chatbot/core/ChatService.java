@@ -29,7 +29,6 @@ public interface ChatService {
 
     interface ChatCallBack {
         void onMessage(Message msg);
-        void onResponse(MifosResponse response);
-        void onCheckingUsernameAndPassword();
+        void onResponse(MifosResponse response, String recipientId);
     }
 }

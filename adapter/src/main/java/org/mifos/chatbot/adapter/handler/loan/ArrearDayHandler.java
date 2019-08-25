@@ -20,6 +20,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.time.FastDateFormat;
 import org.mifos.chatbot.adapter.handler.HandlerUtils;
 import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.Configuration;
 import org.mifos.chatbot.client.api.LoansApi;
 import org.mifos.chatbot.client.model.GetLoansLoanIdResponse;
 import org.mifos.chatbot.core.model.Intent;
@@ -35,13 +36,14 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Component
 public class ArrearDayHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"arrear", "day"};
+    private static final String[] INTENT_KEYWORDS = {"arrear_day"};
 
     @Autowired
     private LoansApi loansApi;
 
     @Override
     public Boolean canHandle(Intent intent) {
+        // not removing this logic because it is possible that multiple intent can be handled with same handler
         for(String intent_keyword : INTENT_KEYWORDS) {
             if (!intent.getKeyword().toLowerCase().contains(intent_keyword.toLowerCase())) {
                 return false;
@@ -53,10 +55,15 @@ public class ArrearDayHandler extends BaseLoanIntentHandler {
 
     @Override
     public MifosResponse handle(Intent intent) {
+        loansApi.setApiClient(Configuration.getDefaultApiClient());
         MifosResponse response = new MifosResponse();
         try {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);
             List<Long> overdueSinceDate = result.getSummary().getOverdueSinceDate();
+            if(overdueSinceDate == null) {
+                response.setContent("No data found for the given id.");
+                return response;
+            }
 //
 //            StringBuffer sb = new StringBuffer();
 //            sb.append(String.format("%04d", overdueSinceDate.get(0)));
@@ -74,7 +81,7 @@ public class ArrearDayHandler extends BaseLoanIntentHandler {
 
             long diffDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
-            response.setContent(String.valueOf(diffDays) + " days");
+            response.setContent(diffDays + " days");
         } catch (ApiException e) {
             log.info("Error", e);
             response.setContent(e.getMessage());

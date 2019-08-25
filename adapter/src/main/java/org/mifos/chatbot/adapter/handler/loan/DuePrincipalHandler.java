@@ -17,15 +17,18 @@ package org.mifos.chatbot.adapter.handler.loan;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.Configuration;
 import org.mifos.chatbot.client.api.LoansApi;
 import org.mifos.chatbot.client.model.GetLoansLoanIdResponse;
 import org.mifos.chatbot.core.model.Intent;
 import org.mifos.chatbot.core.model.MifosResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Slf4j
+@Component
 public class DuePrincipalHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"due", "principal"};
+    private static final String[] INTENT_KEYWORDS = {"due_principal"};
 
     @Autowired
     private LoansApi loansApi;
@@ -43,6 +46,7 @@ public class DuePrincipalHandler extends BaseLoanIntentHandler {
 
     @Override
     public MifosResponse handle(Intent intent) {
+        loansApi.setApiClient(Configuration.getDefaultApiClient());
         MifosResponse response = new MifosResponse();
         try {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);

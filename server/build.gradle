@@ -17,6 +17,7 @@ dependencies {
     compile project(":client")
     compile project(":adapter")
     compile project(":protocol")
+    compile project(":database")
     testCompile "org.springframework.boot:spring-boot-starter-test"
     testCompile "org.springframework.security:spring-security-test"
 }

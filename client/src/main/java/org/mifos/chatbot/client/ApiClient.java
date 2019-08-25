@@ -102,13 +102,26 @@ public class ApiClient {
 
         // Set default User-Agent.
         setUserAgent("Swagger-Codegen/1.0.0/java");
-        addDefaultHeader("Authorization", "Basic bWlmb3M6cGFzc3dvcmQ=");
-        addDefaultHeader("Fineract-Platform-TenantId", "default");
-
+        setDefaultHeaderMap();
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
+    }
+
+    public ApiClient(String creds_base64, String tenantID) {
+        this();
+        addDefaultHeader("Authorization", "Basic " + creds_base64);
+        addDefaultHeader("Fineract-Platform-TenantId", tenantID);
+    }
+
+    public ApiClient(String creds_base64) {
+        this(creds_base64, "default");
+    }
+
+    private void setDefaultHeaderMap() {
+        addDefaultHeader("Authorization", "Basic bWlmb3M6cGFzc3dvcmQ=");
+        addDefaultHeader("Fineract-Platform-TenantId", "default");
     }
 
     /**

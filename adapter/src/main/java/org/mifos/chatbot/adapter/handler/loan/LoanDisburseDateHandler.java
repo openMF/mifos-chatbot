@@ -18,6 +18,7 @@ package org.mifos.chatbot.adapter.handler.loan;
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.adapter.handler.HandlerUtils;
 import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.Configuration;
 import org.mifos.chatbot.client.api.LoansApi;
 import org.mifos.chatbot.client.model.GetLoansLoanIdResponse;
 import org.mifos.chatbot.core.model.Intent;
@@ -28,7 +29,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class LoanDisburseDateHandler extends BaseLoanIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"disbursement", "Date"};
+    private static final String[] INTENT_KEYWORDS = {"disbursement_date"};
 
     @Autowired
     private LoansApi loansApi;
@@ -46,6 +47,7 @@ public class LoanDisburseDateHandler extends BaseLoanIntentHandler {
 
     @Override
     public MifosResponse handle(Intent intent) {
+        loansApi.setApiClient(Configuration.getDefaultApiClient());
         MifosResponse response = new MifosResponse();
         try {
             GetLoansLoanIdResponse result = loansApi.retrieveLoan(intent.getParameterAsLong("ID"), false);

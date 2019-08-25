@@ -24,4 +24,6 @@ public interface AdapterService {
     List<MifosResponse> handle(Intent intent);
 
     List<MifosResponse> handle(String input);
+
+    boolean isSmallTalkRequest(String messageText);
 }

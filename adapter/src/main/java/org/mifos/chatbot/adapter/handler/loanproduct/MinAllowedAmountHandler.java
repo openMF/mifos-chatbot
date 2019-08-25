@@ -17,6 +17,7 @@ package org.mifos.chatbot.adapter.handler.loanproduct;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mifos.chatbot.client.ApiException;
+import org.mifos.chatbot.client.Configuration;
 import org.mifos.chatbot.client.api.LoanProductsApi;
 import org.mifos.chatbot.client.model.GetLoanProductsProductIdResponse;
 import org.mifos.chatbot.core.model.Intent;
@@ -27,7 +28,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class MinAllowedAmountHandler extends BaseLoanProductIntentHandler {
-    private static final String[] INTENT_KEYWORDS = {"min", "Allowed", "Amount"};
+    private static final String[] INTENT_KEYWORDS = {"min_allowed_amount"};
 
     @Autowired
     private LoanProductsApi loanProductsApi;
@@ -44,6 +45,7 @@ public class MinAllowedAmountHandler extends BaseLoanProductIntentHandler {
 
     @Override
     public MifosResponse handle(Intent intent) {
+        loanProductsApi.setApiClient(Configuration.getDefaultApiClient());
         MifosResponse response = new MifosResponse();
         try {
             GetLoanProductsProductIdResponse result = loanProductsApi.retrieveLoanProductDetails(intent.getParameterAsLong("ID"));
