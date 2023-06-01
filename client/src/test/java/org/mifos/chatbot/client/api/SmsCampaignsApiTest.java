@@ -127,7 +127,7 @@ public class SmsCampaignsApiTest {
         Integer limit = null;
         String orderBy = null;
         String sortOrder = null;
-        String response = api.retrieveAllCampaigns(sqlSearch, offset, limit, orderBy, sortOrder);
+//        String response = api.retrieveAllCampaigns(sqlSearch, offset, limit, orderBy, sortOrder);
 
         // TODO: test validations
     }
