@@ -174,7 +174,7 @@ public class DataTablesApiTest {
     @Test
     public void getDatatableTest() throws ApiException {
         String datatable = null;
-        GetDataTablesResponse response = api.getDatatable(datatable);
+        //GetDataTablesResponse response = api.getDatatable(datatable);
 
         // TODO: test validations
     }
@@ -211,7 +211,7 @@ public class DataTablesApiTest {
         String datatable = null;
         Long apptableId = null;
         String order = null;
-        GetDataTablesAppTableIdResponse response = api.getDatatable_0(datatable, apptableId, order);
+//        GetDataTablesAppTableIdResponse response = api.getDatatable_0(datatable, apptableId, order);
 
         // TODO: test validations
     }

@@ -5,7 +5,6 @@ buildscript {
     }
     repositories {
         mavenCentral()
-        jcenter()
         gradlePluginPortal()
     }
     dependencies {
@@ -32,12 +31,11 @@ allprojects  {
     version = "1.0.0-SNAPSHOT"
 
     repositories {
-        maven { url "http://jcenter.bintray.com" }
         maven { url "https://dl.bintray.com/palantir/releases" }
         maven { url "https://repo.spring.io/libs-snapshot" }
-        maven { url "http://repo.spring.io/libs-milestone" }
-        maven { url "http://maven.wso2.org/nexus/content/repositories/releases/" }
-        maven { url "http://repo.maven.apache.org/maven2" }
+        maven { url "https://repo.spring.io/libs-milestone" }
+        maven { url "https://maven.wso2.org/nexus/content/repositories/releases/" }
+        maven { url "https://repo.maven.apache.org/maven2" }
         mavenLocal()
         mavenCentral()
     }
@@ -135,8 +133,9 @@ allprojects  {
         }
 
         imports {
-            mavenBom "org.springframework:spring-framework-bom:5.0.7.RELEASE"
-            mavenBom "org.springframework.security:spring-security-bom:5.0.6.RELEASE"
+//            mavenBom "org.springframework:spring-framework-bom:5.0.7.RELEASE"
+//            mavenBom "org.springframework.security:spring-security-bom:5.0.6.RELEASE"
+//            mavenBom "org.springframework:spring-framework-bom:5.3.8"
             mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
             mavenBom "com.fasterxml.jackson:jackson-bom:${jacksonVersion}"
         }

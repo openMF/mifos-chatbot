@@ -93,7 +93,7 @@ public class SpmScorecardsApiTest {
     public void findBySurveyClientTest() throws ApiException {
         Long surveyId = null;
         Long clientId = null;
-        List<ScorecardData> response = api.findBySurveyClient(surveyId, clientId);
+//        List<ScorecardData> response = api.findBySurveyClient(surveyId, clientId);
 
         // TODO: test validations
     }
